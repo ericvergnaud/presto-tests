@@ -1,0 +1,20 @@
+attribute id: Integer;
+attribute name: Text;
+
+category Entity( id , name);
+
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+method main ( Text{} options ) {
+	e1 = Entity (id = 3 , name = "Peter" );
+	e2 = Entity (id = 2 , name = "Alan" ); 
+	e3 = Entity (id = 1 , name = "John" ); 
+	set = < e1, e2, e3 >;
+	print ("" + sorted (set, key = name[2:3]));
+}

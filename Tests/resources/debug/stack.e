@@ -1,0 +1,23 @@
+define main as: method receiving: Text{} options doing:
+	printLevel1 "test"
+	print "-ok"
+
+define printLevel1 as: method receiving: Text value doing:
+	value = value + "1"
+	printLevel2 value
+	
+define printLevel2 as: method receiving: Text value doing:
+	value = value + "2"
+	printLevel3 value
+	
+define printLevel3 as: method receiving: Text value doing:
+	value = value + "3"
+	print value
+	
+define print as: native method receiving: Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+
+	

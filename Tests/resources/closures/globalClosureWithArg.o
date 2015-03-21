@@ -1,0 +1,27 @@
+abstract Text method proto (Text prefix ); 
+
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+method printMethod ( proto ) {
+	s = proto ( prefix = "prefix:" ); 
+	print (s);
+}
+
+method test() {
+	x = 150;
+	method subTest (Text prefix) {
+		return prefix + x;
+	}
+	return subTest;
+}
+	
+method main ( Text{} options ) {
+	m = test();
+	printMethod ( m );
+}

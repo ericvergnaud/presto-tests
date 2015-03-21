@@ -1,0 +1,19 @@
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+method test (Code code) {
+	a = 3;
+	b = 2;
+	s = "a+b=" + execute(code);
+	print (s);
+}
+
+method main ( Text{} options ) {
+	c = 1;
+	test ( code = Code(a + b)); 
+}

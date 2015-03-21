@@ -1,0 +1,7 @@
+attribute name: Text;
+
+category Entity ( name );
+	
+method main ( Text{} options ) {
+	write ("test") to Entity (name = "test" );
+} 

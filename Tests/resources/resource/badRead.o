@@ -1,0 +1,7 @@
+attribute name: Text;
+
+category Entity (name);
+	
+method main ( Text{} options ) {
+	s = read from Entity (name="test");
+} 

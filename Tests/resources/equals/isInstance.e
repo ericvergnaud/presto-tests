@@ -1,0 +1,15 @@
+define print as: native method receiving: Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define checkIs as: method receiving: Text a and Text b doing:
+	return a is b
+	
+define main as: method receiving: Text{} options doing:
+	a = "test"
+	b = "test"
+	print "/" + (checkIs with a as a and a as b)
+	print "/" + (checkIs with a as a and b as b)

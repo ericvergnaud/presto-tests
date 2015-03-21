@@ -1,0 +1,14 @@
+attribute path: Text;
+
+native resource File (path) {
+
+	category mappings {
+		Java: utils.MyResource;
+		C#: utils.MyResource;
+	}
+}
+	
+	
+method main ( Text{} options ) {
+	f = File ( path = "xyz" );
+} 

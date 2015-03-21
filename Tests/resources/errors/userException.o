@@ -1,0 +1,30 @@
+attribute name: Text;
+attribute text: Text; 
+
+enumerated category Error(name,text) {
+	DIVIDE_BY_ZERO ( text = "Divide by zero!" ); 
+	INDEX_OUT_OF_RANGE (text= "Index out of range!");
+	NULL_REFERENCE (text = "Null reference!" ); 
+}
+
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+enumerated category UserError extends Error {
+	USER_ERROR_1 ( text = "User error 1!" ); 
+	USER_ERROR_2 ( text = "User error 2!" );
+}
+
+method main ( Text{} options ) {
+	try(error) {
+		s = "abcde";
+		throw USER_ERROR_1;
+	} catch ( USER_ERROR_1 ) {
+		print (error.text);
+	}
+}

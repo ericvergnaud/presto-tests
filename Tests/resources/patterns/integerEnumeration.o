@@ -1,0 +1,22 @@
+attribute prime: Integer in [1,3,5,7,11,13];
+
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+method printPrime (prime) {
+	print ("/prime=" + prime);
+}
+
+method main ( Text{} options ) {
+	printPrime (13);
+	try( error ) {
+		printPrime (14);
+	} catch( any ) {
+		print ("/ok");
+	}
+}

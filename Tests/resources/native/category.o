@@ -1,0 +1,37 @@
+attribute id : Text;
+attribute name : Text;
+attribute display : Text;
+
+native category MyClass (id, name, display) {
+
+	category mappings {
+		Java: presto.runtime.utils.MyClass;
+		C#: presto.runtime.utils.MyClass;
+		Python2: MyClass from module: presto.runtime.utils.MyClass;
+		Python3: MyClass from module: presto.runtime.utils.MyClass;
+		JavaScript: MyClass from module: test/user/MyClass.js;
+	}
+}
+
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+native method show (MyClass value ) {
+	Java: value.printDisplay();
+	C#: value.printDisplay();
+	Python2: value.printDisplay()
+	Python3: value.printDisplay()
+	JavaScript: value.printDisplay();
+}
+
+method main ( Text{} options ) {
+	c = MyClass ( id = "1",  name = "John"); 
+	print ("print:" + c.display + ",");
+	show (c);
+}
+	

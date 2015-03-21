@@ -1,0 +1,13 @@
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+method main ( Text{} options ) {
+	print ("/" + (3.0 != 3.0));
+	print ("/" + (3.0 != 4.0));
+	print ("/" + (3.0 != 3));
+}

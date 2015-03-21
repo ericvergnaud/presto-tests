@@ -1,0 +1,20 @@
+Integer native method longValue() {
+	Java: return Long.parseLong("123");
+	C#: return presto.runtime.utils.MyClass.longValue();
+	Python2: return MyClass.longValue() from module: presto.runtime.utils.MyClass
+	Python3: return MyClass.longValue() from module: presto.runtime.utils.MyClass
+	JavaScript: return MyClass.longValue(); from module: test/user/MyClass.js
+}
+
+native method print ( Integer value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+method main ( Text{} options ) {
+	value = longValue();
+	print (value);
+}

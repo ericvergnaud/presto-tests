@@ -1,0 +1,2 @@
+{value:4000.0, currency:USD}
+{currency:USD, value:4000.0}

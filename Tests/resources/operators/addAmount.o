@@ -1,0 +1,23 @@
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+attribute currency : Text matching "[A-Z]{3}";
+attribute value : Decimal;
+
+category Amount (currency , value) {
+
+	Amount operator + (Amount other) {
+		return Amount(currency=currency, value=value+other.value);
+	}
+}
+
+method main ( Text{} options ) {
+	a = Amount(currency="USD", value=2000.0); 
+	b = Amount(currency="USD", value=4000.0);
+	print ("" + (a + b));
+}

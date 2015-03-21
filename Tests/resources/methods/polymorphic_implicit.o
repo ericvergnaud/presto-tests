@@ -1,0 +1,38 @@
+attribute id: Integer; 
+attribute name: Text;
+
+category Person (id, name);
+category Company (id, name);
+attribute company: Company;
+
+category Employee(company) extends Person;
+category Entrepreneur extends Person, Company;
+
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+method printName ( name ) {
+	print ( value = "/name=" + name );
+} 
+
+method printName ( Person p ) {
+	print ( value = "/person=" + p.name );
+} 
+
+method printName ( Employee e ) {
+	print ( value = "/employee=" + e.name );
+} 
+
+method main ( Text{} options ) {
+	c = Company ( id = 1, name = "IBM" );
+	printName (c);
+	p = Person ( id = 1 , name = "James" );
+	printName (p);
+	e = Employee ( id = 1 , name = "John" , company = c); 
+	printName (e);
+}

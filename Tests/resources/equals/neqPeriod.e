@@ -1,0 +1,12 @@
+define print as: native method receiving: Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define main as: method receiving: Text{} options doing:
+	print "/" + ('PT1M' <> 'PT1M')
+	print "/" + ('PT1M' <> 'PT60S')
+	print "/" + ('PT1M' <> 'PT2M')
+	

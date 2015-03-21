@@ -1,0 +1,22 @@
+attribute even: Integer matching value%2==0;
+
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+method printEven (even) {
+	print ("/even=" + even);
+}
+
+method main ( Text{} options ) {
+	printEven (256);
+	try( error ) {
+		printEven (257);
+	} catch( any ) {
+		print ("/ok");
+	}
+}

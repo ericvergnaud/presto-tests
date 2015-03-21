@@ -1,0 +1,10 @@
+define print as: native method receiving: Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define main as: method receiving: Text{} options doing:
+	list = [ '2014-10-10T16:00Z', '2014-12-10T22:33Z', '2013-10-10T18:00Z' ]
+	print "" + sorted list

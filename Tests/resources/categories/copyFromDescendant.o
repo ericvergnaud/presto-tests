@@ -1,0 +1,25 @@
+attribute id : Text; 
+attribute name : Text;
+attribute other : Text;
+attribute again : Text;
+
+category Entity (id , name);
+category Person (other) extends Entity;
+category Employee (again) extends Person;
+
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+
+method main ( Text{} options ) {
+	e1 = Employee (id ="1", name = "John", other = "other", again = "again" ); 
+	e2 = Entity ( e1);
+	print ("/id:" + e2.id);
+	print ("/name:" + e2.name);
+}
+	

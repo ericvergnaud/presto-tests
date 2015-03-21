@@ -1,0 +1,16 @@
+define print as: native method receiving: Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define main as: method receiving: Text{} options doing:
+	a = 3
+	if a = 1:
+		print "a=1"
+	else if a = 2:
+		print "a=2"
+	else:
+		print "a=?"
+	

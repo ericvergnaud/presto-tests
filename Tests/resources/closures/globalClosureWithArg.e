@@ -11,11 +11,11 @@ define printMethod as: method receiving: proto doing:
 	s = proto with "prefix:" as prefix
 	print s
 
-define test as: method doing:
+define parentTest as: method doing:
 	x = 150
 	define subTest as: method receiving: Text prefix doing:
 		return prefix + x
 	return Method: subTest
 	
 define main as: method receiving: Text{} options doing:
-	printMethod test
+	printMethod parentTest

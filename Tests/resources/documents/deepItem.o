@@ -9,7 +9,7 @@ native method print ( Text value ) {
 method main ( Text{} options ) {
 	doc = Document();
 	doc.vals = [Document(),Document(),Document()];
-	doc.vals[2].test = "hello";
-	print ("doc.vals[2].test=" + doc.vals[2].test);
+	doc.vals[2].text = "hello";
+	print ("doc.vals[2].text=" + doc.vals[2].text);
 }
 	

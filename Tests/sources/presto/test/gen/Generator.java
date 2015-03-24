@@ -158,7 +158,7 @@ public abstract class Generator {
 	
 	protected String readPrestoPath() {
 		String testsPath = readResourcesPath();
-		return testsPath.substring(0, testsPath.lastIndexOf("/Test/")) + "/";
+		return testsPath.substring(0, testsPath.lastIndexOf("/presto-tests/")) + "/";
 	}
 
 	protected String capitalize(String s) {

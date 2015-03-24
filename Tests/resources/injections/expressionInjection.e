@@ -5,7 +5,7 @@ define print as: native method receiving: Text value doing:
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
-define test as: method receiving: Code code doing:
+define testCode as: method receiving: Code code doing:
 	a = 3
 	b = 2
 	s = "a+b=" + execute: code
@@ -13,5 +13,5 @@ define test as: method receiving: Code code doing:
 
 define main as: method receiving: Text{} options doing:
 	c = 1
-	test with Code: a + b as code
+	testCode with Code: a + b as code
 	

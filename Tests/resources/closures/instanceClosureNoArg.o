@@ -12,7 +12,7 @@ attribute name: Text ;
 
 category Test ( name ) {
 
-	method test ( Text prefix ) {
+	method memberTest ( Text prefix ) {
 		x = 150;
 		method subTest() {
 			return prefix + name + "/" + x;
@@ -28,6 +28,6 @@ method printMethod ( proto ) {
 	
 method main ( Text{} options ) {
 	i = Test ( name = "name" ); 
-	m = i.test( prefix = "prefix:");
+	m = i.memberTest( prefix = "prefix:");
 	printMethod ( m );
 }

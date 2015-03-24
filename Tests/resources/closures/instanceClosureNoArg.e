@@ -11,7 +11,7 @@ define name as: Text attribute
 
 define Test as: category with attribute: name, and methods:
 
-	define test as: method receiving: Text prefix doing:
+	define memberTest as: method receiving: Text prefix doing:
 		x = 150
 		define subTest as: method doing:
 			return prefix + name + "/" + x
@@ -23,5 +23,5 @@ define printMethod as: method receiving: proto doing:
 	
 define main as: method receiving: Text{} options doing:
 	i = Test with "name" as name
-	m = i.test with "prefix:" as prefix
+	m = i.memberTest with "prefix:" as prefix
 	printMethod m

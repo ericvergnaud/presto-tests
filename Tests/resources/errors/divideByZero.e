@@ -1,7 +1,7 @@
 define name as: Text attribute
 define text as: Text attribute
 
-define Error as: enumerated category with attributes: name and text, with symbols:
+define Error as: enumerated category with attributes: name and text, and symbols:
 	DIVIDE_BY_ZERO with "Divide by zero!" as text
 	INDEX_OUT_OF_RANGE with "Index out of range!" as text
 	NULL_REFERENCE with "Null reference!" as text

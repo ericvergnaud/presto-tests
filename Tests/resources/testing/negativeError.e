@@ -1,6 +1,3 @@
-define name as: Text attribute
-define text as: Text attribute
-
 define print as: native method receiving: Text value doing:
 	Java: System.out.print(value);
 	C#: System.Console.Write(value);
@@ -8,19 +5,15 @@ define print as: native method receiving: Text value doing:
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
+define name as: Text attribute
+define text as: Text attribute
+
 define Error as: enumerated category with attributes: name and text, and symbols:
 	DIVIDE_BY_ZERO with "Divide by zero!" as text
 	INDEX_OUT_OF_RANGE with "Index out of range!" as text
 	NULL_REFERENCE with "Null reference!" as text
 
-define Name as: category with attribute: name
-
-define main as: method receiving: Text{} options doing:
-	switch on error doing:
-		s = Name
-		s = nothing
-		x = s.name
-		print "Should fail!"
-	when NULL_REFERENCE:
-		print error.text
-
+define "Divide two numbers" as: test method doing:
+	a = 3 / 0
+and expecting: INDEX_OUT_OF_RANGE
+	

@@ -17,6 +17,6 @@ native method print ( Text value ) {
 }
 
 method main ( Text{} options ) {
-	test = Test( name = "hello"); 
-	print ( test.name );
+	t = Test( name = "hello"); 
+	print ( t.name );
 }

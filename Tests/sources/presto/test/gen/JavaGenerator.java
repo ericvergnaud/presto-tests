@@ -5,12 +5,10 @@ import java.io.IOException;
 
 public class JavaGenerator extends Generator {
 	
-	static final String ROOT = "Java/Core/src/test/java/";
+	static final String ROOT = "presto-java/Java-Core/src/test/java/";
 
 	@Override
 	protected void enterSubdir(File subDir) {
-		
-		
 	}
 
 	@Override
@@ -19,6 +17,8 @@ public class JavaGenerator extends Generator {
 			endRuntimeE();
 		if(runtimeO!=null)
 			endRuntimeO();
+		if(runtimeP!=null)
+			endRuntimeP();
 		if(translateEOE!=null)
 			endTranslateEOE();
 		if(translateEPE!=null)
@@ -316,11 +316,61 @@ public class JavaGenerator extends Generator {
 
 
 	@Override
-	protected void addToRuntimeP(String dirName, String fileName) {
-		// TODO Auto-generated method stub
-		
+	protected void addToRuntimeP(String dirName, String fileName) throws IOException {
+		if(runtimeP==null) {
+			String capDirName = capitalize(dirName);
+			String testFilePath = ROOT + "presto/runtime/p/Test" + capDirName + ".java";
+			runtimeP = mkfile(testFilePath);
+			beginRuntimeP(capDirName);
+		}
+		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
+		capFileName = capFileName.replaceAll("-", "_");
+		runtimeP.write("\t@Test\n");
+		runtimeP.write("\tpublic void test");
+		runtimeP.write(capFileName);
+		runtimeP.write("() throws Exception {\n");
+		runtimeP.write("\t\tcheckOutput(\"");
+		runtimeP.write(dirName);
+		runtimeP.write("/");
+		runtimeP.write(fileName);
+		runtimeP.write("\");\n");
+		runtimeP.write("\t}\n");
+		runtimeP.write("\n");
 	}
 	
+	private void beginRuntimeP(String cdirName) throws IOException {
+		runtimeP.write("package presto.runtime.p;\n");
+		runtimeP.write("\n");
+		runtimeP.write("import org.junit.After;\n");
+		runtimeP.write("import org.junit.Before;\n");
+		runtimeP.write("import org.junit.Test;\n");
+		runtimeP.write("\n");
+		runtimeP.write("import presto.parser.p.BasePParserTest;\n");
+		runtimeP.write("import presto.runtime.utils.Out;\n");
+		runtimeP.write("\n");
+		runtimeP.write("public class Test");
+		runtimeP.write(cdirName);
+		runtimeP.write(" extends BasePParserTest {\n");
+		runtimeP.write("\n");
+		runtimeP.write("\t@Before\n");
+		runtimeP.write("\tpublic void before() {\n");
+		runtimeP.write("\t\tOut.init();\n");
+		runtimeP.write("\t}\n");
+		runtimeP.write("\n");
+		runtimeP.write("\t@After\n");
+		runtimeP.write("\tpublic void after() {\n");
+		runtimeP.write("\t\tOut.restore();\n");
+		runtimeP.write("\t}\n");
+		runtimeP.write("\n");
+	}
+
+	private void endRuntimeP() throws IOException {
+		runtimeP.write("}\n");
+		runtimeP.write("\n");
+	}
+
+
+
 	
 	
 }

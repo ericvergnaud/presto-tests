@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class JavaScriptGenerator extends Generator {
 	
-	static final String ROOT = "JavaScript/Core/src/test/";
+	static final String ROOT = "presto-javascript/JavaScript-Core/src/test/";
 
 	@Override
 	protected void enterSubdir(File subDir) {

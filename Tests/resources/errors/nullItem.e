@@ -8,7 +8,7 @@ define print as: native method receiving: Text value doing:
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
-define Error as: enumerated category with attributes: name and text, with symbols:
+define Error as: enumerated category with attributes: name and text, and symbols:
 	DIVIDE_BY_ZERO with "Divide by zero!" as text
 	INDEX_OUT_OF_RANGE with "Index out of range!" as text
 	NULL_REFERENCE with "Null reference!" as text

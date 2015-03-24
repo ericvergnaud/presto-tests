@@ -13,7 +13,7 @@ method printMethod ( proto ) {
 	print (s);
 }
 
-method test() {
+method parentTest() {
 	x = 150;
 	method subTest (Text prefix) {
 		return prefix + x;
@@ -22,6 +22,6 @@ method test() {
 }
 	
 method main ( Text{} options ) {
-	m = test();
+	m = parentTest();
 	printMethod ( m );
 }

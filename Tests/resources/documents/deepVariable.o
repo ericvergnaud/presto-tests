@@ -8,7 +8,7 @@ native method print ( Text value ) {
 
 method main ( Text{} options ) {
 	doc = Document();
-	doc.member.test = "test";
-	print ("doc.member.test=" + doc.member.test);
+	doc.member.text = "text";
+	print ("doc.member.text=" + doc.member.text);
 }
 	

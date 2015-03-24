@@ -1,1 +1,1 @@
-doc.vals[2].test=hello
+doc.vals[2].text=hello

@@ -5,8 +5,9 @@ define print as: native method receiving: Text value doing:
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
-define main as: method receiving: Text{} options doing:
-	doc = Document
-	doc.member.text = "text"
-	print "doc.member.text=" + doc.member.text
+define "Add two numbers" as: test method doing:
+	a = 3
+	b = 8
+and expecting:
+	a + b = 11 
 	

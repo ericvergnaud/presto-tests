@@ -1,0 +1,21 @@
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+attribute name: Text;
+attribute text: Text; 
+
+enumerated category Error(name,text) {
+	DIVIDE_BY_ZERO ( text = "Divide by zero!" ); 
+	INDEX_OUT_OF_RANGE (text= "Index out of range!");
+	NULL_REFERENCE (text = "Null reference!" ); 
+}
+
+test method "Divide two numbers" () {
+	a = 3 / 0;
+} expecting INDEX_OUT_OF_RANGE;
+	

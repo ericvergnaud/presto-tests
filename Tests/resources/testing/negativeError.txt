@@ -1,0 +1,1 @@
+"Divide two numbers" test failed, expected: INDEX_OUT_OF_RANGE, actual: DIVIDE_BY_ZERO

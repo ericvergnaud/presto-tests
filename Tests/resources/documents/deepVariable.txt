@@ -1,1 +1,1 @@
-doc.member.test=test
+doc.member.text=text

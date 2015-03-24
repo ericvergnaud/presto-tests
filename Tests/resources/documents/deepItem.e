@@ -8,6 +8,6 @@ define print as: native method receiving: Text value doing:
 define main as: method receiving: Text{} options doing:
 	doc = Document
 	doc.vals = [Document,Document,Document]
-	doc.vals[2].test = "hello"
-	print "doc.vals[2].test=" + doc.vals[2].test
+	doc.vals[2].text = "hello"
+	print "doc.vals[2].text=" + doc.vals[2].text
 	

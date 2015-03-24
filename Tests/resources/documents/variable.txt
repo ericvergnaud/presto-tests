@@ -1,1 +1,1 @@
-doc.test=test
+doc.text=text

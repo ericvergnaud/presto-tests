@@ -6,9 +6,10 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
-	doc = Document();
-	doc.text = "text";
-	print ("doc.text=" + doc.text);
+test method "Add two numbers" () {
+	a = 3;
+	b = 8;
+} expecting {
+	a + b == 11;
 }
 	

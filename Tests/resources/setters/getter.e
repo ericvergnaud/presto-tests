@@ -13,5 +13,5 @@ define print as: native method receiving: Text value doing:
 	JavaScript: process.stdout.write(value);
 
 define main as: method receiving: Text{} options doing:
-	test = Test with "hello" as name
-	print test.name
+	t = Test with "hello" as name
+	print t.name

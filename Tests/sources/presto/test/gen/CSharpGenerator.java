@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class CSharpGenerator extends Generator {
 	
-	static final String ROOT = "C#/Core-Test/src/";
+	static final String ROOT = "presto-csharp/CSharp-Tests/src/";
 
 	@Override
 	protected void enterSubdir(File subDir) {

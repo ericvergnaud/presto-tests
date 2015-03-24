@@ -6,7 +6,7 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method test (Code code) {
+method testCode (Code code) {
 	a = 3;
 	b = 2;
 	s = "a+b=" + execute(code);
@@ -15,5 +15,5 @@ method test (Code code) {
 
 method main ( Text{} options ) {
 	c = 1;
-	test ( code = Code(a + b)); 
+	testCode ( code = Code(a + b)); 
 }

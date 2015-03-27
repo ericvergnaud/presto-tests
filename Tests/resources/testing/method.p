@@ -5,7 +5,7 @@ def native print(value:Text):
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
-def Smaller(Integer a, Integer b):
+def Smaller(a:Integer, b:Integer):
 	return a < b
 
 def test "Method" ():

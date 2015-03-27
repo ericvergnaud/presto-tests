@@ -7,8 +7,8 @@ native method print ( Text value ) {
 }
 
 test method "Contains condition" () {
-	a = [3..8]
-	b = 6
+	a = [3..8];
+	b = 6;
 } expecting {
 	b in a;
 }

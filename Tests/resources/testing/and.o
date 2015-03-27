@@ -10,6 +10,6 @@ test method "And conditions" () {
 	a = 3;
 	b = 8;
 } expecting {
-	a == 3 and b == 8;
+	a == 3 && b == 8;
 }
 	

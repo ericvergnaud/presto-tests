@@ -9,6 +9,6 @@ native method print ( Text value ) {
 test method "Not condition" () {
 	a = 3;
 } expecting {
-	not (a == 9);
+	!(a == 9);
 }
 	

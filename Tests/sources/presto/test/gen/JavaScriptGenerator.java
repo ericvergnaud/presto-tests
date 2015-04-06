@@ -87,7 +87,7 @@ public class JavaScriptGenerator extends Generator {
 	private void beginTranslateESE(String dirName) throws IOException {
 		translateESE.write("require(\"../../../../exploded\");\n");
 		translateESE.write("\n");
-		translateESE.write("var compareResourceESE = require(\"../../parser/BaseParserTest\").compareResourceEPE;\n");
+		translateESE.write("var compareResourceESE = require(\"../../parser/BaseParserTest\").compareResourceESE;\n");
 		translateESE.write("\n");
 	}
 

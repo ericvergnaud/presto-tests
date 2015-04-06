@@ -17,16 +17,16 @@ public class JavaGenerator extends Generator {
 			endRuntimeE();
 		if(runtimeO!=null)
 			endRuntimeO();
-		if(runtimeP!=null)
-			endRuntimeP();
+		if(runtimeS!=null)
+			endRuntimeS();
 		if(translateEOE!=null)
 			endTranslateEOE();
-		if(translateEPE!=null)
-			endTranslateEPE();
+		if(translateESE!=null)
+			endTranslateESE();
 		if(translateOEO!=null)
 			endTranslateOEO();
-		if(translateOPO!=null)
-			endTranslateOPO();
+		if(translateOSO!=null)
+			endTranslateOSO();
 		closeAll();
 	}
 
@@ -72,44 +72,44 @@ public class JavaGenerator extends Generator {
 	}
 	
 	@Override
-	protected void addToTranslateEPE(String dirName, String fileName) throws IOException {
-		if(translateEPE==null) {
+	protected void addToTranslateESE(String dirName, String fileName) throws IOException {
+		if(translateESE==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "presto/translate/epe/Test" + capDirName + ".java";
-			translateEPE = mkfile(testFilePath);
-			beginTranslateEPE(capDirName);
+			String testFilePath = ROOT + "presto/translate/ese/Test" + capDirName + ".java";
+			translateESE = mkfile(testFilePath);
+			beginTranslateESE(capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		translateEPE.write("\t@Test\n");
-		translateEPE.write("\tpublic void test");
-		translateEPE.write(capFileName);
-		translateEPE.write("() throws Exception {\n");
-		translateEPE.write("\t\tcompareResourceEPE(\"");
-		translateEPE.write(dirName);
-		translateEPE.write("/");
-		translateEPE.write(fileName);
-		translateEPE.write("\");\n");
-		translateEPE.write("\t}\n");
-		translateEPE.write("\n");
+		translateESE.write("\t@Test\n");
+		translateESE.write("\tpublic void test");
+		translateESE.write(capFileName);
+		translateESE.write("() throws Exception {\n");
+		translateESE.write("\t\tcompareResourceESE(\"");
+		translateESE.write(dirName);
+		translateESE.write("/");
+		translateESE.write(fileName);
+		translateESE.write("\");\n");
+		translateESE.write("\t}\n");
+		translateESE.write("\n");
 	}
 
-	private void beginTranslateEPE(String dirName) throws IOException {
-		translateEPE.write("package presto.translate.epe;\n");
-		translateEPE.write("\n");
-		translateEPE.write("import org.junit.Test;\n");
-		translateEPE.write("\n");
-		translateEPE.write("import presto.parser.e.BaseEParserTest;\n");
-		translateEPE.write("\n");
-		translateEPE.write("public class Test");
-		translateEPE.write(dirName);
-		translateEPE.write(" extends BaseEParserTest {\n");
-		translateEPE.write("\n");
+	private void beginTranslateESE(String dirName) throws IOException {
+		translateESE.write("package presto.translate.ese;\n");
+		translateESE.write("\n");
+		translateESE.write("import org.junit.Test;\n");
+		translateESE.write("\n");
+		translateESE.write("import presto.parser.e.BaseEParserTest;\n");
+		translateESE.write("\n");
+		translateESE.write("public class Test");
+		translateESE.write(dirName);
+		translateESE.write(" extends BaseEParserTest {\n");
+		translateESE.write("\n");
 	}
 
-	private void endTranslateEPE() throws IOException {
-		translateEPE.write("}\n");
-		translateEPE.write("\n");
+	private void endTranslateESE() throws IOException {
+		translateESE.write("}\n");
+		translateESE.write("\n");
 	}
 
 	@Override
@@ -154,54 +154,54 @@ public class JavaGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToTranslateOPO(String dirName, String fileName) throws IOException {
-		if(translateOPO==null) {
+	protected void addToTranslateOSO(String dirName, String fileName) throws IOException {
+		if(translateOSO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "presto/translate/opo/Test" + capDirName + ".java";
-			translateOPO = mkfile(testFilePath);
-			beginTranslateOPO(capDirName);
+			String testFilePath = ROOT + "presto/translate/oso/Test" + capDirName + ".java";
+			translateOSO = mkfile(testFilePath);
+			beginTranslateOSO(capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		translateOPO.write("\t@Test\n");
-		translateOPO.write("\tpublic void test");
-		translateOPO.write(capFileName);
-		translateOPO.write("() throws Exception {\n");
-		translateOPO.write("\t\tcompareResourceOPO(\"");
-		translateOPO.write(dirName);
-		translateOPO.write("/");
-		translateOPO.write(fileName);
-		translateOPO.write("\");\n");
-		translateOPO.write("\t}\n");
-		translateOPO.write("\n");
+		translateOSO.write("\t@Test\n");
+		translateOSO.write("\tpublic void test");
+		translateOSO.write(capFileName);
+		translateOSO.write("() throws Exception {\n");
+		translateOSO.write("\t\tcompareResourceOSO(\"");
+		translateOSO.write(dirName);
+		translateOSO.write("/");
+		translateOSO.write(fileName);
+		translateOSO.write("\");\n");
+		translateOSO.write("\t}\n");
+		translateOSO.write("\n");
 	}
 
-	private void beginTranslateOPO(String dirName) throws IOException {
-		translateOPO.write("package presto.translate.opo;\n");
-		translateOPO.write("\n");
-		translateOPO.write("import org.junit.Test;\n");
-		translateOPO.write("\n");
-		translateOPO.write("import presto.parser.o.BaseOParserTest;\n");
-		translateOPO.write("\n");
-		translateOPO.write("public class Test");
-		translateOPO.write(dirName);
-		translateOPO.write(" extends BaseOParserTest {\n");
-		translateOPO.write("\n");
+	private void beginTranslateOSO(String dirName) throws IOException {
+		translateOSO.write("package presto.translate.oso;\n");
+		translateOSO.write("\n");
+		translateOSO.write("import org.junit.Test;\n");
+		translateOSO.write("\n");
+		translateOSO.write("import presto.parser.o.BaseOParserTest;\n");
+		translateOSO.write("\n");
+		translateOSO.write("public class Test");
+		translateOSO.write(dirName);
+		translateOSO.write(" extends BaseOParserTest {\n");
+		translateOSO.write("\n");
 	}
 
-	private void endTranslateOPO() throws IOException {
-		translateOPO.write("}\n");
-		translateOPO.write("\n");
+	private void endTranslateOSO() throws IOException {
+		translateOSO.write("}\n");
+		translateOSO.write("\n");
 	}
 
 	@Override
-	protected void addToTranslatePEP(String dirName, String fileName) {
+	protected void addToTranslateSES(String dirName, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	protected void addToTranslatePOP(String dirName, String fileName) {
+	protected void addToTranslateSOS(String dirName, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -316,57 +316,57 @@ public class JavaGenerator extends Generator {
 
 
 	@Override
-	protected void addToRuntimeP(String dirName, String fileName) throws IOException {
-		if(runtimeP==null) {
+	protected void addToRuntimeS(String dirName, String fileName) throws IOException {
+		if(runtimeS==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "presto/runtime/p/Test" + capDirName + ".java";
-			runtimeP = mkfile(testFilePath);
-			beginRuntimeP(capDirName);
+			String testFilePath = ROOT + "presto/runtime/s/Test" + capDirName + ".java";
+			runtimeS = mkfile(testFilePath);
+			beginRuntimeS(capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		runtimeP.write("\t@Test\n");
-		runtimeP.write("\tpublic void test");
-		runtimeP.write(capFileName);
-		runtimeP.write("() throws Exception {\n");
-		runtimeP.write("\t\tcheckOutput(\"");
-		runtimeP.write(dirName);
-		runtimeP.write("/");
-		runtimeP.write(fileName);
-		runtimeP.write("\");\n");
-		runtimeP.write("\t}\n");
-		runtimeP.write("\n");
+		runtimeS.write("\t@Test\n");
+		runtimeS.write("\tpublic void test");
+		runtimeS.write(capFileName);
+		runtimeS.write("() throws Exception {\n");
+		runtimeS.write("\t\tcheckOutput(\"");
+		runtimeS.write(dirName);
+		runtimeS.write("/");
+		runtimeS.write(fileName);
+		runtimeS.write("\");\n");
+		runtimeS.write("\t}\n");
+		runtimeS.write("\n");
 	}
 	
-	private void beginRuntimeP(String cdirName) throws IOException {
-		runtimeP.write("package presto.runtime.p;\n");
-		runtimeP.write("\n");
-		runtimeP.write("import org.junit.After;\n");
-		runtimeP.write("import org.junit.Before;\n");
-		runtimeP.write("import org.junit.Test;\n");
-		runtimeP.write("\n");
-		runtimeP.write("import presto.parser.p.BasePParserTest;\n");
-		runtimeP.write("import presto.runtime.utils.Out;\n");
-		runtimeP.write("\n");
-		runtimeP.write("public class Test");
-		runtimeP.write(cdirName);
-		runtimeP.write(" extends BasePParserTest {\n");
-		runtimeP.write("\n");
-		runtimeP.write("\t@Before\n");
-		runtimeP.write("\tpublic void before() {\n");
-		runtimeP.write("\t\tOut.init();\n");
-		runtimeP.write("\t}\n");
-		runtimeP.write("\n");
-		runtimeP.write("\t@After\n");
-		runtimeP.write("\tpublic void after() {\n");
-		runtimeP.write("\t\tOut.restore();\n");
-		runtimeP.write("\t}\n");
-		runtimeP.write("\n");
+	private void beginRuntimeS(String cdirName) throws IOException {
+		runtimeS.write("package presto.runtime.s;\n");
+		runtimeS.write("\n");
+		runtimeS.write("import org.junit.After;\n");
+		runtimeS.write("import org.junit.Before;\n");
+		runtimeS.write("import org.junit.Test;\n");
+		runtimeS.write("\n");
+		runtimeS.write("import presto.parser.s.BaseSParserTest;\n");
+		runtimeS.write("import presto.runtime.utils.Out;\n");
+		runtimeS.write("\n");
+		runtimeS.write("public class Test");
+		runtimeS.write(cdirName);
+		runtimeS.write(" extends BaseSParserTest {\n");
+		runtimeS.write("\n");
+		runtimeS.write("\t@Before\n");
+		runtimeS.write("\tpublic void before() {\n");
+		runtimeS.write("\t\tOut.init();\n");
+		runtimeS.write("\t}\n");
+		runtimeS.write("\n");
+		runtimeS.write("\t@After\n");
+		runtimeS.write("\tpublic void after() {\n");
+		runtimeS.write("\t\tOut.restore();\n");
+		runtimeS.write("\t}\n");
+		runtimeS.write("\n");
 	}
 
-	private void endRuntimeP() throws IOException {
-		runtimeP.write("}\n");
-		runtimeP.write("\n");
+	private void endRuntimeS() throws IOException {
+		runtimeS.write("}\n");
+		runtimeS.write("\n");
 	}
 
 

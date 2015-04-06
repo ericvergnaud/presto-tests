@@ -21,12 +21,12 @@ public class JavaScriptGenerator extends Generator {
 			endRuntimeO();
 		if(translateEOE!=null)
 			endTranslateEOE();
-		if(translateEPE!=null)
-			endTranslateEPE();
+		if(translateESE!=null)
+			endTranslateESE();
 		if(translateOEO!=null)
 			endTranslateOEO();
-		if(translateOPO!=null)
-			endTranslateOPO();
+		if(translateOSO!=null)
+			endTranslateOSO();
 		closeAll();
 	}
 
@@ -63,35 +63,35 @@ public class JavaScriptGenerator extends Generator {
 	}
 	
 	@Override
-	protected void addToTranslateEPE(String dirName, String fileName) throws IOException {
-		if(translateEPE==null) {
+	protected void addToTranslateESE(String dirName, String fileName) throws IOException {
+		if(translateESE==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "presto/translate/epe/Test" + capDirName + ".js";
-			translateEPE = mkfile(testFilePath);
-			beginTranslateEPE(capDirName);
+			String testFilePath = ROOT + "presto/translate/ese/Test" + capDirName + ".js";
+			translateESE = mkfile(testFilePath);
+			beginTranslateESE(capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		translateEPE.write("exports.test");
-		translateEPE.write(capFileName);
-		translateEPE.write(" = function(test) {\n");
-		translateEPE.write("\tcompareResourceEPE(test, \"");
-		translateEPE.write(dirName);
-		translateEPE.write("/");
-		translateEPE.write(fileName);
-		translateEPE.write("\");\n");
-		translateEPE.write("};\n");
-		translateEPE.write("\n");
+		translateESE.write("exports.test");
+		translateESE.write(capFileName);
+		translateESE.write(" = function(test) {\n");
+		translateESE.write("\tcompareResourceESE(test, \"");
+		translateESE.write(dirName);
+		translateESE.write("/");
+		translateESE.write(fileName);
+		translateESE.write("\");\n");
+		translateESE.write("};\n");
+		translateESE.write("\n");
 	}
 
-	private void beginTranslateEPE(String dirName) throws IOException {
-		translateEPE.write("require(\"../../../../exploded\");\n");
-		translateEPE.write("\n");
-		translateEPE.write("var compareResourceEPE = require(\"../../parser/BaseParserTest\").compareResourceEPE;\n");
-		translateEPE.write("\n");
+	private void beginTranslateESE(String dirName) throws IOException {
+		translateESE.write("require(\"../../../../exploded\");\n");
+		translateESE.write("\n");
+		translateESE.write("var compareResourceESE = require(\"../../parser/BaseParserTest\").compareResourceEPE;\n");
+		translateESE.write("\n");
 	}
 
-	private void endTranslateEPE() throws IOException {
+	private void endTranslateESE() throws IOException {
 	}
 
 	@Override
@@ -127,45 +127,45 @@ public class JavaScriptGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToTranslateOPO(String dirName, String fileName) throws IOException {
-		if(translateOPO==null) {
+	protected void addToTranslateOSO(String dirName, String fileName) throws IOException {
+		if(translateOSO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "presto/translate/opo/Test" + capDirName + ".js";
-			translateOPO = mkfile(testFilePath);
-			beginTranslateOPO(capDirName);
+			String testFilePath = ROOT + "presto/translate/oso/Test" + capDirName + ".js";
+			translateOSO = mkfile(testFilePath);
+			beginTranslateOSO(capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		translateOPO.write("exports.test");
-		translateOPO.write(capFileName);
-		translateOPO.write(" = function(test) {\n");
-		translateOPO.write("\tcompareResourceOPO(test, \"");
-		translateOPO.write(dirName);
-		translateOPO.write("/");
-		translateOPO.write(fileName);
-		translateOPO.write("\");\n");
-		translateOPO.write("};\n");
-		translateOPO.write("\n");
+		translateOSO.write("exports.test");
+		translateOSO.write(capFileName);
+		translateOSO.write(" = function(test) {\n");
+		translateOSO.write("\tcompareResourceOSO(test, \"");
+		translateOSO.write(dirName);
+		translateOSO.write("/");
+		translateOSO.write(fileName);
+		translateOSO.write("\");\n");
+		translateOSO.write("};\n");
+		translateOSO.write("\n");
 	}
 
-	private void beginTranslateOPO(String dirName) throws IOException {
-		translateOPO.write("require(\"../../../../exploded\");\n");
-		translateOPO.write("\n");
-		translateOPO.write("var compareResourceOPO = require(\"../../parser/BaseParserTest\").compareResourceOPO;\n");
-		translateOPO.write("\n");
+	private void beginTranslateOSO(String dirName) throws IOException {
+		translateOSO.write("require(\"../../../../exploded\");\n");
+		translateOSO.write("\n");
+		translateOSO.write("var compareResourceOSO = require(\"../../parser/BaseParserTest\").compareResourceOSO;\n");
+		translateOSO.write("\n");
 	}
 
-	private void endTranslateOPO() throws IOException {
+	private void endTranslateOSO() throws IOException {
 	}
 
 	@Override
-	protected void addToTranslatePEP(String dirName, String fileName) {
+	protected void addToTranslateSES(String dirName, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	protected void addToTranslatePOP(String dirName, String fileName) {
+	protected void addToTranslateSOS(String dirName, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -258,7 +258,7 @@ public class JavaScriptGenerator extends Generator {
 
 
 	@Override
-	protected void addToRuntimeP(String dirName, String fileName) {
+	protected void addToRuntimeS(String dirName, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}

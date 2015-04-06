@@ -18,12 +18,12 @@ public abstract class PythonGenerator extends Generator {
 			endRuntimeO();
 		if(translateEOE!=null)
 			endTranslateEOE();
-		if(translateEPE!=null)
-			endTranslateEPE();
+		if(translateESE!=null)
+			endTranslateESE();
 		if(translateOEO!=null)
 			endTranslateOEO();
-		if(translateOPO!=null)
-			endTranslateOPO();
+		if(translateOSO!=null)
+			endTranslateOSO();
 		closeAll();
 	}
 
@@ -65,40 +65,40 @@ public abstract class PythonGenerator extends Generator {
 	}
 	
 	@Override
-	protected void addToTranslateEPE(String dirName, String fileName) throws IOException {
-		if(translateEPE==null) {
+	protected void addToTranslateESE(String dirName, String fileName) throws IOException {
+		if(translateESE==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = getRoot() + "presto/translate/epe/Test" + capDirName + ".py";
-			translateEPE = mkfile(testFilePath);
-			beginTranslateEPE(capDirName);
+			String testFilePath = getRoot() + "presto/translate/ese/Test" + capDirName + ".py";
+			translateESE = mkfile(testFilePath);
+			beginTranslateESE(capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		translateEPE.write("    def test");
-		translateEPE.write(capFileName);
-		translateEPE.write("(self):\n");
-		translateEPE.write("        self.compareResourceEPE(\"");
-		translateEPE.write(dirName);
-		translateEPE.write("/");
-		translateEPE.write(fileName);
-		translateEPE.write("\")\n");
-		translateEPE.write("\n");
+		translateESE.write("    def test");
+		translateESE.write(capFileName);
+		translateESE.write("(self):\n");
+		translateESE.write("        self.compareResourceESE(\"");
+		translateESE.write(dirName);
+		translateESE.write("/");
+		translateESE.write(fileName);
+		translateESE.write("\")\n");
+		translateESE.write("\n");
 	}
 
-	private void beginTranslateEPE(String dirName) throws IOException {
-		translateEPE.write("from presto.parser.e.BaseEParserTest import BaseEParserTest\n");
-		translateEPE.write("\n");
-		translateEPE.write("class Test");
-		translateEPE.write(dirName);
-		translateEPE.write("(BaseEParserTest):\n");
-		translateEPE.write("    \n");
-		translateEPE.write("    def setUp(self):\n");
-		translateEPE.write("        super(type(self), self).setUp()\n");
-		translateEPE.write("    \n");
+	private void beginTranslateESE(String dirName) throws IOException {
+		translateESE.write("from presto.parser.e.BaseEParserTest import BaseEParserTest\n");
+		translateESE.write("\n");
+		translateESE.write("class Test");
+		translateESE.write(dirName);
+		translateESE.write("(BaseEParserTest):\n");
+		translateESE.write("    \n");
+		translateESE.write("    def setUp(self):\n");
+		translateESE.write("        super(type(self), self).setUp()\n");
+		translateESE.write("    \n");
 	}
 
-	private void endTranslateEPE() throws IOException {
-		translateEPE.write("\n");
+	private void endTranslateESE() throws IOException {
+		translateESE.write("\n");
 	}
 
 	@Override
@@ -139,50 +139,50 @@ public abstract class PythonGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToTranslateOPO(String dirName, String fileName) throws IOException {
-		if(translateOPO==null) {
+	protected void addToTranslateOSO(String dirName, String fileName) throws IOException {
+		if(translateOSO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = getRoot() + "presto/translate/opo/Test" + capDirName + ".py";
-			translateOPO = mkfile(testFilePath);
-			beginTranslateOPO(capDirName);
+			String testFilePath = getRoot() + "presto/translate/oso/Test" + capDirName + ".py";
+			translateOSO = mkfile(testFilePath);
+			beginTranslateOSO(capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		translateOPO.write("    def test");
-		translateOPO.write(capFileName);
-		translateOPO.write("(self):\n");
-		translateOPO.write("        self.compareResourceOPO(\"");
-		translateOPO.write(dirName);
-		translateOPO.write("/");
-		translateOPO.write(fileName);
-		translateOPO.write("\")\n");
-		translateOPO.write("\n");
+		translateOSO.write("    def test");
+		translateOSO.write(capFileName);
+		translateOSO.write("(self):\n");
+		translateOSO.write("        self.compareResourceOSO(\"");
+		translateOSO.write(dirName);
+		translateOSO.write("/");
+		translateOSO.write(fileName);
+		translateOSO.write("\")\n");
+		translateOSO.write("\n");
 	}
 
-	private void beginTranslateOPO(String dirName) throws IOException {
-		translateOPO.write("from presto.parser.o.BaseOParserTest import BaseOParserTest\n");
-		translateOPO.write("\n");
-		translateOPO.write("class Test");
-		translateOPO.write(dirName);
-		translateOPO.write("(BaseOParserTest):\n");
-		translateOPO.write("    \n");
-		translateOPO.write("    def setUp(self):\n");
-		translateOPO.write("        super(type(self), self).setUp()\n");
-		translateOPO.write("    \n");
+	private void beginTranslateOSO(String dirName) throws IOException {
+		translateOSO.write("from presto.parser.o.BaseOParserTest import BaseOParserTest\n");
+		translateOSO.write("\n");
+		translateOSO.write("class Test");
+		translateOSO.write(dirName);
+		translateOSO.write("(BaseOParserTest):\n");
+		translateOSO.write("    \n");
+		translateOSO.write("    def setUp(self):\n");
+		translateOSO.write("        super(type(self), self).setUp()\n");
+		translateOSO.write("    \n");
 	}
 
-	private void endTranslateOPO() throws IOException {
-		translateOPO.write("\n");
+	private void endTranslateOSO() throws IOException {
+		translateOSO.write("\n");
 	}
 
 	@Override
-	protected void addToTranslatePEP(String dirName, String fileName) {
+	protected void addToTranslateSES(String dirName, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	protected void addToTranslatePOP(String dirName, String fileName) {
+	protected void addToTranslateSOS(String dirName, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -273,7 +273,7 @@ public abstract class PythonGenerator extends Generator {
 
 
 	@Override
-	protected void addToRuntimeP(String dirName, String fileName) {
+	protected void addToRuntimeS(String dirName, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}

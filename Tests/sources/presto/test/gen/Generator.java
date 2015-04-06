@@ -53,25 +53,25 @@ public abstract class Generator {
 		String[] fileNames = subDir.list();
 		for(String fileName : fileNames) {
 			// translate all test cases
-			if(fileName.endsWith(".e")) {
+			if(fileName.endsWith(".pec")) {
 				addToTranslateEOE(subDirName, fileName);
-				addToTranslateEPE(subDirName, fileName);
-			} else if(fileName.endsWith(".o")) {
+				addToTranslateESE(subDirName, fileName);
+			} else if(fileName.endsWith(".poc")) {
 				addToTranslateOEO(subDirName, fileName);
-				addToTranslateOPO(subDirName, fileName);
-			} else if(fileName.endsWith(".p")) {
-				addToTranslatePEP(subDirName, fileName);
-				addToTranslatePOP(subDirName, fileName);
+				addToTranslateOSO(subDirName, fileName);
+			} else if(fileName.endsWith(".psc")) {
+				addToTranslateSES(subDirName, fileName);
+				addToTranslateSOS(subDirName, fileName);
 			}
 			// test only standard test cases
 			if(isSpecialDir(subDirName) || isSpecialFile(fileName))
 				continue;
-			if(fileName.endsWith(".e")) {
+			if(fileName.endsWith(".pec")) {
 				addToRuntimeE(subDirName, fileName);
-			} else if(fileName.endsWith(".o")) {
+			} else if(fileName.endsWith(".poc")) {
 				addToRuntimeO(subDirName, fileName);
-			} else if(fileName.endsWith(".p")) {
-				addToRuntimeP(subDirName, fileName);
+			} else if(fileName.endsWith(".psc")) {
+				addToRuntimeS(subDirName, fileName);
 			}
 		}
 		exitSubdir(subDir);
@@ -91,49 +91,49 @@ public abstract class Generator {
 	protected abstract void enterSubdir(File subDir) throws Exception;
 	protected abstract void exitSubdir(File subDir) throws Exception;
 	protected abstract void addToTranslateEOE(String dirName, String fileName) throws Exception;
-	protected abstract void addToTranslateEPE(String dirName, String fileName) throws Exception;
+	protected abstract void addToTranslateESE(String dirName, String fileName) throws Exception;
 	protected abstract void addToTranslateOEO(String dirName, String fileName) throws Exception;
-	protected abstract void addToTranslateOPO(String dirName, String fileName) throws Exception;
-	protected abstract void addToTranslatePEP(String dirName, String fileName) throws Exception;
-	protected abstract void addToTranslatePOP(String dirName, String fileName) throws Exception;
+	protected abstract void addToTranslateOSO(String dirName, String fileName) throws Exception;
+	protected abstract void addToTranslateSES(String dirName, String fileName) throws Exception;
+	protected abstract void addToTranslateSOS(String dirName, String fileName) throws Exception;
 	protected abstract void addToRuntimeE(String dirName, String fileName) throws Exception;
 	protected abstract void addToRuntimeO(String dirName, String fileName) throws Exception;
-	protected abstract void addToRuntimeP(String dirName, String fileName) throws Exception;
+	protected abstract void addToRuntimeS(String dirName, String fileName) throws Exception;
 
 	OutputStreamWriter translateEOE;
-	OutputStreamWriter translateEPE;
+	OutputStreamWriter translateESE;
 	OutputStreamWriter translateOEO;
-	OutputStreamWriter translateOPO;
-	OutputStreamWriter translatePEP;
-	OutputStreamWriter translatePOP;
+	OutputStreamWriter translateOSO;
+	OutputStreamWriter translateSES;
+	OutputStreamWriter translateSOS;
 	OutputStreamWriter runtimeE;
 	OutputStreamWriter runtimeO;
-	OutputStreamWriter runtimeP;
+	OutputStreamWriter runtimeS;
 	
 	protected void closeAll() throws IOException {
 		if(translateEOE!=null) {
 			translateEOE.close();
 			translateEOE = null;
 		}
-		if(translateEPE!=null) {
-			translateEPE.close();
-			translateEPE = null;
+		if(translateESE!=null) {
+			translateESE.close();
+			translateESE = null;
 		}
 		if(translateOEO!=null) {
 			translateOEO.close();
 			translateOEO = null;
 		}
-		if(translateOPO!=null) {
-			translateOPO.close();
-			translateOPO = null;
+		if(translateOSO!=null) {
+			translateOSO.close();
+			translateOSO = null;
 		}
-		if(translatePEP!=null) {
-			translatePEP.close();
-			translatePEP = null;
+		if(translateSES!=null) {
+			translateSES.close();
+			translateSES = null;
 		}
-		if(translatePOP!=null) {
-			translatePOP.close();
-			translatePOP = null;
+		if(translateSOS!=null) {
+			translateSOS.close();
+			translateSOS = null;
 		}
 		if(runtimeE!=null) {
 			runtimeE.close();
@@ -143,9 +143,9 @@ public abstract class Generator {
 			runtimeO.close();
 			runtimeO = null;
 		}
-		if(runtimeP!=null) {
-			runtimeP.close();
-			runtimeP = null;
+		if(runtimeS!=null) {
+			runtimeS.close();
+			runtimeS = null;
 		}
 	}
 

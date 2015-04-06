@@ -21,12 +21,12 @@ public class CSharpGenerator extends Generator {
 			endRuntimeO();
 		if(translateEOE!=null)
 			endTranslateEOE();
-		if(translateEPE!=null)
-			endTranslateEPE();
+		if(translateESE!=null)
+			endTranslateESE();
 		if(translateOEO!=null)
 			endTranslateOEO();
-		if(translateOPO!=null)
-			endTranslateOPO();
+		if(translateOSO!=null)
+			endTranslateOSO();
 		closeAll();
 	}
 
@@ -76,48 +76,48 @@ public class CSharpGenerator extends Generator {
 	}
 	
 	@Override
-	protected void addToTranslateEPE(String dirName, String fileName) throws IOException {
-		if(translateEPE==null) {
+	protected void addToTranslateESE(String dirName, String fileName) throws IOException {
+		if(translateESE==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "presto/translate/epe/Test" + capDirName + ".cs";
-			translateEPE = mkfile(testFilePath);
-			beginTranslateEPE(capDirName);
+			String testFilePath = ROOT + "presto/translate/ese/Test" + capDirName + ".cs";
+			translateESE = mkfile(testFilePath);
+			beginTranslateESE(capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		translateEPE.write("\t\t[Test]\n");
-		translateEPE.write("\t\tpublic void test");
-		translateEPE.write(capFileName);
-		translateEPE.write("()\n");
-		translateEPE.write("\t\t{\n");
-		translateEPE.write("\t\t\tcompareResourceEPE(\"");
-		translateEPE.write(dirName);
-		translateEPE.write("/");
-		translateEPE.write(fileName);
-		translateEPE.write("\");\n");
-		translateEPE.write("\t\t}\n");
-		translateEPE.write("\n");
+		translateESE.write("\t\t[Test]\n");
+		translateESE.write("\t\tpublic void test");
+		translateESE.write(capFileName);
+		translateESE.write("()\n");
+		translateESE.write("\t\t{\n");
+		translateESE.write("\t\t\tcompareResourceESE(\"");
+		translateESE.write(dirName);
+		translateESE.write("/");
+		translateESE.write(fileName);
+		translateESE.write("\");\n");
+		translateESE.write("\t\t}\n");
+		translateESE.write("\n");
 	}
 
-	private void beginTranslateEPE(String dirName) throws IOException {
-		translateEPE.write("using NUnit.Framework;\n");
-		translateEPE.write("using presto.parser;\n");
-		translateEPE.write("\n");
-		translateEPE.write("namespace presto.translate.epe\n");
-		translateEPE.write("{\n");
-		translateEPE.write("\n");
-		translateEPE.write("\t[TestFixture]\n");
-		translateEPE.write("\tpublic class Test");
-		translateEPE.write(dirName);
-		translateEPE.write(" : BaseEParserTest\n");
-		translateEPE.write("\t{\n");
-		translateEPE.write("\n");
+	private void beginTranslateESE(String dirName) throws IOException {
+		translateESE.write("using NUnit.Framework;\n");
+		translateESE.write("using presto.parser;\n");
+		translateESE.write("\n");
+		translateESE.write("namespace presto.translate.ese\n");
+		translateESE.write("{\n");
+		translateESE.write("\n");
+		translateESE.write("\t[TestFixture]\n");
+		translateESE.write("\tpublic class Test");
+		translateESE.write(dirName);
+		translateESE.write(" : BaseEParserTest\n");
+		translateESE.write("\t{\n");
+		translateESE.write("\n");
 	}
 
-	private void endTranslateEPE() throws IOException {
-		translateEPE.write("\t}\n");
-		translateEPE.write("}\n");
-		translateEPE.write("\n");
+	private void endTranslateESE() throws IOException {
+		translateESE.write("\t}\n");
+		translateESE.write("}\n");
+		translateESE.write("\n");
 	}
 
 	@Override
@@ -166,58 +166,58 @@ public class CSharpGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToTranslateOPO(String dirName, String fileName) throws IOException {
-		if(translateOPO==null) {
+	protected void addToTranslateOSO(String dirName, String fileName) throws IOException {
+		if(translateOSO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "presto/translate/opo/Test" + capDirName + ".cs";
-			translateOPO = mkfile(testFilePath);
-			beginTranslateOPO(capDirName);
+			String testFilePath = ROOT + "presto/translate/oso/Test" + capDirName + ".cs";
+			translateOSO = mkfile(testFilePath);
+			beginTranslateOSO(capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		translateOPO.write("\t\t[Test]\n");
-		translateOPO.write("\t\tpublic void test");
-		translateOPO.write(capFileName);
-		translateOPO.write("()\n");
-		translateOPO.write("\t\t{\n");
-		translateOPO.write("\t\t\tcompareResourceOPO(\"");
-		translateOPO.write(dirName);
-		translateOPO.write("/");
-		translateOPO.write(fileName);
-		translateOPO.write("\");\n");
-		translateOPO.write("\t\t}\n");
-		translateOPO.write("\n");
+		translateOSO.write("\t\t[Test]\n");
+		translateOSO.write("\t\tpublic void test");
+		translateOSO.write(capFileName);
+		translateOSO.write("()\n");
+		translateOSO.write("\t\t{\n");
+		translateOSO.write("\t\t\tcompareResourceOSO(\"");
+		translateOSO.write(dirName);
+		translateOSO.write("/");
+		translateOSO.write(fileName);
+		translateOSO.write("\");\n");
+		translateOSO.write("\t\t}\n");
+		translateOSO.write("\n");
 	}
 
-	private void beginTranslateOPO(String dirName) throws IOException {
-		translateOPO.write("using NUnit.Framework;\n");
-		translateOPO.write("using presto.parser;\n");
-		translateOPO.write("\n");
-		translateOPO.write("namespace presto.translate.opo\n");
-		translateOPO.write("{\n");
-		translateOPO.write("\n");
-		translateOPO.write("\t[TestFixture]\n");
-		translateOPO.write("\tpublic class Test");
-		translateOPO.write(dirName);
-		translateOPO.write(" : BaseOParserTest\n");
-		translateOPO.write("\t{\n");
-		translateOPO.write("\n");
+	private void beginTranslateOSO(String dirName) throws IOException {
+		translateOSO.write("using NUnit.Framework;\n");
+		translateOSO.write("using presto.parser;\n");
+		translateOSO.write("\n");
+		translateOSO.write("namespace presto.translate.oso\n");
+		translateOSO.write("{\n");
+		translateOSO.write("\n");
+		translateOSO.write("\t[TestFixture]\n");
+		translateOSO.write("\tpublic class Test");
+		translateOSO.write(dirName);
+		translateOSO.write(" : BaseOParserTest\n");
+		translateOSO.write("\t{\n");
+		translateOSO.write("\n");
 	}
 
-	private void endTranslateOPO() throws IOException {
-		translateOPO.write("\t}\n");
-		translateOPO.write("}\n");
-		translateOPO.write("\n");
+	private void endTranslateOSO() throws IOException {
+		translateOSO.write("\t}\n");
+		translateOSO.write("}\n");
+		translateOSO.write("\n");
 	}
 
 	@Override
-	protected void addToTranslatePEP(String dirName, String fileName) {
+	protected void addToTranslateSES(String dirName, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	protected void addToTranslatePOP(String dirName, String fileName) {
+	protected void addToTranslateSOS(String dirName, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -340,7 +340,7 @@ public class CSharpGenerator extends Generator {
 
 
 	@Override
-	protected void addToRuntimeP(String dirName, String fileName) {
+	protected void addToRuntimeS(String dirName, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}

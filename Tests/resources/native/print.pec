@@ -13,11 +13,10 @@ define stderr as: native method returning: any doing:
 	JavaScript: return stderr; from module: process
 
 define print as: method receiving: any value doing:
-	writer = invoke: stdout
+	writer = stdout
 	printNative with value as value and writer as writer
 	
 define print as: method receiving: any value and any writer doing:
-	writer = invoke: stdout
 	printNative with value as value and writer as writer
 
 define printNative as: native method receiving: any value and any writer doing:

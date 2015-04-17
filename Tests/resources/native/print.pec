@@ -3,14 +3,14 @@ define stdout as: native method returning: any doing:
 	C#: return System.Console.Out;
 	Python2: return stdout from module: sys
 	Python3: return stdout from module: sys
-	JavaScript: return stdout; from module: process
+	JavaScript: return process.stdout;
 
 define stderr as: native method returning: any doing:
 	Java: return System.err;
 	C#: return System.Console.Error;
 	Python2: return stderr from module: sys
 	Python3: return stderr from module: sys
-	JavaScript: return stderr; from module: process
+	JavaScript: return process.stderr;
 
 define print as: method receiving: any value doing:
 	writer = stdout

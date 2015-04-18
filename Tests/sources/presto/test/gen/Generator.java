@@ -80,6 +80,7 @@ public abstract class Generator {
 	private boolean isSpecialFile(String fileName) {
 		fileName = fileName.substring(0, fileName.lastIndexOf('.')).toLowerCase();
 		switch(fileName) {
+		case "unexpected":
 		case "print":
 		case "return":
 		case "datetimetzname":

@@ -1,0 +1,33 @@
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+enumerated category Error(name,text) {
+	DIVIDE_BY_ZERO ( text = "Divide by zero!" ); 
+	INDEX_OUT_OF_RANGE (text= "Index out of range!");
+	NULL_REFERENCE (text = "Null reference!" ); 
+	NOT_MUTABLE (text = "Not a mutable object!");
+}
+
+attribute name: Text;
+attribute text: Text; 
+
+category Mutable(name);
+
+method setName(Mutable m, Text value) {
+	m.name = value;
+}
+
+method main ( Text{} options ) {
+	m = mutable Mutable(name="before");
+	try(error) {
+		setName(m=m, value="after");
+	} catch ( NOT_MUTABLE ) {
+		print (error.text);
+	}
+}
+

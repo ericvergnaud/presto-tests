@@ -11,17 +11,11 @@ define Attribute as: native category with attribute: name, and mappings:
 
 	define category mappings as:
 		Java: presto.declaration.AttributeDeclaration
-//		C#: presto.runtime.utils.MyClass
-//		Python2: MyClass from module: presto.runtime.utils.MyClass
-//		Python3: MyClass from module: presto.runtime.utils.MyClass
-//		JavaScript: MyClass from module: test/user/MyClass.js
+		C#: presto.declaration.AttributeDeclaration
 
 define findAttribute as: native method receiving: Text name returning: Attribute doing:
 	Java: return $context.findAttribute(name);
-//	C#: return $context.findAttribute(name);
-//	Python2: return $context.findAttribute(name)
-//	Python3: return $context.findAttribute(name)
-//	JavaScript: return $context.findAttribute(name);
+	C#: return $context.findAttribute(name);
 
 define main as: method receiving: Text{} options doing:
 	a = findAttribute with "name" as name

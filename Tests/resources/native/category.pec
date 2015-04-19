@@ -2,9 +2,9 @@ define id as: Text attribute
 define name as: Text attribute
 define display as: Text attribute
 
-define MyClass as: native category with attributes: id, name and display, and mappings:
+define MyClass as: native category with attributes: id, name and display, and bindings:
 
-	define category mappings as:
+	define category bindings as:
 		Java: presto.runtime.utils.MyClass
 		C#: presto.runtime.utils.MyClass
 		Python2: MyClass from module: presto.runtime.utils.MyClass

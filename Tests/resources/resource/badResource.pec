@@ -1,8 +1,8 @@
 define path as: Text attribute
 
-define File as: native resource with attribute: path, and mappings:
+define File as: native resource with attribute: path, and bindings:
 
-	define category mappings as:
+	define category bindings as:
 		Java: utils.MyResource
 		C#: utils.MyResource
 	

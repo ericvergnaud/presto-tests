@@ -2,7 +2,7 @@ attribute path: Text ;
 
 native resource File(path) {
 
-	category mappings {
+	category bindings {
 		Java: presto.runtime.utils.MyResource;
 		C#: presto.runtime.utils.MyResource;
 		Python2: MyResource from module: presto.runtime.utils.MyResource;

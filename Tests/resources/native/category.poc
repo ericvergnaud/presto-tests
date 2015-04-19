@@ -4,7 +4,7 @@ attribute display : Text;
 
 native category MyClass (id, name, display) {
 
-	category mappings {
+	category bindings {
 		Java: presto.runtime.utils.MyClass;
 		C#: presto.runtime.utils.MyClass;
 		Python2: MyClass from module: presto.runtime.utils.MyClass;

@@ -2,7 +2,7 @@ attribute path: Text;
 
 native resource File (path) {
 
-	category mappings {
+	category bindings {
 		Java: utils.MyResource;
 		C#: utils.MyResource;
 	}

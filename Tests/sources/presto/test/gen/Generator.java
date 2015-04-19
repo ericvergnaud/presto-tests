@@ -81,7 +81,6 @@ public abstract class Generator {
 		fileName = fileName.substring(0, fileName.lastIndexOf('.')).toLowerCase();
 		switch(fileName) {
 		case "unexpected":
-		case "print":
 		case "return":
 		case "datetimetzname":
 			return true;

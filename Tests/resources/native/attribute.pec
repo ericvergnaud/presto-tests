@@ -12,10 +12,12 @@ define Attribute as: native category with attribute: name, and mappings:
 	define category mappings as:
 		Java: presto.declaration.AttributeDeclaration
 		C#: presto.declaration.AttributeDeclaration
+		JavaScript: AttributeDeclaration from module: presto/declaration/AttributeDeclaration.js
 
 define findAttribute as: native method receiving: Text name returning: Attribute doing:
 	Java: return $context.findAttribute(name);
 	C#: return $context.findAttribute(name);
+	JavaScript: return $context.findAttribute(name);
 
 define main as: method receiving: Text{} options doing:
 	a = findAttribute with "name" as name

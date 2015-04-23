@@ -3,7 +3,10 @@ define name as: Text attribute
 define Test as: category with attribute: name, and methods:
 	
 	define name getter doing:
-		return "getter:" + name
+		return "getter:" + other
+	
+	define other as: method doing:
+		return "other"
 	
 define print as: native method receiving: Text value doing:
 	Java: System.out.print(value);

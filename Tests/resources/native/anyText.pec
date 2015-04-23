@@ -1,0 +1,34 @@
+define print as: native method receiving: Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define text as: Text attribute
+
+define Any as: native category with attribute: text, and bindings:
+
+	define category bindings as:
+		Java: presto.value.Any
+		C#: presto.value.Any
+		Python2: Any from module: presto.value.Any
+		Python3: Any from module: presto.value.Any
+		JavaScript: Any from module: presto/value/Any.js
+
+and methods:
+
+	define text getter doing:
+		return text if text is not nothing else nativeText
+	
+	define nativeText as: native method returning: Text doing:
+		Java: return self.toString();
+		C#: return self.ToString();
+		Python2: return str(self)
+		Python3: return str(self)
+		JavaScript: return self.toString();
+
+define main as: method receiving: Text{} options doing:
+	c = Any with "John" as text
+	print "text:" + c.text
+	

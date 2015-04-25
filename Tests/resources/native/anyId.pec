@@ -19,7 +19,7 @@ and methods:
 		C#: return System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(self);
 		Python2: return id(self)
 		Python3: return id(self)
-		JavaScript: return getPrestoId(self); from module: presto/utils/Utils.js
+		JavaScript: return self.id;
 	
 
 define "id member" as: test method doing:

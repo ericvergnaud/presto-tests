@@ -1,11 +1,12 @@
-package presto.test.gen;
+package prompto.test.gen;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 
 public class CSharpGenerator extends Generator {
 	
-	static final String ROOT = "presto-csharp/CSharp-Tests/src/";
+	static final String ROOT = "prompto-csharp/CSharp-Tests/src/";
 
 	@Override
 	protected void enterSubdir(File subDir) {
@@ -34,7 +35,7 @@ public class CSharpGenerator extends Generator {
 	protected void addToTranslateEOE(String dirName, String fileName) throws IOException {
 		if(translateEOE==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "presto/translate/eoe/Test" + capDirName + ".cs";
+			String testFilePath = ROOT + "prompto/translate/eoe/Test" + capDirName + ".cs";
 			translateEOE = mkfile(testFilePath);
 			beginTranslateEOE(capDirName);
 		}
@@ -55,10 +56,11 @@ public class CSharpGenerator extends Generator {
 	}
 
 	private void beginTranslateEOE(String dirName) throws IOException {
+		translateEOE.write("// generated: " + LocalDateTime.now() + "\n");
 		translateEOE.write("using NUnit.Framework;\n");
-		translateEOE.write("using presto.parser;\n");
+		translateEOE.write("using prompto.parser;\n");
 		translateEOE.write("\n");
-		translateEOE.write("namespace presto.translate.eoe\n");
+		translateEOE.write("namespace prompto.translate.eoe\n");
 		translateEOE.write("{\n");
 		translateEOE.write("\n");
 		translateEOE.write("\t[TestFixture]\n");
@@ -79,7 +81,7 @@ public class CSharpGenerator extends Generator {
 	protected void addToTranslateESE(String dirName, String fileName) throws IOException {
 		if(translateESE==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "presto/translate/ese/Test" + capDirName + ".cs";
+			String testFilePath = ROOT + "prompto/translate/ese/Test" + capDirName + ".cs";
 			translateESE = mkfile(testFilePath);
 			beginTranslateESE(capDirName);
 		}
@@ -100,10 +102,11 @@ public class CSharpGenerator extends Generator {
 	}
 
 	private void beginTranslateESE(String dirName) throws IOException {
+		translateESE.write("// generated: " + LocalDateTime.now() + "\n");
 		translateESE.write("using NUnit.Framework;\n");
-		translateESE.write("using presto.parser;\n");
+		translateESE.write("using prompto.parser;\n");
 		translateESE.write("\n");
-		translateESE.write("namespace presto.translate.ese\n");
+		translateESE.write("namespace prompto.translate.ese\n");
 		translateESE.write("{\n");
 		translateESE.write("\n");
 		translateESE.write("\t[TestFixture]\n");
@@ -124,7 +127,7 @@ public class CSharpGenerator extends Generator {
 	protected void addToTranslateOEO(String dirName, String fileName) throws IOException {
 		if(translateOEO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "presto/translate/oeo/Test" + capDirName + ".cs";
+			String testFilePath = ROOT + "prompto/translate/oeo/Test" + capDirName + ".cs";
 			translateOEO = mkfile(testFilePath);
 			beginTranslateOEO(capDirName);
 		}
@@ -145,10 +148,11 @@ public class CSharpGenerator extends Generator {
 	}
 
 	private void beginTranslateOEO(String dirName) throws IOException {
+		translateOEO.write("// generated: " + LocalDateTime.now() + "\n");
 		translateOEO.write("using NUnit.Framework;\n");
-		translateOEO.write("using presto.parser;\n");
+		translateOEO.write("using prompto.parser;\n");
 		translateOEO.write("\n");
-		translateOEO.write("namespace presto.translate.oeo\n");
+		translateOEO.write("namespace prompto.translate.oeo\n");
 		translateOEO.write("{\n");
 		translateOEO.write("\n");
 		translateOEO.write("\t[TestFixture]\n");
@@ -169,7 +173,7 @@ public class CSharpGenerator extends Generator {
 	protected void addToTranslateOSO(String dirName, String fileName) throws IOException {
 		if(translateOSO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "presto/translate/oso/Test" + capDirName + ".cs";
+			String testFilePath = ROOT + "prompto/translate/oso/Test" + capDirName + ".cs";
 			translateOSO = mkfile(testFilePath);
 			beginTranslateOSO(capDirName);
 		}
@@ -190,10 +194,11 @@ public class CSharpGenerator extends Generator {
 	}
 
 	private void beginTranslateOSO(String dirName) throws IOException {
+		translateOSO.write("// generated: " + LocalDateTime.now() + "\n");
 		translateOSO.write("using NUnit.Framework;\n");
-		translateOSO.write("using presto.parser;\n");
+		translateOSO.write("using prompto.parser;\n");
 		translateOSO.write("\n");
-		translateOSO.write("namespace presto.translate.oso\n");
+		translateOSO.write("namespace prompto.translate.oso\n");
 		translateOSO.write("{\n");
 		translateOSO.write("\n");
 		translateOSO.write("\t[TestFixture]\n");
@@ -226,7 +231,7 @@ public class CSharpGenerator extends Generator {
 	protected void addToRuntimeE(String dirName, String fileName) throws Exception {
 		if(runtimeE==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "presto/runtime/e/Test" + capDirName + ".cs";
+			String testFilePath = ROOT + "prompto/runtime/e/Test" + capDirName + ".cs";
 			runtimeE = mkfile(testFilePath);
 			beginRuntimeE(capDirName);
 		}
@@ -247,11 +252,12 @@ public class CSharpGenerator extends Generator {
 	}
 
 	private void beginRuntimeE(String dirName) throws IOException {
+		runtimeE.write("// generated: " + LocalDateTime.now() + "\n");
 		runtimeE.write("using NUnit.Framework;\n");
-		runtimeE.write("using presto.parser;\n");
-		runtimeE.write("using presto.utils;\n");
+		runtimeE.write("using prompto.parser;\n");
+		runtimeE.write("using prompto.utils;\n");
 		runtimeE.write("\n");
-		runtimeE.write("namespace presto.runtime.e\n");
+		runtimeE.write("namespace prompto.runtime.e\n");
 		runtimeE.write("{\n");
 		runtimeE.write("\n");
 		runtimeE.write("\t[TestFixture]\n");
@@ -284,7 +290,7 @@ public class CSharpGenerator extends Generator {
 	protected void addToRuntimeO(String dirName, String fileName) throws IOException {
 		if(runtimeO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "presto/runtime/o/Test" + capDirName + ".cs";
+			String testFilePath = ROOT + "prompto/runtime/o/Test" + capDirName + ".cs";
 			runtimeO = mkfile(testFilePath);
 			beginRuntimeO(capDirName);
 		}
@@ -305,11 +311,12 @@ public class CSharpGenerator extends Generator {
 	}
 
 	private void beginRuntimeO(String dirName) throws IOException {
+		runtimeO.write("// generated: " + LocalDateTime.now() + "\n");
 		runtimeO.write("using NUnit.Framework;\n");
-		runtimeO.write("using presto.parser;\n");
-		runtimeO.write("using presto.utils;\n");
+		runtimeO.write("using prompto.parser;\n");
+		runtimeO.write("using prompto.utils;\n");
 		runtimeO.write("\n");
-		runtimeO.write("namespace presto.runtime.o\n");
+		runtimeO.write("namespace prompto.runtime.o\n");
 		runtimeO.write("{\n");
 		runtimeO.write("\n");
 		runtimeO.write("\t[TestFixture]\n");

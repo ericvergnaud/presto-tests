@@ -1,6 +1,6 @@
 Character native method charValue() {
-	Java: return presto.runtime.utils.MyClass.characterObject();
-	C#: return presto.runtime.utils.MyClass.characterObject();
+	Java: return prompto.runtime.utils.MyClass.characterObject();
+	C#: return prompto.runtime.utils.MyClass.characterObject();
 	Python2: return 'Z'
 	Python3: return 'Z'
 	JavaScript: return 'Z';

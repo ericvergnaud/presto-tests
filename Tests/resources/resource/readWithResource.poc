@@ -3,10 +3,10 @@ attribute path: Text;
 native resource File( path ) {
 
 	category bindings {
-		Java: presto.runtime.utils.MyResource;
-		C#: presto.runtime.utils.MyResource;
-		Python2: MyResource from module: presto.runtime.utils.MyResource;
-		Python3: MyResource from module: presto.runtime.utils.MyResource;
+		Java: prompto.runtime.utils.MyResource;
+		C#: prompto.runtime.utils.MyResource;
+		Python2: MyResource from module: prompto.runtime.utils.MyResource;
+		Python3: MyResource from module: prompto.runtime.utils.MyResource;
 		JavaScript: MyResource from module: test/user/MyResource.js;
 	}
 }

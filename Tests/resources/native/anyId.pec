@@ -3,11 +3,11 @@ define id as: Any attribute
 define Any as: native category with attribute: id, and bindings:
 
 	define category bindings as:
-		Java: presto.value.Any
-		C#: presto.value.Any
-		Python2: Any from module: presto.value.Any
-		Python3: Any from module: presto.value.Any
-		JavaScript: Any from module: presto/value/Any.js
+		Java: prompto.value.Any
+		C#: prompto.value.Any
+		Python2: Any from module: prompto.value.Any
+		Python3: Any from module: prompto.value.Any
+		JavaScript: Any from module: prompto/value/Any.js
 
 and methods:
 

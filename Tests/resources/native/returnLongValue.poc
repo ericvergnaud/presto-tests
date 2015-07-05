@@ -1,8 +1,8 @@
 Integer native method longValue() {
 	Java: return Long.parseLong("123");
-	C#: return presto.runtime.utils.MyClass.longValue();
-	Python2: return MyClass.longValue() from module: presto.runtime.utils.MyClass
-	Python3: return MyClass.longValue() from module: presto.runtime.utils.MyClass
+	C#: return prompto.runtime.utils.MyClass.longValue();
+	Python2: return MyClass.longValue() from module: prompto.runtime.utils.MyClass
+	Python3: return MyClass.longValue() from module: prompto.runtime.utils.MyClass
 	JavaScript: return MyClass.longValue(); from module: test/user/MyClass.js
 }
 

@@ -1,4 +1,4 @@
-package presto.test.gen;
+package prompto.test.gen;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -157,9 +157,9 @@ public abstract class Generator {
 		return thisPath.substring(0, thisPath.lastIndexOf("/target/")) + "/resources/";
 	}
 	
-	protected String readPrestoPath() {
+	protected String readPromptoPath() {
 		String testsPath = readResourcesPath();
-		return testsPath.substring(0, testsPath.lastIndexOf("/presto-tests/")) + "/";
+		return testsPath.substring(0, testsPath.lastIndexOf("/prompto-tests/")) + "/";
 	}
 
 	protected String capitalize(String s) {
@@ -168,7 +168,7 @@ public abstract class Generator {
 
 	protected OutputStreamWriter mkfile(String filePath) throws IOException {
 		// filePath is relative to Presto
-		String fullPath = readPrestoPath() + filePath;
+		String fullPath = readPromptoPath() + filePath;
 		String parentPath = fullPath.substring(0, fullPath.lastIndexOf("/"));
 		File file = new File(parentPath);
 		file.mkdirs();

@@ -1,8 +1,8 @@
-package presto.test.gen;
+package prompto.test.gen;
 
 public class Python3Generator extends PythonGenerator {
 
-	static final String ROOT = "presto-python3/Python3-Core/src/test/";
+	static final String ROOT = "prompto-python3/Python3-Core/src/test/";
 
 	@Override
 	protected String getRoot() {

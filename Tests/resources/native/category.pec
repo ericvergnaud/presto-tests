@@ -5,10 +5,10 @@ define display as: Text attribute
 define MyClass as: native category with attributes: id, name and display, and bindings:
 
 	define category bindings as:
-		Java: presto.runtime.utils.MyClass
-		C#: presto.runtime.utils.MyClass
-		Python2: MyClass from module: presto.runtime.utils.MyClass
-		Python3: MyClass from module: presto.runtime.utils.MyClass
+		Java: prompto.runtime.utils.MyClass
+		C#: prompto.runtime.utils.MyClass
+		Python2: MyClass from module: prompto.runtime.utils.MyClass
+		Python3: MyClass from module: prompto.runtime.utils.MyClass
 		JavaScript: MyClass from module: test/user/MyClass.js
 
 define print as: native method receiving: Text value doing:

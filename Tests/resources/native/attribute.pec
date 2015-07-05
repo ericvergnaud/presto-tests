@@ -10,11 +10,11 @@ define name as: Text attribute
 define Attribute as: native category with attribute: name, and bindings:
 
 	define category bindings as:
-		Java: presto.declaration.AttributeDeclaration
-		C#: presto.declaration.AttributeDeclaration
-		Python2: AttributeDeclaration from module: presto.declaration.AttributeDeclaration
-		Python3: AttributeDeclaration from module: presto.declaration.AttributeDeclaration
-		JavaScript: AttributeDeclaration from module: presto/declaration/AttributeDeclaration.js
+		Java: prompto.declaration.AttributeDeclaration
+		C#: prompto.declaration.AttributeDeclaration
+		Python2: AttributeDeclaration from module: prompto.declaration.AttributeDeclaration
+		Python3: AttributeDeclaration from module: prompto.declaration.AttributeDeclaration
+		JavaScript: AttributeDeclaration from module: prompto/declaration/AttributeDeclaration.js
 
 define findAttribute as: native method receiving: Text name returning: Attribute doing:
 	Java: return $context.findAttribute(name);

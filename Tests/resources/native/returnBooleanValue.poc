@@ -1,8 +1,8 @@
 Boolean native method booleanTrue() {
 	Java: return Boolean.parseBoolean("true");
 	C#: return System.Boolean.Parse("true");
-	Python2: return MyClass.boolValue() from module: presto.runtime.utils.MyClass
-	Python3: return MyClass.boolValue() from module: presto.runtime.utils.MyClass
+	Python2: return MyClass.boolValue() from module: prompto.runtime.utils.MyClass
+	Python3: return MyClass.boolValue() from module: prompto.runtime.utils.MyClass
 	JavaScript: return MyClass.boolValue(); from module: test/user/MyClass.js
 }
 

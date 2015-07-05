@@ -1,8 +1,8 @@
 Integer native method intValue() {
 	Java: return Integer.parseInt("123");
-	C#: return presto.runtime.utils.MyClass.intValue();
-	Python2: return MyClass.intValue() from module: presto.runtime.utils.MyClass
-	Python3: return MyClass.intValue() from module: presto.runtime.utils.MyClass
+	C#: return prompto.runtime.utils.MyClass.intValue();
+	Python2: return MyClass.intValue() from module: prompto.runtime.utils.MyClass
+	Python3: return MyClass.intValue() from module: prompto.runtime.utils.MyClass
 	JavaScript: return MyClass.intValue(); from module: test/user/MyClass.js
 }
 

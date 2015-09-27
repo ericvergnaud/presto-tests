@@ -15,5 +15,5 @@ define Error as enumerated category with attributes name and text, and symbols:
 
 define "Divide two numbers" as test method doing:
 	a = 3 / 0
-and expecting: INDEX_OUT_OF_RANGE
+and expecting INDEX_OUT_OF_RANGE
 	

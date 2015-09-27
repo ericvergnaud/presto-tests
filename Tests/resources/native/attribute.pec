@@ -1,13 +1,13 @@
-define print as: native method receiving: Text value doing:
+define print as native method receiving Text value doing:
 	Java: System.out.print(value);
 	C#: System.Console.Write(value);
 	Python2: print(objects=value,end="")
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
-define name as: Text attribute
+define name as Text attribute
 
-define Attribute as: native category with attribute: name, and bindings:
+define Attribute as native category with attribute name, and bindings:
 
 	define category bindings as:
 		Java: prompto.declaration.AttributeDeclaration
@@ -16,14 +16,14 @@ define Attribute as: native category with attribute: name, and bindings:
 		Python3: AttributeDeclaration from module: prompto.declaration.AttributeDeclaration
 		JavaScript: AttributeDeclaration from module: prompto/declaration/AttributeDeclaration.js
 
-define findAttribute as: native method receiving: Text name returning: Attribute doing:
+define findAttribute as native method receiving Text name returning Attribute doing:
 	Java: return $context.findAttribute(name);
 	C#: return $context.findAttribute(name);
 	Python2: return $context.findAttribute(name)
 	Python3: return $context.findAttribute(name)
 	JavaScript: return $context.findAttribute(name);
 
-define main as: method receiving: Text{} options doing:
+define main as method receiving Text{} options doing:
 	a = findAttribute with "name" as name
 	print "a.name=" + a.name
 	

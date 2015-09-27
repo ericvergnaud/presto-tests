@@ -1,6 +1,6 @@
-define path as: Text attribute
+define path as Text attribute
 
-define File as: native resource with attribute: path, and bindings:
+define File as native resource with attribute path, and bindings:
 
 	define category bindings as:
 		Java: prompto.runtime.utils.MyResource
@@ -9,13 +9,13 @@ define File as: native resource with attribute: path, and bindings:
 		Python3: MyResource from module: prompto.runtime.utils.MyResource
 		JavaScript: MyResource from module: test/user/MyResource.js
 
-define print as: native method receiving: Text value doing:
+define print as native method receiving Text value doing:
 	Java: System.out.print(value);
 	C#: System.Console.Write(value);
 	Python2: print(objects=value,end="")
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
-define main as: method receiving: Text{} options doing:
+define main as method receiving Text{} options doing:
 	s = read from File with "xyz" as path
 	print s

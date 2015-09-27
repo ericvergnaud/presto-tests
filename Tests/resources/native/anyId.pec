@@ -1,6 +1,6 @@
-define id as: Any attribute
+define id as Any attribute
 
-define Any as: native category with attribute: id, and bindings:
+define Any as native category with attribute id, and bindings:
 
 	define category bindings as:
 		Java: prompto.value.Any
@@ -14,7 +14,7 @@ and methods:
 	define id getter doing:
 		return nativeId
 	
-	define nativeId as: native method returning: any doing:
+	define nativeId as native method returning any doing:
 		Java: return System.identityHashCode(self);
 		C#: return System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(self);
 		Python2: return id(self)
@@ -22,7 +22,7 @@ and methods:
 		JavaScript: return self.id;
 	
 
-define "id member" as: test method doing:
+define "id member" as test method doing:
 	a = Any
 and expecting:
 	a.id is not nothing

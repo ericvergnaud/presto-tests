@@ -1,11 +1,11 @@
-define path as: Text attribute
+define path as Text attribute
 
-define File as: native resource with attribute: path, and bindings:
+define File as native resource with attribute path, and bindings:
 
 	define category bindings as:
 		Java: utils.MyResource
 		C#: utils.MyResource
 	
 	
-define main as: method receiving: Text{} options doing:
+define main as method receiving Text{} options doing:
 	f = File with "xyz" as path

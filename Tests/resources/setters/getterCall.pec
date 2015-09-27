@@ -1,20 +1,20 @@
-define name as: Text attribute
+define name as Text attribute
 
-define Test as: category with attribute: name, and methods:
+define Test as category with attribute name, and methods:
 	
 	define name getter doing:
 		return "getter:" + other
 	
-	define other as: method doing:
+	define other as method doing:
 		return "other"
 	
-define print as: native method receiving: Text value doing:
+define print as native method receiving Text value doing:
 	Java: System.out.print(value);
 	C#: System.Console.Write(value);
 	Python2: print(objects=value,end="")
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
-define main as: method receiving: Text{} options doing:
+define main as method receiving Text{} options doing:
 	t = Test with "hello" as name
 	print "" + t.name

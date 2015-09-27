@@ -1,30 +1,30 @@
-define stdout as: native method returning: any doing:
+define stdout as native method returning any doing:
 	Java: return System.out;
 	C#: return System.Console.Out;
 	Python2: return stdout from module: sys
 	Python3: return stdout from module: sys
 	JavaScript: return process.stdout;
 
-define stderr as: native method returning: any doing:
+define stderr as native method returning any doing:
 	Java: return System.err;
 	C#: return System.Console.Error;
 	Python2: return stderr from module: sys
 	Python3: return stderr from module: sys
 	JavaScript: return process.stderr;
 
-define print as: method receiving: any value doing:
+define print as method receiving any value doing:
 	writer = stdout
 	printNative with value as value and writer as writer
 	
-define print as: method receiving: any value and any writer doing:
+define print as method receiving any value and any writer doing:
 	printNative with value as value and writer as writer
 
-define printNative as: native method receiving: any value and any writer doing:
+define printNative as native method receiving any value and any writer doing:
 	Java: writer.print(value);
 	C#: writer.Write(value);
 	Python2: print(objects=str(value), end="", file=writer)
 	Python3: print(objects=str(value),end="", file=writer)
 	JavaScript: writer.write(value.toString());
 
-define main as: method receiving: Text{} options doing:
+define main as method receiving Text{} options doing:
 	print with "name=IBM" as value

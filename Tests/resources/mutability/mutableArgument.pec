@@ -1,18 +1,18 @@
-define print as: native method receiving: Text value doing:
+define print as native method receiving Text value doing:
 	Java: System.out.print(value);
 	C#: System.Console.Write(value);
 	Python2: print(objects=value,end="")
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
-define name as: Text attribute
+define name as Text attribute
 
-define Mutable as: category with attribute: name
+define Mutable as category with attribute name
 
-define setName as: method receiving: mutable Mutable m and Text value doing:
+define setName as method receiving mutable Mutable m and Text value doing:
 	m.name = value
 
-define main as: method receiving: Text{} options doing:
+define main as method receiving Text{} options doing:
 	m = mutable Mutable with "before" as name
 	setName with m as m and "after" as value
 	print m.name

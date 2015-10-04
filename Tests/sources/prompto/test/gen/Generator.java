@@ -1,10 +1,19 @@
 package prompto.test.gen;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathFactory;
+
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 
 public abstract class Generator {
@@ -25,70 +34,86 @@ public abstract class Generator {
 		return list;
 	}
 
-	private void generate() throws Exception {
-		String path = readResourcesPath();
-		File rootDir = new File(path);
-		File[] subDirs = rootDir.listFiles();
-		for(File subDir : subDirs) {
-			if(!subDir.isDirectory())
-				continue;
-			generate(subDir);
-		}
-	}
-
-	private boolean isSpecialDir(String dirName) {
-		switch(dirName) {
-		case "resource":
-		case "issues":
-		case "debug":
-			return true;
-		default:
-			return false;
-		}
-	}
-
-	private void generate(File subDir) throws Exception {
-		String subDirName = subDir.getName();
-		enterSubdir(subDir);
-		String[] fileNames = subDir.list();
-		for(String fileName : fileNames) {
-			// translate all test cases
-			if(fileName.endsWith(".pec")) {
-				addToTranslateEOE(subDirName, fileName);
-				addToTranslateESE(subDirName, fileName);
-			} else if(fileName.endsWith(".poc")) {
-				addToTranslateOEO(subDirName, fileName);
-				addToTranslateOSO(subDirName, fileName);
-			} else if(fileName.endsWith(".psc")) {
-				addToTranslateSES(subDirName, fileName);
-				addToTranslateSOS(subDirName, fileName);
-			}
-			// test only standard test cases
-			if(isSpecialDir(subDirName) || isSpecialFile(fileName))
-				continue;
-			if(fileName.endsWith(".pec")) {
-				addToRuntimeE(subDirName, fileName);
-			} else if(fileName.endsWith(".poc")) {
-				addToRuntimeO(subDirName, fileName);
-			} else if(fileName.endsWith(".psc")) {
-				addToRuntimeS(subDirName, fileName);
-			}
-		}
-		exitSubdir(subDir);
+	static interface FileGenerator {
+		void generate(String dirName, String fileName) throws Exception;
 	}
 	
-	private boolean isSpecialFile(String fileName) {
-		fileName = fileName.substring(0, fileName.lastIndexOf('.')).toLowerCase();
-		switch(fileName) {
-		case "unexpected":
-		case "return":
-		case "datetimetzname":
-			return true;
-		default:
-			return false;
+	private void generate() throws Exception {
+		generate(readResourcesPath(), this::generateRuntimeTests, 
+				"resource", "issues", "debug", "unexpected", "return", "datetimetzname");
+		generate(readResourcesPath(), this::generateTranslateTests);
+		generate(readLibrariesPath(), this::generateLibraryTests, "concat");
+	}
+
+	
+	private void generate(String path, FileGenerator generator, String ... _excluded) throws Exception {
+		List<String> excluded = Arrays.asList(_excluded);
+		File rootDir = new File(path);
+		String[] dirNames = rootDir.list();
+		for(String dirName : dirNames) {
+			if(excluded.contains(dirName))
+				continue;
+			File subDir = new File(rootDir, dirName);
+			if(!subDir.isDirectory())
+				continue;
+			loadDependencies(subDir);
+			enterSubdir(subDir);
+			String[] fileNames = subDir.list();
+			for(String fileName : fileNames) {
+				if(excluded.contains(fileName))
+					continue;
+				generator.generate(dirName, fileName);
+			}
+			exitSubdir(subDir);
 		}
 	}
 
+	private void loadDependencies(File subDir) throws Exception {
+		dependencies = null;
+		File file = new File(subDir, ".project");
+		if(!file.exists())
+			return;
+		XPathExpression xpath = XPathFactory.newInstance().newXPath().compile("/projectDescription/projects/project");
+		NodeList nodes = (NodeList)xpath.evaluate(new InputSource(new FileInputStream(file)), XPathConstants.NODESET);
+		dependencies = new ArrayList<>();
+		dependencies.add(subDir.getName());
+		for(int i=0;i<nodes.getLength();i++)
+			dependencies.add(nodes.item(i).getTextContent());
+	}
+
+	private void generateLibraryTests(String dirName, String fileName) throws Exception {
+		if(fileName.endsWith(".pec")) {
+			addToLibraryE(dirName, fileName);
+		} else if(fileName.endsWith(".poc")) {
+			addToLibraryO(dirName, fileName);
+		} else if(fileName.endsWith(".psc")) {
+			addToLibraryS(dirName, fileName);
+		}
+	}
+
+	private void generateRuntimeTests(String dirName, String fileName) throws Exception {
+		if(fileName.endsWith(".pec")) {
+			addToRuntimeE(dirName, fileName);
+		} else if(fileName.endsWith(".poc")) {
+			addToRuntimeO(dirName, fileName);
+		} else if(fileName.endsWith(".psc")) {
+			addToRuntimeS(dirName, fileName);
+		}
+	}
+	
+	private void generateTranslateTests(String dirName, String fileName) throws Exception {
+		if(fileName.endsWith(".pec")) {
+			addToTranslateEOE(dirName, fileName);
+			addToTranslateESE(dirName, fileName);
+		} else if(fileName.endsWith(".poc")) {
+			addToTranslateOEO(dirName, fileName);
+			addToTranslateOSO(dirName, fileName);
+		} else if(fileName.endsWith(".psc")) {
+			addToTranslateSES(dirName, fileName);
+			addToTranslateSOS(dirName, fileName);
+		}
+	}
+	
 	protected abstract void enterSubdir(File subDir) throws Exception;
 	protected abstract void exitSubdir(File subDir) throws Exception;
 	protected abstract void addToTranslateEOE(String dirName, String fileName) throws Exception;
@@ -100,6 +125,9 @@ public abstract class Generator {
 	protected abstract void addToRuntimeE(String dirName, String fileName) throws Exception;
 	protected abstract void addToRuntimeO(String dirName, String fileName) throws Exception;
 	protected abstract void addToRuntimeS(String dirName, String fileName) throws Exception;
+	protected abstract void addToLibraryE(String dirName, String fileName) throws Exception;
+	protected abstract void addToLibraryO(String dirName, String fileName) throws Exception;
+	protected abstract void addToLibraryS(String dirName, String fileName) throws Exception;
 
 	OutputStreamWriter translateEOE;
 	OutputStreamWriter translateESE;
@@ -110,6 +138,10 @@ public abstract class Generator {
 	OutputStreamWriter runtimeE;
 	OutputStreamWriter runtimeO;
 	OutputStreamWriter runtimeS;
+	OutputStreamWriter libraryE;
+	OutputStreamWriter libraryO;
+	OutputStreamWriter libraryS;
+	List<String> dependencies; // of library projects
 	
 	protected void closeAll() throws IOException {
 		if(translateEOE!=null) {
@@ -148,6 +180,18 @@ public abstract class Generator {
 			runtimeS.close();
 			runtimeS = null;
 		}
+		if(libraryE!=null) {
+			libraryE.close();
+			libraryE = null;
+		}
+		if(libraryO!=null) {
+			libraryO.close();
+			libraryO = null;
+		}
+		if(libraryS!=null) {
+			libraryS.close();
+			libraryS = null;
+		}
 	}
 
 
@@ -160,6 +204,11 @@ public abstract class Generator {
 	protected String readPromptoPath() {
 		String testsPath = readResourcesPath();
 		return testsPath.substring(0, testsPath.lastIndexOf("/prompto-tests/")) + "/";
+	}
+
+	protected String readLibrariesPath() {
+		String promptoPath = readPromptoPath();
+		return promptoPath + "prompto-libraries/";
 	}
 
 	protected String capitalize(String s) {

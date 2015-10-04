@@ -2,6 +2,7 @@ package prompto.test.gen;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public abstract class Generator {
 	
 	private void generate() throws Exception {
 		generate(readResourcesPath(), this::generateRuntimeTests, 
-				"resource", "issues", "debug", "unexpected", "return", "datetimetzname");
+				"resource", "issues", "debug", "unexpected", "return", "dateTimeTZName");
 		generate(readResourcesPath(), this::generateTranslateTests);
 		generate(readLibrariesPath(), this::generateLibraryTests, "concat");
 	}
@@ -58,9 +59,16 @@ public abstract class Generator {
 				continue;
 			loadDependencies(subDir);
 			enterSubdir(subDir);
-			String[] fileNames = subDir.list();
+			String[] fileNames = subDir.list(new FilenameFilter() {
+				@Override public boolean accept(File dir, String name) {
+					return name.endsWith(".pec")
+							|| name.endsWith(".poc")
+							|| name.endsWith(".psc");
+				}
+			});
 			for(String fileName : fileNames) {
-				if(excluded.contains(fileName))
+				String plainName = fileName.substring(0, fileName.indexOf('.'));
+				if(excluded.contains(plainName))
 					continue;
 				generator.generate(dirName, fileName);
 			}

@@ -18,12 +18,12 @@ attribute text: Text;
 
 category Mutable(name);
 
-method setName(Mutable m, Text value) {
+method setName(mutable Mutable m, Text value) {
 	m.name = value;
 }
 
 method main ( Text{} options ) {
-	m = mutable Mutable(name="before");
+	m = Mutable(name="before");
 	try(error) {
 		setName(m=m, value="after");
 	} catch ( NOT_MUTABLE ) {

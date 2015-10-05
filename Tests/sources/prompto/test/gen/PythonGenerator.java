@@ -1,11 +1,13 @@
 package prompto.test.gen;
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.time.LocalDateTime;
 
 public abstract class PythonGenerator extends Generator {
 	
-	protected abstract String getRoot();
+	protected abstract String getCoreRoot();
+	protected abstract String getLibraryRoot();
 
 	@Override
 	protected void enterSubdir(File subDir) {
@@ -13,18 +15,26 @@ public abstract class PythonGenerator extends Generator {
 
 	@Override
 	protected void exitSubdir(File subDir) throws IOException {
+		if(libraryE!=null)
+			endLibrary(libraryE);
+		if(libraryO!=null)
+			endLibrary(libraryO);
+		if(libraryS!=null)
+			endLibrary(libraryS);
 		if(runtimeE!=null)
-			endRuntimeE();
+			endRuntime(runtimeE);
 		if(runtimeO!=null)
-			endRuntimeO();
+			endRuntime(runtimeO);
+		if(runtimeS!=null)
+			endRuntime(runtimeS);
 		if(translateEOE!=null)
-			endTranslateEOE();
+			endTranslate(translateEOE);
 		if(translateESE!=null)
-			endTranslateESE();
+			endTranslate(translateESE);
 		if(translateOEO!=null)
-			endTranslateOEO();
+			endTranslate(translateOEO);
 		if(translateOSO!=null)
-			endTranslateOSO();
+			endTranslate(translateOSO);
 		closeAll();
 	}
 
@@ -32,154 +42,54 @@ public abstract class PythonGenerator extends Generator {
 	protected void addToTranslateEOE(String dirName, String fileName) throws IOException {
 		if(translateEOE==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = getRoot() + "prompto/translate/eoe/Test" + capDirName + ".py";
+			String testFilePath = getCoreRoot() + "prompto/translate/eoe/Test" + capDirName + ".py";
 			translateEOE = mkfile(testFilePath);
-			beginTranslateEOE(capDirName);
+			beginTranslate(translateEOE, "E", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		translateEOE.write("    def test");
-		translateEOE.write(capFileName);
-		translateEOE.write("(self):\n");
-		translateEOE.write("        self.compareResourceEOE(\"");
-		translateEOE.write(dirName);
-		translateEOE.write("/");
-		translateEOE.write(fileName);
-		translateEOE.write("\")\n");
-		translateEOE.write("\n");
+		addToTranslate(translateEOE, "EOE", capFileName, dirName, fileName);
 	}
 
-	private void beginTranslateEOE(String dirName) throws IOException {
-		translateEOE.write("# generated: " + LocalDateTime.now() + "\n");
-		translateEOE.write("from prompto.parser.e.BaseEParserTest import BaseEParserTest\n");
-		translateEOE.write("\n");
-		translateEOE.write("class Test");
-		translateEOE.write(dirName);
-		translateEOE.write("(BaseEParserTest):\n");
-		translateEOE.write("    \n");
-		translateEOE.write("    def setUp(self):\n");
-		translateEOE.write("        super(type(self), self).setUp()\n");
-		translateEOE.write("    \n");
-	}
-
-	private void endTranslateEOE() throws IOException {
-		translateEOE.write("\n");
-	}
-	
 	@Override
 	protected void addToTranslateESE(String dirName, String fileName) throws IOException {
 		if(translateESE==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = getRoot() + "prompto/translate/ese/Test" + capDirName + ".py";
+			String testFilePath = getCoreRoot() + "prompto/translate/ese/Test" + capDirName + ".py";
 			translateESE = mkfile(testFilePath);
-			beginTranslateESE(capDirName);
+			beginTranslate(translateESE, "E", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		translateESE.write("    def test");
-		translateESE.write(capFileName);
-		translateESE.write("(self):\n");
-		translateESE.write("        self.compareResourceESE(\"");
-		translateESE.write(dirName);
-		translateESE.write("/");
-		translateESE.write(fileName);
-		translateESE.write("\")\n");
-		translateESE.write("\n");
+		addToTranslate(translateESE, "ESE", capFileName, dirName, fileName);
 	}
-
-	private void beginTranslateESE(String dirName) throws IOException {
-		translateESE.write("# generated: " + LocalDateTime.now() + "\n");
-		translateESE.write("from prompto.parser.e.BaseEParserTest import BaseEParserTest\n");
-		translateESE.write("\n");
-		translateESE.write("class Test");
-		translateESE.write(dirName);
-		translateESE.write("(BaseEParserTest):\n");
-		translateESE.write("    \n");
-		translateESE.write("    def setUp(self):\n");
-		translateESE.write("        super(type(self), self).setUp()\n");
-		translateESE.write("    \n");
-	}
-
-	private void endTranslateESE() throws IOException {
-		translateESE.write("\n");
-	}
-
+	
 	@Override
 	protected void addToTranslateOEO(String dirName, String fileName) throws IOException {
 		if(translateOEO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = getRoot() + "prompto/translate/oeo/Test" + capDirName + ".py";
+			String testFilePath = getCoreRoot() + "prompto/translate/oeo/Test" + capDirName + ".py";
 			translateOEO = mkfile(testFilePath);
-			beginTranslateOEO(capDirName);
+			beginTranslate(translateOEO, "O", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		translateOEO.write("    def test");
-		translateOEO.write(capFileName);
-		translateOEO.write("(self):\n");
-		translateOEO.write("        self.compareResourceOEO(\"");
-		translateOEO.write(dirName);
-		translateOEO.write("/");
-		translateOEO.write(fileName);
-		translateOEO.write("\")\n");
-		translateOEO.write("\n");
+		addToTranslate(translateOEO, "OEO", capFileName, dirName, fileName);
 	}
-
-	private void beginTranslateOEO(String dirName) throws IOException {
-		translateOEO.write("# generated: " + LocalDateTime.now() + "\n");
-		translateOEO.write("from prompto.parser.o.BaseOParserTest import BaseOParserTest\n");
-		translateOEO.write("\n");
-		translateOEO.write("class Test");
-		translateOEO.write(dirName);
-		translateOEO.write("(BaseOParserTest):\n");
-		translateOEO.write("    \n");
-		translateOEO.write("    def setUp(self):\n");
-		translateOEO.write("        super(type(self), self).setUp()\n");
-		translateOEO.write("    \n");
-	}
-
-	private void endTranslateOEO() throws IOException {
-		translateOEO.write("\n");
-	}
-
+	
 	@Override
 	protected void addToTranslateOSO(String dirName, String fileName) throws IOException {
 		if(translateOSO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = getRoot() + "prompto/translate/oso/Test" + capDirName + ".py";
+			String testFilePath = getCoreRoot() + "prompto/translate/oso/Test" + capDirName + ".py";
 			translateOSO = mkfile(testFilePath);
-			beginTranslateOSO(capDirName);
+			beginTranslate(translateOSO, "O", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		translateOSO.write("    def test");
-		translateOSO.write(capFileName);
-		translateOSO.write("(self):\n");
-		translateOSO.write("        self.compareResourceOSO(\"");
-		translateOSO.write(dirName);
-		translateOSO.write("/");
-		translateOSO.write(fileName);
-		translateOSO.write("\")\n");
-		translateOSO.write("\n");
+		addToTranslate(translateOSO, "OSO", capFileName, dirName, fileName);
 	}
-
-	private void beginTranslateOSO(String dirName) throws IOException {
-		translateOSO.write("# generated: " + LocalDateTime.now() + "\n");
-		translateOSO.write("from prompto.parser.o.BaseOParserTest import BaseOParserTest\n");
-		translateOSO.write("\n");
-		translateOSO.write("class Test");
-		translateOSO.write(dirName);
-		translateOSO.write("(BaseOParserTest):\n");
-		translateOSO.write("    \n");
-		translateOSO.write("    def setUp(self):\n");
-		translateOSO.write("        super(type(self), self).setUp()\n");
-		translateOSO.write("    \n");
-	}
-
-	private void endTranslateOSO() throws IOException {
-		translateOSO.write("\n");
-	}
-
+	
 	@Override
 	protected void addToTranslateSES(String dirName, String fileName) {
 		// TODO Auto-generated method stub
@@ -192,100 +102,223 @@ public abstract class PythonGenerator extends Generator {
 		
 	}
 
+	private void addToTranslate(OutputStreamWriter writer, String suffix, String capFileName, String dirName, String fileName) throws IOException {
+		writer.write("    def test");
+		writer.write(capFileName);
+		writer.write("(self):\n");
+		writer.write("        self.compareResource");
+		writer.write(suffix);
+		writer.write("(\"");
+		writer.write(dirName);
+		writer.write("/");
+		writer.write(fileName);
+		writer.write("\")\n");
+		writer.write("\n");
+	}
+
+	private void beginTranslate(OutputStreamWriter writer, String dialect, String dirName) throws IOException {
+		writer.write("# generated: " + LocalDateTime.now() + "\n");
+		writer.write("from prompto.parser.");
+		writer.write(dialect.toLowerCase());
+		writer.write(".Base");
+		writer.write(dialect.toUpperCase());
+		writer.write("ParserTest import Base");
+		writer.write(dialect.toUpperCase());
+		writer.write("ParserTest\n");
+		writer.write("\n");
+		writer.write("class Test");
+		writer.write(dirName);
+		writer.write("(Base");
+		writer.write(dialect.toUpperCase());
+		writer.write("ParserTest):\n");
+		writer.write("    \n");
+		writer.write("    def setUp(self):\n");
+		writer.write("        super(type(self), self).setUp()\n");
+		writer.write("    \n");
+	}
+
+	private void endTranslate(OutputStreamWriter writer) throws IOException {
+		writer.write("\n");
+	}
+	
+
 	@Override
 	protected void addToRuntimeE(String dirName, String fileName) throws Exception {
 		if(runtimeE==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = getRoot() + "prompto/runtime/e/Test" + capDirName + ".py";
+			String testFilePath = getCoreRoot() + "prompto/runtime/e/Test" + capDirName + ".py";
 			runtimeE = mkfile(testFilePath);
-			beginRuntimeE(capDirName);
+			beginRuntime(runtimeE, "E", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		runtimeE.write("    def test");
-		runtimeE.write(capFileName);
-		runtimeE.write("(self):\n");
-		runtimeE.write("        self.checkOutput(\"");
-		runtimeE.write(dirName);
-		runtimeE.write("/");
-		runtimeE.write(fileName);
-		runtimeE.write("\")\n");
-		runtimeE.write("\n");
+		addToRuntime(runtimeE, capFileName, dirName, fileName);
 	}
 
-	private void beginRuntimeE(String dirName) throws IOException {
-		runtimeE.write("# generated: " + LocalDateTime.now() + "\n");
-		runtimeE.write("from prompto.parser.e.BaseEParserTest import BaseEParserTest\n");
-		runtimeE.write("from prompto.runtime.utils.Out import Out\n");
-		runtimeE.write("\n");
-		runtimeE.write("class Test");
-		runtimeE.write(dirName);
-		runtimeE.write("(BaseEParserTest):\n");
-		runtimeE.write("    \n");
-		runtimeE.write("    def setUp(self):\n");
-		runtimeE.write("        super(type(self), self).setUp()\n");
-		runtimeE.write("        Out.init()\n");
-		runtimeE.write("    \n");
-		runtimeE.write("    def tearDown(self):\n");
-		runtimeE.write("        Out.restore()\n");
-		runtimeE.write("\n");
-	}
-
-	private void endRuntimeE() throws IOException {
-		runtimeE.write("\n");
-	}
-	
 	@Override
 	protected void addToRuntimeO(String dirName, String fileName) throws IOException {
 		if(runtimeO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = getRoot() + "prompto/runtime/o/Test" + capDirName + ".py";
+			String testFilePath = getCoreRoot() + "prompto/runtime/o/Test" + capDirName + ".py";
 			runtimeO = mkfile(testFilePath);
-			beginRuntimeO(capDirName);
+			beginRuntime(runtimeO, "O", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		runtimeO.write("    def test");
-		runtimeO.write(capFileName);
-		runtimeO.write("(self):\n");
-		runtimeO.write("        self.checkOutput(\"");
-		runtimeO.write(dirName);
-		runtimeO.write("/");
-		runtimeO.write(fileName);
-		runtimeO.write("\")\n");
-		runtimeO.write("\n");
-	}
-
-	private void beginRuntimeO(String dirName) throws IOException {
-		runtimeO.write("# generated: " + LocalDateTime.now() + "\n");
-		runtimeO.write("from prompto.parser.o.BaseOParserTest import BaseOParserTest\n");
-		runtimeO.write("from prompto.runtime.utils.Out import Out\n");
-		runtimeO.write("\n");
-		runtimeO.write("class Test");
-		runtimeO.write(dirName);
-		runtimeO.write("(BaseOParserTest):\n");
-		runtimeO.write("    \n");
-		runtimeO.write("    def setUp(self):\n");
-		runtimeO.write("        super(type(self), self).setUp()\n");
-		runtimeO.write("        Out.init()\n");
-		runtimeO.write("    \n");
-		runtimeO.write("    def tearDown(self):\n");
-		runtimeO.write("        Out.restore()\n");
-		runtimeO.write("\n");
-	}
-
-	private void endRuntimeO() throws IOException {
-		runtimeO.write("\n");
+		addToRuntime(runtimeO, capFileName, dirName, fileName);
 	}
 
 
 	@Override
-	protected void addToRuntimeS(String dirName, String fileName) {
-		// TODO Auto-generated method stub
-		
+	protected void addToRuntimeS(String dirName, String fileName) throws IOException {
+		if(runtimeS==null) {
+			String capDirName = capitalize(dirName);
+			String testFilePath = getCoreRoot() + "prompto/runtime/s/Test" + capDirName + ".py";
+			runtimeS = mkfile(testFilePath);
+			beginRuntime(runtimeS, "S", capDirName);
+		}
+		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
+		capFileName = capFileName.replaceAll("-", "_");
+		addToRuntime(runtimeS, capFileName, dirName, fileName);
 	}
 	
 	
+	private void addToRuntime(OutputStreamWriter writer, String capFileName, String dirName, String fileName) throws IOException {
+		writer.write("    def test");
+		writer.write(capFileName);
+		writer.write("(self):\n");
+		writer.write("        self.checkOutput(\"");
+		writer.write(dirName);
+		writer.write("/");
+		writer.write(fileName);
+		writer.write("\")\n");
+		writer.write("\n");
+	}
+
+	private void beginRuntime(OutputStreamWriter writer, String dialect, String dirName) throws IOException {
+		writer.write("# generated: " + LocalDateTime.now() + "\n");
+		writer.write("from prompto.parser.");
+		writer.write(dialect.toLowerCase());
+		writer.write(".Base");
+		writer.write(dialect.toUpperCase());
+		writer.write("ParserTest import Base");
+		writer.write(dialect.toUpperCase());
+		writer.write("ParserTest\n");
+		writer.write("from prompto.runtime.utils.Out import Out\n");
+		writer.write("\n");
+		writer.write("class Test");
+		writer.write(dirName);
+		writer.write("(Base");
+		writer.write(dialect.toUpperCase());
+		writer.write("ParserTest):\n");
+		writer.write("    \n");
+		writer.write("    def setUp(self):\n");
+		writer.write("        super(type(self), self).setUp()\n");
+		writer.write("        Out.init()\n");
+		writer.write("    \n");
+		writer.write("    def tearDown(self):\n");
+		writer.write("        Out.restore()\n");
+		writer.write("\n");
+	}
+
+	private void endRuntime(OutputStreamWriter writer) throws IOException {
+		writer.write("\n");
+	}
+	
+
+	@Override
+	protected void addToLibraryE(String dirName, String fileName) throws Exception {
+		if(libraryE==null) {
+			String capDirName = capitalize(dirName);
+			String testFilePath = getLibraryRoot() + "e/Test" + capDirName + ".py";
+			libraryE = mkfile(testFilePath);
+			beginLibrary(libraryE, "E", capDirName);
+		}
+		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
+		capFileName = capFileName.replaceAll("-", "_");
+		addToLibrary(libraryE, capFileName, dirName, fileName);
+	}
+
+	@Override
+	protected void addToLibraryO(String dirName, String fileName) throws IOException {
+		if(libraryO==null) {
+			String capDirName = capitalize(dirName);
+			String testFilePath = getLibraryRoot() + "o/Test" + capDirName + ".py";
+			libraryO = mkfile(testFilePath);
+			beginLibrary(libraryO, "O", capDirName);
+		}
+		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
+		capFileName = capFileName.replaceAll("-", "_");
+		addToLibrary(libraryO, capFileName, dirName, fileName);
+	}
+
+
+	@Override
+	protected void addToLibraryS(String dirName, String fileName) throws IOException {
+		if(libraryS==null) {
+			String capDirName = capitalize(dirName);
+			String testFilePath = getLibraryRoot() + "s/Test" + capDirName + ".py";
+			libraryS = mkfile(testFilePath);
+			beginLibrary(libraryS, "S", capDirName);
+		}
+		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
+		capFileName = capFileName.replaceAll("-", "_");
+		addToLibrary(libraryS, capFileName, dirName, fileName);
+	}
+	
+	
+	private void beginLibrary(OutputStreamWriter writer, String dialect, String dirName) throws IOException {
+		writer.write("# generated: " + LocalDateTime.now() + "\n");
+		writer.write("from prompto.parser.");
+		writer.write(dialect.toLowerCase());
+		writer.write(".Base");
+		writer.write(dialect.toUpperCase());
+		writer.write("ParserTest import Base");
+		writer.write(dialect.toUpperCase());
+		writer.write("ParserTest\n");
+		writer.write("from prompto.runtime.utils.Out import Out\n");
+		writer.write("\n");
+		writer.write("class Test");
+		writer.write(dirName);
+		writer.write("(Base");
+		writer.write(dialect.toUpperCase());
+		writer.write("ParserTest):\n");
+		writer.write("    \n");
+		writer.write("    def setUp(self):\n");
+		writer.write("        super(type(self), self).setUp()\n");
+		writer.write("        Out.init()\n");
+		if(dependencies!=null) {
+			writer.write("        self.coreContext = None\n");
+			for(String s : dependencies) {
+				writer.write("        self.loadDependency(\"");
+				writer.write(s);
+				writer.write("\")\n");
+			}
+		}
+		writer.write("    \n");
+		writer.write("    def tearDown(self):\n");
+		writer.write("        Out.restore()\n");
+		writer.write("\n");
+	}
+	
+	private void addToLibrary(OutputStreamWriter writer, String capFileName, String dirName, String fileName) throws IOException {
+		writer.write("    def test");
+		writer.write(capFileName);
+		writer.write("(self):\n");
+		writer.write("        self.runTests(\"");
+		writer.write(dirName);
+		writer.write("/");
+		writer.write(fileName);
+		writer.write("\")\n");
+		writer.write("\n");
+	}
+
+
+	private void endLibrary(OutputStreamWriter writer) throws IOException {
+		writer.write("\n");
+	}
+	
+
 	
 }
 

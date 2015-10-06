@@ -1,12 +1,14 @@
 package prompto.test.gen;
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.time.LocalDateTime;
 
 
 public class JavaScriptGenerator extends Generator {
 	
-	static final String ROOT = "prompto-javascript/JavaScript-Core/src/test/";
+	static final String CORE_ROOT = "prompto-javascript/JavaScript-Core/src/test/";
+	static final String LIB_ROOT = "prompto-javascript/JavaScript-Runtime/src/test/";
 
 	@Override
 	protected void enterSubdir(File subDir) {
@@ -16,18 +18,26 @@ public class JavaScriptGenerator extends Generator {
 
 	@Override
 	protected void exitSubdir(File subDir) throws IOException {
+		if(libraryE!=null)
+			endLibrary(libraryE);
+		if(libraryO!=null)
+			endLibrary(libraryO);
+		if(libraryS!=null)
+			endLibrary(libraryS);
 		if(runtimeE!=null)
-			endRuntimeE();
+			endRuntime(runtimeE);
 		if(runtimeO!=null)
-			endRuntimeO();
+			endRuntime(runtimeO);
+		if(runtimeS!=null)
+			endRuntime(runtimeS);
 		if(translateEOE!=null)
-			endTranslateEOE();
+			endTranslate(translateEOE);
 		if(translateESE!=null)
-			endTranslateESE();
+			endTranslate(translateESE);
 		if(translateOEO!=null)
-			endTranslateOEO();
+			endTranslate(translateOEO);
 		if(translateOSO!=null)
-			endTranslateOSO();
+			endTranslate(translateOSO);
 		closeAll();
 	}
 
@@ -35,132 +45,52 @@ public class JavaScriptGenerator extends Generator {
 	protected void addToTranslateEOE(String dirName, String fileName) throws IOException {
 		if(translateEOE==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "prompto/translate/eoe/Test" + capDirName + ".js";
+			String testFilePath = CORE_ROOT + "prompto/translate/eoe/Test" + capDirName + ".js";
 			translateEOE = mkfile(testFilePath);
-			beginTranslateEOE(capDirName);
+			beginTranslate(translateEOE, "EOE");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		translateEOE.write("exports.test");
-		translateEOE.write(capFileName);
-		translateEOE.write(" = function(test) {\n");
-		translateEOE.write("\tcompareResourceEOE(test, \"");
-		translateEOE.write(dirName);
-		translateEOE.write("/");
-		translateEOE.write(fileName);
-		translateEOE.write("\");\n");
-		translateEOE.write("};\n");
-		translateEOE.write("\n");
-	}
-
-	private void beginTranslateEOE(String dirName) throws IOException {
-		translateEOE.write("// generated: " + LocalDateTime.now() + "\n");
-		translateEOE.write("require(\"../../../../exploded\");\n");
-		translateEOE.write("\n");
-		translateEOE.write("var compareResourceEOE = require(\"../../parser/BaseParserTest\").compareResourceEOE;\n");
-		translateEOE.write("\n");
-	}
-
-	private void endTranslateEOE() throws IOException {
+		addToTranslate(translateEOE, "EOE", dirName, capFileName, fileName);
 	}
 	
 	@Override
 	protected void addToTranslateESE(String dirName, String fileName) throws IOException {
 		if(translateESE==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "prompto/translate/ese/Test" + capDirName + ".js";
+			String testFilePath = CORE_ROOT + "prompto/translate/ese/Test" + capDirName + ".js";
 			translateESE = mkfile(testFilePath);
-			beginTranslateESE(capDirName);
+			beginTranslate(translateEOE, "ESE");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		translateESE.write("exports.test");
-		translateESE.write(capFileName);
-		translateESE.write(" = function(test) {\n");
-		translateESE.write("\tcompareResourceESE(test, \"");
-		translateESE.write(dirName);
-		translateESE.write("/");
-		translateESE.write(fileName);
-		translateESE.write("\");\n");
-		translateESE.write("};\n");
-		translateESE.write("\n");
+		addToTranslate(translateESE, "ESE", dirName, capFileName, fileName);
 	}
-
-	private void beginTranslateESE(String dirName) throws IOException {
-		translateESE.write("// generated: " + LocalDateTime.now() + "\n");
-		translateESE.write("require(\"../../../../exploded\");\n");
-		translateESE.write("\n");
-		translateESE.write("var compareResourceESE = require(\"../../parser/BaseParserTest\").compareResourceESE;\n");
-		translateESE.write("\n");
-	}
-
-	private void endTranslateESE() throws IOException {
-	}
-
+	
 	@Override
 	protected void addToTranslateOEO(String dirName, String fileName) throws IOException {
 		if(translateOEO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "prompto/translate/oeo/Test" + capDirName + ".js";
+			String testFilePath = CORE_ROOT + "prompto/translate/oeo/Test" + capDirName + ".js";
 			translateOEO = mkfile(testFilePath);
-			beginTranslateOEO(capDirName);
+			beginTranslate(translateOEO, "OEO");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		translateOEO.write("exports.test");
-		translateOEO.write(capFileName);
-		translateOEO.write(" = function(test) {\n");
-		translateOEO.write("\tcompareResourceOEO(test, \"");
-		translateOEO.write(dirName);
-		translateOEO.write("/");
-		translateOEO.write(fileName);
-		translateOEO.write("\");\n");
-		translateOEO.write("};\n");
-		translateOEO.write("\n");
+		addToTranslate(translateOEO, "OEO", dirName, capFileName, fileName);
 	}
-
-	private void beginTranslateOEO(String dirName) throws IOException {
-		translateOEO.write("// generated: " + LocalDateTime.now() + "\n");
-		translateOEO.write("require(\"../../../../exploded\");\n");
-		translateOEO.write("\n");
-		translateOEO.write("var compareResourceOEO = require(\"../../parser/BaseParserTest\").compareResourceOEO;\n");
-		translateOEO.write("\n");
-	}
-
-	private void endTranslateOEO() throws IOException {
-	}
-
+	
 	@Override
 	protected void addToTranslateOSO(String dirName, String fileName) throws IOException {
 		if(translateOSO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "prompto/translate/oso/Test" + capDirName + ".js";
+			String testFilePath = CORE_ROOT + "prompto/translate/oso/Test" + capDirName + ".js";
 			translateOSO = mkfile(testFilePath);
-			beginTranslateOSO(capDirName);
+			beginTranslate(translateOSO, "OSO");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		translateOSO.write("exports.test");
-		translateOSO.write(capFileName);
-		translateOSO.write(" = function(test) {\n");
-		translateOSO.write("\tcompareResourceOSO(test, \"");
-		translateOSO.write(dirName);
-		translateOSO.write("/");
-		translateOSO.write(fileName);
-		translateOSO.write("\");\n");
-		translateOSO.write("};\n");
-		translateOSO.write("\n");
-	}
-
-	private void beginTranslateOSO(String dirName) throws IOException {
-		translateOSO.write("// generated: " + LocalDateTime.now() + "\n");
-		translateOSO.write("require(\"../../../../exploded\");\n");
-		translateOSO.write("\n");
-		translateOSO.write("var compareResourceOSO = require(\"../../parser/BaseParserTest\").compareResourceOSO;\n");
-		translateOSO.write("\n");
-	}
-
-	private void endTranslateOSO() throws IOException {
+		addToTranslate(translateOSO, "OSO", dirName, capFileName, fileName);
 	}
 
 	@Override
@@ -175,101 +105,202 @@ public class JavaScriptGenerator extends Generator {
 		
 	}
 
+
+	private void beginTranslate(OutputStreamWriter writer, String suffix) throws IOException {
+		writer.write("// generated: " + LocalDateTime.now() + "\n");
+		writer.write("require(\"../../../../exploded\");\n");
+		writer.write("\n");
+		writer.write("var compareResource");
+		writer.write(suffix);
+		writer.write(" = require(\"../../parser/BaseParserTest\").compareResource");
+		writer.write(suffix);
+		writer.write(";\n");
+		writer.write("\n");
+	}
+
+
+	protected void addToTranslate(OutputStreamWriter writer, String suffix, String dirName, String capFileName, String fileName) throws IOException {
+		writer.write("exports.test");
+		writer.write(capFileName);
+		writer.write(" = function(test) {\n");
+		writer.write("\tcompareResource");
+		writer.write(suffix);
+		writer.write("(test, \"");
+		writer.write(dirName);
+		writer.write("/");
+		writer.write(fileName);
+		writer.write("\");\n");
+		writer.write("};\n");
+		writer.write("\n");
+	}
+
+	protected void endTranslate(OutputStreamWriter writer) {
+		
+	}
+
 	@Override
 	protected void addToRuntimeE(String dirName, String fileName) throws Exception {
 		if(runtimeE==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "prompto/runtime/e/Test" + capDirName + ".js";
+			String testFilePath = CORE_ROOT + "prompto/runtime/e/Test" + capDirName + ".js";
 			runtimeE = mkfile(testFilePath);
-			beginRuntimeE(capDirName);
+			beginRuntime(runtimeE, "E", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		runtimeE.write("exports.test");
-		runtimeE.write(capFileName);
-		runtimeE.write(" = function(test) {\n");
-		runtimeE.write("\tcheckOutput(test, \"");
-		runtimeE.write(dirName);
-		runtimeE.write("/");
-		runtimeE.write(fileName);
-		runtimeE.write("\");\n");
-		runtimeE.write("};\n");
-		runtimeE.write("\n");
+		addToRuntime(runtimeE, capFileName, dirName, fileName);
 	}
 
-	private void beginRuntimeE(String dirName) throws IOException {
-		runtimeE.write("// generated: " + LocalDateTime.now() + "\n");
-		runtimeE.write("require(\"../../../../exploded\");\n");
-		runtimeE.write("\n");
-		runtimeE.write("var Out = require(\"../utils/Out\").Out;\n");
-		runtimeE.write("var checkOutput = require(\"../../parser/BaseEParserTest\").checkOutput;\n");
-		runtimeE.write("\n");
-		runtimeE.write("exports.setUp = function(done) {\n");
-		runtimeE.write("\tOut.init();\n");
-		runtimeE.write("\tdone();\n");
-		runtimeE.write("};\n");
-		runtimeE.write("\n");
-		runtimeE.write("exports.tearDown = function(done) {\n");
-		runtimeE.write("\tOut.restore();\n");
-		runtimeE.write("\tdone();\n");
-		runtimeE.write("};\n");
-		runtimeE.write("\n");
-	}
-
-	private void endRuntimeE() throws IOException {
-	}
-	
 	@Override
 	protected void addToRuntimeO(String dirName, String fileName) throws IOException {
 		if(runtimeO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "prompto/runtime/o/Test" + capDirName + ".js";
+			String testFilePath = CORE_ROOT + "prompto/runtime/o/Test" + capDirName + ".js";
 			runtimeO = mkfile(testFilePath);
-			beginRuntimeO(capDirName);
+			beginRuntime(runtimeO, "O", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		runtimeO.write("exports.test");
-		runtimeO.write(capFileName);
-		runtimeO.write(" = function(test) {\n");
-		runtimeO.write("\tcheckOutput(test, \"");
-		runtimeO.write(dirName);
-		runtimeO.write("/");
-		runtimeO.write(fileName);
-		runtimeO.write("\");\n");
-		runtimeO.write("};\n");
-		runtimeO.write("\n");
+		addToRuntime(runtimeO, capFileName, dirName, fileName);
 	}
-
-	private void beginRuntimeO(String cdirName) throws IOException {
-		runtimeO.write("// generated: " + LocalDateTime.now() + "\n");
-		runtimeO.write("require(\"../../../../exploded\");\n");
-		runtimeO.write("\n");
-		runtimeO.write("var Out = require(\"../utils/Out\").Out;\n");
-		runtimeO.write("var checkOutput = require(\"../../parser/BaseOParserTest\").checkOutput;\n");
-		runtimeO.write("\n");
-		runtimeO.write("exports.setUp = function(done) {\n");
-		runtimeO.write("\tOut.init();\n");
-		runtimeO.write("\tdone();\n");
-		runtimeO.write("};\n");
-		runtimeO.write("\n");
-		runtimeO.write("exports.tearDown = function(done) {\n");
-		runtimeO.write("\tOut.restore();\n");
-		runtimeO.write("\tdone();\n");
-		runtimeO.write("};\n");
-		runtimeO.write("\n");
-	}
-
-	private void endRuntimeO() throws IOException {
-	}
-
 
 	@Override
-	protected void addToRuntimeS(String dirName, String fileName) {
-		// TODO Auto-generated method stub
+	protected void addToRuntimeS(String dirName, String fileName) throws IOException {
+		if(runtimeS==null) {
+			String capDirName = capitalize(dirName);
+			String testFilePath = CORE_ROOT + "prompto/runtime/s/Test" + capDirName + ".js";
+			runtimeS = mkfile(testFilePath);
+			beginRuntime(runtimeS, "S", capDirName);
+		}
+		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
+		capFileName = capFileName.replaceAll("-", "_");
+		addToRuntime(runtimeS, capFileName, dirName, fileName);
+	}
+	
+	private void addToRuntime(OutputStreamWriter writer, String capFileName, String dirName, String fileName) throws IOException {
+		writer.write("exports.test");
+		writer.write(capFileName);
+		writer.write(" = function(test) {\n");
+		writer.write("\tcheckOutput(test, \"");
+		writer.write(dirName);
+		writer.write("/");
+		writer.write(fileName);
+		writer.write("\");\n");
+		writer.write("};\n");
+		writer.write("\n");
+	}
+
+	private void beginRuntime(OutputStreamWriter writer, String dialect, String dirName) throws IOException {
+		writer.write("// generated: " + LocalDateTime.now() + "\n");
+		writer.write("require(\"../../../../exploded\");\n");
+		writer.write("\n");
+		writer.write("var Out = require(\"../utils/Out\").Out;\n");
+		writer.write("var checkOutput = require(\"../../parser/Base");
+		writer.write(dialect.toUpperCase());
+		writer.write("ParserTest\").checkOutput;\n");
+		writer.write("\n");
+		writer.write("exports.setUp = function(done) {\n");
+		writer.write("\tOut.init();\n");
+		writer.write("\tdone();\n");
+		writer.write("};\n");
+		writer.write("\n");
+		writer.write("exports.tearDown = function(done) {\n");
+		writer.write("\tOut.restore();\n");
+		writer.write("\tdone();\n");
+		writer.write("};\n");
+		writer.write("\n");
+	}
+
+	private void endRuntime(OutputStreamWriter writer) {
 		
 	}
 	
+	@Override
+	protected void addToLibraryE(String dirName, String fileName) throws Exception {
+		if(libraryE==null) {
+			String capDirName = capitalize(dirName);
+			String testFilePath = LIB_ROOT + "library/e/Test" + capDirName + ".js";
+			libraryE = mkfile(testFilePath);
+			beginLibrary(libraryE, "E", capDirName);
+		}
+		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
+		capFileName = capFileName.replaceAll("-", "_");
+		addToLibrary(libraryE, capFileName, dirName, fileName);
+	}
+
+	@Override
+	protected void addToLibraryO(String dirName, String fileName) throws IOException {
+		if(libraryO==null) {
+			String capDirName = capitalize(dirName);
+			String testFilePath = LIB_ROOT + "library/o/Test" + capDirName + ".js";
+			libraryO = mkfile(testFilePath);
+			beginLibrary(libraryO, "O", capDirName);
+		}
+		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
+		capFileName = capFileName.replaceAll("-", "_");
+		addToLibrary(libraryO, capFileName, dirName, fileName);
+	}
+
+	@Override
+	protected void addToLibraryS(String dirName, String fileName) throws IOException {
+		if(libraryS==null) {
+			String capDirName = capitalize(dirName);
+			String testFilePath = LIB_ROOT + "library/s/Test" + capDirName + ".js";
+			libraryS = mkfile(testFilePath);
+			beginLibrary(libraryS, "S", capDirName);
+		}
+		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
+		capFileName = capFileName.replaceAll("-", "_");
+		addToLibrary(libraryS, capFileName, dirName, fileName);
+	}
 	
+	private void beginLibrary(OutputStreamWriter writer, String dialect, String dirName) throws IOException {
+		writer.write("// generated: " + LocalDateTime.now() + "\n");
+		writer.write("var prompto = require(\"../../../../../JavaScript-Core/src/main/prompto/index.js\");\n");
+		writer.write("var Out = require(\"../../../../../JavaScript-Core/src/test/prompto/runtime/utils/Out\").Out;\n");
+		writer.write("var BaseParserTest = require(\"../../../../../JavaScript-Core/src/test/prompto/parser/BaseParserTest\");\n");
+		writer.write("var loadDependency = require(\"../../../../../JavaScript-Core/src/test/prompto/parser/BaseEParserTest\").loadDependency;\n");
+		writer.write("var runTests = require(\"../../../../../JavaScript-Core/src/test/prompto/parser/Base");
+		writer.write(dialect.toUpperCase());
+		writer.write("ParserTest\").runTests;\n");
+		writer.write("\n");
+		writer.write("exports.setUp = function(done) {\n");
+		writer.write("\tOut.init();\n");
+		if(dependencies!=null) {
+			writer.write("\tBaseParserTest.coreContext = null;\n");
+			for(String s : dependencies) {
+				writer.write("\tloadDependency(\"");
+				writer.write(s);
+				writer.write("\");\n");
+			}
+		}
+		writer.write("\tdone();\n");
+		writer.write("};\n");
+		writer.write("\n");
+		writer.write("exports.tearDown = function(done) {\n");
+		writer.write("\tOut.restore();\n");
+		writer.write("\tdone();\n");
+		writer.write("};\n");
+		writer.write("\n");
+	}
+	
+	private void addToLibrary(OutputStreamWriter writer, String capFileName, String dirName, String fileName) throws IOException {
+		writer.write("exports.test");
+		writer.write(capFileName);
+		writer.write(" = function(test) {\n");
+		writer.write("\trunTests(test, \"");
+		writer.write(dirName);
+		writer.write("/");
+		writer.write(fileName);
+		writer.write("\");\n");
+		writer.write("};\n");
+		writer.write("\n");
+	}
+
+	private void endLibrary(OutputStreamWriter writer) {
+		
+	}
+	
+
 	
 }

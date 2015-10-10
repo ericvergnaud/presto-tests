@@ -1,11 +1,20 @@
-define stdout as native method returning any doing:
+define Writer as native category with bindings:
+
+	define category bindings as:
+		Java: java.io.PrintStream
+		C#: System.IO.TextWriter
+		Python2: StringIO from module: StringIO 
+		Python3: StringIO from module: io
+		JavaScript: Socket from module: net
+
+define stdout as native method returning Writer doing:
 	Java: return System.out;
 	C#: return System.Console.Out;
 	Python2: return stdout from module: sys
 	Python3: return stdout from module: sys
 	JavaScript: return process.stdout;
 
-define stderr as native method returning any doing:
+define stderr as native method returning Writer doing:
 	Java: return System.err;
 	C#: return System.Console.Error;
 	Python2: return stderr from module: sys
@@ -16,10 +25,10 @@ define print as method receiving any value doing:
 	writer = stdout
 	printNative with value as value and writer as writer
 	
-define print as method receiving any value and any writer doing:
+define print as method receiving any value and Writer writer doing:
 	printNative with value as value and writer as writer
 
-define printNative as native method receiving any value and any writer doing:
+define printNative as native method receiving any value and Writer writer doing:
 	Java: writer.print(value);
 	C#: writer.Write(value);
 	Python2: print(objects=str(value), end="", file=writer)

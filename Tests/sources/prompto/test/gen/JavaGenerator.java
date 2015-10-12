@@ -2,7 +2,6 @@ package prompto.test.gen;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.time.LocalDateTime;
 
 
 public class JavaGenerator extends Generator {
@@ -104,7 +103,6 @@ public class JavaGenerator extends Generator {
 	}
 
 	private void beginTranslate(OutputStreamWriter writer, String dirName, String dialect, String packageName) throws IOException {
-		writer.write("// generated: " + LocalDateTime.now() + "\n");
 		writer.write("package prompto.translate.");
 		writer.write(packageName);
 		writer.write(";\n");
@@ -186,7 +184,6 @@ public class JavaGenerator extends Generator {
 	}
 
 	private void beginRuntime(OutputStreamWriter writer, String dirName, String dialect) throws IOException {
-		writer.write("// generated: " + LocalDateTime.now() + "\n");
 		writer.write("package prompto.runtime.");
 		writer.write(dialect.toLowerCase());
 		writer.write(";\n");
@@ -279,7 +276,6 @@ public class JavaGenerator extends Generator {
 	}
 
 	private void beginLibrary(OutputStreamWriter writer, String dirName, String dialect) throws IOException {
-		writer.write("// generated: " + LocalDateTime.now() + "\n");
 		writer.write("package prompto.library.");
 		writer.write(dialect.toLowerCase());
 		writer.write(";\n");

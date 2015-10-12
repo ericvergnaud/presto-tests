@@ -2,7 +2,6 @@ package prompto.test.gen;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.time.LocalDateTime;
 
 
 public class CSharpGenerator extends Generator {
@@ -105,7 +104,6 @@ public class CSharpGenerator extends Generator {
 	}
 
 	private void beginTranslate(OutputStreamWriter writer, String dirName, String dialect, String packageName) throws IOException {
-		writer.write("// generated: " + LocalDateTime.now() + "\n");
 		writer.write("using NUnit.Framework;\n");
 		writer.write("using prompto.parser;\n");
 		writer.write("\n");
@@ -205,7 +203,6 @@ public class CSharpGenerator extends Generator {
 	}
 
 	private void beginRuntime(OutputStreamWriter writer, String dirName, String dialect) throws IOException {
-		writer.write("// generated: " + LocalDateTime.now() + "\n");
 		writer.write("using NUnit.Framework;\n");
 		writer.write("using prompto.parser;\n");
 		writer.write("using prompto.utils;\n");
@@ -283,7 +280,6 @@ public class CSharpGenerator extends Generator {
 	}
 
 	private void beginLibrary(OutputStreamWriter writer, String dirName, String dialect) throws IOException {
-		writer.write("// generated: " + LocalDateTime.now() + "\n");
 		writer.write("using NUnit.Framework;\n");
 		writer.write("using prompto.parser;\n");
 		writer.write("using prompto.utils;\n");

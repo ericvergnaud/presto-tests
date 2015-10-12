@@ -2,7 +2,6 @@ package prompto.test.gen;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.time.LocalDateTime;
 
 
 public class JavaScriptGenerator extends Generator {
@@ -107,7 +106,6 @@ public class JavaScriptGenerator extends Generator {
 
 
 	private void beginTranslate(OutputStreamWriter writer, String suffix) throws IOException {
-		writer.write("// generated: " + LocalDateTime.now() + "\n");
 		writer.write("require(\"../../../../exploded\");\n");
 		writer.write("\n");
 		writer.write("var compareResource");
@@ -191,7 +189,6 @@ public class JavaScriptGenerator extends Generator {
 	}
 
 	private void beginRuntime(OutputStreamWriter writer, String dialect, String dirName) throws IOException {
-		writer.write("// generated: " + LocalDateTime.now() + "\n");
 		writer.write("require(\"../../../../exploded\");\n");
 		writer.write("\n");
 		writer.write("var Out = require(\"../utils/Out\").Out;\n");
@@ -255,7 +252,6 @@ public class JavaScriptGenerator extends Generator {
 	}
 	
 	private void beginLibrary(OutputStreamWriter writer, String dialect, String dirName) throws IOException {
-		writer.write("// generated: " + LocalDateTime.now() + "\n");
 		writer.write("var prompto = require(\"../../../../../JavaScript-Core/src/main/prompto/index.js\");\n");
 		writer.write("var Out = require(\"../../../../../JavaScript-Core/src/test/prompto/runtime/utils/Out\").Out;\n");
 		writer.write("var BaseParserTest = require(\"../../../../../JavaScript-Core/src/test/prompto/parser/BaseParserTest\");\n");

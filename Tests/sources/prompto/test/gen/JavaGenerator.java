@@ -129,7 +129,8 @@ public class JavaGenerator extends Generator {
 		writer.write(capFileName);
 		writer.write("() throws Exception {\n");
 		writer.write("\t\tcompareResource");
-		writer.write("EOE(\"");
+		writer.write(methodSuffix);
+		writer.write("(\"");
 		writer.write(dirName);
 		writer.write("/");
 		writer.write(fileName);

@@ -59,7 +59,7 @@ public class JavaScriptGenerator extends Generator {
 			String capDirName = capitalize(dirName);
 			String testFilePath = CORE_ROOT + "prompto/translate/ese/Test" + capDirName + ".js";
 			translateESE = mkfile(testFilePath);
-			beginTranslate(translateEOE, "ESE");
+			beginTranslate(translateESE, "ESE");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");

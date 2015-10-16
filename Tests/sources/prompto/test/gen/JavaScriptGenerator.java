@@ -252,6 +252,7 @@ public class JavaScriptGenerator extends Generator {
 	}
 	
 	private void beginLibrary(OutputStreamWriter writer, String dialect, String dirName) throws IOException {
+		writer.write("require(\"../../../../../JavaScript-Core/src/exploded.js\");\n");
 		writer.write("var prompto = require(\"../../../../../JavaScript-Core/src/main/prompto/index.js\");\n");
 		writer.write("var Out = require(\"../../../../../JavaScript-Core/src/test/prompto/runtime/utils/Out\").Out;\n");
 		writer.write("var BaseParserTest = require(\"../../../../../JavaScript-Core/src/test/prompto/parser/BaseParserTest\");\n");

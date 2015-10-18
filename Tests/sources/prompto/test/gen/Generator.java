@@ -41,7 +41,7 @@ public abstract class Generator {
 	
 	private void generate() throws Exception {
 		generate(readResourcesPath(), this::generateRuntimeTests, 
-				"resource", "issues", "debug", "unexpected", "return", "dateTimeTZName");
+				"resource", "issues", "debug", "comment", "unexpected", "return", "dateTimeTZName");
 		generate(readResourcesPath(), this::generateTranslateTests);
 		generate(readLibrariesPath(), this::generateLibraryTests, "concat");
 	}

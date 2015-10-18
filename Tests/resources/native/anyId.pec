@@ -24,6 +24,6 @@ and methods:
 
 define "id member" as test method doing:
 	a = Any
-and expecting:
+and verifying:
 	a.id is not nothing
 	

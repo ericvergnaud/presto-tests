@@ -9,7 +9,7 @@ native method print ( Text value ) {
 test method "Add two numbers" () {
 	a = 3;
 	b = 8;
-} expecting {
+} verifying {
 	a + b == 12;
 }
 	

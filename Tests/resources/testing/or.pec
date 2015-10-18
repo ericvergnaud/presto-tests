@@ -8,6 +8,6 @@ define print as native method receiving Text value doing:
 define "Or conditions" as test method doing:
 	a = 3
 	b = 8
-and expecting:
+and verifying:
 	a = 3 or b = 9
 	

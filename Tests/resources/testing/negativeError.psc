@@ -19,4 +19,4 @@ enum Error(name, text):
 def test "Divide two numbers" ():
 	a = 3 / 0
 	b = 8
-expecting: INDEX_OUT_OF_RANGE
+verifying: INDEX_OUT_OF_RANGE

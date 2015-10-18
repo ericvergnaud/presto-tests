@@ -7,6 +7,6 @@ define print as native method receiving Text value doing:
 
 define "Not condition" as test method doing:
 	a = 3
-and expecting:
+and verifying:
 	not ( a = 9 )
 	

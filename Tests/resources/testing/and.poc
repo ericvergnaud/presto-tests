@@ -9,7 +9,7 @@ native method print ( Text value ) {
 test method "And conditions" () {
 	a = 3;
 	b = 8;
-} expecting {
+} verifying {
 	a == 3 && b == 8;
 }
 	

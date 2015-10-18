@@ -11,6 +11,6 @@ define Smaller as method receiving Integer i1 and Integer i2 doing:
 define "Method" as test method doing:
 	a = 3
 	b = 8
-and expecting:
+and verifying:
 	Smaller with a as i1 and b as i2
 

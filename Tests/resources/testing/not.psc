@@ -7,5 +7,5 @@ def native print(value:Text):
 
 def test "Not condition" ():
 	a = 3
-expecting:
+verifying:
 	not ( a == 9 )

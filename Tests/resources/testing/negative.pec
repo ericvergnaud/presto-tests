@@ -8,6 +8,6 @@ define print as native method receiving Text value doing:
 define "Add two numbers" as test method doing:
 	a = 3
 	b = 8
-and expecting:
+and verifying:
 	a + b = 12
 	

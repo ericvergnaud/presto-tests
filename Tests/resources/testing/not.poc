@@ -8,7 +8,7 @@ native method print ( Text value ) {
 
 test method "Not condition" () {
 	a = 3;
-} expecting {
+} verifying {
 	!(a == 9);
 }
 	

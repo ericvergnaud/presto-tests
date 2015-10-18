@@ -8,6 +8,6 @@ define print as native method receiving Text value doing:
 define "Contains condition" as test method doing:
 	a = [3..8]
 	b = 6
-and expecting:
+and verifying:
 	b in a
 	

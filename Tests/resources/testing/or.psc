@@ -8,5 +8,5 @@ def native print(value:Text):
 def test "Or conditions" ():
 	a = 3
 	b = 8
-expecting:
+verifying:
 	a == 3 or b == 9

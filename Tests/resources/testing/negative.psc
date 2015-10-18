@@ -8,5 +8,5 @@ def native print(value:Text):
 def test "Add two numbers" ():
 	a = 3
 	b = 8
-expecting:
+verifying:
 	a + b == 12 

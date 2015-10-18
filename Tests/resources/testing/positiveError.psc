@@ -19,4 +19,4 @@ enum Error(name, text):
 def test "Divide two numbers" ():
 	a = 3 / 0
 	b = 8
-expecting: DIVIDE_BY_ZERO
+verifying: DIVIDE_BY_ZERO

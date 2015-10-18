@@ -8,5 +8,5 @@ def native print(value:Text):
 def test "Contains condition" ():
 	a = [3..8]
 	b = 6
-expecting:
+verifying:
 	b in a

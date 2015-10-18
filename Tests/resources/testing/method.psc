@@ -11,6 +11,6 @@ def Smaller(a:Integer, b:Integer):
 def test "Method" ():
 	a = 3
 	b = 8
-expecting:
+verifying:
 	Smaller(a = a, b = b)
 	

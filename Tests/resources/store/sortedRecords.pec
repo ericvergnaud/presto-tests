@@ -1,0 +1,20 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define name as storable Text attribute 
+
+define Entity as storable category with attribute name
+
+define main as method receiving Text{} options doing:
+	e1 = Entity with "John" as name
+	e2 = Entity with "Jane" as name
+	e3 = Entity with "Marion" as name
+	store e1, e2, e3
+	print "/names:"
+	es = fetch all Entity order by name descending
+	for each e in es:
+		print e.name + "/"

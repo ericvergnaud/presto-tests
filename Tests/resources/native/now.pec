@@ -1,0 +1,19 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define now as native method returning DateTime doing:
+	Java: return org.joda.time.DateTime.now();
+	C#: return System.DateTimeOffset.Now;
+	Python2: return datetime.utcnow() from module: datetime
+	Python3: return datetime.utcnow() from module: datetime
+	JavaScript: return new Date();
+
+define main as method receiving Text{} options doing:
+	// simply check it doesn't throw
+	instant = now 
+	print with "ok" as value
+

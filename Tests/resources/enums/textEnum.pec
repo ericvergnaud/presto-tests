@@ -2,6 +2,8 @@ define Entity as enumerated Text with symbols:
 	ENTITY_1 with "E1" as value
 	ENTITY_2 with "E2" as value
 
+define entity as storable Entity attribute
+
 define print as native method receiving Text value doing:
 	Java: System.out.print(value);
 	C#: System.Console.Write(value);

@@ -1,0 +1,18 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define name as Text attribute
+define text as Text attribute
+
+define Parent as category with attribute name
+define Child as Parent with attribute text
+
+define main as method receiving Text{} options doing:
+	children = [ Child with "a" as name, Child with "b" as name ]
+	converted = ( Parent from c1 ) for each c1 in fetch any c2 from children where c2.name = "a"
+	for each c3 in converted:
+		print c3.name

@@ -155,7 +155,8 @@ public class JavaGenerator extends Generator {
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToRuntime(runtimeE, capFileName, dirName, fileName);
+		addToRuntime(runtimeE, capFileName, dirName, fileName, false);
+		addToRuntime(runtimeE, capFileName, dirName, fileName, true);
 	}
 
 	@Override
@@ -168,7 +169,8 @@ public class JavaGenerator extends Generator {
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToRuntime(runtimeO, capFileName, dirName, fileName);
+		addToRuntime(runtimeO, capFileName, dirName, fileName, false);
+		addToRuntime(runtimeO, capFileName, dirName, fileName, true);
 	}
 
 	@Override
@@ -181,7 +183,8 @@ public class JavaGenerator extends Generator {
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToRuntime(runtimeS, capFileName, dirName, fileName);
+		addToRuntime(runtimeS, capFileName, dirName, fileName, false);
+		addToRuntime(runtimeS, capFileName, dirName, fileName, true);
 	}
 
 	private void beginRuntime(OutputStreamWriter writer, String dirName, String dialect) throws IOException {
@@ -218,12 +221,15 @@ public class JavaGenerator extends Generator {
 		writer.write("\n");
 	}
 
-	private void addToRuntime(OutputStreamWriter writer, String capFileName, String dirName, String fileName) throws IOException {
+	private void addToRuntime(OutputStreamWriter writer, String capFileName, String dirName, String fileName, boolean compiled) throws IOException {
 		writer.write("\t@Test\n");
 		writer.write("\tpublic void test");
+		writer.write(compiled ? "Compiled" : "Interpreted"); 
 		writer.write(capFileName);
 		writer.write("() throws Exception {\n");
-		writer.write("\t\tcheckOutput(\"");
+		writer.write("\t\tcheck");
+		writer.write(compiled ? "Compiled" : "Interpreted"); 
+		writer.write("Output(\"");
 		writer.write(dirName);
 		writer.write("/");
 		writer.write(fileName);

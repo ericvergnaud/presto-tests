@@ -1,0 +1,20 @@
+Integer native method longValue() {
+	Java: return 9876543210;
+	C#: return 9876543210;
+	Python2: return 9876543210
+	Python3: return 9876543210
+	JavaScript: return 9876543210;
+}
+
+native method print ( Integer value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+method main ( Text{} options ) {
+	value = longValue();
+	print (value);
+}

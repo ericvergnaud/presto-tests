@@ -1,5 +1,5 @@
 Integer native method returnLongClass() {
-	Java: return Long.decode("123");
+	Java: return Long.decode("9876543210");
 	C#: return prompto.runtime.utils.MyClass.longObject();
 	Python2: return MyClass.longObject() from module: prompto.runtime.utils.MyClass
 	Python3: return MyClass.longObject() from module: prompto.runtime.utils.MyClass

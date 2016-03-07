@@ -6,7 +6,7 @@ Boolean native method booleanValue() {
 	JavaScript: return true;
 }
 
-native method print ( Boolean value ) {
+native method print ( Text value ) {
 	Java: System.out.print(value);
 	C#: System.Console.Write(value);
 	Python2: print(objects=value,end="")
@@ -16,5 +16,5 @@ native method print ( Boolean value ) {
 
 method main ( Text{} options ) {
 	value = booleanValue();
-	print ( value );
+	print ("" + value);
 }

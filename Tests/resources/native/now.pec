@@ -6,7 +6,7 @@ define print as native method receiving Text value doing:
 	JavaScript: process.stdout.write(value);
 
 define now as native method returning DateTime doing:
-	Java: return org.joda.time.DateTime.now();
+	Java: return prompto.intrinsic.PromptoDateTime.now();
 	C#: return System.DateTimeOffset.Now;
 	Python2: return datetime.utcnow() from module: datetime
 	Python3: return datetime.utcnow() from module: datetime

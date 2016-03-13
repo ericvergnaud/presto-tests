@@ -6,6 +6,6 @@ define print as native method receiving Text value doing:
 	JavaScript: process.stdout.write(value);
 
 define main as method receiving Text{} options doing:
-	list = [Document] * 4
+	list = ["a"] * 4
 	print "length=" + list.length
 	

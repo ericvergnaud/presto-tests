@@ -7,6 +7,6 @@ native method print ( Text value ) {
 }
 
 method main ( Text{} options ) {
-	list = ([Document()] * 4);
+	list = (["a"] * 4);
 	print ("length=" + list.length);
 }

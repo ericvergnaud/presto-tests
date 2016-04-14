@@ -10,14 +10,14 @@ attribute name: Text;
 
 category Mutable(name) {
 
-	method setName(Text value) {
+	method setTheName(Text value) {
 		name = value;
 	}
 }
 
 method main ( Text{} options ) {
 	i = mutable Mutable(name="before");
-	i.setName(value="after");
+	i.setTheName(value="after");
 	print(i.name);
 }
 

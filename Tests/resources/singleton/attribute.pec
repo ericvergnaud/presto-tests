@@ -12,5 +12,7 @@ define Entity as singleton with attribute name
 define main as method receiving Text{} options doing:
 	with Entity, do:
 		name = "John"
+	print "/name:" + Entity.name
 	with Entity, do:
 		print "/name:" + name
+	

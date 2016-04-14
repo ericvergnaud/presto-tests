@@ -1,4 +1,9 @@
 define even as Integer attribute matching value%2=0 
+define name as Text attribute
+define text as Text attribute
+
+define Error as enumerated category with attributes name and text, and symbols:
+	INVALID_VALUE with "Invalid value!" as text
 
 define print as native method receiving Text value doing:
 	Java: System.out.print(value);

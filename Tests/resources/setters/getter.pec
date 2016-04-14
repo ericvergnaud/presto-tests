@@ -1,8 +1,10 @@
 define name as Text attribute
 
-define Test as category with attribute name, and methods:
+define Root as category with attribute name
+
+define Test as Root with methods:
 	
-	define name getter doing:
+	define name as getter doing:
 		return "getter:" + name
 	
 define print as native method receiving Text value doing:

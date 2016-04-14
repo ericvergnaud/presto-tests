@@ -20,9 +20,23 @@ import org.xml.sax.InputSource;
 public abstract class Generator {
 
 	public static void main(String[] args) throws Exception {
+		Options options = parseCmdLine(args);
 		List<Generator> generators = buildGenerators();
 		for(Generator g : generators)
-			g.generate();
+			g.generate(options);
+	}
+
+	private static Options parseCmdLine(String[] args) {
+		Options o = new Options();
+		o.interpreted = true;
+		o.compiled = true;
+		for(String arg : args) {
+			if("compiledOnly".equals(arg))
+				o.interpreted = false;
+			else if("interpretedOnly".equals(arg))
+				o.compiled = false;
+		}
+		return o;
 	}
 
 	private static List<Generator> buildGenerators() {
@@ -36,18 +50,18 @@ public abstract class Generator {
 	}
 
 	static interface FileGenerator {
-		void generate(String dirName, String fileName) throws Exception;
+		void generate(String dirName, String fileName, Options options) throws Exception;
 	}
 	
-	private void generate() throws Exception {
-		generate(readResourcesPath(), this::generateRuntimeTests, 
+	private void generate(Options options) throws Exception {
+		generate(readResourcesPath(), this::generateRuntimeTests, options,
 				"resource", "issues", "debug", "comment", "unexpected", "return", "dateTimeTZName");
-		generate(readResourcesPath(), this::generateTranslateTests);
-		generate(readLibrariesPath(), this::generateLibraryTests, "concat");
+		generate(readResourcesPath(), this::generateTranslateTests, options);
+		generate(readLibrariesPath(), this::generateLibraryTests, options, "concat");
 	}
 
 	
-	private void generate(String path, FileGenerator generator, String ... _excluded) throws Exception {
+	private void generate(String path, FileGenerator generator, Options options, String ... _excluded) throws Exception {
 		List<String> excluded = Arrays.asList(_excluded);
 		File rootDir = new File(path);
 		String[] dirNames = rootDir.list();
@@ -70,7 +84,7 @@ public abstract class Generator {
 				String plainName = fileName.substring(0, fileName.indexOf('.'));
 				if(excluded.contains(plainName))
 					continue;
-				generator.generate(dirName, fileName);
+				generator.generate(dirName, fileName, options);
 			}
 			exitSubdir(subDir);
 		}
@@ -89,7 +103,7 @@ public abstract class Generator {
 			dependencies.add(nodes.item(i).getTextContent());
 	}
 
-	private void generateLibraryTests(String dirName, String fileName) throws Exception {
+	private void generateLibraryTests(String dirName, String fileName, Options options) throws Exception {
 		if(fileName.endsWith(".pec")) {
 			addToLibraryE(dirName, fileName);
 		} else if(fileName.endsWith(".poc")) {
@@ -99,17 +113,17 @@ public abstract class Generator {
 		}
 	}
 
-	private void generateRuntimeTests(String dirName, String fileName) throws Exception {
+	private void generateRuntimeTests(String dirName, String fileName, Options options) throws Exception {
 		if(fileName.endsWith(".pec")) {
-			addToRuntimeE(dirName, fileName);
+			addToRuntimeE(dirName, fileName, options);
 		} else if(fileName.endsWith(".poc")) {
-			addToRuntimeO(dirName, fileName);
+			addToRuntimeO(dirName, fileName, options);
 		} else if(fileName.endsWith(".psc")) {
-			addToRuntimeS(dirName, fileName);
+			addToRuntimeS(dirName, fileName, options);
 		}
 	}
 	
-	private void generateTranslateTests(String dirName, String fileName) throws Exception {
+	private void generateTranslateTests(String dirName, String fileName, Options options) throws Exception {
 		if(fileName.endsWith(".pec")) {
 			addToTranslateEOE(dirName, fileName);
 			addToTranslateESE(dirName, fileName);
@@ -130,9 +144,9 @@ public abstract class Generator {
 	protected abstract void addToTranslateOSO(String dirName, String fileName) throws Exception;
 	protected abstract void addToTranslateSES(String dirName, String fileName) throws Exception;
 	protected abstract void addToTranslateSOS(String dirName, String fileName) throws Exception;
-	protected abstract void addToRuntimeE(String dirName, String fileName) throws Exception;
-	protected abstract void addToRuntimeO(String dirName, String fileName) throws Exception;
-	protected abstract void addToRuntimeS(String dirName, String fileName) throws Exception;
+	protected abstract void addToRuntimeE(String dirName, String fileName, Options options) throws Exception;
+	protected abstract void addToRuntimeO(String dirName, String fileName, Options options) throws Exception;
+	protected abstract void addToRuntimeS(String dirName, String fileName, Options options) throws Exception;
 	protected abstract void addToLibraryE(String dirName, String fileName) throws Exception;
 	protected abstract void addToLibraryO(String dirName, String fileName) throws Exception;
 	protected abstract void addToLibraryS(String dirName, String fileName) throws Exception;

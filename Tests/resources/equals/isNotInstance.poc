@@ -11,8 +11,8 @@ method checkIsNot(Text a, Text b) {
 }
 
 method main ( Text{} options ) {
-	a = "test";
-	b = "test";
+	a = "test1";
+	b = "test2";
 	print ("/" + (checkIsNot(a=a, b=a)));
 	print ("/" + (checkIsNot(a=a, b=b)));
 }

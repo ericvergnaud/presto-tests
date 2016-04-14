@@ -15,7 +15,7 @@ define print as native method receiving Text value doing:
 
 define main as method receiving Text{} options doing:
 	switch on error doing:
-		print "" + 1/0
+		print "" + 1\0
 	when DIVIDE_BY_ZERO:
 		print error.text
 

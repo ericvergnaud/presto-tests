@@ -1,1 +1,1 @@
-doc.member.text=text
+doc.member.text=value

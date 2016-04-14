@@ -14,6 +14,6 @@ define Error as enumerated category with attributes name and text, and symbols:
 	NULL_REFERENCE with "Null reference!" as text
 
 define "Divide two numbers" as test method doing:
-	a = 3 / 0
+	a = 3 \ 0
 and verifying DIVIDE_BY_ZERO
 	

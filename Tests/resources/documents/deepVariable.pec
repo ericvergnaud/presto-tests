@@ -7,6 +7,6 @@ define print as native method receiving Text value doing:
 
 define main as method receiving Text{} options doing:
 	doc = Document
-	doc.member.text = "text"
+	doc.member.text = "value"
 	print "doc.member.text=" + doc.member.text
 	

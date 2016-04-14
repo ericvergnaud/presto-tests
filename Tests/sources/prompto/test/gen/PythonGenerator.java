@@ -141,7 +141,7 @@ public abstract class PythonGenerator extends Generator {
 	
 
 	@Override
-	protected void addToRuntimeE(String dirName, String fileName) throws Exception {
+	protected void addToRuntimeE(String dirName, String fileName, Options options) throws Exception {
 		if(runtimeE==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = getCoreRoot() + "prompto/runtime/e/Test" + capDirName + ".py";
@@ -154,7 +154,7 @@ public abstract class PythonGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToRuntimeO(String dirName, String fileName) throws IOException {
+	protected void addToRuntimeO(String dirName, String fileName, Options options) throws IOException {
 		if(runtimeO==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = getCoreRoot() + "prompto/runtime/o/Test" + capDirName + ".py";
@@ -168,7 +168,7 @@ public abstract class PythonGenerator extends Generator {
 
 
 	@Override
-	protected void addToRuntimeS(String dirName, String fileName) throws IOException {
+	protected void addToRuntimeS(String dirName, String fileName, Options options) throws IOException {
 		if(runtimeS==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = getCoreRoot() + "prompto/runtime/s/Test" + capDirName + ".py";

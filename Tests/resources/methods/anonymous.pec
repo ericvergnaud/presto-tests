@@ -10,7 +10,7 @@ define print as native method receiving Text value doing:
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
-define printName as method receiving any p with attribute name doing:
+define printName as method receiving any p with attributes id and name doing:
 	print with "/anonymous=" + p.name as value
 
 define main as method receiving Text{} options doing:

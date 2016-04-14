@@ -1,4 +1,10 @@
 attribute negativeInteger: Integer in [MIN_INTEGER..-1];
+attribute name: Text;
+attribute text: Text;
+
+enumerated category Error(name,text) {
+	INVALID_VALUE ( text = "Invalid value!" );
+}
 
 native method print ( Text value ) {
 	Java: System.out.print(value);

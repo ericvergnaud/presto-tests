@@ -14,5 +14,8 @@ method main ( Text{} options ) {
 	with ( Entity )
 		name = "John";
 	print("/name:" + Entity.name);
+	with ( Entity )
+		print("/name:" + name);
+	
 }
 	

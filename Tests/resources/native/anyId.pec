@@ -3,7 +3,7 @@ define id as Any attribute
 define Any as native category with attribute id, and bindings:
 
 	define category bindings as:
-		Java: prompto.value.Any
+		Java: java.lang.Object
 		C#: prompto.value.Any
 		Python2: Any from module: prompto.value.Any
 		Python3: Any from module: prompto.value.Any
@@ -11,10 +11,7 @@ define Any as native category with attribute id, and bindings:
 
 and methods:
 
-	define id getter doing:
-		return nativeId
-	
-	define nativeId as native method returning any doing:
+	define id as getter doing:
 		Java: return System.identityHashCode(self);
 		C#: return System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(self);
 		Python2: return id(self)

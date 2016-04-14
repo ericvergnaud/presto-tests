@@ -149,7 +149,7 @@ public class CSharpGenerator extends Generator {
 
 
 	@Override
-	protected void addToRuntimeE(String dirName, String fileName) throws Exception {
+	protected void addToRuntimeE(String dirName, String fileName, Options options) throws Exception {
 		if(runtimeE==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = ROOT + "prompto/runtime/e/Test" + capDirName + ".cs";
@@ -162,7 +162,7 @@ public class CSharpGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToRuntimeO(String dirName, String fileName) throws IOException {
+	protected void addToRuntimeO(String dirName, String fileName, Options options) throws IOException {
 		if(runtimeO==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = ROOT + "prompto/runtime/o/Test" + capDirName + ".cs";
@@ -190,7 +190,7 @@ public class CSharpGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToRuntimeS(String dirName, String fileName) throws IOException {
+	protected void addToRuntimeS(String dirName, String fileName, Options options) throws IOException {
 		if(runtimeS==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = ROOT + "prompto/runtime/s/Test" + capDirName + ".cs";

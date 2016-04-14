@@ -17,8 +17,8 @@ define subEntity as storable SubEntity attribute
 define Entity as storable category with attributes name and subEntity
 
 define main as method receiving Text{} options doing:
-	s1 = SubEntity with "Smith" as name
-	e1 = Entity with "John" as name and s1 as subEntity
+	s1 = SubEntity with "John" as name
+	e1 = Entity with "Smith" as name and s1 as subEntity
 	store e1
-	e2 = fetch one Entity where subEntity.name = "Smith"
-	print "/name:" + e2.name + " " + e2.subEntity.name
+	e2 = fetch one Entity where name = "Smith"
+	print "/name:" + e2.subEntity.name + " " + e2.name

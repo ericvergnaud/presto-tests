@@ -16,6 +16,6 @@ enumerated category Error(name,text) {
 }
 
 test method "Divide two numbers" () {
-	a = 3 / 0;
+	a = 3 \ 0;
 } verifying INDEX_OUT_OF_RANGE;
 	

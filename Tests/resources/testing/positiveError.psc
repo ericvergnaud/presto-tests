@@ -17,6 +17,6 @@ enum Error(name, text):
 	NULL_REFERENCE(text="Null reference!")
 
 def test "Divide two numbers" ():
-	a = 3 / 0
+	a = 3 \ 0
 	b = 8
 verifying: DIVIDE_BY_ZERO

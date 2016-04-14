@@ -1,1 +1,3 @@
 /person=John
+// for now until we fix the compiler
+/employee=John

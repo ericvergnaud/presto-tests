@@ -2,7 +2,7 @@ define name as Text attribute
 
 define Test as category with attribute name, and methods:
 	
-	define name setter doing:
+	define name as setter doing:
 		return "setter:" + name
 		
 define print as native method receiving Text value doing:

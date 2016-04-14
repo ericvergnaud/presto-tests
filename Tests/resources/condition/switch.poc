@@ -6,19 +6,22 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
-	for each (a in [1..9]) {
-		switch (a) {
-		case 1:
-			print ("/1");
-		case 3:
-			print ("/3");
-		case in [2,4,6]:
-			print ("/246");
-		case in <5,7,9>:
-			print ("/579");
-		default:
-			print ("/?");
-		}
+method printInt( Integer a) {
+	switch (a) {
+	case 1:
+		print ("/1");
+	case 3:
+		print ("/3");
+	case in [2,4,6]:
+		print ("/246");
+	case in <5,7,9>:
+		print ("/579");
+	default:
+		print ("/?");
 	}
+}
+
+method main ( Text{} options ) {
+	for each (a in [1..9])
+		printInt(a);
 }

@@ -10,7 +10,7 @@ define text as Text attribute
 define Any as native category with attribute text, and bindings:
 
 	define category bindings as:
-		Java: prompto.value.Any
+		Java: java.lang.Object
 		C#: prompto.value.Any
 		Python2: Any from module: prompto.value.Any
 		Python3: Any from module: prompto.value.Any
@@ -18,17 +18,16 @@ define Any as native category with attribute text, and bindings:
 
 and methods:
 
-	define text getter doing:
-		return text if text is not nothing else nativeText
-	
-	define nativeText as native method returning Text doing:
+	define text as getter doing:
 		Java: return self.toString();
 		C#: return self.ToString();
 		Python2: return str(self)
 		Python3: return str(self)
 		JavaScript: return self.toString();
 
-define main as method receiving Text{} options doing:
-	c = Any with "John" as text
-	print "text:" + c.text
+define "text member" as test method doing:
+	a = Any
+and verifying:
+	a.text is not nothing
+	
 	

@@ -18,7 +18,7 @@ enumerated category Error(name,text) {
 
 category Immutable(name) {
 
-	method setName(Text value) {
+	method setTheName(Text value) {
 		name = value;
 	}
 }
@@ -26,7 +26,7 @@ category Immutable(name) {
 method main ( Text{} options ) {
 	i = Immutable(name="before");
 	try(error) {
-		i.setName(value="after");
+		i.setTheName(value="after");
 	} catch ( NOT_MUTABLE ) {
 		print (error.text);
 	}

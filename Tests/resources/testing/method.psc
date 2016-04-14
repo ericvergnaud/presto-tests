@@ -5,12 +5,12 @@ def native print(value:Text):
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
-def Smaller(a:Integer, b:Integer):
-	return a < b
+def Smaller(i1:Integer, i2:Integer):
+	return i1 < i2
 
 def test "Method" ():
 	a = 3
 	b = 8
 verifying:
-	Smaller(a = a, b = b)
+	Smaller(i1 = a, i2 = b)
 	

@@ -2,7 +2,7 @@ define name as Text attribute
 
 define Test as category with attribute name, and methods:
 	
-	define name getter doing:
+	define name as getter doing:
 		return "getter:" + other
 	
 	define other as method doing:

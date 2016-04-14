@@ -1,0 +1,22 @@
+define nA as Text attribute 
+define nB as Text attribute
+define nC as Text attribute
+define nD as Text attribute
+
+define Aa as category with attribute nA
+define Bb as Aa with attribute nB
+define Cc as category with attribute nC
+define Dd as Cc with attribute nD
+define Ee as Bb and Dd
+
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define main as method receiving Text{} options doing:
+	e = Ee with "a" as nA, "b" as nB, "c" as nC and "d" as nD
+	print e.nA + e.nB + e.nC + e.nD
+	

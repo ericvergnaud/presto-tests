@@ -16,13 +16,13 @@ define Error as enumerated category with attributes name and text, and symbols:
 
 define Immutable as category with attribute name, and methods:
 
-	define setName as method receiving Text value doing:
+	define setTheName as method receiving Text value doing:
 		name = value
 
 define main as method receiving Text{} options doing:
 	i = Immutable with "before" as name
 	switch on error doing:
-		i.setName "after"
+		i.setTheName "after"
 	when NOT_MUTABLE:
 		print error.text
 

@@ -17,7 +17,7 @@ native method print ( Text value ) {
 
 method main ( Text{} options ) {
 	try(error) {
-		print ("" + 1/0);
+		print ("" + 1\0);
 	} catch ( DIVIDE_BY_ZERO ) {
 		print (error.text);
 	}

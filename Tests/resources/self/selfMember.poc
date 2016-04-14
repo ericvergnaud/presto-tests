@@ -17,6 +17,7 @@ category Entity(name) {
 
 method main ( Text{} options ) {
 	x = Entity ( name = "John");
-	x.printSelf("Not John"); 
+	y = Entity ( name = "Not John");
+	x.printSelf ( y ); 
 }
 	

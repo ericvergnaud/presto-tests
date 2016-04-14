@@ -9,7 +9,7 @@ define checkIsNot as method receiving Text a and Text b doing:
 	return a is not b
 	
 define main as method receiving Text{} options doing:
-	a = "test"
-	b = "test"
+	a = "test1"
+	b = "test2"
 	print "/" + (checkIsNot with a as a and a as b)
 	print "/" + (checkIsNot with a as a and b as b)

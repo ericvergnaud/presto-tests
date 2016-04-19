@@ -1,0 +1,15 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define main as method receiving Text{} options doing:
+	doc = Document
+	doc.values = "values"
+	doc.number = 10
+	blob = Blob from doc
+	doc = Document from blob
+	print "doc.values=" + doc.values + "/doc.number=" + doc.number
+	

@@ -11,8 +11,15 @@ define text as Text attribute
 define Parent as category with attribute name
 define Child as Parent with attribute text
 
+define convertIterator as method receiving Child[] children returning Iterator<Parent> doing:
+	return ( Parent from child ) for each child in children
+
+define filterList as method receiving Child[] children returning Child[] doing:
+	return fetch any child from children where child.name = "a"
+	
 define main as method receiving Text{} options doing:
 	children = [ Child with "a" as name, Child with "b" as name ]
-	converted = ( Parent from c1 ) for each c1 in fetch any c2 from children where c2.name = "a"
+	filtered = filterList with children as children
+	converted = convertIterator with filtered as children
 	for each c3 in converted:
 		print c3.name

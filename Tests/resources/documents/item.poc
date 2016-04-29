@@ -8,7 +8,7 @@ native method print ( Text value ) {
 
 method main ( Text{} options ) {
 	doc = Document();
-	doc.vals = [1,2,3,4,5];
+	doc.vals = mutable [1,2,3,4,5];
 	doc.vals[2] = 10;
 	print ("doc.vals[2]=" + doc.vals[2]);
 }

@@ -8,7 +8,7 @@ define print as native method receiving Text value doing:
 // ok to use Integer with MemStore
 define dbId as Integer attribute 
 
-define name as storable Text attribute 
+define name as storable Text attribute with key, value and words index
 
 define Entity as storable category with attribute name
 

@@ -13,9 +13,9 @@ native method print ( Text value ) {
 
 
 method main ( Text{} options ) {
-	doc = Document()
-	doc.id = "1"
-	doc.name = "John"
+	doc = Document();
+	doc.id = "1";
+	doc.name = "John";
 	e = Entity ( doc); 
 	print ("/id:" + e.id);
 	print ("/name:" + e.name);

@@ -1,0 +1,25 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+// ok to use Integer with MemStore
+define dbId as Integer attribute 
+
+define name as storable Text attribute with key, value and words index
+
+define Child as storable category with attribute name
+define children as storable Child[] attribute 
+
+define Parent as storable category with attributes name and children
+
+define main as method receiving Text{} options doing:
+	e1 = Child with "John" as name
+	e2 = Child with "Jane" as name
+	e3 = Child with "Marion" as name
+	p = Parent with "Parent" as name and [e1, e2, e3] as children
+	store p
+	p = fetch one Parent where name = "Parent"
+	print "/count:" + p.children.length

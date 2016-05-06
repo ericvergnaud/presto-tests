@@ -9,4 +9,5 @@ define "Not condition" as test method doing:
 	a = 3
 and verifying:
 	not ( a = 9 )
+	a = 3
 	

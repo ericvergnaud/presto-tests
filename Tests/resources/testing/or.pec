@@ -10,4 +10,4 @@ define "Or conditions" as test method doing:
 	b = 8
 and verifying:
 	a = 3 or b = 9
-	
+	a = 3

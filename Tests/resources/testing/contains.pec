@@ -10,4 +10,5 @@ define "Contains condition" as test method doing:
 	b = 6
 and verifying:
 	b in a
+	b = 6
 	

@@ -10,4 +10,4 @@ define "Add two numbers" as test method doing:
 	b = 8
 and verifying:
 	a + b = 11 
-	
+	a = 3

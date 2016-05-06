@@ -1,6 +1,6 @@
 define path as Text attribute
 
-define File as native resource with attribute path, and bindings:
+define MyResource as native resource with attribute path, and bindings:
 
 	define category bindings as:
 		Java: prompto.runtime.utils.MyResource
@@ -17,8 +17,8 @@ define print as native method receiving Text value doing:
 	JavaScript: process.stdout.write(value);
 
 define main as method receiving Text{} options doing:
-	with file = File with "xyz" as path, do:
+	with file = MyResource with "xyz7" as path, do:
 		write "writePartialOk" to file
-	s = read from File with "xyz" as path
+	s = read from MyResource with "xyz7" as path
 	print s
 		

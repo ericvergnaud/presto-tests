@@ -1,15 +1,18 @@
-define print as native method receiving Text value doing:
-	Java: System.out.println(value);
-	C#: System.Console.Write(value);
-	Python2: print(objects=value,end="")
-	Python3: print(objects=value,end="")
-	JavaScript: process.stdout.write(value);
+define name as storable Text attribute
+define countryCode as storable Text attribute
+define Country as storable category with attributes name and countryCode
+define country as storable Country attribute
+define marketCode as storable Text attribute
+define Market as storable category with attributes name, country and marketCode
 
-define mainWithCmdLine as method receiving Text{} options doing:
-	for each o in options:
-		print "key:" + o.key
-		print "value:" + o.value
-
-define mainNoCmdLine as method doing:
-	print "Hello, this is main with no arguments"
+define main as method receiving Text{} options doing:
+	doc1 = Document
+	doc1.marketCode = "ABCD"
+	doc1.name = "MARKET"
+	docs = [doc1]
+	for each doc in docs:
+		country = fetch one Country where countryCode = doc.countryCode
+		market = Market from doc with country as country
+		previous = fetch one Market where marketCode = market.marketCode
+		delete previous and store market
 

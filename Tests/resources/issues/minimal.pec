@@ -12,7 +12,7 @@ define main as method receiving Text{} options doing:
 	docs = [doc1]
 	for each doc in docs:
 		country = fetch one Country where countryCode = doc.countryCode
-		market = Market from doc with country as country
+		market = Market from doc, with country as country
 		previous = fetch one Market where marketCode = market.marketCode
 		delete previous and store market
 

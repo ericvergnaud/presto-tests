@@ -1,0 +1,19 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define name as storable Text attribute with key, value and words index
+define aliases as storable Text[] attribute with key, value and words index
+
+define Entity as storable category with attributes name and aliases
+
+define main as method receiving Text{} options doing:
+	e1 = Entity with "John" as name and ["Jo", "Jim"] as aliases
+	e2 = Entity with "Jane" as name
+	e3 = Entity with "Marion" as name and ["Mo"] as aliases
+	store e1, e2, e3
+	es = fetch all Entity where aliases contains "Jim"
+	print "/count:" + es.length

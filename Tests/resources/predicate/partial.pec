@@ -7,7 +7,7 @@ define print as native method receiving Text value doing:
 
 define name as storable Text attribute with key, value and words index
 
-define Entity as storable category with attributes name
+define Entity as storable category with attribute name
 
 define main as method receiving Text{} options doing:
 	e1 = Entity with "John" as name

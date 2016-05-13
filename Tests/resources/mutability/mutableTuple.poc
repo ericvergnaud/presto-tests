@@ -9,6 +9,6 @@ native method print ( Text value ) {
 method main ( Text{} options ) {
 	list = mutable ( "before", );
 	list[1] = "after";
-	print(list[1] as Text);
+	print((Text)list[1]);
 }
 

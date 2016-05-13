@@ -1,0 +1,14 @@
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+method main ( Text{} options ) {
+	list = mutable ( "before", );
+	list[1] = "after";
+	print(list[1] as Text);
+}
+

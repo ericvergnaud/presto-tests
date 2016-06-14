@@ -7,6 +7,6 @@ native method print ( Text value ) {
 }
 
 method main ( Text{} options ) {
-	u = '11223344-AABB-CCDD-EEFF-112233445566';
+	u = '11223344-aabb-ccdd-eeff-112233445566';
 	print ("" + u);
 }

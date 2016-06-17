@@ -8,5 +8,5 @@ native method print ( Text value ) {
 
 method main ( Text{} options ) {
 	print ("/" + ( 24 \ 6 ));
-	print ("/" + ( 14 \ 4 ));
+	print ("/" + ( 14.5 \ 4 ));
 }

@@ -7,4 +7,4 @@ define print as native method receiving Text value doing:
 
 define main as method receiving Text{} options doing:
 	print "/" + ( 24 \ 6 )
-	print "/" + ( 14 \ 4 )
+	print "/" + ( 14.5 \ 4 )

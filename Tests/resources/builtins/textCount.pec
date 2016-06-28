@@ -7,5 +7,5 @@ define print as native method receiving Text value doing:
 
 define main as method receiving Text{} options doing:
 	s = "John"
-	print "length=" + s.length
+	print "count=" + s.count
 	

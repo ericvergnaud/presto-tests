@@ -8,6 +8,6 @@ native method print ( Text value ) {
 
 method main ( Text{} options ) {
 	s = { "x":1 , "y":2 };
-	print ( "length=" + s.length );
+	print ( "count=" + s.count );
 }
 	

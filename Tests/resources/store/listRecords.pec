@@ -22,4 +22,4 @@ define main as method receiving Text{} options doing:
 	p = Parent with "Parent" as name and [e1, e2, e3] as children
 	store p
 	p = fetch one Parent where name = "Parent"
-	print "/count:" + p.children.length
+	print "/count:" + p.children.count

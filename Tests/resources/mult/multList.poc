@@ -8,5 +8,5 @@ native method print ( Text value ) {
 
 method main ( Text{} options ) {
 	list = (["a"] * 4);
-	print ("length=" + list.length);
+	print ("count=" + list.count);
 }

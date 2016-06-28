@@ -15,4 +15,4 @@ define main as method receiving Text{} options doing:
 	e3 = Entity with "Marion" as name
 	store e1, e2, e3
 	es = fetch all Entity where name < "John"
-	print "/count:" + es.length
+	print "/count:" + es.count

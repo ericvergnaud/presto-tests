@@ -16,4 +16,4 @@ define main as method receiving Text{} options doing:
 	e3 = Entity with "Marion" as name and ["Mo"] as aliases
 	store e1, e2, e3
 	es = fetch all Entity where aliases contains "Jim"
-	print "/count:" + es.length
+	print "/count:" + es.count

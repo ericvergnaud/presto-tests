@@ -12,6 +12,6 @@ define testCode as method receiving Code code doing:
 	print s
 
 define main as method receiving Text{} options doing:
-	c = 1
-	testCode with Code: a + b as code
+	c = Code: a + b
+	testCode with c as code
 	

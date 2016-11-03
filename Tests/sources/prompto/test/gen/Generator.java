@@ -55,7 +55,7 @@ public abstract class Generator {
 	
 	private void generate(Options options) throws Exception {
 		generate(readResourcesPath(), this::generateRuntimeTests, options,
-				"resourceError", "issues", "debug", "comment", "unexpected", "return", "dateTimeTZOffset", "dateTimeTZName", "deleteRecords");
+				"resourceError", "issues", "debug", "comment", "unexpected", "return", "dateTimeTZOffset", "dateTimeTZName");
 		generate(readResourcesPath(), this::generateTranslateTests, options);
 		generate(readLibrariesPath(), this::generateLibraryTests, options, "concat");
 	}

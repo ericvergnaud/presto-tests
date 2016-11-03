@@ -4,9 +4,9 @@ define Entity as storable category with attribute name
 define main as method receiving Text{} options doing:
 	e1 = Entity with "John" as name
 	e2 = Entity with "Jane" as name
-	e3 = Entity with "Marion" as name
-	store e1
 	store e1, e2
-	delete e1
-	delete e1, e2
+	e3 = Entity with "Marion" as name
 	delete e1 and store e3
+	delete e2
+	es = fetch all Entity
+	print "/count:" + es.count

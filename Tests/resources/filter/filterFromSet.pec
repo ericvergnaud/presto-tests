@@ -7,5 +7,5 @@ define print as native method receiving Text value doing:
 
 define main as method receiving Text{} options doing:
 	set = < 1, 2, 3, 4, 5, 6 >
-	even_nums = filtered set with item where item % 2 = 0
+	even_nums = set filtered with item where item % 2 = 0
 	print "" + even_nums

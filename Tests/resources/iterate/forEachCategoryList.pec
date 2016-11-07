@@ -15,7 +15,7 @@ define convertIterator as method receiving Child[] children returning Iterator<P
 	return ( Parent from child ) for each child in children
 
 define filterList as method receiving Child[] children returning Child[] doing:
-	return fetch any child from children where child.name = "a"
+	return filtered children with child where child.name = "a"
 	
 define main as method receiving Text{} options doing:
 	children = [ Child with "a" as name, Child with "b" as name ]

@@ -19,7 +19,7 @@ define filterList as method receiving Child[] children returning Child[] doing:
 	
 define main as method receiving Text{} options doing:
 	children = [ Child with "a" as name, Child with "b" as name ]
-	filtered = filterList with children as children
-	converted = convertIterator with filtered as children
+	filtered_children = filterList with children as children
+	converted = convertIterator with filtered_children as children
 	for each c3 in converted:
 		print c3.name

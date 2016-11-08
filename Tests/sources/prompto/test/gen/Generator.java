@@ -21,15 +21,37 @@ public abstract class Generator {
 
 	public static void main(String[] args) throws Exception {
 		Options options = parseCmdLine(args);
-		List<Generator> generators = buildGenerators();
+		options = adjustToContext(options);
+		List<Generator> generators = buildGenerators(options);
 		for(Generator g : generators)
 			g.generate(options);
 	}
 
+	private static Options adjustToContext(Options options) {
+		String path = readPromptoPath();
+		if(path.endsWith("/prompto/"))
+			return options;
+		// if running as git submodule, only generate tests for the parent git project
+		options.java = false;
+		options.csharp = false;
+		options.python2 = false;
+		options.python3 = false;
+		options.javascript = false;
+		if(path.endsWith("/prompto-java/"))
+			options.java = true;
+		else if(path.endsWith("/prompto-csharp/"))
+			options.csharp = true;
+		else if(path.endsWith("/prompto-python2/"))
+			options.python2 = true;
+		else if(path.endsWith("/prompto-python3/"))
+			options.python3 = true;
+		else if(path.endsWith("/prompto-javascript/"))
+			options.javascript = true;
+		return options;
+	}
+
 	private static Options parseCmdLine(String[] args) {
 		Options o = new Options();
-		o.interpreted = true;
-		o.compiled = true;
 		for(String arg : args) {
 			if("compiledOnly".equals(arg))
 				o.interpreted = false;
@@ -39,14 +61,60 @@ public abstract class Generator {
 		return o;
 	}
 
-	private static List<Generator> buildGenerators() {
+	private static List<Generator> buildGenerators(Options options) {
 		List<Generator> list = new ArrayList<Generator>();
-		list.add(new JavaGenerator());
-		list.add(new CSharpGenerator());
-		list.add(new Python2Generator());
-		list.add(new Python3Generator());
-		list.add(new JavaScriptGenerator());
+		if(options.java)
+			list.add(new JavaGenerator());
+		if(options.csharp)
+			list.add(new CSharpGenerator());
+		if(options.python2)
+			list.add(new Python2Generator());
+		if(options.python3)
+			list.add(new Python3Generator());
+		if(options.javascript)
+			list.add(new JavaScriptGenerator());
 		return list;
+	}
+
+	protected static String readResourcesPath() {
+		ClassLoader loader = Thread.currentThread().getContextClassLoader();
+		String thisPath = loader.getResource("").getFile();
+		return thisPath.substring(0, thisPath.lastIndexOf("/target/")) + "/resources/";
+	}
+	
+	protected static String readPromptoPath() {
+		String testsPath = readResourcesPath();
+		return testsPath.substring(0, testsPath.lastIndexOf("/prompto-tests/")) + "/";
+	}
+
+	protected static String readLibrariesPath() {
+		String promptoPath = readPromptoPath();
+		return promptoPath + "prompto-libraries/";
+	}
+
+	protected static String capitalize(String s) {
+		return s.substring(0,1).toUpperCase() + s.substring(1);
+	}
+
+	protected static OutputStreamWriter mkfile(String filePath) throws IOException {
+		// filePath is relative to Prompto
+		String promptoPath = readPromptoPath();
+		// when running as a git submodule, adjust the path accordingly
+		String fullPath = checkPathForSubmodule(promptoPath,filePath);
+		String parentPath = fullPath.substring(0, fullPath.lastIndexOf("/"));
+		File file = new File(parentPath);
+		file.mkdirs();
+		return new OutputStreamWriter(new FileOutputStream(fullPath));
+	}
+
+	private static String checkPathForSubmodule(String parentPath, String filePath) {
+		// if parentPath ends with file parent, then skip file parent
+		String[] parentParts = parentPath.split("/");
+		String[] fileParts = filePath.split("/");
+		if(parentParts[parentParts.length-1].equals(fileParts[0]))
+			return parentPath + filePath.substring(fileParts[0].length() + 1);
+		else
+			return parentPath + filePath;
 	}
 
 	static interface FileGenerator {
@@ -217,34 +285,6 @@ public abstract class Generator {
 	}
 
 
-	protected String readResourcesPath() {
-		ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		String thisPath = loader.getResource("").getFile();
-		return thisPath.substring(0, thisPath.lastIndexOf("/target/")) + "/resources/";
-	}
-	
-	protected String readPromptoPath() {
-		String testsPath = readResourcesPath();
-		return testsPath.substring(0, testsPath.lastIndexOf("/prompto-tests/")) + "/";
-	}
-
-	protected String readLibrariesPath() {
-		String promptoPath = readPromptoPath();
-		return promptoPath + "prompto-libraries/";
-	}
-
-	protected String capitalize(String s) {
-		return s.substring(0,1).toUpperCase() + s.substring(1);
-	}
-
-	protected OutputStreamWriter mkfile(String filePath) throws IOException {
-		// filePath is relative to Presto
-		String fullPath = readPromptoPath() + filePath;
-		String parentPath = fullPath.substring(0, fullPath.lastIndexOf("/"));
-		File file = new File(parentPath);
-		file.mkdirs();
-		return new OutputStreamWriter(new FileOutputStream(fullPath));
-	}
 
 
 }

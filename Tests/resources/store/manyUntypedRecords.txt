@@ -1,0 +1,4 @@
+/e:{name:John, preferredColor:blue}/e:{name:Jane, preferredColor:blue}
+/e:{name:Jane, preferredColor:blue}/e:{name:John, preferredColor:blue}
+/e:{preferredColor:blue, name:John}/e:{preferredColor:blue, name:Jane}
+/e:{preferredColor:blue, name:Jane}/e:{preferredColor:blue, name:John}

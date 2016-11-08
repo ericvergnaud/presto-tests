@@ -1,0 +1,23 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+// ok to use Integer with MemStore
+define dbId as Integer attribute 
+
+define name as storable Text attribute with index
+define preferredColor as storable Text attribute with index
+
+define Entity as storable category with attributes name and preferredColor
+
+define main as method receiving Text{} options doing:
+	e1 = Entity with "John" as name and "blue" as preferredColor
+	e2 = Entity with "Jane" as name and "blue" as preferredColor
+	e3 = Entity with "Alex" as name and "red" as preferredColor
+	store e1, e2, e3
+	c = fetch all where preferredColor = "blue"
+	for each e in c:
+		print "/e:" + e

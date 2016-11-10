@@ -14,4 +14,4 @@ define Child as Root
 define main as method receiving Text{} options doing:
     c = Child with "ok" as name
     r = c as Root
-    print r.name
+    print "/root:" + r.name

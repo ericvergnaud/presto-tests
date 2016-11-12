@@ -22,6 +22,6 @@ define main as method doing:
     s = Square with 40.0 as perimeter
     c = Circle with 40.0 as perimeter
     shapes = [ s, c ]
-    for each s in shapes:
-        printShape with s as shape
+    for each ss in shapes:
+        printShape with ss as shape
 

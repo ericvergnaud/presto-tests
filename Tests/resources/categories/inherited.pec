@@ -1,0 +1,20 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define perimeter as Decimal attribute
+define Shape as category with attribute perimeter
+define Square as Shape
+
+define printShape as abstract method receiving Shape shape
+define printShape as method receiving Square shape doing:
+    print "Square side is " + (perimeter / 4)
+
+define main as method receiving Text{} options doing:
+    s = Square with 40.0 as perimeter
+    shapes = [ s as Shape ]
+    for each ss in shapes:
+        printShape with ss as shape

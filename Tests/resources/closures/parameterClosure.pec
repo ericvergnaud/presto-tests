@@ -14,4 +14,4 @@ define displayScreen as method receiving Text value doing:
     print value
 
 define main as method doing:
-    someMethod with "Hello" as value and displayScreen as displayMethod
+    someMethod with "Hello" as value and Method: displayScreen as displayMethod

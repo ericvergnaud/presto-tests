@@ -18,7 +18,8 @@ define main as method receiving Text{} options doing:
 	e3 = Entity with "Marion" as name
 	e4 = Entity with "Carmen" as name
 	store e1, e2, e3, e4
-	print "/names:"
 	es = fetch Entity 2 to 3 order by name
 	for each e in es:
-		print e.name + "/"
+		print "/" + e.name
+	print "/" + es.count
+	print "/" + es.totalCount

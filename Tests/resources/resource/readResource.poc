@@ -22,6 +22,6 @@ native method print ( Text value ) {
 }
 
 method main ( Text{} options ) {
-	s = read from MyResource (path = "xyz2", content = "readFullyOk" ); 
+	s = read all from MyResource (path = "xyz2", content = "readFullyOk" ); 
 	print (s);
 }

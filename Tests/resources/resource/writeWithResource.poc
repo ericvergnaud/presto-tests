@@ -22,7 +22,7 @@ native method print ( Text value ) {
 method main ( Text{} options ) {
 	with ( file = MyResource ( path = "xyz8" ) )
 		write ( "writePartialOk") to file;
-	s = read from MyResource ( path = "xyz8" );
+	s = read all from MyResource ( path = "xyz8" );
 	print (s);
 }
 		

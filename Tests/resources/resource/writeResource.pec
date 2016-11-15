@@ -19,5 +19,5 @@ define print as native method receiving Text value doing:
 define main as method receiving Text{} options doing:
 	s = "writeFullyOk"
 	write s to MyResource with "xyz5" as path
-	s = read from MyResource with "xyz5" as path
+	s = read all from MyResource with "xyz5" as path
 	print s	

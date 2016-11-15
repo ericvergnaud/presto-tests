@@ -3,5 +3,5 @@ attribute name: Text;
 category Entity (name);
 	
 method main ( Text{} options ) {
-	s = read from Entity (name="test");
+	s = read all from Entity (name="test");
 } 

@@ -55,9 +55,9 @@ public class JavaGenerator extends Generator {
 	protected void addToTranslateEME(String dirName, String fileName) throws IOException {
 		if(translateEME==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = CORE_ROOT + "prompto/translate/ese/Test" + capDirName + ".java";
+			String testFilePath = CORE_ROOT + "prompto/translate/eme/Test" + capDirName + ".java";
 			translateEME = mkfile(testFilePath);
-			beginTranslate(translateEME, capDirName, "E", "EME");
+			beginTranslate(translateEME, capDirName, "E", "eme");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
@@ -81,9 +81,9 @@ public class JavaGenerator extends Generator {
 	protected void addToTranslateOMO(String dirName, String fileName) throws IOException {
 		if(translateOMO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = CORE_ROOT + "prompto/translate/oso/Test" + capDirName + ".java";
+			String testFilePath = CORE_ROOT + "prompto/translate/omo/Test" + capDirName + ".java";
 			translateOMO = mkfile(testFilePath);
-			beginTranslate(translateOMO, capDirName, "O", "OMO");
+			beginTranslate(translateOMO, capDirName, "O", "omo");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
@@ -181,7 +181,7 @@ public class JavaGenerator extends Generator {
 	protected void addToRuntimeM(String dirName, String fileName, Options options) throws IOException {
 		if(runtimeM==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = CORE_ROOT + "prompto/runtime/s/Test" + capDirName + ".java";
+			String testFilePath = CORE_ROOT + "prompto/runtime/m/Test" + capDirName + ".java";
 			runtimeM = mkfile(testFilePath);
 			beginRuntime(runtimeM, capDirName, "M");
 		}
@@ -279,7 +279,7 @@ public class JavaGenerator extends Generator {
 	protected void addToLibraryM(String dirName, String fileName) throws Exception {
 		if(libraryM==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = LIB_ROOT + "prompto/library/s/Test" + capDirName + ".java";
+			String testFilePath = LIB_ROOT + "prompto/library/m/Test" + capDirName + ".java";
 			libraryM = mkfile(testFilePath);
 			beginLibrary(libraryM, capDirName, "M");
 		}

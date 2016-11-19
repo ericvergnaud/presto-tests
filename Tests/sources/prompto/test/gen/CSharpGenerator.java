@@ -56,9 +56,9 @@ public class CSharpGenerator extends Generator {
 	protected void addToTranslateEME(String dirName, String fileName) throws IOException {
 		if(translateEME==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "prompto/translate/ese/Test" + capDirName + ".cs";
+			String testFilePath = ROOT + "prompto/translate/eme/Test" + capDirName + ".cs";
 			translateEME = mkfile(testFilePath);
-			beginTranslate(translateEME, capDirName, "E", "EME");
+			beginTranslate(translateEME, capDirName, "E", "eme");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
@@ -82,9 +82,9 @@ public class CSharpGenerator extends Generator {
 	protected void addToTranslateOMO(String dirName, String fileName) throws IOException {
 		if(translateOMO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "prompto/translate/oso/Test" + capDirName + ".cs";
+			String testFilePath = ROOT + "prompto/translate/omo/Test" + capDirName + ".cs";
 			translateOMO = mkfile(testFilePath);
-			beginTranslate(translateOMO, capDirName, "O", "OMO");
+			beginTranslate(translateOMO, capDirName, "O", "omo");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
@@ -193,7 +193,7 @@ public class CSharpGenerator extends Generator {
 	protected void addToRuntimeM(String dirName, String fileName, Options options) throws IOException {
 		if(runtimeM==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "prompto/runtime/s/Test" + capDirName + ".cs";
+			String testFilePath = ROOT + "prompto/runtime/m/Test" + capDirName + ".cs";
 			runtimeM = mkfile(testFilePath);
 			beginRuntime(runtimeM, capDirName, "M");
 		}
@@ -270,7 +270,7 @@ public class CSharpGenerator extends Generator {
 	protected void addToLibraryM(String dirName, String fileName) throws IOException {
 		if(libraryM==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = ROOT + "prompto/library/s/Test" + capDirName + ".cs";
+			String testFilePath = ROOT + "prompto/library/m/Test" + capDirName + ".cs";
 			libraryM = mkfile(testFilePath);
 			beginLibrary(libraryM, capDirName, "M");
 		}

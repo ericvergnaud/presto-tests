@@ -54,7 +54,7 @@ public abstract class PythonGenerator extends Generator {
 	protected void addToTranslateEME(String dirName, String fileName) throws IOException {
 		if(translateEME==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = getCoreRoot() + "prompto/translate/ese/Test" + capDirName + ".py";
+			String testFilePath = getCoreRoot() + "prompto/translate/eme/Test" + capDirName + ".py";
 			translateEME = mkfile(testFilePath);
 			beginTranslate(translateEME, "E", capDirName);
 		}
@@ -80,7 +80,7 @@ public abstract class PythonGenerator extends Generator {
 	protected void addToTranslateOMO(String dirName, String fileName) throws IOException {
 		if(translateOMO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = getCoreRoot() + "prompto/translate/oso/Test" + capDirName + ".py";
+			String testFilePath = getCoreRoot() + "prompto/translate/omo/Test" + capDirName + ".py";
 			translateOMO = mkfile(testFilePath);
 			beginTranslate(translateOMO, "O", capDirName);
 		}
@@ -171,7 +171,7 @@ public abstract class PythonGenerator extends Generator {
 	protected void addToRuntimeM(String dirName, String fileName, Options options) throws IOException {
 		if(runtimeM==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = getCoreRoot() + "prompto/runtime/s/Test" + capDirName + ".py";
+			String testFilePath = getCoreRoot() + "prompto/runtime/m/Test" + capDirName + ".py";
 			runtimeM = mkfile(testFilePath);
 			beginRuntime(runtimeM, "M", capDirName);
 		}
@@ -254,7 +254,7 @@ public abstract class PythonGenerator extends Generator {
 	protected void addToLibraryM(String dirName, String fileName) throws IOException {
 		if(libraryM==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = getLibraryRoot() + "s/Test" + capDirName + ".py";
+			String testFilePath = getLibraryRoot() + "m/Test" + capDirName + ".py";
 			libraryM = mkfile(testFilePath);
 			beginLibrary(libraryM, "M", capDirName);
 		}

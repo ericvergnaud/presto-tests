@@ -57,7 +57,7 @@ public class JavaScriptGenerator extends Generator {
 	protected void addToTranslateEME(String dirName, String fileName) throws IOException {
 		if(translateEME==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = CORE_ROOT + "prompto/translate/ese/Test" + capDirName + ".js";
+			String testFilePath = CORE_ROOT + "prompto/translate/eme/Test" + capDirName + ".js";
 			translateEME = mkfile(testFilePath);
 			beginTranslate(translateEME, "EME");
 		}
@@ -83,7 +83,7 @@ public class JavaScriptGenerator extends Generator {
 	protected void addToTranslateOMO(String dirName, String fileName) throws IOException {
 		if(translateOMO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = CORE_ROOT + "prompto/translate/oso/Test" + capDirName + ".js";
+			String testFilePath = CORE_ROOT + "prompto/translate/omo/Test" + capDirName + ".js";
 			translateOMO = mkfile(testFilePath);
 			beginTranslate(translateOMO, "OMO");
 		}
@@ -166,7 +166,7 @@ public class JavaScriptGenerator extends Generator {
 	protected void addToRuntimeM(String dirName, String fileName, Options options) throws IOException {
 		if(runtimeM==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = CORE_ROOT + "prompto/runtime/s/Test" + capDirName + ".js";
+			String testFilePath = CORE_ROOT + "prompto/runtime/m/Test" + capDirName + ".js";
 			runtimeM = mkfile(testFilePath);
 			beginRuntime(runtimeM, "M", capDirName);
 		}
@@ -242,7 +242,7 @@ public class JavaScriptGenerator extends Generator {
 	protected void addToLibraryM(String dirName, String fileName) throws IOException {
 		if(libraryM==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = LIB_ROOT + "library/s/Test" + capDirName + ".js";
+			String testFilePath = LIB_ROOT + "library/m/Test" + capDirName + ".js";
 			libraryM = mkfile(testFilePath);
 			beginLibrary(libraryM, "M", capDirName);
 		}

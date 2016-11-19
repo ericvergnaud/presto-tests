@@ -20,22 +20,22 @@ public class CSharpGenerator extends Generator {
 			endLibrary(libraryE);
 		if(libraryO!=null)
 			endLibrary(libraryO);
-		if(libraryS!=null)
-			endLibrary(libraryS);
+		if(libraryM!=null)
+			endLibrary(libraryM);
 		if(runtimeE!=null)
 			endRuntime(runtimeE);
 		if(runtimeO!=null)
 			endRuntime(runtimeO);
-		if(runtimeS!=null)
-			endRuntime(runtimeS);
+		if(runtimeM!=null)
+			endRuntime(runtimeM);
 		if(translateEOE!=null)
 			endTranslate(translateEOE);
-		if(translateESE!=null)
-			endTranslate(translateESE);
+		if(translateEME!=null)
+			endTranslate(translateEME);
 		if(translateOEO!=null)
 			endTranslate(translateOEO);
-		if(translateOSO!=null)
-			endTranslate(translateOSO);
+		if(translateOMO!=null)
+			endTranslate(translateOMO);
 		closeAll();
 	}
 
@@ -53,16 +53,16 @@ public class CSharpGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToTranslateESE(String dirName, String fileName) throws IOException {
-		if(translateESE==null) {
+	protected void addToTranslateEME(String dirName, String fileName) throws IOException {
+		if(translateEME==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = ROOT + "prompto/translate/ese/Test" + capDirName + ".cs";
-			translateESE = mkfile(testFilePath);
-			beginTranslate(translateESE, capDirName, "E", "ese");
+			translateEME = mkfile(testFilePath);
+			beginTranslate(translateEME, capDirName, "E", "EME");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToTranslate(translateESE, "ESE", capFileName, dirName, fileName);
+		addToTranslate(translateEME, "EME", capFileName, dirName, fileName);
 	}
 	
 	@Override
@@ -79,26 +79,26 @@ public class CSharpGenerator extends Generator {
 	}
 	
 	@Override
-	protected void addToTranslateOSO(String dirName, String fileName) throws IOException {
-		if(translateOSO==null) {
+	protected void addToTranslateOMO(String dirName, String fileName) throws IOException {
+		if(translateOMO==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = ROOT + "prompto/translate/oso/Test" + capDirName + ".cs";
-			translateOSO = mkfile(testFilePath);
-			beginTranslate(translateOSO, capDirName, "O", "oso");
+			translateOMO = mkfile(testFilePath);
+			beginTranslate(translateOMO, capDirName, "O", "OMO");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToTranslate(translateOSO, "OSO", capFileName, dirName, fileName);
+		addToTranslate(translateOMO, "OMO", capFileName, dirName, fileName);
 	}
 
 	@Override
-	protected void addToTranslateSES(String dirName, String fileName) {
+	protected void addToTranslateMEM(String dirName, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	protected void addToTranslateSOS(String dirName, String fileName) {
+	protected void addToTranslateMOM(String dirName, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -190,16 +190,16 @@ public class CSharpGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToRuntimeS(String dirName, String fileName, Options options) throws IOException {
-		if(runtimeS==null) {
+	protected void addToRuntimeM(String dirName, String fileName, Options options) throws IOException {
+		if(runtimeM==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = ROOT + "prompto/runtime/s/Test" + capDirName + ".cs";
-			runtimeS = mkfile(testFilePath);
-			beginRuntime(runtimeS, capDirName, "S");
+			runtimeM = mkfile(testFilePath);
+			beginRuntime(runtimeM, capDirName, "M");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToRuntime(runtimeS, capFileName, dirName, fileName);
+		addToRuntime(runtimeM, capFileName, dirName, fileName);
 	}
 
 	private void beginRuntime(OutputStreamWriter writer, String dirName, String dialect) throws IOException {
@@ -267,16 +267,16 @@ public class CSharpGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToLibraryS(String dirName, String fileName) throws IOException {
-		if(libraryS==null) {
+	protected void addToLibraryM(String dirName, String fileName) throws IOException {
+		if(libraryM==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = ROOT + "prompto/library/s/Test" + capDirName + ".cs";
-			libraryS = mkfile(testFilePath);
-			beginLibrary(libraryS, capDirName, "S");
+			libraryM = mkfile(testFilePath);
+			beginLibrary(libraryM, capDirName, "M");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToLibrary(libraryS, capFileName, dirName, fileName);
+		addToLibrary(libraryM, capFileName, dirName, fileName);
 	}
 
 	private void beginLibrary(OutputStreamWriter writer, String dirName, String dialect) throws IOException {

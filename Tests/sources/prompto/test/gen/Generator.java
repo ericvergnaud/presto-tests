@@ -145,7 +145,7 @@ public abstract class Generator {
 				@Override public boolean accept(File dir, String name) {
 					return name.endsWith(".pec")
 							|| name.endsWith(".poc")
-							|| name.endsWith(".psc");
+							|| name.endsWith(".pmc");
 				}
 			});
 			for(String fileName : fileNames) {
@@ -176,8 +176,8 @@ public abstract class Generator {
 			addToLibraryE(dirName, fileName);
 		} else if(fileName.endsWith(".poc")) {
 			addToLibraryO(dirName, fileName);
-		} else if(fileName.endsWith(".psc")) {
-			addToLibraryS(dirName, fileName);
+		} else if(fileName.endsWith(".pmc")) {
+			addToLibraryM(dirName, fileName);
 		}
 	}
 
@@ -186,51 +186,51 @@ public abstract class Generator {
 			addToRuntimeE(dirName, fileName, options);
 		} else if(fileName.endsWith(".poc")) {
 			addToRuntimeO(dirName, fileName, options);
-		} else if(fileName.endsWith(".psc")) {
-			addToRuntimeS(dirName, fileName, options);
+		} else if(fileName.endsWith(".pmc")) {
+			addToRuntimeM(dirName, fileName, options);
 		}
 	}
 	
 	private void generateTranslateTests(String dirName, String fileName, Options options) throws Exception {
 		if(fileName.endsWith(".pec")) {
 			addToTranslateEOE(dirName, fileName);
-			addToTranslateESE(dirName, fileName);
+			addToTranslateEME(dirName, fileName);
 		} else if(fileName.endsWith(".poc")) {
 			addToTranslateOEO(dirName, fileName);
-			addToTranslateOSO(dirName, fileName);
-		} else if(fileName.endsWith(".psc")) {
-			addToTranslateSES(dirName, fileName);
-			addToTranslateSOS(dirName, fileName);
+			addToTranslateOMO(dirName, fileName);
+		} else if(fileName.endsWith(".pmc")) {
+			addToTranslateMEM(dirName, fileName);
+			addToTranslateMOM(dirName, fileName);
 		}
 	}
 	
 	protected abstract void enterSubdir(File subDir) throws Exception;
 	protected abstract void exitSubdir(File subDir) throws Exception;
 	protected abstract void addToTranslateEOE(String dirName, String fileName) throws Exception;
-	protected abstract void addToTranslateESE(String dirName, String fileName) throws Exception;
+	protected abstract void addToTranslateEME(String dirName, String fileName) throws Exception;
 	protected abstract void addToTranslateOEO(String dirName, String fileName) throws Exception;
-	protected abstract void addToTranslateOSO(String dirName, String fileName) throws Exception;
-	protected abstract void addToTranslateSES(String dirName, String fileName) throws Exception;
-	protected abstract void addToTranslateSOS(String dirName, String fileName) throws Exception;
+	protected abstract void addToTranslateOMO(String dirName, String fileName) throws Exception;
+	protected abstract void addToTranslateMEM(String dirName, String fileName) throws Exception;
+	protected abstract void addToTranslateMOM(String dirName, String fileName) throws Exception;
 	protected abstract void addToRuntimeE(String dirName, String fileName, Options options) throws Exception;
 	protected abstract void addToRuntimeO(String dirName, String fileName, Options options) throws Exception;
-	protected abstract void addToRuntimeS(String dirName, String fileName, Options options) throws Exception;
+	protected abstract void addToRuntimeM(String dirName, String fileName, Options options) throws Exception;
 	protected abstract void addToLibraryE(String dirName, String fileName) throws Exception;
 	protected abstract void addToLibraryO(String dirName, String fileName) throws Exception;
-	protected abstract void addToLibraryS(String dirName, String fileName) throws Exception;
+	protected abstract void addToLibraryM(String dirName, String fileName) throws Exception;
 
 	OutputStreamWriter translateEOE;
-	OutputStreamWriter translateESE;
+	OutputStreamWriter translateEME;
 	OutputStreamWriter translateOEO;
-	OutputStreamWriter translateOSO;
-	OutputStreamWriter translateSES;
-	OutputStreamWriter translateSOS;
+	OutputStreamWriter translateOMO;
+	OutputStreamWriter translateMEM;
+	OutputStreamWriter translateMOM;
 	OutputStreamWriter runtimeE;
 	OutputStreamWriter runtimeO;
-	OutputStreamWriter runtimeS;
+	OutputStreamWriter runtimeM;
 	OutputStreamWriter libraryE;
 	OutputStreamWriter libraryO;
-	OutputStreamWriter libraryS;
+	OutputStreamWriter libraryM;
 	List<String> dependencies; // of library projects
 	
 	protected void closeAll() throws IOException {
@@ -238,25 +238,25 @@ public abstract class Generator {
 			translateEOE.close();
 			translateEOE = null;
 		}
-		if(translateESE!=null) {
-			translateESE.close();
-			translateESE = null;
+		if(translateEME!=null) {
+			translateEME.close();
+			translateEME = null;
 		}
 		if(translateOEO!=null) {
 			translateOEO.close();
 			translateOEO = null;
 		}
-		if(translateOSO!=null) {
-			translateOSO.close();
-			translateOSO = null;
+		if(translateOMO!=null) {
+			translateOMO.close();
+			translateOMO = null;
 		}
-		if(translateSES!=null) {
-			translateSES.close();
-			translateSES = null;
+		if(translateMEM!=null) {
+			translateMEM.close();
+			translateMEM = null;
 		}
-		if(translateSOS!=null) {
-			translateSOS.close();
-			translateSOS = null;
+		if(translateMOM!=null) {
+			translateMOM.close();
+			translateMOM = null;
 		}
 		if(runtimeE!=null) {
 			runtimeE.close();
@@ -266,9 +266,9 @@ public abstract class Generator {
 			runtimeO.close();
 			runtimeO = null;
 		}
-		if(runtimeS!=null) {
-			runtimeS.close();
-			runtimeS = null;
+		if(runtimeM!=null) {
+			runtimeM.close();
+			runtimeM = null;
 		}
 		if(libraryE!=null) {
 			libraryE.close();
@@ -278,9 +278,9 @@ public abstract class Generator {
 			libraryO.close();
 			libraryO = null;
 		}
-		if(libraryS!=null) {
-			libraryS.close();
-			libraryS = null;
+		if(libraryM!=null) {
+			libraryM.close();
+			libraryM = null;
 		}
 	}
 

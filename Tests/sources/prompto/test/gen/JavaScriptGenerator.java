@@ -21,22 +21,22 @@ public class JavaScriptGenerator extends Generator {
 			endLibrary(libraryE);
 		if(libraryO!=null)
 			endLibrary(libraryO);
-		if(libraryS!=null)
-			endLibrary(libraryS);
+		if(libraryM!=null)
+			endLibrary(libraryM);
 		if(runtimeE!=null)
 			endRuntime(runtimeE);
 		if(runtimeO!=null)
 			endRuntime(runtimeO);
-		if(runtimeS!=null)
-			endRuntime(runtimeS);
+		if(runtimeM!=null)
+			endRuntime(runtimeM);
 		if(translateEOE!=null)
 			endTranslate(translateEOE);
-		if(translateESE!=null)
-			endTranslate(translateESE);
+		if(translateEME!=null)
+			endTranslate(translateEME);
 		if(translateOEO!=null)
 			endTranslate(translateOEO);
-		if(translateOSO!=null)
-			endTranslate(translateOSO);
+		if(translateOMO!=null)
+			endTranslate(translateOMO);
 		closeAll();
 	}
 
@@ -54,16 +54,16 @@ public class JavaScriptGenerator extends Generator {
 	}
 	
 	@Override
-	protected void addToTranslateESE(String dirName, String fileName) throws IOException {
-		if(translateESE==null) {
+	protected void addToTranslateEME(String dirName, String fileName) throws IOException {
+		if(translateEME==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = CORE_ROOT + "prompto/translate/ese/Test" + capDirName + ".js";
-			translateESE = mkfile(testFilePath);
-			beginTranslate(translateESE, "ESE");
+			translateEME = mkfile(testFilePath);
+			beginTranslate(translateEME, "EME");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToTranslate(translateESE, "ESE", dirName, capFileName, fileName);
+		addToTranslate(translateEME, "EME", dirName, capFileName, fileName);
 	}
 	
 	@Override
@@ -80,26 +80,26 @@ public class JavaScriptGenerator extends Generator {
 	}
 	
 	@Override
-	protected void addToTranslateOSO(String dirName, String fileName) throws IOException {
-		if(translateOSO==null) {
+	protected void addToTranslateOMO(String dirName, String fileName) throws IOException {
+		if(translateOMO==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = CORE_ROOT + "prompto/translate/oso/Test" + capDirName + ".js";
-			translateOSO = mkfile(testFilePath);
-			beginTranslate(translateOSO, "OSO");
+			translateOMO = mkfile(testFilePath);
+			beginTranslate(translateOMO, "OMO");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToTranslate(translateOSO, "OSO", dirName, capFileName, fileName);
+		addToTranslate(translateOMO, "OMO", dirName, capFileName, fileName);
 	}
 
 	@Override
-	protected void addToTranslateSES(String dirName, String fileName) {
+	protected void addToTranslateMEM(String dirName, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	protected void addToTranslateSOS(String dirName, String fileName) {
+	protected void addToTranslateMOM(String dirName, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -163,16 +163,16 @@ public class JavaScriptGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToRuntimeS(String dirName, String fileName, Options options) throws IOException {
-		if(runtimeS==null) {
+	protected void addToRuntimeM(String dirName, String fileName, Options options) throws IOException {
+		if(runtimeM==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = CORE_ROOT + "prompto/runtime/s/Test" + capDirName + ".js";
-			runtimeS = mkfile(testFilePath);
-			beginRuntime(runtimeS, "S", capDirName);
+			runtimeM = mkfile(testFilePath);
+			beginRuntime(runtimeM, "M", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToRuntime(runtimeS, capFileName, dirName, fileName);
+		addToRuntime(runtimeM, capFileName, dirName, fileName);
 	}
 	
 	private void addToRuntime(OutputStreamWriter writer, String capFileName, String dirName, String fileName) throws IOException {
@@ -239,16 +239,16 @@ public class JavaScriptGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToLibraryS(String dirName, String fileName) throws IOException {
-		if(libraryS==null) {
+	protected void addToLibraryM(String dirName, String fileName) throws IOException {
+		if(libraryM==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = LIB_ROOT + "library/s/Test" + capDirName + ".js";
-			libraryS = mkfile(testFilePath);
-			beginLibrary(libraryS, "S", capDirName);
+			libraryM = mkfile(testFilePath);
+			beginLibrary(libraryM, "M", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToLibrary(libraryS, capFileName, dirName, fileName);
+		addToLibrary(libraryM, capFileName, dirName, fileName);
 	}
 	
 	private void beginLibrary(OutputStreamWriter writer, String dialect, String dirName) throws IOException {

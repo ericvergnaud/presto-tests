@@ -19,22 +19,22 @@ public class JavaGenerator extends Generator {
 			endLibrary(libraryE);
 		if(libraryO!=null)
 			endLibrary(libraryO);
-		if(libraryS!=null)
-			endLibrary(libraryS);
+		if(libraryM!=null)
+			endLibrary(libraryM);
 		if(runtimeE!=null)
 			endRuntime(runtimeE);
 		if(runtimeO!=null)
 			endRuntime(runtimeO);
-		if(runtimeS!=null)
-			endRuntime(runtimeS);
+		if(runtimeM!=null)
+			endRuntime(runtimeM);
 		if(translateEOE!=null)
 			endTranslate(translateEOE);
-		if(translateESE!=null)
-			endTranslate(translateESE);
+		if(translateEME!=null)
+			endTranslate(translateEME);
 		if(translateOEO!=null)
 			endTranslate(translateOEO);
-		if(translateOSO!=null)
-			endTranslate(translateOSO);
+		if(translateOMO!=null)
+			endTranslate(translateOMO);
 		closeAll();
 	}
 
@@ -52,16 +52,16 @@ public class JavaGenerator extends Generator {
 	}
 	
 	@Override
-	protected void addToTranslateESE(String dirName, String fileName) throws IOException {
-		if(translateESE==null) {
+	protected void addToTranslateEME(String dirName, String fileName) throws IOException {
+		if(translateEME==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = CORE_ROOT + "prompto/translate/ese/Test" + capDirName + ".java";
-			translateESE = mkfile(testFilePath);
-			beginTranslate(translateESE, capDirName, "E", "ese");
+			translateEME = mkfile(testFilePath);
+			beginTranslate(translateEME, capDirName, "E", "EME");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToTranslate(translateESE, capFileName, "ESE", dirName, fileName);
+		addToTranslate(translateEME, capFileName, "EME", dirName, fileName);
 	}
 
 	@Override
@@ -78,26 +78,26 @@ public class JavaGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToTranslateOSO(String dirName, String fileName) throws IOException {
-		if(translateOSO==null) {
+	protected void addToTranslateOMO(String dirName, String fileName) throws IOException {
+		if(translateOMO==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = CORE_ROOT + "prompto/translate/oso/Test" + capDirName + ".java";
-			translateOSO = mkfile(testFilePath);
-			beginTranslate(translateOSO, capDirName, "O", "oso");
+			translateOMO = mkfile(testFilePath);
+			beginTranslate(translateOMO, capDirName, "O", "OMO");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToTranslate(translateOSO, capFileName, "OSO", dirName, fileName);
+		addToTranslate(translateOMO, capFileName, "OMO", dirName, fileName);
 	}
 
 	@Override
-	protected void addToTranslateSES(String dirName, String fileName) {
+	protected void addToTranslateMEM(String dirName, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	protected void addToTranslateSOS(String dirName, String fileName) {
+	protected void addToTranslateMOM(String dirName, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -178,19 +178,19 @@ public class JavaGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToRuntimeS(String dirName, String fileName, Options options) throws IOException {
-		if(runtimeS==null) {
+	protected void addToRuntimeM(String dirName, String fileName, Options options) throws IOException {
+		if(runtimeM==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = CORE_ROOT + "prompto/runtime/s/Test" + capDirName + ".java";
-			runtimeS = mkfile(testFilePath);
-			beginRuntime(runtimeS, capDirName, "S");
+			runtimeM = mkfile(testFilePath);
+			beginRuntime(runtimeM, capDirName, "M");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
 		if(options.interpreted)
-			addToRuntime(runtimeS, capFileName, dirName, fileName, false);
+			addToRuntime(runtimeM, capFileName, dirName, fileName, false);
 		if(options.compiled)
-			addToRuntime(runtimeS, capFileName, dirName, fileName, true);
+			addToRuntime(runtimeM, capFileName, dirName, fileName, true);
 	}
 
 	private void beginRuntime(OutputStreamWriter writer, String dirName, String dialect) throws IOException {
@@ -276,16 +276,16 @@ public class JavaGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToLibraryS(String dirName, String fileName) throws Exception {
-		if(libraryS==null) {
+	protected void addToLibraryM(String dirName, String fileName) throws Exception {
+		if(libraryM==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = LIB_ROOT + "prompto/library/s/Test" + capDirName + ".java";
-			libraryS = mkfile(testFilePath);
-			beginLibrary(libraryS, capDirName, "S");
+			libraryM = mkfile(testFilePath);
+			beginLibrary(libraryM, capDirName, "M");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToLibrary(libraryS, capFileName, dirName, fileName);
+		addToLibrary(libraryM, capFileName, dirName, fileName);
 	}
 
 	private void beginLibrary(OutputStreamWriter writer, String dirName, String dialect) throws IOException {

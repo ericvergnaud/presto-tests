@@ -8,5 +8,5 @@ native method print ( Text value ) {
 
 method main ( Text{} options ) {
 	s = " John\t";
-	print ( "lower=" + s.trim() );
+	print ( "trim=" + s.trim() );
 }

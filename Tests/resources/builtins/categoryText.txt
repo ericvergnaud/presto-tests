@@ -1,0 +1,2 @@
+text={name:John, count:123}
+text={count:123, name:John}

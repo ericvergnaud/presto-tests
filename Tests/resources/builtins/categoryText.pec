@@ -1,0 +1,16 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define name as Text attribute
+define count as Integer attribute
+
+define Entity as category with attributes name and count
+
+define main as method receiving Text{} options doing:
+	c = Entity with "John" as name and 123 as count
+	print "text=" + c.text
+	

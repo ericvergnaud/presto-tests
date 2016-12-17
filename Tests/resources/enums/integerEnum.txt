@@ -1,1 +1,1 @@
-/a=123/b=456
+/a=123/b=456/symbols=[ENTITY_1, ENTITY_2]

@@ -1,1 +1,1 @@
-/a=E1/b=E2
+/a=E1/b=E2/symbols=[ENTITY_1, ENTITY_2]

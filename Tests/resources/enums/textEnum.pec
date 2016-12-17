@@ -14,5 +14,5 @@ define print as native method receiving Text value doing:
 define main as method receiving Text{} options doing:
 	print "/a=" + ENTITY_1
 	print "/b=" + ENTITY_2
-	
+	print "/symbols=" + Entity.symbols
 	

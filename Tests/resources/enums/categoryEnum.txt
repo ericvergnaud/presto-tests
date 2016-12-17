@@ -1,1 +1,1 @@
-/a=n1/b=n2
+/a=ENTITY_1/b=n2

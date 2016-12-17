@@ -1,0 +1,40 @@
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+attribute name: Text;
+
+category Animal(name) {
+
+	method speak () {
+		print("/I can't speak!");
+	}
+	
+}
+
+category Dog extends Animal {
+
+	method speak () {
+		print("/I'm a dog, I bark!");
+	}
+	
+}
+
+category Cat extends Animal {
+
+	method speak () {
+		print("/I'm a cat, I meow!");
+	}
+	
+}
+
+method main () {
+	animals = [Animal(), Dog(), Cat()];
+	for each (animal in animals)
+		animal.speak();
+}
+

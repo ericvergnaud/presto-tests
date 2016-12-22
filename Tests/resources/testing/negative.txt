@@ -1,2 +1,2 @@
-"Add two numbers" test failed, expected: a + b = 12, actual: 11 = 12
-"Add two numbers" test failed, expected: a + b == 12, actual: 11 == 12
+"Add two numbers" test failed while verifying: a + b = 12, found: 11 = 12
+"Add two numbers" test failed while verifying: a + b == 12, found: 11 == 12

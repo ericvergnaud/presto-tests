@@ -6,8 +6,8 @@ import java.io.OutputStreamWriter;
 
 public class JavaGenerator extends Generator {
 	
-	static final String CORE_ROOT = "prompto-java/Java-Core/src/test/java/";
-	static final String LIB_ROOT = "prompto-java/Java-Runtime/src/test/java/";
+	static final String CORE_ROOT = "prompto-java/Core/src/test/java/";
+	static final String LIB_ROOT = "prompto-java/Runtime/src/test/java/";
 
 	@Override
 	protected void enterSubdir(File subDir) {

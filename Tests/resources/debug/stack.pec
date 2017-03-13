@@ -19,5 +19,3 @@ define print as native method receiving Text value doing:
 	C#: System.Console.Write(value);
 	Python2: print(objects=value,end="")
 	Python3: print(objects=value,end="")
-
-	

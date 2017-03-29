@@ -1,0 +1,19 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define name as Text attribute
+
+define Any as category with attribute name
+
+define newDoc as method returning Any doing:
+	doc = Document
+	doc.name = "ok"
+	return doc
+
+define main as method receiving Text{} options doing:
+	doc = newDoc as Document
+	print "" + doc.name

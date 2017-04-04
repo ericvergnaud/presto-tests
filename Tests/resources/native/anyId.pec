@@ -12,11 +12,11 @@ define Any as native category with attribute id, and bindings:
 and methods:
 
 	define id as getter doing:
-		Java: return System.identityHashCode(self);
-		C#: return System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(self);
+		Java: return System.identityHashCode(this);
+		C#: return System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(this);
 		Python2: return id(self)
 		Python3: return id(self)
-		JavaScript: return self.id;
+		JavaScript: return this;
 	
 
 define "id member" as test method doing:

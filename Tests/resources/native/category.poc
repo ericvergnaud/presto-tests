@@ -11,6 +11,14 @@ native category MyClass (id, name, display) {
 		Python3: MyClass from module: prompto.runtime.utils.MyClass;
 		JavaScript: MyClass from module: test/user/MyClass.js;
 	}
+	
+	method show () {
+		Java: this.printDisplay();
+		C#: this.printDisplay();
+		Python2: self.printDisplay()
+		Python3: self.printDisplay()
+		JavaScript: this.printDisplay();
+	}
 }
 
 native method print ( Text value ) {
@@ -21,17 +29,11 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-native method show (MyClass value ) {
-	Java: value.printDisplay();
-	C#: value.printDisplay();
-	Python2: value.printDisplay()
-	Python3: value.printDisplay()
-	JavaScript: value.printDisplay();
-}
+
 
 method main ( Text{} options ) {
 	c = MyClass ( id = "1",  name = "John"); 
 	print ("print:" + c.display + ",");
-	show (c);
+	c.show ();
 }
 	

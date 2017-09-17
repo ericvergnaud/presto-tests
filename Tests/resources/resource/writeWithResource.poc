@@ -1,4 +1,5 @@
 attribute path: Text;
+attribute content: Text;
 
 native resource MyResource( path, content ) {
 

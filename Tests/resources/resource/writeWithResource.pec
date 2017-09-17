@@ -1,4 +1,5 @@
 define path as Text attribute
+define content as Text attribute
 
 define MyResource as native resource with attributes path and content, and bindings:
 

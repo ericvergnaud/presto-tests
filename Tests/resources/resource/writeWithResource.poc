@@ -1,6 +1,6 @@
 attribute path: Text;
 
-native resource MyResource( path ) {
+native resource MyResource( path, content ) {
 
 	category bindings {
 		Java: prompto.runtime.utils.MyResource;
@@ -20,7 +20,7 @@ native method print ( Text value ) {
 }
 
 method main ( Text{} options ) {
-	with ( file = MyResource ( path = "xyz8" ) )
+	with ( file = MyResource ( path = "xyz8", content = "" ) )
 		write ( "writePartialOk") to file;
 	s = read all from MyResource ( path = "xyz8" );
 	print (s);

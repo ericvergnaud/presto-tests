@@ -1,1 +1,1 @@
-replace=John_Doore_Inc.
+replace=John_Deere_Inc.

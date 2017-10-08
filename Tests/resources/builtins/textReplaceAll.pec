@@ -7,6 +7,6 @@ define print as native method receiving Text value doing:
 
 define main as method receiving Text{} options doing:
 	s = "John Deere Inc."
-	s = s.replace with " " as toReplace and "_" as replaceWith 
+	s = s.replaceAll with " " as toReplace and "_" as replaceWith 
 	print "replace=" + s
 	

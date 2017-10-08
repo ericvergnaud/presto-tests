@@ -8,6 +8,6 @@ native method print ( Text value ) {
 
 method main ( Text{} options ) {
 	s = "John Deere Inc.";
-	s = s.replace(toReplace=" ", replaceWith="_");
+	s = s.replaceAll(toReplace=" ", replaceWith="_");
 	print ( "replace=" + s);
 }

@@ -12,8 +12,8 @@ native method print ( Text value ) {
 }
 
 method main ( Text{} options ) {
-	print ("/a=" + ENTITY_1);
-	print ("/b=" + ENTITY_2);
+	print ("/a=" + ENTITY_1.value);
+	print ("/b=" + ENTITY_2.value);
 	print ("/symbols=" + Entity.symbols);
 }
 	

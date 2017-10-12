@@ -9,8 +9,12 @@ define print as native method receiving Text value doing:
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
+define print as method receiving Text prefix and Entity entity doing:
+	print prefix + entity.value
+
 define main as method receiving Text{} options doing:
-	print "/a=" + ENTITY_1.value
-	print "/b=" + ENTITY_2.value
-	print "/symbols=" + Entity.symbols
+	e1 = ENTITY_1
+	print with "/a=" as prefix and e1 as entity
+	e2 = ENTITY_2
+	print with "/b=" as prefix and e2 as entity
 	

@@ -1,5 +1,6 @@
 attribute id : Integer; 
 attribute text : Text;
+attribute name : Text;
 
 enumerated category Entity(id , text) {
 	ENTITY_1 ( id = 1, text = "n1" ); 

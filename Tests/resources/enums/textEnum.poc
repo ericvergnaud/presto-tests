@@ -3,8 +3,6 @@ enumerated Entity(Text) {
 	ENTITY_2 = "E2";
 }
 
-attribute entity : Entity;
-
 native method print ( Text value ) {
 	Java: System.out.print(value);
 	C#: System.Console.Write(value);
@@ -14,8 +12,8 @@ native method print ( Text value ) {
 }
 
 method main ( Text{} options ) {
-	print ("/a=" + ENTITY_1);
-	print ("/b=" + ENTITY_2);
+	print ("/a=" + ENTITY_1.value);
+	print ("/b=" + ENTITY_2.value);
 	print ("/symbols=" + Entity.symbols);
 }
 	

@@ -10,4 +10,4 @@ define Entity as enumerated Decimal with symbols:
 	
 
 define main as method receiving Text{} options doing:
-	print "/" + (15.0 - ENTITY_1)
+	print "/" + (15.0 - ENTITY_1.value)

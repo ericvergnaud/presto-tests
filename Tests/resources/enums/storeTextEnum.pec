@@ -1,0 +1,25 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define Entity as enumerated Text with symbols:
+	ENTITY_1 with "E1" as value
+	ENTITY_2 with "E2" as value
+
+define dbId as Integer attribute 
+define entity as storable Entity attribute
+define name as storable Text attribute
+
+define Stuff as storable category with attributes name and entity 
+
+define main as method receiving Text{} options doing:
+	s1 = Stuff with "a" as name and ENTITY_1 as entity
+	s2 = Stuff with "b" as name and ENTITY_2 as entity
+	store s1, s2
+	ss = fetch all Stuff
+	for each s in ss:
+		print "/" + s.name + "=" + s.entity.value
+	

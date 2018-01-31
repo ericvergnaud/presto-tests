@@ -148,6 +148,7 @@ public abstract class Generator {
 							|| name.endsWith(".pmc");
 				}
 			});
+			Arrays.sort(fileNames);
 			for(String fileName : fileNames) {
 				String plainName = fileName.substring(0, fileName.indexOf('.'));
 				if(excluded.contains(plainName))

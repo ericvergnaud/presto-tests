@@ -1,0 +1,20 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+// ok to use Integer with MemStore
+define dbId as Integer attribute 
+define name as storable Text attribute
+
+define Person as storable category with attribute name
+
+define main as method receiving Text{} options doing:
+	for each name in [ "alan", "abigail", "john" ]:
+		person = Person with name as name
+		store person
+	persons  = fetch all Person
+	a_persons = persons filtered with person where person.name.startsWith "a"
+	print "" + a_persons

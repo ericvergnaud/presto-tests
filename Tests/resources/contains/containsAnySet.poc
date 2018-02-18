@@ -7,11 +7,11 @@ native method print ( Text value ) {
 }
 
 method main ( Text{} options ) {
-	print ("/" + (<1,2,3,4> contains any (1,2)));
-	print ("/" + (<1,2,3,4> contains any [1,2]));
-	print ("/" + (<1,2,3,4> contains any <1,2>));
-	print ("/" + (<1,2,3,4> contains any (4,5)));
-	print ("/" + (<1,2,3,4> contains any [4,5]));
-	print ("/" + (<1,2,3,4> contains any <4,5>));
+	print ("/" + (<1,2,3,4> has any (1,2)));
+	print ("/" + (<1,2,3,4> has any [1,2]));
+	print ("/" + (<1,2,3,4> has any <1,2>));
+	print ("/" + (<1,2,3,4> has any (4,5)));
+	print ("/" + (<1,2,3,4> has any [4,5]));
+	print ("/" + (<1,2,3,4> has any <4,5>));
 }
 	

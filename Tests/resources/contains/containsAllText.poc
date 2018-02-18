@@ -7,13 +7,13 @@ native method print ( Text value ) {
 }
 
 method main ( Text{} options ) {
-	print ("/" + ("abcde" contains all ('a','b')));
-	print ("/" + ("abcde" contains all ['a','b']));
-	print ("/" + ("abcde" contains all <'a','b'>));
-	print ("/" + ("abcde" contains all "ac"));
-	print ("/" + ("abcde" contains all ('a','z')));
-	print ("/" + ("abcde" contains all ['a','z']));
-	print ("/" + ("abcde" contains all <'a','z'>));
-	print ("/" + ("abcde" contains all "az"));
+	print ("/" + ("abcde" has all ('a','b')));
+	print ("/" + ("abcde" has all ['a','b']));
+	print ("/" + ("abcde" has all <'a','b'>));
+	print ("/" + ("abcde" has all "ac"));
+	print ("/" + ("abcde" has all ('a','z')));
+	print ("/" + ("abcde" has all ['a','z']));
+	print ("/" + ("abcde" has all <'a','z'>));
+	print ("/" + ("abcde" has all "az"));
 }
 	

@@ -16,7 +16,7 @@ native method print ( Text value ) {
 
 method main ( Text{} options ) {
 	e1 = Entity ( id = "1",  name = "John"); 
-	e2 = Employee( e1);
+	e2 = Employee( from = e1);
 	print ("/id:" + e2.id);
 	print ("/name:" + e2.name);
 }

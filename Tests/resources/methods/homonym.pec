@@ -16,5 +16,5 @@ define createCompany as method receiving name and employees doing:
 define main as method receiving Text{} options doing:
 	name = "IBM"
 	employees = 17
-	c = createCompany with name and employees
+	c = createCompany name with employees
 	print c.name + "/" + c.employees

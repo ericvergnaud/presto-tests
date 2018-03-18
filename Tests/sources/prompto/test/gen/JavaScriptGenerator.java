@@ -10,9 +10,12 @@ public class JavaScriptGenerator extends Generator {
 	static final String LIB_ROOT = "prompto-javascript/JavaScript-Runtime/src/test/";
 
 	@Override
+	protected String getTarget() {
+		return "JavaScript";
+	}
+	
+	@Override
 	protected void enterSubdir(File subDir) {
-		
-		
 	}
 
 	@Override

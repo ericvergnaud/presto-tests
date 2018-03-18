@@ -9,9 +9,12 @@ public class CSharpGenerator extends Generator {
 	static final String ROOT = "prompto-csharp/CSharp-Tests/src/";
 
 	@Override
+	protected String getTarget() {
+		return "C#";
+	}
+	
+	@Override
 	protected void enterSubdir(File subDir) {
-		
-		
 	}
 
 	@Override

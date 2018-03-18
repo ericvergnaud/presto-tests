@@ -102,7 +102,7 @@ public abstract class Generator {
 		// filePath is relative to Prompto
 		String promptoPath = readPromptoPath();
 		// when running as a git submodule, adjust the path accordingly
-		String fullPath = checkPathForSubmodule(promptoPath,filePath);
+		String fullPath = checkPathForSubmodule(promptoPath, filePath);
 		String parentPath = fullPath.substring(0, fullPath.lastIndexOf("/"));
 		File file = new File(parentPath);
 		file.mkdirs();
@@ -119,6 +119,7 @@ public abstract class Generator {
 			return parentPath + filePath;
 	}
 
+	@FunctionalInterface
 	static interface FileGenerator {
 		void generate(String dirName, String fileName, Options options) throws Exception;
 	}
@@ -132,6 +133,7 @@ public abstract class Generator {
 
 	
 	private void generate(String path, FileGenerator generator, Options options, String ... _excluded) throws Exception {
+		System.out.println("Generating " + getTarget() + " tests at " + readPromptoPath());
 		Set<String> excluded = new HashSet<>(Arrays.asList(_excluded));
 		File rootDir = new File(path);
 		String[] dirNames = rootDir.list();
@@ -160,6 +162,8 @@ public abstract class Generator {
 			exitSubdir(subDir);
 		}
 	}
+
+	protected abstract String getTarget();
 
 	private void loadDependencies(File subDir) throws Exception {
 		dependencies = null;

@@ -10,6 +10,11 @@ public class JavaGenerator extends Generator {
 	static final String LIB_ROOT = "prompto-java/Runtime/src/test/java/";
 
 	@Override
+	protected String getTarget() {
+		return "Java";
+	}
+	
+	@Override
 	protected void enterSubdir(File subDir) {
 	}
 

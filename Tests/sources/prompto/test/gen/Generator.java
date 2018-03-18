@@ -125,15 +125,15 @@ public abstract class Generator {
 	}
 	
 	private void generate(Options options) throws Exception {
-		generate(readResourcesPath(), this::generateRuntimeTests, options,
+		generate(readResourcesPath(), "runtime", this::generateRuntimeTests, options,
 				"resourceError", "issues", "debug", "comment", "unexpected", "return", "dateTimeTZOffset", "dateTimeTZName", "global");
-		generate(readResourcesPath(), this::generateTranslateTests, options);
-		generate(readLibrariesPath(), this::generateLibraryTests, options, "concat");
+		generate(readResourcesPath(), "translate", this::generateTranslateTests, options);
+		generate(readLibrariesPath(), "library", this::generateLibraryTests, options, "concat");
 	}
 
 	
-	private void generate(String path, FileGenerator generator, Options options, String ... _excluded) throws Exception {
-		System.out.println("Generating " + getTarget() + " tests at " + readPromptoPath());
+	private void generate(String path, String nature, FileGenerator generator, Options options, String ... _excluded) throws Exception {
+		System.out.println("Generating " + nature + " " + getTarget() + " tests at " + readPromptoPath());
 		Set<String> excluded = new HashSet<>(Arrays.asList(_excluded));
 		File rootDir = new File(path);
 		String[] dirNames = rootDir.list();

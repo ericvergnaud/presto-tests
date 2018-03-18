@@ -1,0 +1,2 @@
+def xyz(value:Text)->Text:
+    return value

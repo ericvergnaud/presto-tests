@@ -1,0 +1,2 @@
+define xyz as method receiving Text value doing:
+    return value

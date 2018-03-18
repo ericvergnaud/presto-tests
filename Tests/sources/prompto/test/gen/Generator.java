@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
@@ -123,14 +125,14 @@ public abstract class Generator {
 	
 	private void generate(Options options) throws Exception {
 		generate(readResourcesPath(), this::generateRuntimeTests, options,
-				"resourceError", "issues", "debug", "comment", "unexpected", "return", "dateTimeTZOffset", "dateTimeTZName");
+				"resourceError", "issues", "debug", "comment", "unexpected", "return", "dateTimeTZOffset", "dateTimeTZName", "global");
 		generate(readResourcesPath(), this::generateTranslateTests, options);
 		generate(readLibrariesPath(), this::generateLibraryTests, options, "concat");
 	}
 
 	
 	private void generate(String path, FileGenerator generator, Options options, String ... _excluded) throws Exception {
-		List<String> excluded = Arrays.asList(_excluded);
+		Set<String> excluded = new HashSet<>(Arrays.asList(_excluded));
 		File rootDir = new File(path);
 		String[] dirNames = rootDir.list();
 		for(String dirName : dirNames) {

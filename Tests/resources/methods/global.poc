@@ -1,0 +1,3 @@
+method xyz (Text value) {
+    return value;
+}

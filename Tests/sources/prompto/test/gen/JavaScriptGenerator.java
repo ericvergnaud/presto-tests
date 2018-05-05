@@ -140,49 +140,53 @@ public class JavaScriptGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToRuntimeE(String dirName, String fileName, Options options) throws Exception {
-		if(runtimeE==null) {
-			String capDirName = capitalize(dirName);
-			String testFilePath = CORE_ROOT + "prompto/runtime/e/Test" + capDirName + ".js";
-			runtimeE = mkfile(testFilePath);
-			beginRuntime(runtimeE, "E", capDirName);
-		}
-		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
-		capFileName = capFileName.replaceAll("-", "_");
-		addToRuntime(runtimeE, capFileName, dirName, fileName);
+	protected void addToRuntimeE(String dirName, String fileName, Options options) throws IOException {
+		if(runtimeE==null)
+			runtimeE = beginRuntime(dirName, 'E');
+		addToRuntime(dirName, fileName, options, runtimeE);
 	}
 
 	@Override
 	protected void addToRuntimeO(String dirName, String fileName, Options options) throws IOException {
-		if(runtimeO==null) {
-			String capDirName = capitalize(dirName);
-			String testFilePath = CORE_ROOT + "prompto/runtime/o/Test" + capDirName + ".js";
-			runtimeO = mkfile(testFilePath);
-			beginRuntime(runtimeO, "O", capDirName);
-		}
-		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
-		capFileName = capFileName.replaceAll("-", "_");
-		addToRuntime(runtimeO, capFileName, dirName, fileName);
+		if(runtimeO==null)
+			runtimeO = beginRuntime(dirName, 'O');
+		addToRuntime(dirName, fileName, options, runtimeO);
 	}
 
 	@Override
 	protected void addToRuntimeM(String dirName, String fileName, Options options) throws IOException {
-		if(runtimeM==null) {
-			String capDirName = capitalize(dirName);
-			String testFilePath = CORE_ROOT + "prompto/runtime/m/Test" + capDirName + ".js";
-			runtimeM = mkfile(testFilePath);
-			beginRuntime(runtimeM, "M", capDirName);
-		}
-		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
-		capFileName = capFileName.replaceAll("-", "_");
-		addToRuntime(runtimeM, capFileName, dirName, fileName);
+		if(runtimeM==null)
+			runtimeM = beginRuntime(dirName, 'M');
+		addToRuntime(dirName, fileName, options, runtimeM);
+	}
+
+	private OutputStreamWriter beginRuntime(String dirName, Character dialect) throws IOException {
+		String capDirName = capitalize(dirName);
+		String testFilePath = CORE_ROOT + "prompto/runtime/" + dialect.toString().toLowerCase() + "/Test" + capDirName + ".js";
+		OutputStreamWriter runtime = mkfile(testFilePath);
+		beginRuntime(runtime, dialect.toString(), capDirName);
+		return runtime;
 	}
 	
-	private void addToRuntime(OutputStreamWriter writer, String capFileName, String dirName, String fileName) throws IOException {
+	protected void addToRuntime(String dirName, String fileName, Options options, OutputStreamWriter runtime) throws IOException {
+		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
+		capFileName = capFileName.replaceAll("-", "_");
+		if(options.interpreted)
+			addToRuntime(runtime, capFileName, dirName, fileName, false);
+		if(options.compiled)
+			addToRuntime(runtime, capFileName, dirName, fileName, true);
+	}
+
+
+	
+	private void addToRuntime(OutputStreamWriter writer, String capFileName, String dirName, String fileName, boolean transpiled) throws IOException {
 		writer.write("exports.test");
+		writer.write(transpiled ? "Transpiled" : "Interpreted"); 
 		writer.write(capFileName);
 		writer.write(" = function(test) {\n");
-		writer.write("\tcheckOutput(test, \"");
+		writer.write("\tcheck");
+		writer.write(transpiled ? "Transpiled" : "Interpreted"); 
+		writer.write("Output(test, \"");
 		writer.write(dirName);
 		writer.write("/");
 		writer.write(fileName);
@@ -195,9 +199,13 @@ public class JavaScriptGenerator extends Generator {
 		writer.write("require(\"../../../../exploded\");\n");
 		writer.write("\n");
 		writer.write("var Out = require(\"../utils/Out\").Out;\n");
-		writer.write("var checkOutput = require(\"../../parser/Base");
+		writer.write("var checkInterpretedOutput = require(\"../../parser/Base");
 		writer.write(dialect.toUpperCase());
-		writer.write("ParserTest\").checkOutput;\n");
+		writer.write("ParserTest\").checkInterpretedOutput;\n");
+		writer.write("\n");
+		writer.write("var checkTranspiledOutput = require(\"../../parser/Base");
+		writer.write(dialect.toUpperCase());
+		writer.write("ParserTest\").checkTranspiledOutput;\n");
 		writer.write("\n");
 		writer.write("exports.setUp = function(done) {\n");
 		writer.write("\tOut.init();\n");

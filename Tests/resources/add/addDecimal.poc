@@ -7,6 +7,6 @@ native method print ( Text value ) {
 }
 
 method main ( Text{} options ) {
-	print ("/" + (15.0 + 12));
+	print ("/" + (15.1 + 12));
 	print ("/" + (15.0 + 3.5));
 }

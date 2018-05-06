@@ -14,7 +14,7 @@ define Any as native category with attribute text, and bindings:
 		C#: prompto.value.Any
 		Python2: Any from module: prompto.value.Any
 		Python3: Any from module: prompto.value.Any
-		JavaScript: Any from module: prompto/value/Any.js
+		JavaScript: AnyValue from module: prompto/value/AnyValue.js
 
 and methods:
 

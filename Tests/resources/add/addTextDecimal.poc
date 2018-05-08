@@ -7,5 +7,5 @@ native method print ( Text value ) {
 }
 
 method main ( Text{} options ) {
-	print ("d" + 20.0);
+	print ("d" + 20.1);
 }

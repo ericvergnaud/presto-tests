@@ -6,4 +6,4 @@ define print as native method receiving Text value doing:
 	JavaScript: process.stdout.write(value);
 
 define main as method receiving Text{} options doing:
-	print "d" + 20.0
+	print "d" + 20.1

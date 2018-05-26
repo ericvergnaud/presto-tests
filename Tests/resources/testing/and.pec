@@ -10,6 +10,4 @@ define "And conditions" as test method doing:
 	b = 8
 and verifying:
 	a = 3 and b = 8
-	a = 3
-	b = 8
 	

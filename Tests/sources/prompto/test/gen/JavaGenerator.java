@@ -158,44 +158,40 @@ public class JavaGenerator extends Generator {
 			runtimeE = mkfile(testFilePath);
 			beginRuntime(runtimeE, capDirName, "E");
 		}
-		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
-		capFileName = capFileName.replaceAll("-", "_");
-		if(options.interpreted)
-			addToRuntime(runtimeE, capFileName, dirName, fileName, false);
-		if(options.compiled)
-			addToRuntime(runtimeE, capFileName, dirName, fileName, true);
+		addToRuntime(dirName, fileName, options, runtimeE);
 	}
 
 	@Override
-	protected void addToRuntimeO(String dirName, String fileName, Options options) throws IOException {
+	protected void addToRuntimeO(String dirName, String fileName, Options options) throws Exception {
 		if(runtimeO==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = CORE_ROOT + "prompto/runtime/o/Test" + capDirName + ".java";
 			runtimeO = mkfile(testFilePath);
 			beginRuntime(runtimeO, capDirName, "O");
 		}
-		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
-		capFileName = capFileName.replaceAll("-", "_");
-		if(options.interpreted)
-			addToRuntime(runtimeO, capFileName, dirName, fileName, false);
-		if(options.compiled)
-			addToRuntime(runtimeO, capFileName, dirName, fileName, true);
+		addToRuntime(dirName, fileName, options, runtimeO);
 	}
 
 	@Override
-	protected void addToRuntimeM(String dirName, String fileName, Options options) throws IOException {
+	protected void addToRuntimeM(String dirName, String fileName, Options options) throws Exception {
 		if(runtimeM==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = CORE_ROOT + "prompto/runtime/m/Test" + capDirName + ".java";
 			runtimeM = mkfile(testFilePath);
 			beginRuntime(runtimeM, capDirName, "M");
 		}
+		addToRuntime(dirName, fileName, options, runtimeM);
+	}
+
+	private void addToRuntime(String dirName, String fileName, Options options, OutputStreamWriter runtime) throws Exception {
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
 		if(options.interpreted)
-			addToRuntime(runtimeM, capFileName, dirName, fileName, false);
+			addToRuntime(runtime, capFileName, dirName, fileName, Type.INTERPRETED);
 		if(options.compiled)
-			addToRuntime(runtimeM, capFileName, dirName, fileName, true);
+			addToRuntime(runtime, capFileName, dirName, fileName, Type.COMPILED);
+		if(options.transpiled)
+			addToRuntime(runtime, capFileName, dirName, fileName, Type.TRANSPILED);
 	}
 
 	private void beginRuntime(OutputStreamWriter writer, String dirName, String dialect) throws IOException {
@@ -232,14 +228,14 @@ public class JavaGenerator extends Generator {
 		writer.write("\n");
 	}
 
-	private void addToRuntime(OutputStreamWriter writer, String capFileName, String dirName, String fileName, boolean compiled) throws IOException {
+	private void addToRuntime(OutputStreamWriter writer, String capFileName, String dirName, String fileName, Type type) throws IOException {
 		writer.write("\t@Test\n");
 		writer.write("\tpublic void test");
-		writer.write(compiled ? "Compiled" : "Interpreted"); 
+		writer.write(type.toString()); 
 		writer.write(capFileName);
 		writer.write("() throws Exception {\n");
 		writer.write("\t\tcheck");
-		writer.write(compiled ? "Compiled" : "Interpreted"); 
+		writer.write(type.toString()); 
 		writer.write("Output(\"");
 		writer.write(dirName);
 		writer.write("/");

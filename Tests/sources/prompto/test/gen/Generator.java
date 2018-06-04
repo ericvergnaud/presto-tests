@@ -28,6 +28,17 @@ public abstract class Generator {
 		for(Generator g : generators)
 			g.generate(options);
 	}
+	
+	public static enum Type {
+		INTERPRETED,
+		COMPILED,
+		TRANSPILED;
+		
+		@Override
+		public String toString() {
+			return this.name().substring(0, 1) + this.name().substring(1).toLowerCase();
+		}
+	}
 
 	private static Options adjustToContext(Options options) {
 		String path = readPromptoPath();
@@ -55,10 +66,16 @@ public abstract class Generator {
 	private static Options parseCmdLine(String[] args) {
 		Options o = new Options();
 		for(String arg : args) {
-			if("compiledOnly".equals(arg))
+			if("compiledOnly".equals(arg)) {
 				o.interpreted = false;
-			else if("interpretedOnly".equals(arg))
+				o.transpiled = false;
+			} else if("interpretedOnly".equals(arg)) {
 				o.compiled = false;
+				o.transpiled = false;
+			} else if("transpiledOnly".equals(arg)) {
+				o.compiled = false;
+				o.interpreted = false;
+			}
 		}
 		return o;
 	}

@@ -172,20 +172,20 @@ public class JavaScriptGenerator extends Generator {
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
 		if(options.interpreted)
-			addToRuntime(runtime, capFileName, dirName, fileName, false);
-		if(options.compiled)
-			addToRuntime(runtime, capFileName, dirName, fileName, true);
+			addToRuntime(runtime, capFileName, dirName, fileName, Type.INTERPRETED);
+		if(options.transpiled)
+			addToRuntime(runtime, capFileName, dirName, fileName, Type.TRANSPILED);
 	}
 
 
 	
-	private void addToRuntime(OutputStreamWriter writer, String capFileName, String dirName, String fileName, boolean transpiled) throws IOException {
+	private void addToRuntime(OutputStreamWriter writer, String capFileName, String dirName, String fileName, Type type) throws IOException {
 		writer.write("exports.test");
-		writer.write(transpiled ? "Transpiled" : "Interpreted"); 
+		writer.write(type.toString()); 
 		writer.write(capFileName);
 		writer.write(" = function(test) {\n");
 		writer.write("\tcheck");
-		writer.write(transpiled ? "Transpiled" : "Interpreted"); 
+		writer.write(type.toString()); 
 		writer.write("Output(test, \"");
 		writer.write(dirName);
 		writer.write("/");

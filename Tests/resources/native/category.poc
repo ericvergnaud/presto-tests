@@ -9,7 +9,7 @@ native category MyClass (id, name, display) {
 		C#: prompto.runtime.utils.MyClass;
 		Python2: MyClass from module: prompto.runtime.utils.MyClass;
 		Python3: MyClass from module: prompto.runtime.utils.MyClass;
-		JavaScript: MyClass from module: test/user/MyClass.js;
+		JavaScript: MyClass from module: user/MyClass.js;
 	}
 	
 	method show () {

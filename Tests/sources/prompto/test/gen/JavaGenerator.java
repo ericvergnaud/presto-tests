@@ -190,9 +190,15 @@ public class JavaGenerator extends Generator {
 			addToRuntime(runtime, capFileName, dirName, fileName, Type.INTERPRETED);
 		if(options.compiled)
 			addToRuntime(runtime, capFileName, dirName, fileName, Type.COMPILED);
-		if(options.transpiled)
+		if(options.transpiled && !isExcludedFromTranspiled(dirName, fileName))
 			addToRuntime(runtime, capFileName, dirName, fileName, Type.TRANSPILED);
 	}
+	
+	private boolean isExcludedFromTranspiled(String dirName, String fileName) {
+		return "native".equals(dirName) && fileName.startsWith("printer.");
+	}
+
+
 
 	private void beginRuntime(OutputStreamWriter writer, String dirName, String dialect) throws IOException {
 		writer.write("package prompto.runtime.");

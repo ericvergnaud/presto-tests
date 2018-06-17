@@ -8,7 +8,7 @@ native resource MyResource(path, content) {
 		C#: prompto.runtime.utils.MyResource;
 		Python2: MyResource from module: prompto.runtime.utils.MyResource;
 		Python3: MyResource from module: prompto.runtime.utils.MyResource;
-		JavaScript: MyResource from module: test/user/MyResource.js;
+		JavaScript: MyResource from module: user/MyResource.js;
 	}
 }
 	

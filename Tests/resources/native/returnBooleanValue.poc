@@ -3,7 +3,7 @@ Boolean native method booleanTrue() {
 	C#: return System.Boolean.Parse("true");
 	Python2: return MyClass.boolValue() from module: prompto.runtime.utils.MyClass
 	Python3: return MyClass.boolValue() from module: prompto.runtime.utils.MyClass
-	JavaScript: return MyClass.boolValue(); from module: test/user/MyClass.js
+	JavaScript: return MyClass.boolValue(); from module: user/MyClass.js
 }
 
 native method print ( Text value ) {

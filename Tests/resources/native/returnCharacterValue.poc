@@ -3,7 +3,7 @@ Character native method charValue() {
 	C#: return prompto.runtime.utils.MyClass.characterValue();
 	Python2: return MyClass.characterValue() from module: prompto.runtime.utils.MyClass
 	Python3: return MyClass.characterValue() from module: prompto.runtime.utils.MyClass
-	JavaScript: return MyClass.characterValue(); from module: test/user/MyClass.js
+	JavaScript: return MyClass.characterValue(); from module: user/MyClass.js
 }
 
 native method print ( Character value ) {

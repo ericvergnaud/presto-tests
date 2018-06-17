@@ -3,7 +3,7 @@ Integer native method returnLongClass() {
 	C#: return prompto.runtime.utils.MyClass.longObject();
 	Python2: return MyClass.longObject() from module: prompto.runtime.utils.MyClass
 	Python3: return MyClass.longObject() from module: prompto.runtime.utils.MyClass
-	JavaScript: return MyClass.longObject(); from module: test/user/MyClass.js
+	JavaScript: return MyClass.longObject(); from module: user/MyClass.js
 }
 
 native method print ( Integer value ) {

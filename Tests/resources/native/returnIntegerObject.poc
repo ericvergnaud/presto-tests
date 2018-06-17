@@ -3,7 +3,7 @@ Integer native method intValue() {
 	C#: return prompto.runtime.utils.MyClass.intObject();
 	Python2: return MyClass.intObject() from module: prompto.runtime.utils.MyClass
 	Python3: return MyClass.intObject() from module: prompto.runtime.utils.MyClass
-	JavaScript: return MyClass.intObject(); from module: test/user/MyClass.js
+	JavaScript: return MyClass.intObject(); from module: user/MyClass.js
 }
 
 native method print ( Integer value ) {

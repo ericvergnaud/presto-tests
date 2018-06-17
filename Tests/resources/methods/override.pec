@@ -22,7 +22,7 @@ define Cat as Animal with methods:
     define speak as method doing:
         print "/I'm a cat, I meow!"
 
-define main as method doing:
+define main as method receiving Text{} options doing:
     animals = [ Animal, Dog, Cat ]
     for each animal in animals:
         animal.speak

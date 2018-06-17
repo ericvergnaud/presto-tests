@@ -32,7 +32,7 @@ category Cat extends Animal {
 	
 }
 
-method main () {
+method main ( Text{} options ) {
 	animals = [Animal(), Dog(), Cat()];
 	for each (animal in animals)
 		animal.speak();

@@ -1,0 +1,1 @@
+"non empty attribute" test successful

@@ -1,0 +1,6 @@
+test method "empty div" () {
+	a = <div></div>;
+} verifying {
+	a is not null;
+}
+	

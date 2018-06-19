@@ -1,0 +1,4 @@
+def test "empty attribute" ():
+	a = <div attribute/>
+verifying:
+	a is not None

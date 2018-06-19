@@ -1,0 +1,6 @@
+test method "self closing" () {
+	a = <div/>;
+} verifying {
+	a is not null;
+}
+	

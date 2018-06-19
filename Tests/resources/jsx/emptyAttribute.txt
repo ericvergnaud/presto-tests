@@ -1,0 +1,1 @@
+"closing empty attribute" test successful

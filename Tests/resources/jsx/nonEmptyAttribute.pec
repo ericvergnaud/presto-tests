@@ -1,0 +1,4 @@
+define "non empty attribute" as test method doing:
+	a = <div attribute="stuff"></div>
+and verifying:
+	a is not nothing

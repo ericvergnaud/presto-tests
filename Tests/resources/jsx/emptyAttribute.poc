@@ -1,0 +1,6 @@
+test method "closing empty attribute" () {
+	a = <div attribute></div>;
+} verifying {
+	a is not null;
+}
+	

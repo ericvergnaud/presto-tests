@@ -1,0 +1,6 @@
+test method "non empty attribute" () {
+	a = <div attribute="stuff"></div>;
+} verifying {
+	a is not null;
+}
+	

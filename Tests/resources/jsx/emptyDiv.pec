@@ -1,0 +1,4 @@
+define "empty div" as test method doing:
+	a = <div></div>
+and verifying:
+	a is not nothing

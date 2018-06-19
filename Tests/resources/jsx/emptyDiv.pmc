@@ -1,0 +1,4 @@
+def test "empty div" ():
+	a = <div></div>
+verifying:
+	a is not None

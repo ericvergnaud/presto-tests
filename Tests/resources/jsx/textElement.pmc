@@ -1,0 +1,4 @@
+def test "child text" ():
+	a = <div>some text</div>
+verifying:
+	a is not None

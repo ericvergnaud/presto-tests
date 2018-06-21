@@ -1,0 +1,4 @@
+define "hyphen" as test method doing:
+	a = <some-name></some-name>
+and verifying:
+	a is not nothing

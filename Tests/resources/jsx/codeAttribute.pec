@@ -1,0 +1,5 @@
+define "code attribute" as test method doing:
+	x = 123
+	a = <div attribute={x}></div>
+and verifying:
+	a is not nothing

@@ -1,0 +1,6 @@
+test method "dot" () {
+	a = <some.name></some.name>;
+} verifying {
+	a is not null;
+}
+	

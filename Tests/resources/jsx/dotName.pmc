@@ -1,0 +1,4 @@
+def test "dot" ():
+	a = <some.name></some.name>
+verifying:
+	a is not None

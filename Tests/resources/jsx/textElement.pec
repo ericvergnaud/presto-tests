@@ -1,0 +1,4 @@
+define "child text" as test method doing:
+	a = <div>some text</div>
+and verifying:
+	a is not nothing

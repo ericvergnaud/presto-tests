@@ -1,0 +1,5 @@
+define "child code" as test method doing:
+	x = 123
+	a = <div>{x}</div>
+and verifying:
+	a is not nothing

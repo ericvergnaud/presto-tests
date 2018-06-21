@@ -1,0 +1,4 @@
+def test "child div" ():
+	a = <div><child/></div>
+verifying:
+	a is not None

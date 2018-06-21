@@ -1,0 +1,6 @@
+test method "child div" () {
+	a = <div><child/></div>;
+} verifying {
+	a is not null;
+}
+	

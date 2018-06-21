@@ -1,0 +1,7 @@
+test method "child code" () {
+	x = 123;
+	a = <div>{x}</div>;
+} verifying {
+	a is not null;
+}
+	

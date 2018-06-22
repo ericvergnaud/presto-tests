@@ -1,6 +1,6 @@
 test method "child div" () {
 	stuff = "xyz";
-	<div><child/>{stuff}Some text</div>;
+	a = <div><child/>{stuff}Some text</div>;
 } verifying {
 	a is not null;
 }

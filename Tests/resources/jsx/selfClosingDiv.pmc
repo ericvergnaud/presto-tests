@@ -1,4 +1,4 @@
-def test "self closing div" ():
+def test "self closing" ():
 	a = <div/>
 verifying:
 	a is not None

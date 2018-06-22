@@ -1,4 +1,4 @@
-define "self closing div" as test method doing:
+define "self closing" as test method doing:
 	a = <div/>
 and verifying:
 	a is not nothing

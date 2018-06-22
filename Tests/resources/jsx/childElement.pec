@@ -1,4 +1,5 @@
 define "child div" as test method doing:
-	a = <div><child/></div>
+    stuff = "xyz"
+	a = <div><child/>{stuff}Some text</div>
 and verifying:
 	a is not nothing

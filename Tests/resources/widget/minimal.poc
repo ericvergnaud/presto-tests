@@ -1,0 +1,16 @@
+widget TestPage {
+
+	Html method render() {
+		return <div>Hello "test"!</div>;
+	}
+
+}
+
+
+test method "minimal widget" () {
+	w = TestPage();
+	html = w.render();
+} verifying {
+	html is not null;
+}
+	

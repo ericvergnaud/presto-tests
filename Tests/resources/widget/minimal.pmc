@@ -1,0 +1,12 @@
+widget TestPage():
+
+	def render() -> Html:
+		return <div>Hello "test"!</div>
+
+
+def test "minimal widget" ():
+	w = TestPage()
+	html = w.render()
+verifying:
+	html is not None
+

@@ -1,0 +1,11 @@
+define TestPage as widget with methods:
+
+	define render as method returning Html doing:
+		return <div>Hello "test"!</div>
+	
+	
+define "minimal widget" as test method doing:
+	w = TestPage
+	html = w.render
+and verifying:
+	html is not nothing

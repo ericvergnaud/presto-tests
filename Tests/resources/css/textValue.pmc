@@ -1,0 +1,4 @@
+def test "text value" ():
+	a = { margin: stuff; }
+verifying:
+	a is not None

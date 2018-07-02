@@ -1,0 +1,6 @@
+test method "text value" () {
+	a = { margin: stuff; };
+} verifying {
+	a is not null;
+}
+	

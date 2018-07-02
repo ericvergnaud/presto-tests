@@ -1,0 +1,4 @@
+define "text value" as test method doing:
+	a = { margin: stuff; }
+and verifying:
+	a is not nothing

@@ -1,0 +1,7 @@
+test method "code value" () {
+	x = "123px";
+	a = { -margin: {x}; };
+} verifying {
+	a is not null;
+}
+	

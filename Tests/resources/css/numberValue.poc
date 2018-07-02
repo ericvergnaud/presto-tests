@@ -1,0 +1,6 @@
+test method "number value" () {
+	a = { margin: 123.45; };
+} verifying {
+	a is not null;
+}
+	

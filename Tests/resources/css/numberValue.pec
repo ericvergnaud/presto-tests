@@ -1,0 +1,4 @@
+define "number value" as test method doing:
+	a = { margin: 123.45; }
+and verifying:
+	a is not nothing

@@ -1,0 +1,4 @@
+define "multi value" as test method doing:
+	a = { margin: 123.45 stuff; }
+and verifying:
+	a is not nothing

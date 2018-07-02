@@ -1,0 +1,4 @@
+def test "multi value" ():
+	a = { margin: 123.45 stuff; }
+verifying:
+	a is not None

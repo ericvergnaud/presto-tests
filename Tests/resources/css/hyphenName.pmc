@@ -1,0 +1,4 @@
+def test "hyphen name" ():
+	a = { -margin: stuff; }
+verifying:
+	a is not None

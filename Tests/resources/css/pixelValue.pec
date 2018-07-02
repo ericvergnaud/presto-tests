@@ -1,0 +1,4 @@
+define "pixel value" as test method doing:
+	a = { margin: 123px; }
+and verifying:
+	a is not nothing

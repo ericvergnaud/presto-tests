@@ -1,0 +1,6 @@
+test method "pixel value" () {
+	a = { margin: 123px; };
+} verifying {
+	a is not null;
+}
+	

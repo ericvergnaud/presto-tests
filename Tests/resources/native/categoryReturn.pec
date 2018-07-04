@@ -1,0 +1,34 @@
+define id as Text attribute 
+define name as Text attribute
+define display as Text attribute
+
+define MyClass as native category with attributes id, name and display, and bindings:
+
+	define category bindings as:
+		Java: prompto.runtime.utils.MyClass
+		C#: prompto.runtime.utils.MyClass
+		Python2: MyClass from module: prompto.runtime.utils.MyClass
+		Python3: MyClass from module: prompto.runtime.utils.MyClass
+		JavaScript: MyClass from module: user/MyClass.js
+	
+and methods:
+
+	define show as method returning Text doing:
+		Java: return this.getDisplay();
+		C#: return this.getDisplay();
+		Python2: return self.getDisplay()
+		Python3: return self.getDisplay()
+		JavaScript: return this.getDisplay();
+
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+
+define main as method receiving Text{} options doing:
+	c = MyClass with "1" as id and "John" as name
+	print "print:" + c.show
+	

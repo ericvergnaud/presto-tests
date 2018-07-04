@@ -1,0 +1,29 @@
+// non javascript bindings are for testing only
+native widget Button {
+
+	category bindings {
+		Java: prompto.runtime.utils.NativeWidget;
+		JavaScript: Button from module: ReactBootstrap;
+	}
+	
+	Html method render () {
+		Java: return this.render();
+		C#: return this.render();
+		Python2: return self.render()
+		Python3: return self.render()
+		JavaScript: return this.render();
+	}
+	
+
+}
+
+
+test method "native widget" () {
+	w = Button();
+	html1 = w.render();
+	html2 = w.render();
+} verifying {
+	html1 is not null;
+	html2 is not null;
+}
+	

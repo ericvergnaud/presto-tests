@@ -3,6 +3,7 @@ define Button as native widget with bindings:
 	
 	define category bindings as:
 		Java: prompto.runtime.utils.NativeWidget
+		C#: prompto.runtime.utils.NativeWidget
 		JavaScript: Button from module: ReactBootstrap
 
 and methods:

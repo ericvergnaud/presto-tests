@@ -3,6 +3,7 @@ native widget Button():
 	
 	def category bindings:
 		Java: prompto.runtime.utils.NativeWidget
+		C#: prompto.runtime.utils.NativeWidget
 		JavaScript: Button from module: ReactBootstrap
 
 	def render() -> Html:

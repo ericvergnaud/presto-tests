@@ -1,0 +1,28 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define myProto as abstract method receiving Text prefix returning Text
+
+define printResultOfMyProto as method receiving myProto doing:
+	s = myProto with "Hello" as prefix
+	print s
+
+define name as Text attribute
+
+define Entity as category with attribute name, and methods:
+	
+	define myMethod as method receiving Text prefix returning Text doing:
+		return prefix + " " + name
+	
+	define doStuff as method doing:
+		m = Method: myMethod
+		printResultOfMyProto m
+
+
+define main as method receiving Text{} options doing:
+	e = Entity with "John" as name
+	e.doStuff

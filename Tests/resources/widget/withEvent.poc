@@ -1,0 +1,25 @@
+method alert(Text message) {
+	a = 0;
+}
+
+widget TestPage {
+
+	method click () {
+		alert("clicked!");
+	}
+
+	Html method render() {
+		handler = click;
+		return <div handler={handler}>Hello "test"!</div>;
+	}
+
+}
+
+
+test method "minimal widget" () {
+	w = TestPage();
+	html = w.render();
+} verifying {
+	html is not null;
+}
+	

@@ -1,0 +1,3 @@
+@Callback
+define main as method doing:
+	b = true

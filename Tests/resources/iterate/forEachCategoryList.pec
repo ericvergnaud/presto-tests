@@ -6,20 +6,11 @@ define print as native method receiving Text value doing:
 	JavaScript: process.stdout.write(value);
 
 define name as Text attribute
-define text as Text attribute
 
-define Parent as category with attribute name
-define Child as Parent with attribute text
+define Entity as category with attribute name
 
-define convertIterator as method receiving Child[] children returning Iterator<Parent> doing:
-	return ( Parent from child ) for each child in children
-
-define filterList as method receiving Child[] children returning Child[] doing:
-	return children filtered with child where child.name = "a"
-	
 define main as method receiving Text{} options doing:
-	children = [ Child with "a" as name, Child with "b" as name ]
-	filtered_children = filterList with children as children
-	converted = convertIterator with filtered_children as children
-	for each c3 in converted:
-		print c3.name
+	entities = [ Entity with "a" as name, Entity with "b" as name ]
+	names = e1.name for each e1 in entities filtered with e2 where e2.name = "a"
+	for each name in names:
+		print name

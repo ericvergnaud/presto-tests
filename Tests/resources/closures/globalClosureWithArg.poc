@@ -21,7 +21,7 @@ method parentTest() {
 	return subTest;
 }
 	
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	m = parentTest();
 	printMethod ( m );
 }

@@ -12,7 +12,7 @@ define name as storable Text attribute with index
 
 define Entity as storable category with attribute name
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	e1 = Entity with "John" as name
 	store e1
 	flush

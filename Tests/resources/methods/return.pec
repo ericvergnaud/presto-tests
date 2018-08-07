@@ -10,6 +10,6 @@ define print as native method receiving Text value doing:
 define getName as method receiving name doing:
 	return "name=" + name
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	s = getName with "John" as name
 	print s

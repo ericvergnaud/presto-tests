@@ -6,7 +6,7 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	print ("/" + ('2012-10-10T08:30:00' == '2012-10-10T08:30:00'));
 	print ("/" + ('2012-10-10T08:30:00' == '2012-10-11T08:30:01'));
 	print ("/" + ('2012-10-10T08:30:00' == '2012-10-10'));

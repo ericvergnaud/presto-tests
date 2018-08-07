@@ -16,7 +16,7 @@ method printName ( Entity (name) p ) {
 	print ( value = "/anonymous=" + p.name );
 } 
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	e = Extended ( id = 1 , name = "John" ); 
 	printName (e);
 }

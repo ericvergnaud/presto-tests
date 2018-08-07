@@ -19,7 +19,7 @@ define Member as category with attribute name
 
 define Immutable as category with attribute member
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	m = mutable Member with "before" as name
 	switch on error doing:
 		i = Immutable with m as member

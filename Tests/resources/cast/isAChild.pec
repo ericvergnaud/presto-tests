@@ -13,7 +13,7 @@ define Parent as Root
 
 define Child as Parent
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	c = Parent with "ok" as name
 	if c is a Root:
 		print "/root:" + c.name

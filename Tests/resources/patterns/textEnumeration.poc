@@ -18,7 +18,7 @@ method printCcy (isoCcy ) {
 	print ("/ccy=" + isoCcy);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	printCcy ("USD");
 	try (error) {
 		printCcy( "other");

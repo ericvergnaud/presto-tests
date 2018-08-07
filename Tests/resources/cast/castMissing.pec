@@ -9,7 +9,7 @@ define name as Text attribute
 
 define Root as category with attribute name
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	list = [] as Root[]
 	list = list + [Root with "ok" as name]
 	print list[1].name

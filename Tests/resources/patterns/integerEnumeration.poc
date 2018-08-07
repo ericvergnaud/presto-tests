@@ -18,7 +18,7 @@ method printPrime (prime) {
 	print ("/prime=" + prime);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	printPrime (13);
 	try( error ) {
 		printPrime (14);

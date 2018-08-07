@@ -14,7 +14,7 @@ native method print ( Integer value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	value = longValue();
 	print (value);
 }

@@ -10,7 +10,7 @@ attribute id: Integer ;
 attribute name: Text ;
 category Entity (id , name);
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	e1 = Entity ( id = 1 , name = "a" );
 	e2 = Entity ( id = 2 , name = "b" ); 
 	for each (i,e in [e1,e2])

@@ -23,6 +23,6 @@ define Entity as category with attribute name, and methods:
 		printResultOfMyProto m
 
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	e = Entity with "John" as name
 	e.doStuff

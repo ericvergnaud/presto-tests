@@ -5,7 +5,7 @@ define print as native method receiving Text value doing:
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
-define main as method receiving Text{} options doing:
-	s = { "x":1 , "y":2 }
+define main as method receiving Text<:> options doing:
+	s = < "x":1 , "y":2 >
 	print "keys=" + s.keys
 	

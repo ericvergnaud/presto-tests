@@ -15,7 +15,7 @@ singleton Entity (name) {
 	}
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	with ( Entity )
 		name = "John";
 	Entity.printName();

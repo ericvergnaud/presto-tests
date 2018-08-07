@@ -10,7 +10,7 @@ attribute name : Text;
 
 category Root(name);
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	item = (Root)null;
 	item = Root(name = "ok");
 	print(item.name);

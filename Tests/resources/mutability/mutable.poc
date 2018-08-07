@@ -15,7 +15,7 @@ category Mutable(name) {
 	}
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	i = mutable Mutable(name="before");
 	i.setTheName(value="after");
 	print(i.name);

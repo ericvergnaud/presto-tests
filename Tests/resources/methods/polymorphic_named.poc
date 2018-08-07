@@ -25,7 +25,7 @@ method printName ( Employee e ) {
 	print ( value = "/employee=" + e.name );
 } 
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	e = Employee ( id = 1 , name = "John" ); 
 	printName (p=e);
 }

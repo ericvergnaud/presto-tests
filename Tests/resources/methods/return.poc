@@ -12,7 +12,7 @@ method getName ( name ) {
 	return ("name=" + name);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	s = getName ( name = "John"); 
 	print (s);
 }

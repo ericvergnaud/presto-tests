@@ -18,6 +18,6 @@ define printInt as method receiving Integer a doing:
 		otherwise:
 			print "/?"
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	for each a in [1..9]:
 		printInt a

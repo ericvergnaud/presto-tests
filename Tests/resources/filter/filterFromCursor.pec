@@ -11,7 +11,7 @@ define name as storable Text attribute
 
 define Person as storable category with attribute name
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	for each name in [ "alan", "abigail", "john" ]:
 		person = Person with name as name
 		store person

@@ -9,7 +9,7 @@ define name as Text attribute
 
 define Root as category with attribute name
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	item = nothing as Root
 	item = Root with "ok" as name
 	print item.name

@@ -20,7 +20,7 @@ enumerated category UserError extends Error {
 	USER_ERROR_2 ( text = "User error 2!" );
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	try(error) {
 		s = "abcde";
 		throw USER_ERROR_1;

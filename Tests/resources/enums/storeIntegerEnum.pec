@@ -15,7 +15,7 @@ define name as storable Text attribute
 
 define Stuff as storable category with attributes name and entity 
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	s1 = Stuff with "a" as name and ENTITY_1 as entity
 	s2 = Stuff with "b" as name and ENTITY_2 as entity
 	store s1, s2

@@ -10,7 +10,7 @@ method checkIs(Text a, Text b) {
 	return a is b;
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	a = "test1";
 	b = "test2";
 	print ("/" + (checkIs(a=a, b=a)));

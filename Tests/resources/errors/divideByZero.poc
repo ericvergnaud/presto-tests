@@ -15,7 +15,7 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	try(error) {
 		print ("" + 1\0);
 	} catch ( DIVIDE_BY_ZERO ) {

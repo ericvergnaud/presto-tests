@@ -10,7 +10,7 @@ method checkIsNot(Text a, Text b) {
 	return a is not b;
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	a = "test1";
 	b = "test2";
 	print ("/" + (checkIsNot(a=a, b=a)));

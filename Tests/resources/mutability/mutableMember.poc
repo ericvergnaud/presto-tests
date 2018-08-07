@@ -12,7 +12,7 @@ attribute member: Member;
 category Member(name);
 category Mutable(member);
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	m = mutable Member(name="before");
 	i = mutable Mutable(member=m);
 	m.name = "after";

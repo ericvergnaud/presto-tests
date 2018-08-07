@@ -17,7 +17,7 @@ Text method myMethod(Text prefix) {
 	return prefix + " John";
 }
 	
-method main (Text{} options) {
+method main (Text<:> options) {
 	m = myMethod;
 	printResultOfMyProto(m);
 }

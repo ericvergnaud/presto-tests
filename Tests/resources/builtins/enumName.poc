@@ -13,6 +13,6 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	print ( "name=" + ENTITY_1.name) ;
 }

@@ -15,7 +15,7 @@ method printName(name) {
 	print (value = "name=" + name );
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	c = Company( id=1, name="IBM");
 	printName (c);
 }

@@ -21,6 +21,6 @@ define printName as method receiving Person p doing:
 define printName as method receiving Employee e doing:
 	print with "/employee=" + e.name as value
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	e = Employee with 1 as id and "John" as name
 	printName with e as p

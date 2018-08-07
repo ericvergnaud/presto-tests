@@ -13,7 +13,7 @@ define Error as enumerated category with attributes name and text, and symbols:
 	INDEX_OUT_OF_RANGE with "Index out of range!" as text
 	NULL_REFERENCE with "Null reference!" as text
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	switch on error doing:
 		s = "a"
 		s = nothing

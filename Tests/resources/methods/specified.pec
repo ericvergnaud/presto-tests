@@ -13,6 +13,6 @@ define print as native method receiving Text value doing:
 define printName as method receiving name doing:
 	print with "name=" + name as value
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	c = Company with 1 as id and "IBM" as name
 	printName with c.name as name

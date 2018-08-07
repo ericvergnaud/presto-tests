@@ -15,7 +15,7 @@ define print as native method receiving Text value doing:
 define printEven as method receiving even doing:
 	print "/even=" + even
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	printEven 256
 	switch on error doing:
 		printEven 257

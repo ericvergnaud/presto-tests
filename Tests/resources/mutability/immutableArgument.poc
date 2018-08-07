@@ -22,7 +22,7 @@ method setName(mutable Mutable m, Text value) {
 	m.name = value;
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	m = Mutable(name="before");
 	try(error) {
 		setName(m=m, value="after");

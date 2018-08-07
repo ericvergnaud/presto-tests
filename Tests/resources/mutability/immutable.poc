@@ -23,7 +23,7 @@ category Immutable(name) {
 	}
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	i = Immutable(name="before");
 	try(error) {
 		i.setTheName(value="after");

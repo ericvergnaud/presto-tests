@@ -8,5 +8,5 @@ define print as native method receiving Text value doing:
 define printInteger as method receiving Integer value doing:
 	print "/" + value
 	
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	printInteger 3.2

@@ -6,7 +6,7 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	print ("/" + ('PT1M' != 'PT1M'));
 	print ("/" + ('PT1M' != 'PT60S'));
 	print ("/" + ('PT1M' != 'PT2M'));

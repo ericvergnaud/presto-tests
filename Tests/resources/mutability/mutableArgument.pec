@@ -12,7 +12,7 @@ define Mutable as category with attribute name
 define setName as method receiving mutable Mutable m and Text value doing:
 	m.name = value
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	m = mutable Mutable with "before" as name
 	setName with m as m and "after" as value
 	print m.name

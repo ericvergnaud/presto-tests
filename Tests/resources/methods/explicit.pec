@@ -14,6 +14,6 @@ define printResultOfMyProto as method receiving myProto doing:
 define myMethod as method receiving Text prefix returning Text doing:
 	return prefix + " John"
 	
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	m = Method: myMethod
 	printResultOfMyProto m

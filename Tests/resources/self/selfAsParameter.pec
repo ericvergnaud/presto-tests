@@ -16,7 +16,7 @@ define printEntity as method receiving Entity e doing:
 	print "/name:" + e.name
 	
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	x = Entity with "John" as name
 	x.printSelf
 	

@@ -6,8 +6,8 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
-	s = { "x":1 , "y":2 };
+method main ( Text<:> options ) {
+	s = < "x":1 , "y":2 >;
 	print ( "count=" + s.count );
 }
 	

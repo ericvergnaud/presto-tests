@@ -18,7 +18,7 @@ method printPos(positiveInteger) {
 	print ("/pos=" + positiveInteger);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	printPos (42);
 	try(error) {
 		printPos( -7);

@@ -9,6 +9,6 @@ native resource File (path) {
 }
 	
 	
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	f = File ( path = "xyz" );
 } 

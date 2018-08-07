@@ -15,7 +15,7 @@ enumerated category Error(name,text) {
 	NULL_REFERENCE (text = "Null reference!" ); 
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	try(error) {
 		s = "a";
 		s = null;

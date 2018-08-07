@@ -23,7 +23,7 @@ define findAttribute as native method receiving Text name returning Attribute do
 	Python3: return $context.findAttribute(name)
 	JavaScript: return $context.findAttribute(name);
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	a = findAttribute with "name" as name
 	print "a.name=" + a.name
 	

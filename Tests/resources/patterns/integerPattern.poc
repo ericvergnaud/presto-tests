@@ -18,7 +18,7 @@ method printEven (even) {
 	print ("/even=" + even);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	printEven (256);
 	try( error ) {
 		printEven (257);

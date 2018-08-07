@@ -27,7 +27,7 @@ method printEntity ( Entity e ) {
 	printName (e);
 }
 	
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	c = Company ( id = 1, name =  "IBM" ); 
 	printEntity (c);
 	p = Person ( id = 1,  name = "James" ); 

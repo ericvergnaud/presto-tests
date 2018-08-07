@@ -19,7 +19,7 @@ method printEntity(Entity e) {
 	print ("/name:" + e.name);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	x = Entity ( name = "John");
 	x.printSelf(); 
 }

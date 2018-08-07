@@ -15,7 +15,7 @@ define print as native method receiving Text value doing:
 define printPrime as method receiving prime doing:
 	print "/prime=" + prime
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	printPrime 13
 	switch on error doing:
 		printPrime 14

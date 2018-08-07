@@ -14,6 +14,6 @@ define print as native method receiving Text value doing:
 define printName as method receiving Entity p with attribute name doing:
 	print with "/anonymous=" + p.name as value
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	e = Extended with 1 as id and "John" as name
 	printName e

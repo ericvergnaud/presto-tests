@@ -9,5 +9,5 @@ define Entity as enumerated Decimal with symbols:
 	ENTITY_1 with 3.5 as value
 	
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	print "/" + (15.0 - ENTITY_1.value)

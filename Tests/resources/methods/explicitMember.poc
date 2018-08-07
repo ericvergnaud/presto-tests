@@ -29,7 +29,7 @@ category Entity (name) {
 }
 
  
-method main (Text{} options) {
+method main (Text<:> options) {
 	e = Entity(name="John");
 	e.doStuff();
 }

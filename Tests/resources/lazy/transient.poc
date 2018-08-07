@@ -6,7 +6,7 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	a = "a_v1";
 	b = a;
 	a = "a_v2";

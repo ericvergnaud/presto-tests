@@ -15,7 +15,7 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	try(error) {
 		l1 = "abcdef";
 		print ( l1[5:7] );

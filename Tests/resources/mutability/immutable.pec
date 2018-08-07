@@ -19,7 +19,7 @@ define Immutable as category with attribute name, and methods:
 	define setTheName as method receiving Text value doing:
 		name = value
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	i = Immutable with "before" as name
 	switch on error doing:
 		i.setTheName "after"

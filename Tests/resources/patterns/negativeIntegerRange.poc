@@ -18,7 +18,7 @@ method printNeg(negativeInteger) {
 	print ("/neg=" + negativeInteger);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	printNeg (-7);
 	try(error) {
 		printNeg (42);

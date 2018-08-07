@@ -16,7 +16,7 @@ category Amount (currency , value) {
 	}
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	a = Amount(currency="USD", value=6000.0); 
 	b = Amount(currency="USD", value=2000.0);
 	print ("" + (a - b));

@@ -6,7 +6,7 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	u = '11223344-aabb-ccdd-eeff-112233445566';
 	print ("" + u);
 }

@@ -6,6 +6,6 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	print ("" + ('2012-03-03T13:03:03.001Z' + 'P3DT2.999S'));
 }

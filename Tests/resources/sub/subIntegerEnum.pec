@@ -8,5 +8,5 @@ define print as native method receiving Text value doing:
 define Entity as enumerated Integer with symbols:
 	ENTITY_1 with 12 as value
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	print "/" + (15 - ENTITY_1.value)

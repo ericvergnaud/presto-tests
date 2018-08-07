@@ -21,7 +21,7 @@ method parentTest ( Text prefix ) {
 	return subTest;
 }
 	
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	m = parentTest ( prefix = "prefix:" ); 
 	printMethod ( m );
 }

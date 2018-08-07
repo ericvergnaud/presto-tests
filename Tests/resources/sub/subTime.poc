@@ -6,7 +6,7 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	print ("/" + ('13:03:13.005' - 'PT7.005S'));
 	print ("/" + ('13:03:13.005' - '03:03:13.005'));
 }

@@ -12,7 +12,7 @@ define Entity as category with attribute name, and methods:
 	define printSelf as method receiving name doing:
 		print "/name:" + self.name
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	x = Entity with "John" as name
 	y = Entity with "Not John" as name
 	x.printSelf y

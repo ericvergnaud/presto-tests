@@ -12,7 +12,7 @@ define Entity as singleton with attribute name, and methods:
 	define printName as method doing:
 		print "/name:" + name
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	with Entity, do:
 		name = "John"
 	Entity.printName

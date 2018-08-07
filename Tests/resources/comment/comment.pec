@@ -1,4 +1,4 @@
 // this is a comment
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	// this is a comment
 	a = 3

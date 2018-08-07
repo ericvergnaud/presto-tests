@@ -10,6 +10,6 @@ method printName(Text name,Text suffix) {
 	print ( value = name + suffix); 
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	printName ("IBM" , suffix = " is a fine company" );
 } 

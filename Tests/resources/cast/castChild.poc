@@ -21,7 +21,7 @@ method printName(Root root) {
 	c.printName();
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	c = Child(name = "ok");
 	printName(c);
 }

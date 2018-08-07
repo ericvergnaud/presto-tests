@@ -15,7 +15,7 @@ category Entity(name) {
 	}
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	x = Entity ( name = "John");
 	y = Entity ( name = "Not John");
 	x.printSelf ( y ); 

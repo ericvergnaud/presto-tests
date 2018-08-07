@@ -11,7 +11,7 @@ define testCode as method receiving Code code doing:
 	s = "a+b=" + execute: code
 	print s
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	c = Code: a + b
 	testCode with c as code
 	

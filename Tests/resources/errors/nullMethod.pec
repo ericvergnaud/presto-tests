@@ -18,7 +18,7 @@ define Name as category with attribute name, and methods:
 	define member as method receiving Text value doing:
 		print value
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	switch on error doing:
 		s = Name
 		s = nothing

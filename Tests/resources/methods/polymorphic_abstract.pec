@@ -23,7 +23,7 @@ define printName as abstract method receiving Entity e
 define printEntity as method receiving Entity e doing:
 	printName e
 	
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	c = Company with 1 as id and "IBM" as name
 	printEntity c
 	p = Person with 1 as id and "James" as name

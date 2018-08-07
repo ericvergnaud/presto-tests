@@ -6,7 +6,7 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	set = < 3.17, -3, 2.15 >;
 	print ("" + sorted desc (set));
 }

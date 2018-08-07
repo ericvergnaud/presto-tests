@@ -15,7 +15,7 @@ method print ( Text prefix, Entity entity ) {
 	print( prefix + entity.value );
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	e1 = ENTITY_1;
 	print (prefix = "/a=", entity = e1);
 	e2 = ENTITY_2;

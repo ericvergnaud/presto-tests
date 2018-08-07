@@ -8,7 +8,7 @@ define print as native method receiving Text value doing:
 define stuff as method receiving Text data returning Text doing:
 	return "return " + data
 	
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	for each a in [1..5]:
 		x = stuff with "stuff" as data
 	print "reached"

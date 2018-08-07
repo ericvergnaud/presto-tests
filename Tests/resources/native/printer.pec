@@ -35,5 +35,5 @@ define printNative as native method receiving any value and Writer writer doing:
 	Python3: print(objects=str(value),end="", file=writer)
 	JavaScript: writer.write(value.toString());
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	print with "name=IBM" as value

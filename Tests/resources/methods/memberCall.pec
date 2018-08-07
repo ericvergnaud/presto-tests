@@ -15,6 +15,6 @@ define Entity as category with attribute id, and methods:
 	define b as method doing:
 		print "id=" + id
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	e = Entity with 1 as id
 	e.a

@@ -6,7 +6,7 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	print ("/" + ('2012-03-13' - 'P7D'));
 	print ("/" + ('2012-03-13' - '2012-03-10'));
 }

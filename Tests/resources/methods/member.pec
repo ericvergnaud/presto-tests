@@ -21,6 +21,6 @@ define printEntity as method receiving Entity e doing:
 	e.printName "string"
 	e.printName 32
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	e = Entity with 1 as id
 	printEntity e

@@ -5,7 +5,7 @@ define country as storable Country attribute
 define marketCode as storable Text attribute
 define Market as storable category with attributes name, country and marketCode
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	doc1 = Document
 	doc1.marketCode = "ABCD"
 	doc1.name = "MARKET"

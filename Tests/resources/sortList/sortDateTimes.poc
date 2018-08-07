@@ -6,7 +6,7 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	list = [ '2014-10-10T16:00Z', '2014-12-10T22:33Z', '2013-10-10T18:00Z' ];
 	print ("" + sorted( list));
 }

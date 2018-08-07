@@ -20,7 +20,7 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	with ( file = MyResource ( path = "xyz8", content = "" ) )
 		write ( "writePartialOk") to file;
 	s = read all from MyResource ( path = "xyz8" );

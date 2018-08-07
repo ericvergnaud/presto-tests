@@ -31,7 +31,7 @@ native method print ( Text value ) {
 
 
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	c = MyClass ( id = "1",  name = "John"); 
 	print ("print:" + c.display + ",");
 	c.show ();

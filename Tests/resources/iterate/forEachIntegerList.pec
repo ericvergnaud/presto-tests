@@ -8,7 +8,7 @@ define print as native method receiving Text value doing:
 define squares as method receiving Integer[] data returning Iterator<Integer> doing:
 	return i*i for each i in data
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	integers = squares with [2,5,8] as data
 	for each i in integers:
 		print "/i=" + i

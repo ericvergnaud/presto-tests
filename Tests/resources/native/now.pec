@@ -12,7 +12,7 @@ define now as native method returning DateTime doing:
 	Python3: return datetime.utcnow() from module: datetime
 	JavaScript: return new Date();
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	// simply check it doesn't throw
 	instant = now 
 	print with "ok" as value

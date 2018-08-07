@@ -13,7 +13,7 @@ define Amount as category with attributes currency and value, and methods:
 	define + as operator receiving Amount other doing:
 		return Amount with currency as currency and value + other.value as value
 	
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	a = Amount with "USD" as currency and 2000.0 as value
 	b = Amount with "USD" as currency and 4000.0 as value
 	print "" + (a + b)

@@ -14,7 +14,7 @@ category Parent extends Root;
 
 category Child extends Parent;
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	c = Parent(name = "ok");
 	if (c is a Root)
 		print ("/root:" + c.name);

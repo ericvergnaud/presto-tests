@@ -10,7 +10,7 @@ define count as Integer attribute
 
 define Entity as category with attributes name and count
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	c = Entity with "John" as name and 123 as count
 	print "text=" + c.text
 	

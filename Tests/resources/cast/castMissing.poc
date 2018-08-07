@@ -10,7 +10,7 @@ attribute name : Text;
 
 category Root(name);
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	list = (Root[])[];
 	list = list + [Root(name = "ok")];
 	print(list[1].name);

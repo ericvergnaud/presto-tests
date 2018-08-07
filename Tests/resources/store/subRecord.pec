@@ -16,7 +16,7 @@ define subEntity as storable SubEntity attribute
 
 define Entity as storable category with attributes name and subEntity
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	s1 = SubEntity with "John" as name
 	e1 = Entity with "Smith" as name and s1 as subEntity
 	store e1

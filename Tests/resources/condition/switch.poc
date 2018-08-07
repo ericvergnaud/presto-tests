@@ -21,7 +21,7 @@ method printInt( Integer a) {
 	}
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	for each (a in [1..9])
 		printInt(a);
 }

@@ -17,7 +17,7 @@ enumerated category Error(name,text) {
 
 category Name(name);
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	try(error) {
 		s = Name();
 		s = null;

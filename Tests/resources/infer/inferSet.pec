@@ -18,7 +18,7 @@ define printShape as method receiving Square shape doing:
 define printShape as method receiving Circle shape doing:
     print "/Circle"
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
     s = Square with 40.0 as perimeter
     c = Circle with 40.0 as perimeter
     shapes = < s, c >

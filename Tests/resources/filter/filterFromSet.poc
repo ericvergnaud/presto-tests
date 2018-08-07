@@ -6,7 +6,7 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	set = < 1, 2, 3, 4, 5, 6 >;
 	even_nums = filtered (set) with (item) where (item % 2 == 0);
 	print ("" + even_nums);

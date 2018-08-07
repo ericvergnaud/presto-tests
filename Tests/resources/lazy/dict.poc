@@ -6,9 +6,9 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	a = "1";
-	d = { "a":a };
+	d = < "a":a >;
 	a = "2";
 	print ("a=" + a + ", d[a]=" + d["a"]);
 }

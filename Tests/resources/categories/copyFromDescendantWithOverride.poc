@@ -15,7 +15,7 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	e1 = Employee ( id = "1", name = "John" , other = "other",  again = "again" ); 
 	e2 = Entity ( from = e1, name = "Peter"); 
 	print ( "/id:" + e2.id );

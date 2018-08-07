@@ -15,7 +15,7 @@ define print as native method receiving Text value doing:
 define printCcy as method receiving isoCcy doing:
 	print "/ccy=" + isoCcy
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	printCcy "ABC"
 	switch on error doing:
 		printCcy "other"

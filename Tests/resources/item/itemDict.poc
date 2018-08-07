@@ -6,7 +6,7 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
-	c = { "hello":7, "boy":19 };
+method main ( Text<:> options ) {
+	c = < "hello":7, "boy":19 >;
 	print ("c[\"boy\"]=" + c["boy"]);
 }

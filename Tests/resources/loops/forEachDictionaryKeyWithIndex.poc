@@ -6,8 +6,8 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
-	dict = { "a":1, "b":2 };
+method main ( Text<:> options ) {
+	dict = < "a":1, "b":2 >;
 	for each (i,k in dict.keys)
 		print ("/i=" + i + "/key=" + k);
 }

@@ -6,7 +6,7 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	t1 = ( 'a', 1 );
 	t2 = ( 'b', 2 );
 	for each (t in <t1,t2>)

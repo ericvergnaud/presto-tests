@@ -21,7 +21,7 @@ category Member(name);
 category Immutable(member);
 
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	m = mutable Member(name="before");
 	try(error) {
 		i = Immutable(member=m);

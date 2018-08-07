@@ -9,7 +9,7 @@ define name as Text attribute
 
 define Entity as category with attribute name
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	entities = [ Entity with "a" as name, Entity with "b" as name ]
 	names = e1.name for each e1 in entities filtered with e2 where e2.name = "a"
 	for each name in names:

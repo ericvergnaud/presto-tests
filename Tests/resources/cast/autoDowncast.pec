@@ -20,6 +20,6 @@ define printRoot as method receiving Root root doing:
 	else:
 		print "/root:" + root.name
 	
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	c = Child with "ok" as name
 	printRoot c

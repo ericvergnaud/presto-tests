@@ -14,7 +14,7 @@ method setName(mutable Mutable m, Text value) {
 	m.name = value;
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	m = mutable Mutable(name="before");
 	setName(m=m, value="after");
 	print (m.name);

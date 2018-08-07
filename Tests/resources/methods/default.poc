@@ -15,6 +15,6 @@ method printDefault(Text value = "Hello") {
 	print ("value=" + value );
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	printDefault ();
 }

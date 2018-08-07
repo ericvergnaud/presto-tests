@@ -16,8 +16,8 @@ enumerated category Error(name,text) {
 	NOT_MUTABLE (text = "Not a mutable object!");
 }
 
-method main ( Text{} options ) {
-	dict = { "item" : "before" };
+method main ( Text<:> options ) {
+	dict = < "item" : "before" >;
 	try(error) {
 		dict["item"] = "after";
 	} catch ( NOT_MUTABLE ) {

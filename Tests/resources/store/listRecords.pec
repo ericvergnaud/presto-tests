@@ -15,7 +15,7 @@ define children as storable Child[] attribute
 
 define Parent as storable category with attributes name and children
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	e1 = Child with "John" as name
 	e2 = Child with "Jane" as name
 	e3 = Child with "Marion" as name

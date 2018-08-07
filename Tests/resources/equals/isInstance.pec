@@ -8,7 +8,7 @@ define print as native method receiving Text value doing:
 define checkIs as method receiving Text a and Text b doing:
 	return a is b
 	
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	a = "test1"
 	b = "test2"
 	print "/" + (checkIs with a as a and a as b)

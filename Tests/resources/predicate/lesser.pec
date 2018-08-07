@@ -9,7 +9,7 @@ define name as storable Text attribute with key, value and words index
 
 define Entity as storable category with attribute name
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	e1 = Entity with "John" as name
 	e2 = Entity with "Jane" as name
 	e3 = Entity with "Marion" as name

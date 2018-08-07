@@ -12,7 +12,7 @@ define Member as category with attribute name
 define Mutable as category with attribute member
 
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	m = mutable Member with "before" as name
 	i = mutable Mutable with m as member
 	m.name = "after"

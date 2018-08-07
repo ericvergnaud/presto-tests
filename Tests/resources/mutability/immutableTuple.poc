@@ -16,7 +16,7 @@ enumerated category Error(name,text) {
 	NOT_MUTABLE (text = "Not a mutable object!");
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	list = ("before",);
 	try(error) {
 		list[1] = "after";

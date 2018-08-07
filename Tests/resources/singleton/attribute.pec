@@ -9,7 +9,7 @@ define name as Text attribute
 
 define Entity as singleton with attribute name
 
-define main as method receiving Text{} options doing:
+define main as method receiving Text<:> options doing:
 	with Entity, do:
 		name = "John"
 	print "/name:" + Entity.name

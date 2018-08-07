@@ -6,8 +6,8 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method main ( Text{} options ) {
-	dict = mutable { "item1" : "before" };
+method main ( Text<:> options ) {
+	dict = mutable < "item1" : "before" >;
 	dict["item1"] = "after1";
 	dict["item2"] = "after2";
 	print(dict["item1"] + "/" + dict["item2"]);

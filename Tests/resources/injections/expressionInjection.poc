@@ -13,7 +13,7 @@ method testCode (Code code) {
 	print (s);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	c = 1;
 	testCode ( code = Code(a + b)); 
 }

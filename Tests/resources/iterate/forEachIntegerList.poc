@@ -10,7 +10,7 @@ Iterator<Integer> method squares ( Integer[] data ) {
 	return i*i for each (i in data);
 }
 
-method main ( Text{} options ) {
+method main ( Text<:> options ) {
 	integers = squares ( data = [2,5,8] );
 	for each (i in integers)
 		print ("/i=" + i);

@@ -1,6 +1,8 @@
 define name as Text attribute 
 
-define A as category with attribute name
+define Ax as category with attribute name
+
+define Any as category
 
 define print as native method receiving Text value doing:
 	Java: System.out.print(value);
@@ -9,10 +11,10 @@ define print as native method receiving Text value doing:
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
-define printAny receiving Any a doing:
+define printAny as method receiving Any a doing:
 	print a.text
 	
 define main as method receiving Text<:> options doing:
-	a = A with "John" as name
-	print a
+	a = Ax with "John" as name
+	printAny a
 	

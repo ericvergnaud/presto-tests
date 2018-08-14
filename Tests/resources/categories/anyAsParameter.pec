@@ -2,7 +2,7 @@ define name as Text attribute
 
 define Ax as category with attribute name
 
-define Any as category
+define Any as category with attribute name
 
 define print as native method receiving Text value doing:
 	Java: System.out.print(value);

@@ -1,0 +1,5 @@
+define Xi as widget with methods:
+
+	@Callback
+	define main as method doing:
+		b = true

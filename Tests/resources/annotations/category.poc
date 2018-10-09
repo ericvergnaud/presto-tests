@@ -1,0 +1,8 @@
+widget Xi {
+
+	@Callback
+	method main () {
+		b = true;
+	}
+
+}	

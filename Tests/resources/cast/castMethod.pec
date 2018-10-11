@@ -1,9 +1,9 @@
 define print as native method receiving Text value doing:
-	Java: System.out.print(value);
-	C#: System.Console.Write(value);
-	Python2: print(objects=value,end="")
-	Python3: print(objects=value,end="")
-	JavaScript: process.stdout.write(value);
+    Java: System.out.print(value);
+    C#: System.Console.Write(value);
+    Python2: print(objects=value,end="")
+    Python3: print(objects=value,end="")
+    JavaScript: process.stdout.write(value);
 
 define name as Text attribute
 
@@ -12,12 +12,12 @@ define User as category with attribute name
 define UserCallback as abstract method receiving User user
 
 define printUser as method receiving User user doing:
-	print user.name
+    print user.name
 	
 define main as method receiving Text<:> options doing:
-	u = User with "John" as name
-	d = { callback: printUser }
-	m = d.callback as UserCallback
-	define runCallback as method doing:
-	    m(u)
-        invoke: runCallback
+    u = User with "John" as name
+    d = { callback: printUser }
+    m = d.callback as UserCallback
+    define runCallback as method doing:
+        m u
+    invoke: runCallback

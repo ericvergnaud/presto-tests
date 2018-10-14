@@ -9,8 +9,7 @@ widget TestPage {
 	}
 
 	Html method render() {
-		handler = click;
-		return <div handler={handler}>Hello "test"!</div>;
+		return <div handler={click}>Hello "test"!</div>;
 	}
 
 }

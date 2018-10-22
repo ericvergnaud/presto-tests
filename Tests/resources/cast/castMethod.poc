@@ -17,11 +17,8 @@ method printUser(User user) {
 }
 
 method main ( Text<:> options ) {
+	c = printUser;
 	u = User(name = "John");
-	d = { callback: printUser };
-	m = (UserCallback)d.callback;
-	method runCallback() {
-		m(u);
-	}
-	runCallback();
+	m = (UserCallback)c;
+	m(u);
 }

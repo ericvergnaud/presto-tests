@@ -15,9 +15,7 @@ define printUser as method receiving User user doing:
     print user.name
 	
 define main as method receiving Text<:> options doing:
+    c = Method: printUser
     u = User with "John" as name
-    d = { callback: Method: printUser }
-    m = d.callback as UserCallback
-    define runCallback as method doing:
-        m u
-    invoke: runCallback
+    m = c as UserCallback
+    m u

@@ -1,1 +1,1 @@
-text=X
+/count:3

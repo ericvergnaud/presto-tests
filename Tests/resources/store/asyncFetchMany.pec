@@ -14,8 +14,8 @@ define Entity as storable category with attribute name
 
 define main as method receiving Text<:> options doing:
 	e1 = Entity with "John" as name
-	e1 = Entity with "Gielgud" as name
+	e2 = Entity with "Gielgud" as name
 	store e1, e2
 	fetch all Entity then with records:
-		names = [ name for each record in records ]
-		print "/names:" + names
+		names = record.name for each record in records
+		print "/names:" + names.text

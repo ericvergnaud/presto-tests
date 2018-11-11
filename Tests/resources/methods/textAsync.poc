@@ -9,7 +9,7 @@ native method print ( Text value ) {
 	
 method textMethod() {
 	print("/body");
-	return "/after"
+	return "/after";
 }
 	
 

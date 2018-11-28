@@ -1,0 +1,7 @@
+define Widget as widget with methods:
+
+    define render as method returning Html doing:
+        return <html/>
+
+    define stuff as method doing:
+        pass

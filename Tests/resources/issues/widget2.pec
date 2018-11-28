@@ -1,0 +1,71 @@
+define NewFactoryDialog as widget with methods:
+	
+	define getInitialState as method doing:
+		factory = Factory with Organization with [User] as users as organization and User as user
+		return {factory:factory}
+	
+	@Callback
+	define getDerivedStateFromProps as method receiving Document props and Document state doing:
+		if props.visible <> true:
+			return state
+		orgs = props.orgs as Organization[]
+		org = orgs[1]
+		user = org.users[1]
+		return {factory:mutable Factory with org as organization and user as user, org:org}
+	
+	define orgSelected as method receiving organization doing:
+		state = getState
+		factory = state.factory as Factory
+		factory.organization = organization
+		factory.user = organization.users[1]
+		setState {factory:factory}
+	
+	define userSelected as method receiving user doing:
+		state = getState
+		factory = state.factory as Factory
+		factory.user = user
+		setState {factory:factory}
+	
+	define createFactory as method doing:
+		pass
+	
+	define render as method returning Html doing:
+		props = getProperties
+		orgs = props.orgs as Organization[]
+		state = getState
+		factory = state.factory as Factory
+		return <Modal show={props.visible} onHide={props.onClose} >
+ 	            <ModalHeader closeButton >
+	                <ModalTitle>New factory</ModalTitle>
+	            </ModalHeader>
+	             <ModalBody>
+	                <form>
+    	                <FormGroup controlId="org" >
+    		                <ControlLabel>Organization:</ControlLabel>
+    		                <br/>
+    		                <DropdownButton style={{margin-left:8px;}} title={factory.organization.name} >
+    		                    {renderOrg org for each org in orgs}</DropdownButton>
+    	                </FormGroup>
+    	                <FormGroup controlId="user" >
+    		                <ControlLabel>User:</ControlLabel>
+    		                <br/>
+    		                <DropdownButton style={{margin-left:8px;}} title={factory.user.name} >
+    		                    {renderUser user for each user in factory.organization.users}</DropdownButton>
+    	                </FormGroup>
+    	                <FormGroup controlId="name" >
+    		                <ControlLabel>Name:</ControlLabel>
+    		                <FormControl value={factory.name} ></FormControl>
+    	                </FormGroup>
+	                </form>
+	             </ModalBody>
+	            <ModalFooter>
+	                <Button onClick={props.onCancel} >Cancel</Button>
+	                <Button active onClick={Method: createFactory} >Create</Button>
+	            </ModalFooter>
+            </Modal>
+	
+	define renderOrg as method receiving organization returning Html doing:
+		return <MenuItem key={organization.dbId} eventKey={organization} onSelect={Method: orgSelected} >{organization.name}</MenuItem>
+	
+	define renderUser as method receiving user returning Html doing:
+		return <MenuItem key={user.dbId} eventKey={user} onSelect={Method: userSelected} >{user.name}</MenuItem>

@@ -1,0 +1,13 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define length as method receiving Text t doing:
+	return t.count
+
+define main as method receiving Text<:> options doing:
+	counts = (length t) for each t in ["a", "bc"]
+	print counts.text

@@ -11,9 +11,9 @@ method sortKey ( Document value ) {
 }
 	
 method main ( Text<:> options ) {
-	e1 = { name : "Peter" }
-	e2 = { name : "Alan" } 
-	e3 = { name : "John" } 
+	e1 = { name : "Peter" };
+	e2 = { name : "Alan" };
+	e3 = { name : "John" };
 	list = [ e1, e2, e3 ];
 	print ("" + sorted (list, key = sortKey));
 } 

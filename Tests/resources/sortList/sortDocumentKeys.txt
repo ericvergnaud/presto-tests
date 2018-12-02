@@ -1,1 +1,1 @@
-[{key:Alan}, {key:John}, {key:Peter}]
+[{"key":"Alan"}, {"key":"John"}, {"key":"Peter"}]

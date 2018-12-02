@@ -12,9 +12,9 @@ native method print ( Text value ) {
 }
 
 method main ( Text<:> options ) {
-	e1 = { name : "Peter" }
-	e2 = { name : "Alan" } 
-	e3 = { name : "John" } 
+	e1 = { name : "Peter" };
+	e2 = { name : "Alan" };
+	e3 = { name : "John" };
 	list = [ e1, e2, e3 ];
-	print ("" + sorted (list, key = ((Text)name)[2:3]));
+	print ("" + sorted (list, key = ((Text)this.name)[2:3]));
 }

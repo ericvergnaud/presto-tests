@@ -11,5 +11,5 @@ method main ( Text<:> options ) {
 	e2 = { name : "Alan" }; 
 	e3 = { name : "John" }; 
 	list = [ e1, e2, e3 ];
-	print ("" + sorted (list, key = name));
+	print ("" + sorted (list, key = "name"));
 }

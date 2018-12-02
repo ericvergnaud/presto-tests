@@ -1,0 +1,16 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define sortKey as method receiving Document value doing:
+	return value.name as Text
+	
+define main as method receiving Text<:> options doing:
+	e1 = { name : "Peter" }
+	e2 = { name : "Alan" } 
+	e3 = { name : "John" } 
+	list = [ e1, e2, e3 ]
+	print "" + sorted list with sortKey as key

@@ -10,4 +10,4 @@ define main as method receiving Text<:> options doing:
 	e2 = { name : "Alan" } 
 	e3 = { name : "John" } 
 	list = [ e1, e2, e3 ]
-	print "" + sorted list with (this.name as Text)[2:3] as key
+	print "" + sorted list with (self.name as Text)[2:3] as key

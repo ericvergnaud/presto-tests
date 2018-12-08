@@ -1,7 +1,9 @@
-storable attribute id : Integer;
+storable attribute id : Text;
 storable attribute name : Text;
 
-storable category Entity(id, name);
+storable category Entity(id , name);
+storable category Person extends Entity;
+storable category Employee extends Person;
 
 native method print ( Text value ) {
 	Java: System.out.print(value);
@@ -13,12 +15,10 @@ native method print ( Text value ) {
 
 
 method main ( Text<:> options ) {
-	doc = Document();
-	doc.id = "1";
-	doc.name = "John";
-	doc.dbId = 99;
-	e = Entity (from = doc); 
-	print ("/id:" + e.id);
-	print ("/name:" + e.name);
+	e1 = Entity ( id = "1",  name = "John"); 
+	store (e1);
+	e2 = Employee( from = e1);
+	print ("/id:" + e2.id);
+	print ("/name:" + e2.name);
 }
 	

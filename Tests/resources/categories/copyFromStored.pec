@@ -1,7 +1,9 @@
-define id as storable Integer attribute 
+define id as storable Text attribute 
 define name as storable Text attribute
 
 define Entity as storable category with attributes id and name
+define Person as storable Entity
+define Employee as storable Person
 
 define print as native method receiving Text value doing:
 	Java: System.out.print(value);
@@ -11,11 +13,9 @@ define print as native method receiving Text value doing:
 	JavaScript: process.stdout.write(value);
 
 define main as method receiving Text<:> options doing:
-	doc = Document
-	doc.id = "1"
-	doc.name = "John"
-	doc.dbId = 99
-	e = Entity from doc
-	print "/id:" + e.id
-	print "/name:" + e.name
+	e1 = Entity with "1" as id and "John" as name
+	store e1
+	e2 = Employee from e1
+	print "/id:" + e2.id
+	print "/name:" + e2.name
 	

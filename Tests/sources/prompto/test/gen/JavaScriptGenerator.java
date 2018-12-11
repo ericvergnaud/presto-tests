@@ -267,9 +267,12 @@ public class JavaScriptGenerator extends Generator {
 		writer.write("var Out = require(\"../../../../../JavaScript-Core/src/test/prompto/runtime/utils/Out\").Out;\n");
 		writer.write("var BaseParserTest = require(\"../../../../../JavaScript-Core/src/test/prompto/parser/BaseParserTest\");\n");
 		writer.write("var loadDependency = require(\"../../../../../JavaScript-Core/src/test/prompto/parser/BaseEParserTest\").loadDependency;\n");
-		writer.write("var runTests = require(\"../../../../../JavaScript-Core/src/test/prompto/parser/Base");
+		writer.write("var runInterpretedTests = require(\"../../../../../JavaScript-Core/src/test/prompto/parser/Base");
 		writer.write(dialect.toUpperCase());
-		writer.write("ParserTest\").runTests;\n");
+		writer.write("ParserTest\").runInterpretedTests;\n");
+		writer.write("var runTranspiledTests = require(\"../../../../../JavaScript-Core/src/test/prompto/parser/Base");
+		writer.write(dialect.toUpperCase());
+		writer.write("ParserTest\").runTranspiledTests;\n");
 		writer.write("\n");
 		writer.write("exports.setUp = function(done) {\n");
 		writer.write("\tOut.init();\n");

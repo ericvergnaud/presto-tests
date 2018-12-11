@@ -261,47 +261,49 @@ public class JavaGenerator extends Generator {
 	}
 	
 	@Override
-	protected void addToLibraryE(String dirName, String fileName) throws Exception {
-		if(libraryE==null) {
-			String capDirName = capitalize(dirName);
-			String testFilePath = LIB_ROOT + "prompto/library/e/Test" + capDirName + ".java";
-			libraryE = mkfile(testFilePath);
-			beginLibrary(libraryE, capDirName, "E");
-		}
+	protected void addToLibraryE(String dirName, String fileName, Options options) throws Exception {
+		if(libraryE==null)
+			libraryE = beginLibrary(dirName, 'E');
+		addToLibrary(dirName, fileName, options, libraryE);
+	}
+	
+	void addToLibrary(String dirName, String fileName, Options options, OutputStreamWriter library) throws IOException {
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToLibrary(libraryE, capFileName, dirName, fileName);
+		if(options.interpreted)
+			addToLibrary(library, capFileName, dirName, fileName, Type.INTERPRETED);
+		if(options.compiled)
+			addToLibrary(library, capFileName, dirName, fileName, Type.COMPILED);
+		if(options.transpiled)
+			addToLibrary(library, capFileName, dirName, fileName, Type.TRANSPILED);
+	}
+
+	private OutputStreamWriter beginLibrary(String dirName, Character dialect) throws IOException {
+		String capDirName = capitalize(dirName);
+		String testFilePath = LIB_ROOT + "prompto/library/" + dialect.toString().toLowerCase() + "/Test" + capDirName + ".java";
+		OutputStreamWriter library = mkfile(testFilePath);
+		beginLibrary(library, capDirName, dialect);
+		return library;
 	}
 
 	@Override
-	protected void addToLibraryO(String dirName, String fileName) throws Exception {
-		if(libraryO==null) {
-			String capDirName = capitalize(dirName);
-			String testFilePath = LIB_ROOT + "prompto/library/o/Test" + capDirName + ".java";
-			libraryO = mkfile(testFilePath);
-			beginLibrary(libraryO, capDirName, "O");
-		}
-		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
-		capFileName = capFileName.replaceAll("-", "_");
-		addToLibrary(libraryO, capFileName, dirName, fileName);
+	protected void addToLibraryO(String dirName, String fileName, Options options) throws Exception {
+		if(libraryO==null)
+			libraryO = beginLibrary(dirName, 'O');
+		addToLibrary(dirName, fileName, options, libraryO);
 	}
 
 	@Override
-	protected void addToLibraryM(String dirName, String fileName) throws Exception {
-		if(libraryM==null) {
-			String capDirName = capitalize(dirName);
-			String testFilePath = LIB_ROOT + "prompto/library/m/Test" + capDirName + ".java";
-			libraryM = mkfile(testFilePath);
-			beginLibrary(libraryM, capDirName, "M");
-		}
-		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
-		capFileName = capFileName.replaceAll("-", "_");
-		addToLibrary(libraryM, capFileName, dirName, fileName);
+	protected void addToLibraryM(String dirName, String fileName, Options options) throws Exception {
+		if(libraryM==null)
+			libraryM = beginLibrary(dirName, 'M');
+		addToLibrary(dirName, fileName, options, libraryO);
 	}
 
-	private void beginLibrary(OutputStreamWriter writer, String dirName, String dialect) throws IOException {
+	private void beginLibrary(OutputStreamWriter writer, String dirName, Character dialect) throws IOException {
+		String dir = dialect.toString().toLowerCase();
 		writer.write("package prompto.library.");
-		writer.write(dialect.toLowerCase());
+		writer.write(dir);
 		writer.write(";\n");
 		writer.write("\n");
 		writer.write("import org.junit.After;\n");
@@ -309,16 +311,16 @@ public class JavaGenerator extends Generator {
 		writer.write("import org.junit.Test;\n");
 		writer.write("\n");
 		writer.write("import prompto.parser.");
-		writer.write(dialect.toLowerCase());
+		writer.write(dir);
 		writer.write(".Base");
-		writer.write(dialect.toUpperCase());
+		writer.write(dialect.toString());
 		writer.write("ParserTest;\n");
 		writer.write("import prompto.runtime.utils.Out;\n");
 		writer.write("\n");
 		writer.write("public class Test");
 		writer.write(dirName);
 		writer.write(" extends Base");
-		writer.write(dialect.toUpperCase());
+		writer.write(dialect.toString());
 		writer.write("ParserTest {\n");
 		writer.write("\n");
 		writer.write("\t@Before\n");
@@ -340,12 +342,15 @@ public class JavaGenerator extends Generator {
 		writer.write("\n");
 	}
 	
-	private void addToLibrary(OutputStreamWriter writer, String capFileName, String dirName, String fileName) throws IOException {
+	private void addToLibrary(OutputStreamWriter writer, String capFileName, String dirName, String fileName, Type type) throws IOException {
 		writer.write("\t@Test\n");
 		writer.write("\tpublic void test");
+		writer.write(type.toString());
 		writer.write(capFileName);
 		writer.write("() throws Exception {\n");
-		writer.write("\t\trunTests(\"");
+		writer.write("\t\trun");
+		writer.write(type.toString());
+		writer.write("Tests(\"");
 		writer.write(dirName);
 		writer.write("/");
 		writer.write(fileName);

@@ -198,11 +198,11 @@ public abstract class Generator {
 
 	private void generateLibraryTests(String dirName, String fileName, Options options) throws Exception {
 		if(fileName.endsWith(".pec")) {
-			addToLibraryE(dirName, fileName);
+			addToLibraryE(dirName, fileName, options);
 		} else if(fileName.endsWith(".poc")) {
-			addToLibraryO(dirName, fileName);
+			addToLibraryO(dirName, fileName, options);
 		} else if(fileName.endsWith(".pmc")) {
-			addToLibraryM(dirName, fileName);
+			addToLibraryM(dirName, fileName, options);
 		}
 	}
 
@@ -240,9 +240,9 @@ public abstract class Generator {
 	protected abstract void addToRuntimeE(String dirName, String fileName, Options options) throws Exception;
 	protected abstract void addToRuntimeO(String dirName, String fileName, Options options) throws Exception;
 	protected abstract void addToRuntimeM(String dirName, String fileName, Options options) throws Exception;
-	protected abstract void addToLibraryE(String dirName, String fileName) throws Exception;
-	protected abstract void addToLibraryO(String dirName, String fileName) throws Exception;
-	protected abstract void addToLibraryM(String dirName, String fileName) throws Exception;
+	protected abstract void addToLibraryE(String dirName, String fileName, Options options) throws Exception;
+	protected abstract void addToLibraryO(String dirName, String fileName, Options options) throws Exception;
+	protected abstract void addToLibraryM(String dirName, String fileName, Options options) throws Exception;
 
 	OutputStreamWriter translateEOE;
 	OutputStreamWriter translateEME;

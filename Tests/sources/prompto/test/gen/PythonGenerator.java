@@ -224,7 +224,7 @@ public abstract class PythonGenerator extends Generator {
 	
 
 	@Override
-	protected void addToLibraryE(String dirName, String fileName) throws Exception {
+	protected void addToLibraryE(String dirName, String fileName, Options options) throws Exception {
 		if(libraryE==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = getLibraryRoot() + "e/Test" + capDirName + ".py";
@@ -237,7 +237,7 @@ public abstract class PythonGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToLibraryO(String dirName, String fileName) throws IOException {
+	protected void addToLibraryO(String dirName, String fileName, Options options) throws IOException {
 		if(libraryO==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = getLibraryRoot() + "o/Test" + capDirName + ".py";
@@ -251,7 +251,7 @@ public abstract class PythonGenerator extends Generator {
 
 
 	@Override
-	protected void addToLibraryM(String dirName, String fileName) throws IOException {
+	protected void addToLibraryM(String dirName, String fileName, Options options) throws IOException {
 		if(libraryM==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = getLibraryRoot() + "m/Test" + capDirName + ".py";

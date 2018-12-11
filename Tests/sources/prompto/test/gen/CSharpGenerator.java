@@ -244,7 +244,7 @@ public class CSharpGenerator extends Generator {
 	}
 	
 	@Override
-	protected void addToLibraryE(String dirName, String fileName) throws Exception {
+	protected void addToLibraryE(String dirName, String fileName, Options options) throws Exception {
 		if(libraryE==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = ROOT + "prompto/library/e/Test" + capDirName + ".cs";
@@ -257,7 +257,7 @@ public class CSharpGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToLibraryO(String dirName, String fileName) throws IOException {
+	protected void addToLibraryO(String dirName, String fileName, Options options) throws IOException {
 		if(libraryO==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = ROOT + "prompto/library/o/Test" + capDirName + ".cs";
@@ -270,7 +270,7 @@ public class CSharpGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToLibraryM(String dirName, String fileName) throws IOException {
+	protected void addToLibraryM(String dirName, String fileName, Options options) throws IOException {
 		if(libraryM==null) {
 			String capDirName = capitalize(dirName);
 			String testFilePath = ROOT + "prompto/library/m/Test" + capDirName + ".cs";

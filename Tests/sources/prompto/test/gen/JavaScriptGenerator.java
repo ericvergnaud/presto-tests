@@ -224,42 +224,41 @@ public class JavaScriptGenerator extends Generator {
 	}
 	
 	@Override
-	protected void addToLibraryE(String dirName, String fileName) throws Exception {
-		if(libraryE==null) {
-			String capDirName = capitalize(dirName);
-			String testFilePath = LIB_ROOT + "library/e/Test" + capDirName + ".js";
-			libraryE = mkfile(testFilePath);
-			beginLibrary(libraryE, "E", capDirName);
-		}
+	protected void addToLibraryE(String dirName, String fileName, Options options) throws IOException {
+		if(libraryE==null)
+			libraryE = beginLibrary(dirName, 'E');
+		addToLibrary(dirName, fileName, options, libraryE);
+	}
+	
+	void addToLibrary(String dirName, String fileName, Options options, OutputStreamWriter writer) throws IOException {
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToLibrary(libraryE, capFileName, dirName, fileName);
+		if(options.interpreted)
+			addToLibrary(writer, capFileName, dirName, fileName, Type.INTERPRETED);
+		if(options.transpiled)
+			addToLibrary(writer, capFileName, dirName, fileName, Type.TRANSPILED);
+	}
+
+	private OutputStreamWriter beginLibrary(String dirName, Character dialect) throws IOException {
+		String capDirName = capitalize(dirName);
+		String testFilePath = LIB_ROOT + "library/" + dialect.toString().toLowerCase() + "/Test" + capDirName + ".js";
+		OutputStreamWriter library =  mkfile(testFilePath);
+		beginLibrary(library, dialect.toString(), capDirName);
+		return library;	
 	}
 
 	@Override
-	protected void addToLibraryO(String dirName, String fileName) throws IOException {
-		if(libraryO==null) {
-			String capDirName = capitalize(dirName);
-			String testFilePath = LIB_ROOT + "library/o/Test" + capDirName + ".js";
-			libraryO = mkfile(testFilePath);
-			beginLibrary(libraryO, "O", capDirName);
-		}
-		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
-		capFileName = capFileName.replaceAll("-", "_");
-		addToLibrary(libraryO, capFileName, dirName, fileName);
+	protected void addToLibraryO(String dirName, String fileName, Options options) throws IOException {
+		if(libraryO==null)
+			libraryO = beginLibrary(dirName, 'O');
+		addToLibrary(dirName, fileName, options, libraryO);
 	}
 
 	@Override
-	protected void addToLibraryM(String dirName, String fileName) throws IOException {
-		if(libraryM==null) {
-			String capDirName = capitalize(dirName);
-			String testFilePath = LIB_ROOT + "library/m/Test" + capDirName + ".js";
-			libraryM = mkfile(testFilePath);
-			beginLibrary(libraryM, "M", capDirName);
-		}
-		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
-		capFileName = capFileName.replaceAll("-", "_");
-		addToLibrary(libraryM, capFileName, dirName, fileName);
+	protected void addToLibraryM(String dirName, String fileName, Options options) throws IOException {
+		if(libraryM==null)
+			libraryM = beginLibrary(dirName, 'M');
+		addToLibrary(dirName, fileName, options, libraryM);
 	}
 	
 	private void beginLibrary(OutputStreamWriter writer, String dialect, String dirName) throws IOException {
@@ -292,11 +291,14 @@ public class JavaScriptGenerator extends Generator {
 		writer.write("\n");
 	}
 	
-	private void addToLibrary(OutputStreamWriter writer, String capFileName, String dirName, String fileName) throws IOException {
+	private void addToLibrary(OutputStreamWriter writer, String capFileName, String dirName, String fileName, Type type) throws IOException {
 		writer.write("exports.test");
+		writer.write(type.toString()); 
 		writer.write(capFileName);
 		writer.write(" = function(test) {\n");
-		writer.write("\trunTests(test, \"");
+		writer.write("\trun");
+		writer.write(type.toString()); 
+		writer.write("Tests(test, \"");
 		writer.write(dirName);
 		writer.write("/");
 		writer.write(fileName);

@@ -1,4 +1,4 @@
-define main as method receiving Text<:> options doing:
+define main as method doing:
 	printLevel1 "test"
 	print "-ok"
 

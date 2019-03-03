@@ -1,5 +1,4 @@
 define main as method doing:
-	doc = { "list": [ "a", "b" ], "dict": < "name" : "value" > }
 	printLevel1 "test"
 	print "-ok"
 

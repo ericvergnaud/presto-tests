@@ -1,0 +1,17 @@
+define firstName as Text attribute
+define lastName as Text attribute
+define fullName as Text attribute
+
+define Person as category with attributes firstName, lastName and fullName
+
+define main as method doing:
+	a = Person with "John" as firstName, "Smith" as lastName and "John Smith" as fullName
+	print "ok"
+
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+
+	

@@ -1,0 +1,22 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define name as Text attribute
+
+define Child as category with attribute name
+define child as Child attribute
+
+define Entity as category with attribute child
+
+
+define main as method receiving Text<:> options doing:
+	c = Child with "before" as name
+	e = Entity with c as child
+	m = mutable e.child
+	m.name = "after"
+	print m.name
+

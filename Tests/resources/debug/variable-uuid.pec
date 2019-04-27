@@ -1,0 +1,11 @@
+define main as method doing:
+	a = '11223344-aabb-ccdd-eeff-112233445566'
+	print "ok"
+
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+
+	

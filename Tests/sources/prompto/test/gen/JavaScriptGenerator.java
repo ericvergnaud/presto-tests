@@ -47,7 +47,7 @@ public class JavaScriptGenerator extends Generator {
 	protected void addToTranslateEOE(String dirName, String fileName) throws IOException {
 		if(translateEOE==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = CORE_ROOT + "prompto/translate/eoe/Test" + capDirName + ".js";
+			String testFilePath = CORE_ROOT + "prompto/translate/eoe/Test" + capDirName + ".test.js";
 			translateEOE = mkfile(testFilePath);
 			beginTranslate(translateEOE, "EOE");
 		}
@@ -60,7 +60,7 @@ public class JavaScriptGenerator extends Generator {
 	protected void addToTranslateEME(String dirName, String fileName) throws IOException {
 		if(translateEME==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = CORE_ROOT + "prompto/translate/eme/Test" + capDirName + ".js";
+			String testFilePath = CORE_ROOT + "prompto/translate/eme/Test" + capDirName + ".test.js";
 			translateEME = mkfile(testFilePath);
 			beginTranslate(translateEME, "EME");
 		}
@@ -73,7 +73,7 @@ public class JavaScriptGenerator extends Generator {
 	protected void addToTranslateOEO(String dirName, String fileName) throws IOException {
 		if(translateOEO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = CORE_ROOT + "prompto/translate/oeo/Test" + capDirName + ".js";
+			String testFilePath = CORE_ROOT + "prompto/translate/oeo/Test" + capDirName + ".test.js";
 			translateOEO = mkfile(testFilePath);
 			beginTranslate(translateOEO, "OEO");
 		}
@@ -86,7 +86,7 @@ public class JavaScriptGenerator extends Generator {
 	protected void addToTranslateOMO(String dirName, String fileName) throws IOException {
 		if(translateOMO==null) {
 			String capDirName = capitalize(dirName);
-			String testFilePath = CORE_ROOT + "prompto/translate/omo/Test" + capDirName + ".js";
+			String testFilePath = CORE_ROOT + "prompto/translate/omo/Test" + capDirName + ".test.js";
 			translateOMO = mkfile(testFilePath);
 			beginTranslate(translateOMO, "OMO");
 		}
@@ -109,8 +109,6 @@ public class JavaScriptGenerator extends Generator {
 
 
 	private void beginTranslate(OutputStreamWriter writer, String suffix) throws IOException {
-		writer.write("require(\"../../../../exploded\");\n");
-		writer.write("\n");
 		writer.write("var compareResource");
 		writer.write(suffix);
 		writer.write(" = require(\"../../parser/BaseParserTest\").compareResource");
@@ -121,17 +119,17 @@ public class JavaScriptGenerator extends Generator {
 
 
 	protected void addToTranslate(OutputStreamWriter writer, String suffix, String dirName, String capFileName, String fileName) throws IOException {
-		writer.write("exports.test");
+		writer.write("test('");
 		writer.write(capFileName);
-		writer.write(" = function(test) {\n");
+		writer.write("', () => {\n");
 		writer.write("\tcompareResource");
 		writer.write(suffix);
-		writer.write("(test, \"");
+		writer.write("('");
 		writer.write(dirName);
 		writer.write("/");
 		writer.write(fileName);
-		writer.write("\");\n");
-		writer.write("};\n");
+		writer.write("');\n");
+		writer.write("});\n");
 		writer.write("\n");
 	}
 
@@ -162,7 +160,7 @@ public class JavaScriptGenerator extends Generator {
 
 	private OutputStreamWriter beginRuntime(String dirName, Character dialect) throws IOException {
 		String capDirName = capitalize(dirName);
-		String testFilePath = CORE_ROOT + "prompto/runtime/" + dialect.toString().toLowerCase() + "/Test" + capDirName + ".js";
+		String testFilePath = CORE_ROOT + "prompto/runtime/" + dialect.toString().toLowerCase() + "/Test" + capDirName + ".test.js";
 		OutputStreamWriter runtime = mkfile(testFilePath);
 		beginRuntime(runtime, dialect.toString(), capDirName);
 		return runtime;
@@ -180,42 +178,38 @@ public class JavaScriptGenerator extends Generator {
 
 	
 	private void addToRuntime(OutputStreamWriter writer, String capFileName, String dirName, String fileName, Type type) throws IOException {
-		writer.write("exports.test");
+		writer.write("test('");
 		writer.write(type.toString()); 
+		writer.write(" ");
 		writer.write(capFileName);
-		writer.write(" = function(test) {\n");
+		writer.write("', () => {\n");
 		writer.write("\tcheck");
 		writer.write(type.toString()); 
-		writer.write("Output(test, \"");
+		writer.write("Output('");
 		writer.write(dirName);
 		writer.write("/");
 		writer.write(fileName);
-		writer.write("\");\n");
-		writer.write("};\n");
+		writer.write("');\n");
+		writer.write("});\n");
 		writer.write("\n");
 	}
 
 	private void beginRuntime(OutputStreamWriter writer, String dialect, String dirName) throws IOException {
-		writer.write("require(\"../../../../exploded\");\n");
-		writer.write("\n");
 		writer.write("var Out = require(\"../utils/Out\").Out;\n");
 		writer.write("var checkInterpretedOutput = require(\"../../parser/Base");
 		writer.write(dialect.toUpperCase());
 		writer.write("ParserTest\").checkInterpretedOutput;\n");
-		writer.write("\n");
 		writer.write("var checkTranspiledOutput = require(\"../../parser/Base");
 		writer.write(dialect.toUpperCase());
 		writer.write("ParserTest\").checkTranspiledOutput;\n");
 		writer.write("\n");
-		writer.write("exports.setUp = function(done) {\n");
+		writer.write("beforeEach( () => {\n");
 		writer.write("\tOut.init();\n");
-		writer.write("\tdone();\n");
-		writer.write("};\n");
+		writer.write("});\n");
 		writer.write("\n");
-		writer.write("exports.tearDown = function(done) {\n");
+		writer.write("afterEach( () => {\n");
 		writer.write("\tOut.restore();\n");
-		writer.write("\tdone();\n");
-		writer.write("};\n");
+		writer.write("});\n");
 		writer.write("\n");
 	}
 
@@ -241,7 +235,7 @@ public class JavaScriptGenerator extends Generator {
 
 	private OutputStreamWriter beginLibrary(String dirName, Character dialect) throws IOException {
 		String capDirName = capitalize(dirName);
-		String testFilePath = LIB_ROOT + "library/" + dialect.toString().toLowerCase() + "/Test" + capDirName + ".js";
+		String testFilePath = LIB_ROOT + "library/" + dialect.toString().toLowerCase() + "/Test" + capDirName + ".test.js";
 		OutputStreamWriter library =  mkfile(testFilePath);
 		beginLibrary(library, dialect.toString(), capDirName);
 		return library;	
@@ -262,7 +256,6 @@ public class JavaScriptGenerator extends Generator {
 	}
 	
 	private void beginLibrary(OutputStreamWriter writer, String dialect, String dirName) throws IOException {
-		writer.write("require(\"../../../../../JavaScript-Core/src/exploded.js\");\n");
 		writer.write("var prompto = require(\"../../../../../JavaScript-Core/src/main/prompto/index.js\");\n");
 		writer.write("var Out = require(\"../../../../../JavaScript-Core/src/test/prompto/runtime/utils/Out\").Out;\n");
 		writer.write("var BaseParserTest = require(\"../../../../../JavaScript-Core/src/test/prompto/parser/BaseParserTest\");\n");
@@ -274,7 +267,7 @@ public class JavaScriptGenerator extends Generator {
 		writer.write(dialect.toUpperCase());
 		writer.write("ParserTest\").runTranspiledTests;\n");
 		writer.write("\n");
-		writer.write("exports.setUp = function(done) {\n");
+		writer.write("beforeEach( () => {\n");
 		writer.write("\tOut.init();\n");
 		if(dependencies!=null) {
 			writer.write("\tBaseParserTest.coreContext = null;\n");
@@ -284,29 +277,28 @@ public class JavaScriptGenerator extends Generator {
 				writer.write("\");\n");
 			}
 		}
-		writer.write("\tdone();\n");
-		writer.write("};\n");
+		writer.write("});\n");
 		writer.write("\n");
-		writer.write("exports.tearDown = function(done) {\n");
+		writer.write("afterEach( () => {\n");
 		writer.write("\tOut.restore();\n");
-		writer.write("\tdone();\n");
-		writer.write("};\n");
+		writer.write("});\n");
 		writer.write("\n");
 	}
 	
 	private void addToLibrary(OutputStreamWriter writer, String capFileName, String dirName, String fileName, Type type) throws IOException {
-		writer.write("exports.test");
+		writer.write("test('");
 		writer.write(type.toString()); 
+		writer.write(" ");
 		writer.write(capFileName);
-		writer.write(" = function(test) {\n");
+		writer.write("', () => {\n");
 		writer.write("\trun");
 		writer.write(type.toString()); 
-		writer.write("Tests(test, \"");
+		writer.write("Tests('");
 		writer.write(dirName);
 		writer.write("/");
 		writer.write(fileName);
-		writer.write("\");\n");
-		writer.write("};\n");
+		writer.write("');\n");
+		writer.write("});\n");
 		writer.write("\n");
 	}
 

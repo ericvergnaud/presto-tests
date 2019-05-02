@@ -1,0 +1,16 @@
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+attribute stuff : Text;
+
+category Entity(stuff);
+
+method main ( Text<:> options ) {
+	list = [ Entity(stuff="z"), Entity(stuff="acde"), Entity(stuff="xyz"), Entity(stuff="ab") ];
+	print ("" + sorted (list, key = s => s.stuff));
+}

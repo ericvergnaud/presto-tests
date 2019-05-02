@@ -12,5 +12,5 @@ category Entity(stuff);
 
 method main ( Text<:> options ) {
 	list = [ Entity(stuff="z"), Entity(stuff="acde"), Entity(stuff="xyz"), Entity(stuff="ab") ];
-	print ("" + sorted (list, key = s => s.stuff));
+	print ("" + sorted (list, key = s => s.stuff.count));
 }

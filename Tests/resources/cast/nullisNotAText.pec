@@ -6,7 +6,7 @@ define print as native method receiving Text value doing:
 	JavaScript: process.stdout.write(value);
 
 define main as method receiving Text<:> options doing:
-	c = Nothing as Text
+	c = nothing as Text
 	if c is a Text:
 		print "/text:" + c
 	else:

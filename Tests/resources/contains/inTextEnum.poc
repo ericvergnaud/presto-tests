@@ -15,5 +15,5 @@ enumerated ReleaseStatus(Text) {
 
 method main ( Text<:> options ) {
 	print ("/" + (PENDING in [ PENDING, CANCELLED]));
-	print ("/" + ("an" in [ PENDING, CANCELLED]));
+	print ("/" + (RELEASED in [ PENDING, CANCELLED]));
 }

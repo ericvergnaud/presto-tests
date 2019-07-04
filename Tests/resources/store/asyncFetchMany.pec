@@ -16,6 +16,6 @@ define main as method receiving Text<:> options doing:
 	e1 = Entity with "John" as name
 	e2 = Entity with "Gielgud" as name
 	store e1, e2
-	fetch all Entity then with records:
+	fetch all mutable Entity then with records:
 		names = record.name for each record in records
 		print "/names:" + names.text

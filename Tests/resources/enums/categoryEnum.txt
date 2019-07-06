@@ -1,1 +1,1 @@
-/a=ENTITY_1/b=n2/symbols=[ENTITY_1, ENTITY_2]
+/a=ENTITY_1/b=n2/symbols=[ENTITY_1, ENTITY_2]/valueOf=n1

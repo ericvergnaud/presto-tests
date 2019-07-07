@@ -1,0 +1,8 @@
+@NativeWidgetField(name="state", getter="getState", type=Document)
+widget Page {
+
+	Html method render () {
+		return <div>Stuff</div>;
+	}
+	
+}

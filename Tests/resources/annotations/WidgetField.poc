@@ -1,8 +1,17 @@
-@NativeWidgetField(name="state", getter="getState", type=Document)
-widget Page {
+@WidgetField(name="state", type=Document)
+widget ReactWidget;
+
+widget Page extends ReactWidget {
 
 	Html method render () {
-		return <div>Stuff</div>;
+		return <div stuff={state.stuff}>{state.stuff}</div>;
 	}
 	
+}
+
+widget Container {
+
+	Html method render () {
+		return <Page/>;
+	}
 }

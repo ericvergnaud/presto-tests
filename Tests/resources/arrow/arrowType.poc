@@ -1,0 +1,17 @@
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+method printResultOfMyProto(((Text prefix) => Text) myProto)  {
+	s = myProto(prefix="Hello");
+	print(s);
+}
+
+method main (Text<:> options) {
+	m = myMethod;
+	printResultOfMyProto(myProto = prefix => prefix + " John");
+}

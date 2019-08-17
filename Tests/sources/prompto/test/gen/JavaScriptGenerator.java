@@ -227,9 +227,9 @@ public class JavaScriptGenerator extends Generator {
 	void addToLibrary(String dirName, String fileName, Options options, OutputStreamWriter writer) throws IOException {
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		if(options.interpreted)
+		if(options.interpreted && !options.exclusions.isExcludedTest(dirName, fileName, Target.JAVASCRIPT, TestType.INTERPRETED))
 			addToLibrary(writer, capFileName, dirName, fileName, TestType.INTERPRETED);
-		if(options.transpiled)
+		if(options.transpiled && !options.exclusions.isExcludedTest(dirName, fileName, Target.JAVASCRIPT, TestType.TRANSPILED))
 			addToLibrary(writer, capFileName, dirName, fileName, TestType.TRANSPILED);
 	}
 

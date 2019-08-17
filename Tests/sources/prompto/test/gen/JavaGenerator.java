@@ -270,11 +270,11 @@ public class JavaGenerator extends Generator {
 	void addToLibrary(String dirName, String fileName, Options options, OutputStreamWriter library) throws IOException {
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		if(options.interpreted && !options.exclusions.isExcluded(dirName, fileName, Target.JAVA, TestType.INTERPRETED))
+		if(options.interpreted && !options.exclusions.isExcludedTest(dirName, fileName, Target.JAVA, TestType.INTERPRETED))
 			addToLibrary(library, capFileName, dirName, fileName, TestType.INTERPRETED);
-		if(options.compiled  && !options.exclusions.isExcluded(dirName, fileName, Target.JAVA, TestType.COMPILED))
+		if(options.compiled  && !options.exclusions.isExcludedTest(dirName, fileName, Target.JAVA, TestType.COMPILED))
 			addToLibrary(library, capFileName, dirName, fileName, TestType.COMPILED);
-		if(options.transpiled  && !options.exclusions.isExcluded(dirName, fileName, Target.JAVA, TestType.TRANSPILED))
+		if(options.transpiled  && !options.exclusions.isExcludedTest(dirName, fileName, Target.JAVA, TestType.TRANSPILED))
 			addToLibrary(library, capFileName, dirName, fileName, TestType.TRANSPILED);
 	}
 

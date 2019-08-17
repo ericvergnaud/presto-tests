@@ -35,7 +35,7 @@ public class Exclusions {
 		return excludedFiles.contains(fileName);
 	}
 
-	public boolean isExcluded(String dirName, String fileName, Target target, TestType type) {
+	public boolean isExcludedTest(String dirName, String fileName, Target target, TestType type) {
 		return exclusions.stream().anyMatch(e->e.isExcluded(dirName, fileName, target, type));
 	}
 

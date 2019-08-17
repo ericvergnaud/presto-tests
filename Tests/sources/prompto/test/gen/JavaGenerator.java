@@ -187,11 +187,11 @@ public class JavaGenerator extends Generator {
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
 		if(options.interpreted)
-			addToRuntime(runtime, capFileName, dirName, fileName, Type.INTERPRETED);
+			addToRuntime(runtime, capFileName, dirName, fileName, TestType.INTERPRETED);
 		if(options.compiled && !isExcludedFromCompiled(dirName, fileName))
-			addToRuntime(runtime, capFileName, dirName, fileName, Type.COMPILED);
+			addToRuntime(runtime, capFileName, dirName, fileName, TestType.COMPILED);
 		if(options.transpiled && !isExcludedFromTranspiled(dirName, fileName))
-			addToRuntime(runtime, capFileName, dirName, fileName, Type.TRANSPILED);
+			addToRuntime(runtime, capFileName, dirName, fileName, TestType.TRANSPILED);
 	}
 	
 	private boolean isExcludedFromCompiled(String dirName, String fileName) {
@@ -238,7 +238,7 @@ public class JavaGenerator extends Generator {
 		writer.write("\n");
 	}
 
-	private void addToRuntime(OutputStreamWriter writer, String capFileName, String dirName, String fileName, Type type) throws IOException {
+	private void addToRuntime(OutputStreamWriter writer, String capFileName, String dirName, String fileName, TestType type) throws IOException {
 		writer.write("\t@Test\n");
 		writer.write("\tpublic void test");
 		writer.write(type.toString()); 
@@ -270,12 +270,12 @@ public class JavaGenerator extends Generator {
 	void addToLibrary(String dirName, String fileName, Options options, OutputStreamWriter library) throws IOException {
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		if(options.interpreted)
-			addToLibrary(library, capFileName, dirName, fileName, Type.INTERPRETED);
-		if(options.compiled)
-			addToLibrary(library, capFileName, dirName, fileName, Type.COMPILED);
-		if(options.transpiled)
-			addToLibrary(library, capFileName, dirName, fileName, Type.TRANSPILED);
+		if(options.interpreted && !options.exclusions.isExcluded(dirName, fileName, Target.JAVA, TestType.INTERPRETED))
+			addToLibrary(library, capFileName, dirName, fileName, TestType.INTERPRETED);
+		if(options.compiled  && !options.exclusions.isExcluded(dirName, fileName, Target.JAVA, TestType.COMPILED))
+			addToLibrary(library, capFileName, dirName, fileName, TestType.COMPILED);
+		if(options.transpiled  && !options.exclusions.isExcluded(dirName, fileName, Target.JAVA, TestType.TRANSPILED))
+			addToLibrary(library, capFileName, dirName, fileName, TestType.TRANSPILED);
 	}
 
 	private OutputStreamWriter beginLibrary(String dirName, Character dialect) throws IOException {
@@ -342,7 +342,7 @@ public class JavaGenerator extends Generator {
 		writer.write("\n");
 	}
 	
-	private void addToLibrary(OutputStreamWriter writer, String capFileName, String dirName, String fileName, Type type) throws IOException {
+	private void addToLibrary(OutputStreamWriter writer, String capFileName, String dirName, String fileName, TestType type) throws IOException {
 		writer.write("\t@Test\n");
 		writer.write("\tpublic void test");
 		writer.write(type.toString());

@@ -7,9 +7,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
@@ -29,17 +28,6 @@ public abstract class Generator {
 			g.generate(options);
 	}
 	
-	public static enum Type {
-		INTERPRETED,
-		COMPILED,
-		TRANSPILED;
-		
-		@Override
-		public String toString() {
-			return this.name().substring(0, 1) + this.name().substring(1).toLowerCase();
-		}
-	}
-
 	private static Options adjustToContext(Options options) {
 		String path = readPromptoPath();
 		if(path.endsWith("/prompto/"))
@@ -142,21 +130,24 @@ public abstract class Generator {
 	}
 	
 	private void generate(Options options) throws Exception {
-		generate(readResourcesPath(), "runtime", this::generateRuntimeTests, options,
-				"resourceError", "issues", "debug", "comment", "unexpected", "return", 
-				"dateTimeTZOffset", "dateTimeTZName", "global", "annotations", "empty", "widget2");
-		generate(readResourcesPath(), "translate", this::generateTranslateTests, options, "widget2");
-		generate(readLibrariesPath(), "library", this::generateLibraryTests, options, "concat");
+		options.exclusions = new Exclusions()
+				.withExcludedDirs(Arrays.asList("resourceError", "issues", "debug", "comment", "annotations"))
+				.withExcludedFiles(Arrays.asList("unexpected", "return", "dateTimeTZOffset", "dateTimeTZName", "global", "empty", "widget2"));
+		generate(readResourcesPath(), "runtime", this::generateRuntimeTests, options);
+		options.exclusions = new Exclusions().withExcludedFiles(Collections.singletonList("widget2"));
+		generate(readResourcesPath(), "translate", this::generateTranslateTests, options);
+		options.exclusions = new Exclusions().withExcludedFiles(Collections.singletonList("concat"))
+				.withExclusion((dir, file, target, type) -> 
+					"attribute.pec".equals(file) && type == TestType.TRANSPILED);
+		generate(readLibrariesPath(), "library", this::generateLibraryTests, options);
 	}
 
-	
-	private void generate(String path, String nature, FileGenerator generator, Options options, String ... _excluded) throws Exception {
+	private void generate(String path, String nature, FileGenerator generator, Options options) throws Exception {
 		System.out.println("Generating " + nature + " " + getTarget() + " tests at " + readPromptoPath());
-		Set<String> excluded = new HashSet<>(Arrays.asList(_excluded));
 		File rootDir = new File(path);
 		String[] dirNames = rootDir.list();
 		for(String dirName : dirNames) {
-			if(excluded.contains(dirName))
+			if(options.exclusions.isExcludedDir(dirName))
 				continue;
 			File subDir = new File(rootDir, dirName);
 			if(!subDir.isDirectory())
@@ -173,7 +164,7 @@ public abstract class Generator {
 			Arrays.sort(fileNames);
 			for(String fileName : fileNames) {
 				String plainName = fileName.substring(0, fileName.indexOf('.'));
-				if(excluded.contains(plainName))
+				if(options.exclusions.isExcludedFile(plainName))
 					continue;
 				generator.generate(dirName, fileName, options);
 			}

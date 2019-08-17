@@ -9,4 +9,5 @@ public class Options {
 	boolean python2 = true;
 	boolean python3 = true;
 	boolean javascript = true;
+	Exclusions exclusions = null;
 }

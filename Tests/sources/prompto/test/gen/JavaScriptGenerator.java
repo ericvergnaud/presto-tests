@@ -170,14 +170,14 @@ public class JavaScriptGenerator extends Generator {
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
 		if(options.interpreted)
-			addToRuntime(runtime, capFileName, dirName, fileName, Type.INTERPRETED);
+			addToRuntime(runtime, capFileName, dirName, fileName, TestType.INTERPRETED);
 		if(options.transpiled)
-			addToRuntime(runtime, capFileName, dirName, fileName, Type.TRANSPILED);
+			addToRuntime(runtime, capFileName, dirName, fileName, TestType.TRANSPILED);
 	}
 
 
 	
-	private void addToRuntime(OutputStreamWriter writer, String capFileName, String dirName, String fileName, Type type) throws IOException {
+	private void addToRuntime(OutputStreamWriter writer, String capFileName, String dirName, String fileName, TestType type) throws IOException {
 		writer.write("test('");
 		writer.write(type.toString()); 
 		writer.write(" ");
@@ -228,9 +228,9 @@ public class JavaScriptGenerator extends Generator {
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
 		if(options.interpreted)
-			addToLibrary(writer, capFileName, dirName, fileName, Type.INTERPRETED);
+			addToLibrary(writer, capFileName, dirName, fileName, TestType.INTERPRETED);
 		if(options.transpiled)
-			addToLibrary(writer, capFileName, dirName, fileName, Type.TRANSPILED);
+			addToLibrary(writer, capFileName, dirName, fileName, TestType.TRANSPILED);
 	}
 
 	private OutputStreamWriter beginLibrary(String dirName, Character dialect) throws IOException {
@@ -285,7 +285,7 @@ public class JavaScriptGenerator extends Generator {
 		writer.write("\n");
 	}
 	
-	private void addToLibrary(OutputStreamWriter writer, String capFileName, String dirName, String fileName, Type type) throws IOException {
+	private void addToLibrary(OutputStreamWriter writer, String capFileName, String dirName, String fileName, TestType type) throws IOException {
 		writer.write("test('");
 		writer.write(type.toString()); 
 		writer.write(" ");

@@ -1,0 +1,15 @@
+@WidgetProperties({stuff: Text})
+widget MyWidget {
+
+	Html method render () {
+		return <div>stuff</div>;
+	}
+	
+}
+
+widget Container {
+
+	Html method render () {
+		return <MyWidget stuff={123.54}/>;
+	}
+}

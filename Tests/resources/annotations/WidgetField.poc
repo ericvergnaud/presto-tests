@@ -1,7 +1,7 @@
 @WidgetField(name="state", type=Document)
 widget ReactWidget;
 
-widget Page extends ReactWidget {
+widget MyWidget extends ReactWidget {
 
 	Html method render () {
 		return <div stuff={state.stuff}>{state.stuff}</div>;
@@ -12,6 +12,6 @@ widget Page extends ReactWidget {
 widget Container {
 
 	Html method render () {
-		return <Page/>;
+		return <MyWidget/>;
 	}
 }

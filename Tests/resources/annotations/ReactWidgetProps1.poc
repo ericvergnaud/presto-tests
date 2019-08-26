@@ -1,0 +1,18 @@
+@WidgetField(name="props", type=Document)
+widget ReactWidget;
+
+@WidgetProperties({stuff: Text})
+widget MyWidget extends ReactWidget {
+
+	Html method render () {
+		return <div stuff={props.stuff}>{props.stuff}</div>;
+	}
+	
+}
+
+widget Container {
+
+	Html method render () {
+		return <MyWidget stuff={"some stuff"}/>;
+	}
+}

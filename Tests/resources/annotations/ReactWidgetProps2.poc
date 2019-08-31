@@ -1,4 +1,4 @@
-@WidgetField(name="props", type=Document)
+@WidgetField(name="props", type=Document, isProperties=true)
 widget ReactWidget;
 
 @WidgetProperties({stuff: Text})

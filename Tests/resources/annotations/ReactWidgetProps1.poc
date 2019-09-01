@@ -1,11 +1,14 @@
-@WidgetField(name="props", type=Document)
+@WidgetField(name="props", type=Document, isProperties=true)
 widget ReactWidget;
 
-@WidgetProperties({stuff: Text})
+@WidgetProperties({name: Text, birthDate: Date})
 widget MyWidget extends ReactWidget {
 
 	Html method render () {
-		return <div stuff={props.stuff}>{props.stuff + " is there"}</div>;
+		thisYear = 2019;
+		hisYear = props.birthDate.year;
+		hisAge = thisYear - hisYear; 
+		return <div stuff={props.name}>{props.name + " is there, his age is " + hisAge}</div>;
 	}
 	
 }
@@ -13,6 +16,6 @@ widget MyWidget extends ReactWidget {
 widget Container {
 
 	Html method render () {
-		return <MyWidget stuff={"some stuff"}/>;
+		return <MyWidget name={"John"} birthDate={'1961-02-25'} />;
 	}
 }

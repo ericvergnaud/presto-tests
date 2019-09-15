@@ -1,0 +1,20 @@
+abstract method IntegerCallback(Integer value);
+
+@WidgetProperties({callback: IntegerCallback})
+widget MyWidget {
+
+	Html method render () {
+		return <div>stuff</div>;
+	}
+	
+}
+
+widget Container {
+	
+	method selected() {
+	}
+	
+	Html method render () {
+		return <MyWidget callback={v=>selected()} />;
+	}
+}

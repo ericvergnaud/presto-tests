@@ -1,3 +1,6 @@
+// needed for type resolution
+abstract method MouseEventCallback(Integer value);
+
 @WidgetField(name="props", type=Document, isProperties=true)
 widget ReactWidget;
 
@@ -8,7 +11,7 @@ widget MyWidget extends ReactWidget {
 		thisYear = 2019;
 		hisYear = props.birthDate.year;
 		hisAge = thisYear - hisYear; 
-		return <div stuff={props.name}>{props.name + " is there, his age is " + hisAge}</div>;
+		return <div id={props.name}>{props.name + " is there, his age is " + hisAge}</div>;
 	}
 	
 }

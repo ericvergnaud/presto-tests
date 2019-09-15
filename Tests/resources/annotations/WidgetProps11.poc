@@ -1,3 +1,6 @@
+// needed for type resolution
+abstract method MouseEventCallback(Integer value);
+
 abstract method IntegerCallback(Integer value);
 
 @WidgetProperties({callback: IntegerCallback})

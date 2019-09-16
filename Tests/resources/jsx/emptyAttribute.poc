@@ -1,5 +1,5 @@
 test method "closing empty attribute" () {
-	a = <div attribute></div>;
+	a = <div id></div>;
 } verifying {
 	a is not null;
 }

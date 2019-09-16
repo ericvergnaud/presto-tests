@@ -1,4 +1,4 @@
 define "closing empty attribute" as test method doing:
-	a = <div attribute></div>
+	a = <div id></div>
 and verifying:
 	a is not nothing

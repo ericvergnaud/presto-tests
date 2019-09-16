@@ -1,6 +1,3 @@
-// needed for type resolution
-abstract method MouseEventCallback(Integer value);
-
 @WidgetProperties({stuff: <"John", 223>})
 widget MyWidget {
 

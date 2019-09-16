@@ -1,5 +1,5 @@
 def test "code attribute" ():
 	x = 123
-	a = <div attribute={x}></div>
+	a = <div id={x}></div>
 verifying:
 	a is not None

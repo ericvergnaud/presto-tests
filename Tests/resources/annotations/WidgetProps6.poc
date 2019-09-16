@@ -1,6 +1,3 @@
-// needed for type resolution
-abstract method MouseEventCallback(Integer value);
-
 @WidgetProperties({stuff: { type: Text, help: "Any stuff", required: true}})
 widget MyWidget {
 

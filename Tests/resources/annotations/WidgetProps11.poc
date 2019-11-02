@@ -1,10 +1,11 @@
 abstract method IntegerCallback(Integer value);
 
+@WidgetField(name="props", type=Document, isProperties=true)
 @WidgetProperties({callback: IntegerCallback})
 widget MyWidget {
 
 	Html method render () {
-		return <div>stuff</div>;
+		return <div onClick={click=>props.callback(7)} >stuff</div>;
 	}
 	
 }

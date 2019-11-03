@@ -1,3 +1,20 @@
+@Inlined
+native category ClickEvent {
+
+	category bindings {
+		JavaScript: Event;
+	}
+}
+
+native category InputChangedEvent {
+
+	category bindings {
+		JavaScript: Event;
+	}
+}
+
+abstract method  ClickEventCallback(ClickEvent event);
+abstract method  InputChangedCallback(InputChangedEvent event);
 abstract method IntegerCallback(Integer value);
 
 @WidgetField(name="props", type=Document, isProperties=true)

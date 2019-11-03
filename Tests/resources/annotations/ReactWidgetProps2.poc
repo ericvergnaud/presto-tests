@@ -1,3 +1,21 @@
+@Inlined
+native category ClickEvent {
+
+	category bindings {
+		JavaScript: Event;
+	}
+}
+
+native category InputChangedEvent {
+
+	category bindings {
+		JavaScript: Event;
+	}
+}
+
+abstract method  ClickEventCallback(ClickEvent event);
+abstract method  InputChangedCallback(InputChangedEvent event);
+
 @WidgetField(name="props", type=Document, isProperties=true)
 widget ReactWidget;
 
@@ -5,7 +23,7 @@ widget ReactWidget;
 widget MyWidget extends ReactWidget {
 
 	Html method render () {
-		return <div stuff={props.stuff}>{props.other}</div>;
+		return <div id={props.stuff}>{props.other}</div>;
 	}
 	
 }

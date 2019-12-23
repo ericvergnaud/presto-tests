@@ -1,0 +1,4 @@
+def test "fragment" ():
+	a = <><div></div><div></div></>
+verifying:
+	a is not None

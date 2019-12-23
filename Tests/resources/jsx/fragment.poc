@@ -1,0 +1,6 @@
+test method "fragment" () {
+	a = <><div></div><div></div></>;
+} verifying {
+	a is not null;
+}
+	

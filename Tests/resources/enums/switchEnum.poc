@@ -9,12 +9,23 @@ native method print ( Text value ) {
 enumerated Entity(Text) {
 	ENTITY_1 = "E1";
 	ENTITY_2 = "E2";
+	ENTITY_3 = "E3";
+}
+
+method printEnum(Entity e) {
+	switch(e) {
+		case ENTITY_1:
+			print("/" + e.value);
+		case ENTITY_2:
+			print("/" + e.name);
+		default:
+			print("/" + e.name + ":" + e.value);
+	}	
 }
 
 method main ( Text<:> options ) {
-	print ("/a=" + ENTITY_1.value);
-	print ("/b=" + ENTITY_2.value);
-	print ("/symbols=" + Entity.symbols);
-	print ("/symbolOf=" + Entity.symbolOf("ENTITY_1"));
+	printEnum (ENTITY_1);
+	printEnum (ENTITY_2);
+	printEnum (ENTITY_3);
 }
 	

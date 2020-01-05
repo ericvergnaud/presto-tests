@@ -11,10 +11,10 @@ widget MyWidget {
 
 widget Container {
 	
-	method selected() {
+	method selected(Integer value) {
 	}
 	
 	Html method render () {
-		return <MyWidget callback={v=>selected()} />;
+		return <MyWidget callback={value=>selected(value)} />;
 	}
 }

@@ -6,6 +6,7 @@ native category ClickEvent {
 	}
 }
 
+@Inlined
 native category InputChangedEvent {
 
 	category bindings {
@@ -13,8 +14,8 @@ native category InputChangedEvent {
 	}
 }
 
-abstract method  ClickEventCallback(ClickEvent event);
-abstract method  InputChangedCallback(InputChangedEvent event);
+abstract method ClickEventCallback(ClickEvent event);
+abstract method InputChangedCallback(InputChangedEvent event);
 abstract method IntegerCallback(Integer value);
 
 @WidgetField(name="props", type=Document, isProperties=true)

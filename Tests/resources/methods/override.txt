@@ -1,1 +1,1 @@
-/I can't speak!/I'm a dog, I bark!/I'm a cat, I meow!
+/I can't speak/I'm a dog, I bark!/I can't speak but I'm a cat, I meow!

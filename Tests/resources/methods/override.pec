@@ -10,7 +10,7 @@ define name as Text attribute
 define Animal as category with attribute name, and methods:
 
     define speak as method doing:
-        print "/I can't speak!"
+        print "/I can't speak"
 
 define Dog as Animal with methods:
 
@@ -20,7 +20,8 @@ define Dog as Animal with methods:
 define Cat as Animal with methods:
 
     define speak as method doing:
-        print "/I'm a cat, I meow!"
+        super.speak
+	print " but I'm a cat, I meow!"
 
 define main as method receiving Text<:> options doing:
     animals = [ Animal, Dog, Cat ]

@@ -11,7 +11,7 @@ attribute name: Text;
 category Animal(name) {
 
 	method speak () {
-		print("/I can't speak!");
+		print("/I can't speak");
 	}
 	
 }
@@ -27,7 +27,8 @@ category Dog extends Animal {
 category Cat extends Animal {
 
 	method speak () {
-		print("/I'm a cat, I meow!");
+		super.speak();
+		print(" but I'm a cat, I meow!");
 	}
 	
 }

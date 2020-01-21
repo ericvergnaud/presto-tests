@@ -134,11 +134,11 @@ public abstract class Generator {
 				.withExcludedDirs(Arrays.asList("resourceError", "issues", "debug", "comment", "annotations"))
 				.withExcludedFiles(Arrays.asList("unexpected", "return", "dateTimeTZOffset", "dateTimeTZName", "global", "empty", "widget2"))
 				.withExclusion((dir, file, target, type) -> 
-					"native".equals(dir) && "attribute.pec".equals(file) && type == TestType.TRANSPILED)
+					"native".equals(dir) && "attribute.pec".equals(file) && type == TestType.TRANSPILED && target == Target.JAVA)
 				.withExclusion((dir, file, target, type) -> 
-					"native".equals(dir) && file.startsWith("printer.") && type == TestType.TRANSPILED)
+					"native".equals(dir) && file.startsWith("printer.") && type == TestType.TRANSPILED && target == Target.JAVA)
 				.withExclusion((dir, file, target, type) -> 
-					"widget".equals(dir) && type == TestType.COMPILED);
+					"widget".equals(dir) && type == TestType.COMPILED && target == Target.JAVA);
 		generate(readResourcesPath(), "runtime", this::generateRuntimeTests, options);
 		options.exclusions = new Exclusions().withExcludedFiles(Collections.singletonList("widget2"));
 		generate(readResourcesPath(), "translate", this::generateTranslateTests, options);

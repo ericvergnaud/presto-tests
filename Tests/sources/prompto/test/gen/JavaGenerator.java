@@ -186,24 +186,14 @@ public class JavaGenerator extends Generator {
 	private void addToRuntime(String dirName, String fileName, Options options, OutputStreamWriter runtime) throws Exception {
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		if(options.interpreted)
+		if(options.interpreted && !options.exclusions.isExcludedTest(dirName, fileName, Target.JAVA, TestType.INTERPRETED))
 			addToRuntime(runtime, capFileName, dirName, fileName, TestType.INTERPRETED);
-		if(options.compiled && !isExcludedFromCompiled(dirName, fileName))
+		if(options.compiled && !options.exclusions.isExcludedTest(dirName, fileName, Target.JAVA, TestType.COMPILED))
 			addToRuntime(runtime, capFileName, dirName, fileName, TestType.COMPILED);
-		if(options.transpiled && !isExcludedFromTranspiled(dirName, fileName))
+		if(options.transpiled && !options.exclusions.isExcludedTest(dirName, fileName, Target.JAVA, TestType.TRANSPILED))
 			addToRuntime(runtime, capFileName, dirName, fileName, TestType.TRANSPILED);
 	}
 	
-	private boolean isExcludedFromCompiled(String dirName, String fileName) {
-		return "widget".equals(dirName);
-	}
-
-	private boolean isExcludedFromTranspiled(String dirName, String fileName) {
-		return "native".equals(dirName) && fileName.startsWith("printer.");
-	}
-
-
-
 	private void beginRuntime(OutputStreamWriter writer, String dirName, String dialect) throws IOException {
 		writer.write("package prompto.runtime.");
 		writer.write(dialect.toLowerCase());

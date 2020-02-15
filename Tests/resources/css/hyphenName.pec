@@ -1,4 +1,4 @@
 define "hyphen name" as test method doing:
-	a = { -margin: stuff; }
+	a = { left-margin: stuff; }
 and verifying:
 	a is not nothing

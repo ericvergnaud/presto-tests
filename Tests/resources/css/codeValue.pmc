@@ -1,5 +1,5 @@
 def test "code value" ():
 	x = "123px"
-	a = { -margin: {x}; }
+	a = { margin: {x}; }
 verifying:
 	a is not None

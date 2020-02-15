@@ -1,5 +1,5 @@
 test method "hyphen name" () {
-	a = { -margin: stuff; };
+	a = { left-margin: stuff; };
 } verifying {
 	a is not null;
 }

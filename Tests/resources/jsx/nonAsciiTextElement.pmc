@@ -1,0 +1,4 @@
+def test "child text" ():
+	a = <div>texte édité français</div>
+verifying:
+	a is not None

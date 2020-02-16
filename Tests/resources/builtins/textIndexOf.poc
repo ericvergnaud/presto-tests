@@ -9,5 +9,6 @@ native method print ( Text value ) {
 method main ( Text<:> options ) {
 	s = "some/stuff";
 	i = s.indexOf("/");
-	print ( "indexOf=" + i);
+	j = s.indexOf(value="s", fromIndex=i);
+	print ( "indexOf=" + i + "/" + j);
 }

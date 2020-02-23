@@ -2,9 +2,16 @@ define id as Integer attribute
 define text as Text attribute
 define name as Text attribute
 
-define Entity as enumerated category with attributes id and text, and symbols:
+define Abstract as category with attributes id and text, and methods:
+
+	define getDescription as method receiving Text prefix doing:
+		return prefix + text
+		
+
+define Entity as enumerated Abstract with symbols:
 	ENTITY_1 with 1 as id and "n1" as text
 	ENTITY_2 with 2 as id and "n2" as text
+
 
 define print as native method receiving Text value doing:
 	Java: System.out.print(value);
@@ -13,11 +20,14 @@ define print as native method receiving Text value doing:
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
+
 define main as method receiving Text<:> options doing:
-	print "/a=" + ENTITY_1.name
-	print "/b=" + ENTITY_2.text
+	print "/name=" + ENTITY_1.name
+	print "/text=" + ENTITY_2.text
 	print "/symbols=" + Entity.symbols
 	e = Entity.symbolOf "ENTITY_1"
-	print "/valueOf=" +  e.text	
+	print "/symbolOf=" +  e.name	
+	d = e.getDescription with "/description=" as prefix
+	print d 	
 	
 	

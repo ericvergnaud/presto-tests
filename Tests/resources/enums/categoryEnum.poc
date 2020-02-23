@@ -2,7 +2,15 @@ attribute id : Integer;
 attribute text : Text;
 attribute name : Text;
 
-enumerated category Entity(id , text) {
+
+category Abstract(id , text) {
+	
+	method getDescription(Text prefix) {
+		return prefix + text;
+	}
+}
+
+enumerated category Entity extends Abstract {
 	ENTITY_1 ( id = 1, text = "n1" ); 
 	ENTITY_2 ( id = 2, text = "n2" );
 } 
@@ -16,11 +24,13 @@ native method print ( Text value ) {
 }
 
 method main ( Text<:> options ) {
-	print ("/a=" + ENTITY_1.name);
-	print ("/b=" + ENTITY_2.text);
+	print ("/name=" + ENTITY_1.name);
+	print ("/text=" + ENTITY_2.text);
 	print ("/symbols=" + Entity.symbols);
 	e = Entity.symbolOf("ENTITY_1");
-	print ("/valueOf=" + e.text);	
+	print ("/symbolOf=" + e.name);	
+	d = e.getDescription(prefix = "/description=");
+	print (d);	
 }
 	
 	

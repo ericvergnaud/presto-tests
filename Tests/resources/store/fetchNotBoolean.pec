@@ -1,0 +1,20 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+// ok to use Integer with MemStore
+define dbId as Integer attribute 
+
+define name as storable Text attribute with index
+define archived as storable Boolean attribute
+
+define Entity as storable category with attributes name and archived
+
+define main as method receiving Text<:> options doing:
+	e1 = Entity with "John" as name and false as archived
+	store e1
+	e2 = fetch one Entity where not archived
+	print "/name:" + e2.name

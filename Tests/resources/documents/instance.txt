@@ -1,0 +1,2 @@
+doc.text={"firstName":"John","lastName":"Smith"}
+doc.text={"lastName":"Smith","firstName":"John"}

@@ -1,1 +1,1 @@
-doc.values=values/doc.number=10
+doc.stuff=stuff/doc.number=10

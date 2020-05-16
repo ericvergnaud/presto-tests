@@ -7,9 +7,9 @@ define print as native method receiving Text value doing:
 
 define main as method receiving Text<:> options doing:
 	doc = Document
-	doc.values = "values"
+	doc.stuff = "stuff"
 	doc.number = 10
 	blob = Blob from doc
 	doc = Document from blob
-	print "doc.values=" + doc.values + "/doc.number=" + doc.number
+	print "doc.stuff=" + doc.stuff + "/doc.number=" + doc.number
 	

@@ -7,5 +7,5 @@ native method print ( Text value ) {
 }
 
 method main ( Text<:> options ) {
-	print ("/" + (-3));
+	print ("/" + -3);
 }

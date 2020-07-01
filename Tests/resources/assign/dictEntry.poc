@@ -1,0 +1,34 @@
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+attribute name: Text; 
+category Entity(name);
+
+attribute nameCount: Integer<:>;
+category Counter(nameCount) {
+	
+	method increment(Entity entity) {
+		if(nameCount is null)
+			nameCount = < "null": 0 >;
+		if(nameCount[entity.name] is null)	
+			nameCount[entity.name] = 1;
+		else
+			nameCount[entity.name] = nameCount[entity.name] + 1;
+		return nameCount[entity.name];	
+	}
+	
+}
+
+method main ( Text<:> options ) {
+	entity = Entity("John");
+	counter = mutable Counter();
+	count = counter.increment(entity);
+	print("/" + count);
+	count = counter.increment(entity);
+	print("/" + count);
+}

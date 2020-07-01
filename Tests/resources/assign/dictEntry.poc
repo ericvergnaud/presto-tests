@@ -13,19 +13,23 @@ attribute nameCount: Integer<:>;
 category Counter(nameCount) {
 	
 	method increment(Entity entity) {
+		name = entity.name;
+		count = 0;
 		if(nameCount is null)
-			nameCount = < "null": 0 >;
-		if(nameCount[entity.name] is null)	
-			nameCount[entity.name] = 1;
-		else
-			nameCount[entity.name] = nameCount[entity.name] + 1;
-		return nameCount[entity.name];	
-	}
-	
+			nameCount = < name: 1 >;
+		else {
+			count = nameCount[name];
+			if(count is null)	
+				nameCount = nameCount + < name: 1 >;
+			else
+				nameCount = nameCount + < name: count + 1 >;
+		}
+		return nameCount[name];	
+	}	
 }
 
 method main ( Text<:> options ) {
-	entity = Entity("John");
+	entity = Entity(name="John");
 	counter = mutable Counter();
 	count = counter.increment(entity);
 	print("/" + count);

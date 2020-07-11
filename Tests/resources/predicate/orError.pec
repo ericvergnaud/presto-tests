@@ -14,5 +14,6 @@ define main as method receiving Text<:> options doing:
 	e2 = Entity with "Jane" as name
 	e3 = Entity with "Marion" as name
 	store e1, e2, e3
+	stuff = "none"
 	es = fetch all Entity where name = "Marion" or stuff = "none"
 	print "/count:" + es.count

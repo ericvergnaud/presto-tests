@@ -1,0 +1,19 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define name as storable Text attribute
+define stuff as storable Text attribute
+
+define Entity as storable category with attributes name and stuff
+
+define main as method receiving Text<:> options doing:
+	e1 = Entity with "John" as name
+	e2 = Entity with "Jane" as name and "none" as stuff
+	e3 = Entity with "Marion" as name and "none" as stuff
+	store e1, e2, e3
+	es = fetch all Entity where (name = "Marion" or name = "John") and stuff = "none"
+	print "/count:" + es.count

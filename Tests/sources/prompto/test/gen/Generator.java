@@ -131,7 +131,7 @@ public abstract class Generator {
 	
 	private void generate(Options options) throws Exception {
 		options.exclusions = new Exclusions()
-				.withExcludedDirs(Arrays.asList("resourceError", "issues", "debug", "comment", "annotations"))
+				.withExcludedDirs(Arrays.asList("resourceError", "issues", "debug", "comment", "annotations", "manual"))
 				.withExcludedFiles(Arrays.asList("unexpected", "return", "dateTimeTZOffset", "dateTimeTZName", "global", "empty", "widget2"))
 				.withExclusion((dir, file, target, type) -> 
 					"native".equals(dir) && "attribute.pec".equals(file) && type == TestType.TRANSPILED && target == Target.JAVA)

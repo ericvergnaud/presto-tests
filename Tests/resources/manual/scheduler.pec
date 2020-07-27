@@ -24,12 +24,12 @@ define "repeats" as test method doing:
 		with Sink, do:
 			buffer = buffer + "/callback2"
 	callback = Method: AppendToSink	
-	job = scheduleJob callback with (now + 'PT1S') as executeAt and 'PT1S' as repeatEvery
+	jobId = scheduleJob callback with (now + 'PT1S') as executeAt and 'PT1S' as repeatEvery
 	sleep 500
 	with Sink, do:
 		buffer = buffer + "/main"
 	sleep 3000
-	cancelJob job	
+	cancelJob jobId	
 and verifying: 
 	Sink.buffer = "/main/callback2/callback2/callback2"
 	
@@ -41,11 +41,11 @@ define "cancels" as test method doing:
 		with Sink, do:
 			buffer = buffer + "/callback3"
 	callback = Method: AppendToSink	
-	job = scheduleJob callback with (now + 'PT3S') as executeAt
+	jobId = scheduleJob callback with (now + 'PT3S') as executeAt
 	sleep 500
 	with Sink, do:
 		buffer = buffer + "/main"
-	cancelJob job	
+	cancelJob jobId	
 	sleep 3000
 and verifying: 
 	Sink.buffer = "/main"

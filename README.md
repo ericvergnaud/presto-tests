@@ -1,1 +1,1 @@
-# presto-tests
+# prompto-tests

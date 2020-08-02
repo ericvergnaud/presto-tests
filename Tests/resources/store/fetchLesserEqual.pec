@@ -9,12 +9,13 @@ define print as native method receiving Text value doing:
 define dbId as Integer attribute 
 
 define name as storable Text attribute with index
-define archived as storable Boolean attribute
 
-define Entity as storable category with attributes name and archived
+define Entity as storable category with attribute name
 
 define main as method receiving Text<:> options doing:
-	e1 = Entity with "John" as name and false as archived
-	store e1
-	e2 = fetch one Entity where archived is not true
-	print "/name:" + e2.name
+	e1 = Entity with "John" as name
+	e2 = Entity with "Lucy" as name
+	store e1, e2
+	fetched = fetch all Entity where name <= "Lucy" order by name desc
+	listed = fetched.toList
+	print "/count:" + listed.count + "/name:" + listed[1].name

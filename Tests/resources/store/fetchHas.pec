@@ -8,13 +8,14 @@ define print as native method receiving Text value doing:
 // ok to use Integer with MemStore
 define dbId as Integer attribute 
 
-define name as storable Text attribute with index
-define archived as storable Boolean attribute
+define names as storable Text[] attribute with index
 
-define Entity as storable category with attributes name and archived
+define Entity as storable category with attribute names
 
 define main as method receiving Text<:> options doing:
-	e1 = Entity with "John" as name and false as archived
-	store e1
-	e2 = fetch one Entity where archived is not true
-	print "/name:" + e2.name
+	e1 = Entity with ["John", "Gielgud"] as names
+	e2 = Entity with ["Lucy"] as names
+	store e1, e2
+	fetched = fetch all Entity where names has "John"
+	listed = fetched.toList
+	print "/count:" + listed.count + "/name:" + listed[1].names[1]

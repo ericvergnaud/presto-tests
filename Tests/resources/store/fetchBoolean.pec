@@ -16,5 +16,5 @@ define Entity as storable category with attributes name and archived
 define main as method receiving Text<:> options doing:
 	e1 = Entity with "John" as name and true as archived
 	store e1
-	e2 = fetch one Entity where archived
+	e2 = fetch one Entity where archived is true
 	print "/name:" + e2.name

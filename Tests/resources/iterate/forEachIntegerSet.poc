@@ -1,0 +1,17 @@
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+Iterator<Integer> method squares ( Integer<> data ) {
+	return i*i for each (i in data);
+}
+
+method main ( Text<:> options ) {
+	integers = squares ( data = <2,5,8> );
+	for each (i in integers)
+		print ("/i=" + i);
+}

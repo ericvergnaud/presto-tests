@@ -1,4 +1,5 @@
 widget Xi():
 	
+	@Callback
 	def main():
 		b = true

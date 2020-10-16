@@ -1,0 +1,18 @@
+define Xi as native widget with bindings:
+
+	define category bindings as:
+		Java: prompto.runtime.utils.NativeWidget
+		C#: prompto.runtime.utils.NativeWidget
+		Python2: NativeWidget from module: prompto.runtime.utils.NativeWidget
+		Python3: NativeWidget from module: prompto.runtime.utils.NativeWidget
+		JavaScript: Button from module: ReactBootstrap
+
+and methods:
+
+	@Inlined
+	define render as method returning Html doing:
+		Java: return this.render();
+		C#: return this.render();
+		Python2: return self.render()
+		Python3: return self.render()
+		JavaScript: return this.render();

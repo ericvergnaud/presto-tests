@@ -1,2 +1,3 @@
+@Callback
 def main():
 	b = true

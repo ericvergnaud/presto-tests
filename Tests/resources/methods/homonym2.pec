@@ -1,0 +1,20 @@
+define name as Text attribute
+define employees as Integer attribute 
+
+define Company as category with attributes name and employees
+
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define createCompany as method receiving name and employees doing:
+	return mutable Company with name and employees
+
+define main as method receiving Text<:> options doing:
+	name = "IBM"
+	employees = 17
+	c = createCompany name with employees
+	print c.name + "/" + c.employees

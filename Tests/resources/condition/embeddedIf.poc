@@ -9,9 +9,8 @@ native method print ( Text value ) {
 method main ( Text<:> options ) {
 	a = 1;
 	if ( a == 1 ) {
-		a = 2;
-		if ( a == 2 )
-			print ("a=" + a);
+		if ( a == 1 )
+			print ("a=" + (a + 1));
 		else
 			print ("a=" + a);
 	} else 

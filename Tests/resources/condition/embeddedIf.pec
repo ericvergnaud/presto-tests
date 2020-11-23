@@ -11,4 +11,8 @@ define main as method receiving Text<:> options doing:
 		a = 2
 		if a = 2:
 			print "a=" + a
+		else:
+			print "a=" + a
+	else:
+		print "a=" + a	
 	

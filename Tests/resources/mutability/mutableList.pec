@@ -6,7 +6,7 @@ define print as native method receiving Text value doing:
 	JavaScript: process.stdout.write(value);
 
 define main as method receiving Text<:> options doing:
-	list = mutable [ "before" ]
+	list = mutable [ "before", "stuff", "thing" ]
 	list[1] = "after"
 	list.removeItem 2
 	list.removeValue "thing"

@@ -7,8 +7,10 @@ native method print ( Text value ) {
 }
 
 method main ( Text<:> options ) {
-	list = mutable [ "before" ];
+	list = mutable [ "before", "stuff", "thing" ];
 	list[1] = "after";
+	list.removeItem(2);
+	list.removeValue("thing");
 	print(list[1]);
 }
 

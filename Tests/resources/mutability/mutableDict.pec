@@ -9,7 +9,7 @@ define main as method receiving Text<:> options doing:
 	dict = mutable < "item1" : "before" >
 	dict["item1"] = "after1"
 	dict["item2"] = "after2"
-	dict["item3"] = "after3";
+	dict["item3"] = "after3"
 	dict.removeKey "item2"
 	dict.removeValue "after3"
 	dict["item2"] = "after2"

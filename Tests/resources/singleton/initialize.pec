@@ -9,7 +9,7 @@ define name as Text attribute
 
 define Entity as singleton with attribute name, and methods:
 
-	define constructor as method doing:
+	define initialize as method doing:
 		name = "John"
 
 define main as method receiving Text<:> options doing:

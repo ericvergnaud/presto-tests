@@ -10,7 +10,7 @@ attribute name: Text;
 
 singleton Entity (name) {
 
-	method constructor() {
+	method initialize() {
 		name = "John";
 	}
 }

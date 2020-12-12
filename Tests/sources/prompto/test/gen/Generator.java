@@ -134,6 +134,10 @@ public abstract class Generator {
 				.withExcludedDirs(Arrays.asList("resourceError", "issues", "debug", "comment", "annotations", "manual"))
 				.withExcludedFiles(Arrays.asList("unexpected", "return", "dateTimeTZOffset", "dateTimeTZName", "global", "empty", "widget2"))
 				.withExclusion((dir, file, target, type) -> 
+					"add".equals(dir) && "addCss.pec".equals(file) && type == TestType.COMPILED && target == Target.JAVA)
+				.withExclusion((dir, file, target, type) -> 
+					"add".equals(dir) && "addCss.poc".equals(file) && type == TestType.COMPILED && target == Target.JAVA)
+				.withExclusion((dir, file, target, type) -> 
 					"native".equals(dir) && "attribute.pec".equals(file) && type == TestType.TRANSPILED && target == Target.JAVA)
 				.withExclusion((dir, file, target, type) -> 
 					"native".equals(dir) && file.startsWith("printer.") && type == TestType.TRANSPILED && target == Target.JAVA)

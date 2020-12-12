@@ -1,0 +1,2 @@
+{ display: block, color: #999 }
+{ color: #999, display: block }

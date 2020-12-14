@@ -21,9 +21,9 @@ method main ( Text<:> options ) {
 	e3 = Entity ( name = "John",  count = 3, value=3.1); 
 	e4 = Entity ( name = "John",  count = 3, value=3.1, archived = false); 
 	e5 = Child ( name = "John",  count = 3, value=3.1, archived = false); 
-	print ("/e1==e2:" + e1==e2);
-	print ("/e2==e3:" + e2==e3);
-	print ("/e3==e4:" + e3==e4);
-	print ("/e4==e5:" + e4==e5);
+	print ("/e1==e2:" + (e1==e2));
+	print ("/e2==e3:" + (e2==e3));
+	print ("/e3==e4:" + (e3==e4));
+	print ("/e4==e5:" + (e4==e5));
 }
 	

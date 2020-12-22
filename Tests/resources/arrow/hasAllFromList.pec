@@ -8,7 +8,7 @@ define print as native method receiving Text value doing:
 
 define main as method receiving Text<:> options doing:
 	list = [ 1, 2, 3, 4, 5, 6 ]
-	has_even = list has all where item => item % 2 == 0
+	has_even = list has all where item => item % 2 = 0
 	has_dec = list has all where item => item > 0
 	print "" + has_even + "/" + has_dec
 	

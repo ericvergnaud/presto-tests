@@ -1,0 +1,22 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects = value, end = "")
+	Python3: print(objects = value, end = "")
+	JavaScript: process.stdout.write(value);
+
+
+define name as Text attribute
+define Thing as category with attribute name, and methods:
+	define progressed as method receiving Text value doing:
+		print value
+	
+
+define TextCallback as abstract method receiving Text value 
+define withCallback as method receiving Text value and TextCallback progressed doing:
+	progressed value
+
+define main as method receiving Text<:> options doing:
+	thing = Thing
+	withCallback "Hello!" with Method: thing.progressed as progressed
+

@@ -1,0 +1,23 @@
+define path as Text attribute
+define content as Text attribute
+
+define MyResource as native resource with attributes path and content, and bindings:
+
+	define category bindings as:
+		Java: prompto.runtime.utils.MyResource
+		C#: prompto.runtime.utils.MyResource
+		Python2: MyResource from module: prompto.runtime.utils.MyResource
+		Python3: MyResource from module: prompto.runtime.utils.MyResource
+		JavaScript: MyResource from module: user/MyResource.js
+
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define main as method receiving Text<:> options doing:
+	s = "writeFullyOk"
+	write s to MyResource with "xyz5" as path and "" as content then with result:
+		print result	

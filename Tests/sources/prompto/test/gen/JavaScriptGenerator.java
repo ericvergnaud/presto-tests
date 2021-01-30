@@ -32,6 +32,12 @@ public class JavaScriptGenerator extends Generator {
 			endRuntime(runtimeO);
 		if(runtimeM!=null)
 			endRuntime(runtimeM);
+		if(problemsE!=null)
+			endProblems(problemsE);
+		if(problemsO!=null)
+			endProblems(problemsO);
+		if(problemsM!=null)
+			endProblems(problemsM);
 		if(translateEOE!=null)
 			endTranslate(translateEOE);
 		if(translateEME!=null)
@@ -166,6 +172,25 @@ public class JavaScriptGenerator extends Generator {
 		return runtime;
 	}
 	
+	private void beginRuntime(OutputStreamWriter writer, String dialect, String dirName) throws IOException {
+		writer.write("var Out = require(\"../utils/Out\").Out;\n");
+		writer.write("var checkInterpretedOutput = require(\"../../parser/Base");
+		writer.write(dialect.toUpperCase());
+		writer.write("ParserTest\").checkInterpretedOutput;\n");
+		writer.write("var checkTranspiledOutput = require(\"../../parser/Base");
+		writer.write(dialect.toUpperCase());
+		writer.write("ParserTest\").checkTranspiledOutput;\n");
+		writer.write("\n");
+		writer.write("beforeEach( () => {\n");
+		writer.write("\tOut.init();\n");
+		writer.write("});\n");
+		writer.write("\n");
+		writer.write("afterEach( () => {\n");
+		writer.write("\tOut.restore();\n");
+		writer.write("});\n");
+		writer.write("\n");
+	}
+
 	protected void addToRuntime(String dirName, String fileName, Options options, OutputStreamWriter runtime) throws IOException {
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
@@ -194,26 +219,69 @@ public class JavaScriptGenerator extends Generator {
 		writer.write("\n");
 	}
 
-	private void beginRuntime(OutputStreamWriter writer, String dialect, String dirName) throws IOException {
-		writer.write("var Out = require(\"../utils/Out\").Out;\n");
-		writer.write("var checkInterpretedOutput = require(\"../../parser/Base");
+	private void endRuntime(OutputStreamWriter writer) {
+		
+	}
+	
+	@Override
+	protected void addToProblemsE(File subDir, String fileName, Options options) throws IOException {
+		if(problemsE==null)
+			runtimeE = beginProblems(subDir.getName(), 'E');
+		addToProblems(subDir.getName(), fileName, options, problemsE);
+	}
+
+	@Override
+	protected void addToProblemsO(File subDir, String fileName, Options options) throws IOException {
+		if(problemsO==null)
+			problemsO = beginProblems(subDir.getName(), 'O');
+		addToProblems(subDir.getName(), fileName, options, problemsO);
+	}
+
+	@Override
+	protected void addToProblemsM(File subDir, String fileName, Options options) throws IOException {
+		if(problemsM==null)
+			problemsM = beginProblems(subDir.getName(), 'M');
+		addToProblems(subDir.getName(), fileName, options, problemsM);
+	}
+
+	private OutputStreamWriter beginProblems(String dirName, Character dialect) throws IOException {
+		String capDirName = capitalize(dirName);
+		String testFilePath = CORE_ROOT + "prompto/problems/" + dialect.toString().toLowerCase() + "/Test" + capDirName + ".test.js";
+		OutputStreamWriter runtime = mkfile(testFilePath);
+		beginProblems(runtime, dialect.toString(), capDirName);
+		return runtime;
+	}
+	
+	private void beginProblems(OutputStreamWriter writer, String dialect, String dirName) throws IOException {
+		writer.write("var checkProblems = require(\"../../parser/Base");
 		writer.write(dialect.toUpperCase());
-		writer.write("ParserTest\").checkInterpretedOutput;\n");
-		writer.write("var checkTranspiledOutput = require(\"../../parser/Base");
-		writer.write(dialect.toUpperCase());
-		writer.write("ParserTest\").checkTranspiledOutput;\n");
+		writer.write("ParserTest\").checkProblems;\n");
 		writer.write("\n");
-		writer.write("beforeEach( () => {\n");
-		writer.write("\tOut.init();\n");
-		writer.write("});\n");
-		writer.write("\n");
-		writer.write("afterEach( () => {\n");
-		writer.write("\tOut.restore();\n");
+	}
+
+	protected void addToProblems(String dirName, String fileName, Options options, OutputStreamWriter runtime) throws IOException {
+		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
+		capFileName = capFileName.replaceAll("-", "_");
+		if(options.interpreted)
+			addToProblems(runtime, capFileName, dirName, fileName);
+	}
+
+
+	
+	private void addToProblems(OutputStreamWriter writer, String capFileName, String dirName, String fileName) throws IOException {
+		writer.write("test('");
+		writer.write(capFileName);
+		writer.write(" problems', () => {\n");
+		writer.write("\tcheckProblems('");
+		writer.write(dirName);
+		writer.write("/");
+		writer.write(fileName);
+		writer.write("');\n");
 		writer.write("});\n");
 		writer.write("\n");
 	}
 
-	private void endRuntime(OutputStreamWriter writer) {
+	private void endProblems(OutputStreamWriter writer) {
 		
 	}
 	

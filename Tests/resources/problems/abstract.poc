@@ -1,6 +1,6 @@
 category DebugEventListener {
 
-	abstract method connect ();
+	abstract method connect (Text url);
 }
 
 

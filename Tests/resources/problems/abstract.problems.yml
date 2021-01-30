@@ -3,4 +3,4 @@
   endLine: 8
   endColumn: 32
   type: error
-  message: "Cannot instantiate abstract category: DebugEventListener, missing method: connect()"
+  message: "Cannot instantiate abstract category: DebugEventListener, missing method: connect(Text url)"

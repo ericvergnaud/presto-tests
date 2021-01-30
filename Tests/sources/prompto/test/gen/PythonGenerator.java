@@ -38,65 +38,65 @@ public abstract class PythonGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToTranslateEOE(String dirName, String fileName) throws IOException {
+	protected void addToTranslateEOE(File subDir, String fileName) throws IOException {
 		if(translateEOE==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = getCoreRoot() + "prompto/translate/eoe/Test" + capDirName + ".py";
 			translateEOE = mkfile(testFilePath);
 			beginTranslate(translateEOE, "E", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToTranslate(translateEOE, "EOE", capFileName, dirName, fileName);
+		addToTranslate(translateEOE, "EOE", capFileName, subDir.getName(), fileName);
 	}
 
 	@Override
-	protected void addToTranslateEME(String dirName, String fileName) throws IOException {
+	protected void addToTranslateEME(File subDir, String fileName) throws IOException {
 		if(translateEME==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = getCoreRoot() + "prompto/translate/eme/Test" + capDirName + ".py";
 			translateEME = mkfile(testFilePath);
 			beginTranslate(translateEME, "E", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToTranslate(translateEME, "EME", capFileName, dirName, fileName);
+		addToTranslate(translateEME, "EME", capFileName, subDir.getName(), fileName);
 	}
 	
 	@Override
-	protected void addToTranslateOEO(String dirName, String fileName) throws IOException {
+	protected void addToTranslateOEO(File subDir, String fileName) throws IOException {
 		if(translateOEO==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = getCoreRoot() + "prompto/translate/oeo/Test" + capDirName + ".py";
 			translateOEO = mkfile(testFilePath);
 			beginTranslate(translateOEO, "O", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToTranslate(translateOEO, "OEO", capFileName, dirName, fileName);
+		addToTranslate(translateOEO, "OEO", capFileName, subDir.getName(), fileName);
 	}
 	
 	@Override
-	protected void addToTranslateOMO(String dirName, String fileName) throws IOException {
+	protected void addToTranslateOMO(File subDir, String fileName) throws IOException {
 		if(translateOMO==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = getCoreRoot() + "prompto/translate/omo/Test" + capDirName + ".py";
 			translateOMO = mkfile(testFilePath);
 			beginTranslate(translateOMO, "O", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToTranslate(translateOMO, "OMO", capFileName, dirName, fileName);
+		addToTranslate(translateOMO, "OMO", capFileName, subDir.getName(), fileName);
 	}
 	
 	@Override
-	protected void addToTranslateMEM(String dirName, String fileName) {
+	protected void addToTranslateMEM(File subDir, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	protected void addToTranslateMOM(String dirName, String fileName) {
+	protected void addToTranslateMOM(File subDir, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -141,43 +141,43 @@ public abstract class PythonGenerator extends Generator {
 	
 
 	@Override
-	protected void addToRuntimeE(String dirName, String fileName, Options options) throws Exception {
+	protected void addToRuntimeE(File subDir, String fileName, Options options) throws Exception {
 		if(runtimeE==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = getCoreRoot() + "prompto/runtime/e/Test" + capDirName + ".py";
 			runtimeE = mkfile(testFilePath);
 			beginRuntime(runtimeE, "E", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToRuntime(runtimeE, capFileName, dirName, fileName);
+		addToRuntime(runtimeE, capFileName, subDir.getName(), fileName);
 	}
 
 	@Override
-	protected void addToRuntimeO(String dirName, String fileName, Options options) throws IOException {
+	protected void addToRuntimeO(File subDir, String fileName, Options options) throws IOException {
 		if(runtimeO==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = getCoreRoot() + "prompto/runtime/o/Test" + capDirName + ".py";
 			runtimeO = mkfile(testFilePath);
 			beginRuntime(runtimeO, "O", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToRuntime(runtimeO, capFileName, dirName, fileName);
+		addToRuntime(runtimeO, capFileName, subDir.getName(), fileName);
 	}
 
 
 	@Override
-	protected void addToRuntimeM(String dirName, String fileName, Options options) throws IOException {
+	protected void addToRuntimeM(File subDir, String fileName, Options options) throws IOException {
 		if(runtimeM==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = getCoreRoot() + "prompto/runtime/m/Test" + capDirName + ".py";
 			runtimeM = mkfile(testFilePath);
 			beginRuntime(runtimeM, "M", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToRuntime(runtimeM, capFileName, dirName, fileName);
+		addToRuntime(runtimeM, capFileName, subDir.getName(), fileName);
 	}
 	
 	
@@ -224,43 +224,43 @@ public abstract class PythonGenerator extends Generator {
 	
 
 	@Override
-	protected void addToLibraryE(String dirName, String fileName, Options options) throws Exception {
+	protected void addToLibraryE(File subDir, String fileName, Options options) throws Exception {
 		if(libraryE==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = getLibraryRoot() + "e/Test" + capDirName + ".py";
 			libraryE = mkfile(testFilePath);
 			beginLibrary(libraryE, "E", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToLibrary(libraryE, capFileName, dirName, fileName);
+		addToLibrary(libraryE, capFileName, subDir.getName(), fileName);
 	}
 
 	@Override
-	protected void addToLibraryO(String dirName, String fileName, Options options) throws IOException {
+	protected void addToLibraryO(File subDir, String fileName, Options options) throws IOException {
 		if(libraryO==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = getLibraryRoot() + "o/Test" + capDirName + ".py";
 			libraryO = mkfile(testFilePath);
 			beginLibrary(libraryO, "O", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToLibrary(libraryO, capFileName, dirName, fileName);
+		addToLibrary(libraryO, capFileName, subDir.getName(), fileName);
 	}
 
 
 	@Override
-	protected void addToLibraryM(String dirName, String fileName, Options options) throws IOException {
+	protected void addToLibraryM(File subDir, String fileName, Options options) throws IOException {
 		if(libraryM==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = getLibraryRoot() + "m/Test" + capDirName + ".py";
 			libraryM = mkfile(testFilePath);
 			beginLibrary(libraryM, "M", capDirName);
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToLibrary(libraryM, capFileName, dirName, fileName);
+		addToLibrary(libraryM, capFileName, subDir.getName(), fileName);
 	}
 	
 	

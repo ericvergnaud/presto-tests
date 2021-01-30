@@ -1,5 +1,6 @@
 package prompto.test.gen;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -31,12 +32,12 @@ public class Exclusions {
 		return excludedDirs.contains(dirName);
 	}
 
-	public boolean isExcludedFile(String fileName) {
-		return excludedFiles.contains(fileName);
+	public boolean isExcludedFile(File subDir, String fileName, Target target) {
+		return excludedFiles.contains(fileName) || isExcludedTest(subDir, fileName, target, TestType.INTERPRETED);
 	}
 
-	public boolean isExcludedTest(String dirName, String fileName, Target target, TestType type) {
-		return exclusions.stream().anyMatch(e->e.isExcluded(dirName, fileName, target, type));
+	public boolean isExcludedTest(File subDir, String fileName, Target target, TestType type) {
+		return exclusions.stream().anyMatch(e->e.isExcluded(subDir, fileName, target, type));
 	}
 
 	

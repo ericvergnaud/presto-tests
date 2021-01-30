@@ -6,8 +6,8 @@ public class Python3Generator extends PythonGenerator {
 	static final String LIB_ROOT = "prompto-python3/Python3-Runtime/src/test/";
 
 	@Override
-	protected String getTarget() {
-		return "Python 3";
+	protected Target getTarget() {
+		return Target.PYTHON3;
 	}
 
 	@Override

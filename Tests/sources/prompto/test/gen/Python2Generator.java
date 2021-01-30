@@ -6,8 +6,8 @@ public class Python2Generator extends PythonGenerator {
 	static final String LIB_ROOT = "prompto-python2/Python2-Runtime/src/test/";
 
 	@Override
-	protected String getTarget() {
-		return "Python 2";
+	protected Target getTarget() {
+		return Target.PYTHON2;
 	}
 	
 	@Override

@@ -126,30 +126,48 @@ public abstract class Generator {
 
 	@FunctionalInterface
 	static interface FileGenerator {
-		void generate(String dirName, String fileName, Options options) throws Exception;
+		void generate(File subDir, String fileName, Options options) throws Exception;
 	}
 	
 	private void generate(Options options) throws Exception {
-		options.exclusions = new Exclusions()
+		generate(readResourcesPath(), "runtime", this::generateRuntimeTests, new Options().withExclusions( new Exclusions()
 				.withExcludedDirs(Arrays.asList("resourceError", "issues", "debug", "comment", "annotations", "manual"))
 				.withExcludedFiles(Arrays.asList("unexpected", "return", "dateTimeTZOffset", "dateTimeTZName", "global", "empty", "widget2"))
 				.withExclusion((dir, file, target, type) -> 
-					"add".equals(dir) && "addCss.pec".equals(file) && type == TestType.COMPILED && target == Target.JAVA)
+					"add".equals(dir.getName()) && "addCss.pec".equals(file) && type == TestType.COMPILED && target == Target.JAVA)
 				.withExclusion((dir, file, target, type) -> 
-					"add".equals(dir) && "addCss.poc".equals(file) && type == TestType.COMPILED && target == Target.JAVA)
+					"add".equals(dir.getName()) && "addCss.poc".equals(file) && type == TestType.COMPILED && target == Target.JAVA)
 				.withExclusion((dir, file, target, type) -> 
-					"native".equals(dir) && "attribute.pec".equals(file) && type == TestType.TRANSPILED && target == Target.JAVA)
+					"native".equals(dir.getName()) && "attribute.pec".equals(file) && type == TestType.TRANSPILED && target == Target.JAVA)
 				.withExclusion((dir, file, target, type) -> 
-					"native".equals(dir) && file.startsWith("printer.") && type == TestType.TRANSPILED && target == Target.JAVA)
+					"native".equals(dir.getName()) && file.startsWith("printer.") && type == TestType.TRANSPILED && target == Target.JAVA)
 				.withExclusion((dir, file, target, type) -> 
-					"widget".equals(dir) && type == TestType.COMPILED && target == Target.JAVA);
-		generate(readResourcesPath(), "runtime", this::generateRuntimeTests, options);
-		options.exclusions = new Exclusions().withExcludedFiles(Collections.singletonList("widget2"));
-		generate(readResourcesPath(), "translate", this::generateTranslateTests, options);
-		options.exclusions = new Exclusions().withExcludedFiles(Collections.singletonList("concat"))
+					"widget".equals(dir.getName()) && type == TestType.COMPILED && target == Target.JAVA)
+				.withExclusion((dir, file, target, type) -> !hasOutputFile(dir, file))));
+		generate(readResourcesPath(), "problems", this::generateProblemTests, new Options().withExclusions(new Exclusions()
+				.withExclusion((dir, file, target, type) -> !hasProblemsFile(dir, file))));
+		generate(readResourcesPath(), "translate", this::generateTranslateTests, new Options().withExclusions(new Exclusions()
+				.withExcludedFiles(Collections.singletonList("widget2"))));
+		generate(readLibrariesPath(), "library", this::generateLibraryTests, new Options().withExclusions(new Exclusions().withExcludedFiles(Collections.singletonList("concat"))
 				.withExclusion((dir, file, target, type) -> 
-					"attribute.pec".equals(file) && type == TestType.TRANSPILED);
-		generate(readLibrariesPath(), "library", this::generateLibraryTests, options);
+				"attribute.pec".equals(file) && type == TestType.TRANSPILED)));
+	}
+	
+	private boolean hasOutputFile(File dir, String file) {
+		return hasFileWithExtension(dir, file, ".txt");
+	}
+
+	private boolean hasProblemsFile(File dir, String file) {
+		return hasFileWithExtension(dir, file, ".problems.yml");
+	}
+
+	private boolean hasFileWithExtension(File dir, String file, String extension) {
+		int idx = file.lastIndexOf(".");
+		if(idx >= 0)
+			file = file.substring(0, idx);
+		File checkedFile = new File(dir, file + extension);
+		// System.out.println(checkedFile.getAbsolutePath() + (checkedFile.exists() ? " exists" : " is missing"));
+		return checkedFile.exists();
 	}
 
 	private void generate(String path, String nature, FileGenerator generator, Options options) throws Exception {
@@ -174,15 +192,15 @@ public abstract class Generator {
 			Arrays.sort(fileNames);
 			for(String fileName : fileNames) {
 				String plainName = fileName.substring(0, fileName.indexOf('.'));
-				if(options.exclusions.isExcludedFile(plainName))
+				if(options.exclusions.isExcludedFile(subDir, plainName, getTarget()))
 					continue;
-				generator.generate(dirName, fileName, options);
+				generator.generate(subDir, fileName, options);
 			}
 			exitSubdir(subDir);
 		}
 	}
 
-	protected abstract String getTarget();
+	protected abstract Target getTarget();
 
 	private void loadDependencies(File subDir) throws Exception {
 		dependencies = null;
@@ -197,53 +215,66 @@ public abstract class Generator {
 			dependencies.add(nodes.item(i).getTextContent());
 	}
 
-	private void generateLibraryTests(String dirName, String fileName, Options options) throws Exception {
+	private void generateLibraryTests(File subDir, String fileName, Options options) throws Exception {
 		if(fileName.endsWith(".pec")) {
-			addToLibraryE(dirName, fileName, options);
+			addToLibraryE(subDir, fileName, options);
 		} else if(fileName.endsWith(".poc")) {
-			addToLibraryO(dirName, fileName, options);
+			addToLibraryO(subDir, fileName, options);
 		} else if(fileName.endsWith(".pmc")) {
-			addToLibraryM(dirName, fileName, options);
+			addToLibraryM(subDir, fileName, options);
 		}
 	}
 
-	private void generateRuntimeTests(String dirName, String fileName, Options options) throws Exception {
+	private void generateRuntimeTests(File subDir, String fileName, Options options) throws Exception {
 		if(fileName.endsWith(".pec")) {
-			addToRuntimeE(dirName, fileName, options);
+			addToRuntimeE(subDir, fileName, options);
 		} else if(fileName.endsWith(".poc")) {
-			addToRuntimeO(dirName, fileName, options);
+			addToRuntimeO(subDir, fileName, options);
 		} else if(fileName.endsWith(".pmc")) {
-			addToRuntimeM(dirName, fileName, options);
+			addToRuntimeM(subDir, fileName, options);
 		}
 	}
 	
-	private void generateTranslateTests(String dirName, String fileName, Options options) throws Exception {
+	private void generateProblemTests(File subDir, String fileName, Options options) throws Exception {
 		if(fileName.endsWith(".pec")) {
-			addToTranslateEOE(dirName, fileName);
-			addToTranslateEME(dirName, fileName);
+			addToProblemsE(subDir, fileName, options);
 		} else if(fileName.endsWith(".poc")) {
-			addToTranslateOEO(dirName, fileName);
-			addToTranslateOMO(dirName, fileName);
+			addToProblemsO(subDir, fileName, options);
 		} else if(fileName.endsWith(".pmc")) {
-			addToTranslateMEM(dirName, fileName);
-			addToTranslateMOM(dirName, fileName);
+			addToProblemsM(subDir, fileName, options);
+		}
+	}
+
+	private void generateTranslateTests(File subDir, String fileName, Options options) throws Exception {
+		if(fileName.endsWith(".pec")) {
+			addToTranslateEOE(subDir, fileName);
+			addToTranslateEME(subDir, fileName);
+		} else if(fileName.endsWith(".poc")) {
+			addToTranslateOEO(subDir, fileName);
+			addToTranslateOMO(subDir, fileName);
+		} else if(fileName.endsWith(".pmc")) {
+			addToTranslateMEM(subDir, fileName);
+			addToTranslateMOM(subDir, fileName);
 		}
 	}
 	
 	protected abstract void enterSubdir(File subDir) throws Exception;
 	protected abstract void exitSubdir(File subDir) throws Exception;
-	protected abstract void addToTranslateEOE(String dirName, String fileName) throws Exception;
-	protected abstract void addToTranslateEME(String dirName, String fileName) throws Exception;
-	protected abstract void addToTranslateOEO(String dirName, String fileName) throws Exception;
-	protected abstract void addToTranslateOMO(String dirName, String fileName) throws Exception;
-	protected abstract void addToTranslateMEM(String dirName, String fileName) throws Exception;
-	protected abstract void addToTranslateMOM(String dirName, String fileName) throws Exception;
-	protected abstract void addToRuntimeE(String dirName, String fileName, Options options) throws Exception;
-	protected abstract void addToRuntimeO(String dirName, String fileName, Options options) throws Exception;
-	protected abstract void addToRuntimeM(String dirName, String fileName, Options options) throws Exception;
-	protected abstract void addToLibraryE(String dirName, String fileName, Options options) throws Exception;
-	protected abstract void addToLibraryO(String dirName, String fileName, Options options) throws Exception;
-	protected abstract void addToLibraryM(String dirName, String fileName, Options options) throws Exception;
+	protected abstract void addToTranslateEOE(File subDir, String fileName) throws Exception;
+	protected abstract void addToTranslateEME(File subDir, String fileName) throws Exception;
+	protected abstract void addToTranslateOEO(File subDir, String fileName) throws Exception;
+	protected abstract void addToTranslateOMO(File subDir, String fileName) throws Exception;
+	protected abstract void addToTranslateMEM(File subDir, String fileName) throws Exception;
+	protected abstract void addToTranslateMOM(File subDir, String fileName) throws Exception;
+	protected abstract void addToRuntimeE(File subDir, String fileName, Options options) throws Exception;
+	protected abstract void addToRuntimeO(File subDir, String fileName, Options options) throws Exception;
+	protected abstract void addToRuntimeM(File subDir, String fileName, Options options) throws Exception;
+	protected void addToProblemsE(File subDir, String fileName, Options options) throws Exception {}
+	protected void addToProblemsO(File subDir, String fileName, Options options) throws Exception {}
+	protected void addToProblemsM(File subDir, String fileName, Options options) throws Exception {}
+	protected abstract void addToLibraryE(File subDir, String fileName, Options options) throws Exception;
+	protected abstract void addToLibraryO(File subDir, String fileName, Options options) throws Exception;
+	protected abstract void addToLibraryM(File subDir, String fileName, Options options) throws Exception;
 
 	OutputStreamWriter translateEOE;
 	OutputStreamWriter translateEME;
@@ -254,6 +285,9 @@ public abstract class Generator {
 	OutputStreamWriter runtimeE;
 	OutputStreamWriter runtimeO;
 	OutputStreamWriter runtimeM;
+	OutputStreamWriter problemsE;
+	OutputStreamWriter problemsO;
+	OutputStreamWriter problemsM;
 	OutputStreamWriter libraryE;
 	OutputStreamWriter libraryO;
 	OutputStreamWriter libraryM;
@@ -295,6 +329,18 @@ public abstract class Generator {
 		if(runtimeM!=null) {
 			runtimeM.close();
 			runtimeM = null;
+		}
+		if(problemsE!=null) {
+			problemsE.close();
+			problemsE = null;
+		}
+		if(problemsO!=null) {
+			problemsO.close();
+			problemsO = null;
+		}
+		if(problemsM!=null) {
+			problemsM.close();
+			problemsM = null;
 		}
 		if(libraryE!=null) {
 			libraryE.close();

@@ -1,0 +1,6 @@
+- startLine: 1
+  startColumn: 1
+  endLine: 1
+  endColumn: 1
+  type: error
+  message: "Cannot instantiate abstract category DebugEventListener, missing method: connect(Callback callback)"

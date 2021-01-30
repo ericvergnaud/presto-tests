@@ -10,8 +10,8 @@ public class JavaScriptGenerator extends Generator {
 	static final String LIB_ROOT = "prompto-javascript/JavaScript-Runtime/src/test/";
 
 	@Override
-	protected String getTarget() {
-		return "JavaScript";
+	protected Target getTarget() {
+		return Target.JAVASCRIPT;
 	}
 	
 	@Override
@@ -44,65 +44,65 @@ public class JavaScriptGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToTranslateEOE(String dirName, String fileName) throws IOException {
+	protected void addToTranslateEOE(File subDir, String fileName) throws IOException {
 		if(translateEOE==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = CORE_ROOT + "prompto/translate/eoe/Test" + capDirName + ".test.js";
 			translateEOE = mkfile(testFilePath);
 			beginTranslate(translateEOE, "EOE");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToTranslate(translateEOE, "EOE", dirName, capFileName, fileName);
+		addToTranslate(translateEOE, "EOE", subDir.getName(), capFileName, fileName);
 	}
 	
 	@Override
-	protected void addToTranslateEME(String dirName, String fileName) throws IOException {
+	protected void addToTranslateEME(File subDir, String fileName) throws IOException {
 		if(translateEME==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = CORE_ROOT + "prompto/translate/eme/Test" + capDirName + ".test.js";
 			translateEME = mkfile(testFilePath);
 			beginTranslate(translateEME, "EME");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToTranslate(translateEME, "EME", dirName, capFileName, fileName);
+		addToTranslate(translateEME, "EME", subDir.getName(), capFileName, fileName);
 	}
 	
 	@Override
-	protected void addToTranslateOEO(String dirName, String fileName) throws IOException {
+	protected void addToTranslateOEO(File subDir, String fileName) throws IOException {
 		if(translateOEO==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = CORE_ROOT + "prompto/translate/oeo/Test" + capDirName + ".test.js";
 			translateOEO = mkfile(testFilePath);
 			beginTranslate(translateOEO, "OEO");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToTranslate(translateOEO, "OEO", dirName, capFileName, fileName);
+		addToTranslate(translateOEO, "OEO", subDir.getName(), capFileName, fileName);
 	}
 	
 	@Override
-	protected void addToTranslateOMO(String dirName, String fileName) throws IOException {
+	protected void addToTranslateOMO(File subDir, String fileName) throws IOException {
 		if(translateOMO==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = CORE_ROOT + "prompto/translate/omo/Test" + capDirName + ".test.js";
 			translateOMO = mkfile(testFilePath);
 			beginTranslate(translateOMO, "OMO");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToTranslate(translateOMO, "OMO", dirName, capFileName, fileName);
+		addToTranslate(translateOMO, "OMO", subDir.getName(), capFileName, fileName);
 	}
 
 	@Override
-	protected void addToTranslateMEM(String dirName, String fileName) {
+	protected void addToTranslateMEM(File subDir, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	protected void addToTranslateMOM(String dirName, String fileName) {
+	protected void addToTranslateMOM(File subDir, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -138,24 +138,24 @@ public class JavaScriptGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToRuntimeE(String dirName, String fileName, Options options) throws IOException {
+	protected void addToRuntimeE(File subDir, String fileName, Options options) throws IOException {
 		if(runtimeE==null)
-			runtimeE = beginRuntime(dirName, 'E');
-		addToRuntime(dirName, fileName, options, runtimeE);
+			runtimeE = beginRuntime(subDir.getName(), 'E');
+		addToRuntime(subDir.getName(), fileName, options, runtimeE);
 	}
 
 	@Override
-	protected void addToRuntimeO(String dirName, String fileName, Options options) throws IOException {
+	protected void addToRuntimeO(File subDir, String fileName, Options options) throws IOException {
 		if(runtimeO==null)
-			runtimeO = beginRuntime(dirName, 'O');
-		addToRuntime(dirName, fileName, options, runtimeO);
+			runtimeO = beginRuntime(subDir.getName(), 'O');
+		addToRuntime(subDir.getName(), fileName, options, runtimeO);
 	}
 
 	@Override
-	protected void addToRuntimeM(String dirName, String fileName, Options options) throws IOException {
+	protected void addToRuntimeM(File subDir, String fileName, Options options) throws IOException {
 		if(runtimeM==null)
-			runtimeM = beginRuntime(dirName, 'M');
-		addToRuntime(dirName, fileName, options, runtimeM);
+			runtimeM = beginRuntime(subDir.getName(), 'M');
+		addToRuntime(subDir.getName(), fileName, options, runtimeM);
 	}
 
 	private OutputStreamWriter beginRuntime(String dirName, Character dialect) throws IOException {
@@ -218,19 +218,33 @@ public class JavaScriptGenerator extends Generator {
 	}
 	
 	@Override
-	protected void addToLibraryE(String dirName, String fileName, Options options) throws IOException {
+	protected void addToLibraryE(File subDir, String fileName, Options options) throws IOException {
 		if(libraryE==null)
-			libraryE = beginLibrary(dirName, 'E');
-		addToLibrary(dirName, fileName, options, libraryE);
+			libraryE = beginLibrary(subDir.getName(), 'E');
+		addToLibrary(subDir, fileName, options, libraryE);
 	}
 	
-	void addToLibrary(String dirName, String fileName, Options options, OutputStreamWriter writer) throws IOException {
+	@Override
+	protected void addToLibraryO(File subDir, String fileName, Options options) throws IOException {
+		if(libraryO==null)
+			libraryO = beginLibrary(subDir.getName(), 'O');
+		addToLibrary(subDir, fileName, options, libraryO);
+	}
+
+	@Override
+	protected void addToLibraryM(File subDir, String fileName, Options options) throws IOException {
+		if(libraryM==null)
+			libraryM = beginLibrary(subDir.getName(), 'M');
+		addToLibrary(subDir, fileName, options, libraryM);
+	}
+	
+	void addToLibrary(File subDir, String fileName, Options options, OutputStreamWriter writer) throws IOException {
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		if(options.interpreted && !options.exclusions.isExcludedTest(dirName, fileName, Target.JAVASCRIPT, TestType.INTERPRETED))
-			addToLibrary(writer, capFileName, dirName, fileName, TestType.INTERPRETED);
-		if(options.transpiled && !options.exclusions.isExcludedTest(dirName, fileName, Target.JAVASCRIPT, TestType.TRANSPILED))
-			addToLibrary(writer, capFileName, dirName, fileName, TestType.TRANSPILED);
+		if(options.interpreted && !options.exclusions.isExcludedTest(subDir, fileName, Target.JAVASCRIPT, TestType.INTERPRETED))
+			addToLibrary(writer, capFileName, subDir.getName(), fileName, TestType.INTERPRETED);
+		if(options.transpiled && !options.exclusions.isExcludedTest(subDir, fileName, Target.JAVASCRIPT, TestType.TRANSPILED))
+			addToLibrary(writer, capFileName, subDir.getName(), fileName, TestType.TRANSPILED);
 	}
 
 	private OutputStreamWriter beginLibrary(String dirName, Character dialect) throws IOException {
@@ -241,20 +255,6 @@ public class JavaScriptGenerator extends Generator {
 		return library;	
 	}
 
-	@Override
-	protected void addToLibraryO(String dirName, String fileName, Options options) throws IOException {
-		if(libraryO==null)
-			libraryO = beginLibrary(dirName, 'O');
-		addToLibrary(dirName, fileName, options, libraryO);
-	}
-
-	@Override
-	protected void addToLibraryM(String dirName, String fileName, Options options) throws IOException {
-		if(libraryM==null)
-			libraryM = beginLibrary(dirName, 'M');
-		addToLibrary(dirName, fileName, options, libraryM);
-	}
-	
 	private void beginLibrary(OutputStreamWriter writer, String dialect, String dirName) throws IOException {
 		writer.write("var prompto = require(\"../../../../../JavaScript-Core/src/main/prompto/index.js\");\n");
 		writer.write("var Out = require(\"../../../../../JavaScript-Core/src/test/prompto/runtime/utils/Out\").Out;\n");

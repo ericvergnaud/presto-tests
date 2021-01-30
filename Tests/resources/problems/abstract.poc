@@ -1,0 +1,9 @@
+category DebugEventListener {
+
+	abstract method connect ();
+}
+
+
+method main() {
+	listener = DebugEventListener();
+}

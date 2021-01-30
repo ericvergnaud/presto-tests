@@ -9,8 +9,8 @@ public class CSharpGenerator extends Generator {
 	static final String ROOT = "prompto-csharp/CSharp-Tests/src/";
 
 	@Override
-	protected String getTarget() {
-		return "C#";
+	protected Target getTarget() {
+		return Target.CSHARP;
 	}
 	
 	@Override
@@ -43,65 +43,65 @@ public class CSharpGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToTranslateEOE(String dirName, String fileName) throws IOException {
+	protected void addToTranslateEOE(File subDir, String fileName) throws IOException {
 		if(translateEOE==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = ROOT + "prompto/translate/eoe/Test" + capDirName + ".cs";
 			translateEOE = mkfile(testFilePath);
 			beginTranslate(translateEOE, capDirName, "E", "eoe");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToTranslate(translateEOE, "EOE", capFileName, dirName, fileName);
+		addToTranslate(translateEOE, "EOE", capFileName, subDir.getName(), fileName);
 	}
 
 	@Override
-	protected void addToTranslateEME(String dirName, String fileName) throws IOException {
+	protected void addToTranslateEME(File subDir, String fileName) throws IOException {
 		if(translateEME==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = ROOT + "prompto/translate/eme/Test" + capDirName + ".cs";
 			translateEME = mkfile(testFilePath);
 			beginTranslate(translateEME, capDirName, "E", "eme");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToTranslate(translateEME, "EME", capFileName, dirName, fileName);
+		addToTranslate(translateEME, "EME", capFileName, subDir.getName(), fileName);
 	}
 	
 	@Override
-	protected void addToTranslateOEO(String dirName, String fileName) throws IOException {
+	protected void addToTranslateOEO(File subDir, String fileName) throws IOException {
 		if(translateOEO==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = ROOT + "prompto/translate/oeo/Test" + capDirName + ".cs";
 			translateOEO = mkfile(testFilePath);
 			beginTranslate(translateOEO, capDirName, "O", "oeo");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToTranslate(translateOEO, "OEO", capFileName, dirName, fileName);
+		addToTranslate(translateOEO, "OEO", capFileName, subDir.getName(), fileName);
 	}
 	
 	@Override
-	protected void addToTranslateOMO(String dirName, String fileName) throws IOException {
+	protected void addToTranslateOMO(File subDir, String fileName) throws IOException {
 		if(translateOMO==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = ROOT + "prompto/translate/omo/Test" + capDirName + ".cs";
 			translateOMO = mkfile(testFilePath);
 			beginTranslate(translateOMO, capDirName, "O", "omo");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToTranslate(translateOMO, "OMO", capFileName, dirName, fileName);
+		addToTranslate(translateOMO, "OMO", capFileName, subDir.getName(), fileName);
 	}
 
 	@Override
-	protected void addToTranslateMEM(String dirName, String fileName) {
+	protected void addToTranslateMEM(File subDir, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	protected void addToTranslateMOM(String dirName, String fileName) {
+	protected void addToTranslateMOM(File subDir, String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -152,29 +152,29 @@ public class CSharpGenerator extends Generator {
 
 
 	@Override
-	protected void addToRuntimeE(String dirName, String fileName, Options options) throws Exception {
+	protected void addToRuntimeE(File subDir, String fileName, Options options) throws Exception {
 		if(runtimeE==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = ROOT + "prompto/runtime/e/Test" + capDirName + ".cs";
 			runtimeE = mkfile(testFilePath);
 			beginRuntime(runtimeE, capDirName, "E");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToRuntime(runtimeE, capFileName, dirName, fileName);
+		addToRuntime(runtimeE, capFileName, subDir.getName(), fileName);
 	}
 
 	@Override
-	protected void addToRuntimeO(String dirName, String fileName, Options options) throws IOException {
+	protected void addToRuntimeO(File subDir, String fileName, Options options) throws IOException {
 		if(runtimeO==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = ROOT + "prompto/runtime/o/Test" + capDirName + ".cs";
 			runtimeO = mkfile(testFilePath);
 			beginRuntime(runtimeO, capDirName, "O");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToRuntime(runtimeO, capFileName, dirName, fileName);
+		addToRuntime(runtimeO, capFileName, subDir.getName(), fileName);
 	}
 
 	private void addToRuntime(OutputStreamWriter writer, String capFileName, String dirName, String fileName) throws IOException {
@@ -193,16 +193,16 @@ public class CSharpGenerator extends Generator {
 	}
 
 	@Override
-	protected void addToRuntimeM(String dirName, String fileName, Options options) throws IOException {
+	protected void addToRuntimeM(File subDir, String fileName, Options options) throws IOException {
 		if(runtimeM==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = ROOT + "prompto/runtime/m/Test" + capDirName + ".cs";
 			runtimeM = mkfile(testFilePath);
 			beginRuntime(runtimeM, capDirName, "M");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToRuntime(runtimeM, capFileName, dirName, fileName);
+		addToRuntime(runtimeM, capFileName, subDir.getName(), fileName);
 	}
 
 	private void beginRuntime(OutputStreamWriter writer, String dirName, String dialect) throws IOException {
@@ -244,42 +244,42 @@ public class CSharpGenerator extends Generator {
 	}
 	
 	@Override
-	protected void addToLibraryE(String dirName, String fileName, Options options) throws Exception {
+	protected void addToLibraryE(File subDir, String fileName, Options options) throws Exception {
 		if(libraryE==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = ROOT + "prompto/library/e/Test" + capDirName + ".cs";
 			libraryE = mkfile(testFilePath);
 			beginLibrary(libraryE, capDirName, "E");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToLibrary(libraryE, capFileName, dirName, fileName);
+		addToLibrary(libraryE, capFileName, subDir.getName(), fileName);
 	}
 
 	@Override
-	protected void addToLibraryO(String dirName, String fileName, Options options) throws IOException {
+	protected void addToLibraryO(File subDir, String fileName, Options options) throws IOException {
 		if(libraryO==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = ROOT + "prompto/library/o/Test" + capDirName + ".cs";
 			libraryO = mkfile(testFilePath);
 			beginLibrary(libraryO, capDirName, "O");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToLibrary(libraryO, capFileName, dirName, fileName);
+		addToLibrary(libraryO, capFileName, subDir.getName(), fileName);
 	}
 
 	@Override
-	protected void addToLibraryM(String dirName, String fileName, Options options) throws IOException {
+	protected void addToLibraryM(File subDir, String fileName, Options options) throws IOException {
 		if(libraryM==null) {
-			String capDirName = capitalize(dirName);
+			String capDirName = capitalize(subDir.getName());
 			String testFilePath = ROOT + "prompto/library/m/Test" + capDirName + ".cs";
 			libraryM = mkfile(testFilePath);
 			beginLibrary(libraryM, capDirName, "M");
 		}
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
-		addToLibrary(libraryM, capFileName, dirName, fileName);
+		addToLibrary(libraryM, capFileName, subDir.getName(), fileName);
 	}
 
 	private void beginLibrary(OutputStreamWriter writer, String dirName, String dialect) throws IOException {

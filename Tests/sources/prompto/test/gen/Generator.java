@@ -131,7 +131,7 @@ public abstract class Generator {
 	
 	private void generate(Options options) throws Exception {
 		generate(readResourcesPath(), "runtime", this::generateRuntimeTests, new Options().withExclusions( new Exclusions()
-				.withExcludedDirs(Arrays.asList("resourceError", "issues", "debug", "comment", "annotations", "manual"))
+				.withExcludedDirs(Arrays.asList("resourceError", "issues", "debug", "comment", "annotations", "manual", "problems"))
 				.withExcludedFiles(Arrays.asList("unexpected", "return", "dateTimeTZOffset", "dateTimeTZName", "global", "empty", "widget2"))
 				.withExclusion((dir, file, target, type) -> 
 					"add".equals(dir.getName()) && "addCss.pec".equals(file) && type == TestType.COMPILED && target == Target.JAVA)
@@ -147,6 +147,7 @@ public abstract class Generator {
 		generate(readResourcesPath(), "problems", this::generateProblemTests, new Options().withExclusions(new Exclusions()
 				.withExclusion((dir, file, target, type) -> !hasProblemsFile(dir, file))));
 		generate(readResourcesPath(), "translate", this::generateTranslateTests, new Options().withExclusions(new Exclusions()
+				.withExcludedDirs(Arrays.asList("problems"))
 				.withExcludedFiles(Collections.singletonList("widget2"))));
 		generate(readLibrariesPath(), "library", this::generateLibraryTests, new Options().withExclusions(new Exclusions().withExcludedFiles(Collections.singletonList("concat"))
 				.withExclusion((dir, file, target, type) -> 

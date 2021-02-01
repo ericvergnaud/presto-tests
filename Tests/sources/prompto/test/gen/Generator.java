@@ -149,9 +149,11 @@ public abstract class Generator {
 		generate(readResourcesPath(), "translate", this::generateTranslateTests, new Options().withExclusions(new Exclusions()
 				.withExcludedDirs(Arrays.asList("problems"))
 				.withExcludedFiles(Collections.singletonList("widget2"))));
-		generate(readLibrariesPath(), "library", this::generateLibraryTests, new Options().withExclusions(new Exclusions().withExcludedFiles(Collections.singletonList("concat"))
+		generate(readLibrariesPath(), "library", this::generateLibraryTests, new Options().withExclusions(new Exclusions()
+				.withExcludedDirs(Arrays.asList("web", "react-bootstrap-3"))
+				.withExcludedFiles(Collections.singletonList("concat"))
 				.withExclusion((dir, file, target, type) -> 
-				"attribute.pec".equals(file) && type == TestType.TRANSPILED)));
+					"attribute.pec".equals(file) && type == TestType.TRANSPILED)));
 	}
 	
 	private boolean hasOutputFile(File dir, String file) {

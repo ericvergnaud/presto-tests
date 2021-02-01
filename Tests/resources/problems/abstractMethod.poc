@@ -1,0 +1,6 @@
+abstract method connect ();
+
+
+method main() {
+	connect();
+}

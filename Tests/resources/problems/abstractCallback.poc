@@ -1,0 +1,6 @@
+abstract method Callback ();
+
+
+method main(Callback callback) {
+	callback();
+}

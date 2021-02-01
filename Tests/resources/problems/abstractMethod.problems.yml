@@ -1,0 +1,6 @@
+- startLine: 5
+  startColumn: 1
+  endLine: 5
+  endColumn: 11
+  type: error
+  message: "Cannot call abstract method: connect()"

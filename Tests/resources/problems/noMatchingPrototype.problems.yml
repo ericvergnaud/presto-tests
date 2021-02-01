@@ -1,0 +1,6 @@
+- startLine: 5
+  startColumn: 1
+  endLine: 5
+  endColumn: 7
+  type: error
+  message: "No matching prototype for: sub(), expected: sub(Text text)"

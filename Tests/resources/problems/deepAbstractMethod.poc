@@ -1,0 +1,10 @@
+abstract method doConnect ();
+
+
+method connect() {
+	doConnect();
+}
+
+method main() {
+	connect();
+}

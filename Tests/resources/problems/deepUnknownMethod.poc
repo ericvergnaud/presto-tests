@@ -1,0 +1,7 @@
+method sub() {
+	sub2();
+}
+
+method main() {
+	sub();
+}

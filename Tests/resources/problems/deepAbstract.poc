@@ -1,0 +1,13 @@
+category DebugEventListener {
+
+	abstract method connect (Text url);
+}
+
+
+method sub() {
+	listener = DebugEventListener();
+}
+
+method main() {
+	sub();
+}

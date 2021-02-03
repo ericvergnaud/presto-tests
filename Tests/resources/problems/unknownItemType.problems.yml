@@ -1,0 +1,6 @@
+- startLine: 4
+  startColumn: 12
+  endLine: 4
+  endColumn: 18
+  type: error
+  message: "Unknown type: Entity"

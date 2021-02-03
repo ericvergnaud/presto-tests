@@ -1,0 +1,6 @@
+
+method main() {
+	a = 0;
+	if(a is an Entity[])
+		a = null;
+}

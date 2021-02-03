@@ -1,0 +1,6 @@
+- startLine: 5
+  startColumn: 3
+  endLine: 5
+  endColumn: 6
+  type: error
+  message: "Unknown method: sub"

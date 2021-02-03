@@ -1,0 +1,6 @@
+category Entity;
+
+method main() {
+	e = Entity();
+	e.sub("Hello");
+}

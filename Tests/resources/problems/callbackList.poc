@@ -1,0 +1,14 @@
+abstract method Callback ();
+
+method push(Callback callback) {
+	callbacks = null;
+	if(callbacks is a Callback[])
+		callbacks = callbacks + [callback];
+}
+
+method stuff() {
+}
+
+method main() {
+	push(() => stuff());
+}

@@ -1,0 +1,11 @@
+abstract method Callback ();
+
+method push(Callback callback) {
+}
+
+method stuff() {
+}
+
+method main() {
+	push(() => stuff());
+}

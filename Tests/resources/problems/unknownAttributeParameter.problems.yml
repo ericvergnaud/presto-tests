@@ -1,0 +1,6 @@
+- startLine: 1
+  startColumn: 12
+  endLine: 1
+  endColumn: 24
+  type: error
+  message: "Unknown attribute: variableName"

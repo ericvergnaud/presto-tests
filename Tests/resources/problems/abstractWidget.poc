@@ -1,0 +1,9 @@
+widget AbstractWidget {
+
+	abstract method connect ();
+}
+
+
+method main() {
+	return <AbstractWidget />;
+}

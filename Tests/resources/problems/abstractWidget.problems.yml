@@ -1,0 +1,6 @@
+- startLine: 8
+  startColumn: 8
+  endLine: 8
+  endColumn: 26
+  type: error
+  message: "Cannot instantiate abstract widget: AbstractWidget, missing method: connect()"

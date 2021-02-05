@@ -1,0 +1,12 @@
+widget AbstractWidget {
+
+	abstract method connect ();
+}
+
+widget ChildWidget extends AbstractWidget {
+
+}
+
+method main() {
+	return <ChildWidget />;
+}

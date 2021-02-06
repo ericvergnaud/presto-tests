@@ -2,17 +2,36 @@
 abstract method Callback ();
 abstract Document method StateAndPropsCallback (Document state, Document props);
 
-method setState(Document state, Callback callback = null) {
+native method setReactState(ReactWidget w, Document state, Callback callback = null) {
+	JavaScript: w.setState(state, callback);
 }
 
-method setState(StateAndPropsCallback callback) {
+native method setReactState(ReactWidget w, StateAndPropsCallback callback) {
+	JavaScript: w.setState(callback);
 }
 
-method MyCallback(Document state, Document props, Text data) {
-	return state;
+widget ReactWidget {
+
+	method setState(Document state, Callback callback = null) {
+		setReactState(this, state, callback);
+	}
+	
+	method setState(StateAndPropsCallback callback) {
+		setReactState(this, callback);
+	}
+	
 }
 
-method main(Callback callback) {
-	data = "Hello";
-	setState((state, props) => MyCallback(state, props, data));
+widget MyWidget extends ReactWidget {
+
+	method stuff() {
+		data = "Hello";
+		setState((state, props) => MyCallback(state, props, data));
+	}
+	
+	method MyCallback(Document state, Document props, Text data) {
+		return state;
+	}
+
 }
+

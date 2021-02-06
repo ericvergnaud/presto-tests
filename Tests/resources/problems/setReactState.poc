@@ -2,7 +2,7 @@
 abstract method Callback ();
 abstract Document method StateAndPropsCallback (Document state, Document props);
 
-method setState(Document state, Callback callback) {
+method setState(Document state, Callback callback = null) {
 }
 
 method setState(StateAndPropsCallback callback) {

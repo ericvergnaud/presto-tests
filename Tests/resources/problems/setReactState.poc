@@ -1,0 +1,18 @@
+
+abstract method Callback ();
+abstract Document method StateAndPropsCallback (Document state, Document props);
+
+method setState(Document state, Callback callback) {
+}
+
+method setState(StateAndPropsCallback callback) {
+}
+
+method MyCallback(Document state, Document props, Text data) {
+	return state;
+}
+
+method main(Callback callback) {
+	data = "Hello";
+	setState((state, props) => MyCallback(state, props, data));
+}

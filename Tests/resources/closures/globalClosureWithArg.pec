@@ -18,4 +18,5 @@ define parentTest as method doing:
 	return Method: subTest
 	
 define main as method receiving Text<:> options doing:
-	printMethod parentTest
+	m = parentTest
+	printMethod m

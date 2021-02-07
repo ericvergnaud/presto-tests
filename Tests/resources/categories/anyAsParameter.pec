@@ -2,7 +2,14 @@ define name as Text attribute
 
 define Ax as category with attribute name
 
-define Any as category with attribute name
+define Any as native category with attribute text, and bindings:
+
+	define category bindings as:
+		Java: java.lang.Object
+		C#: prompto.value.AnyValue
+		Python2: AnyValue from module: prompto.value.AnyValue
+		Python3: AnyValue from module: prompto.value.AnyValue
+		JavaScript: Any from module: prompto/intrinsic/Any.js
 
 define print as native method receiving Text value doing:
 	Java: System.out.print(value);

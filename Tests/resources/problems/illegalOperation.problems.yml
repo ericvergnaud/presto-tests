@@ -9,4 +9,4 @@
   endLine: 5
   endColumn: 24
   type: error
-  message: Cannot add Boolean to Void
+  message: Cannot add Void to Boolean

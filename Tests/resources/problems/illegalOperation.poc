@@ -1,0 +1,6 @@
+method voidMethod() {
+}
+
+method main() {
+	a = true + voidMethod();
+}

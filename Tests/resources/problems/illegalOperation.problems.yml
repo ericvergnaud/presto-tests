@@ -1,0 +1,12 @@
+- startLine: 5
+  startColumn: 1
+  endLine: 5
+  endColumn: 25
+  type: error
+  message: Cannot assign void expression
+- startLine: 5
+  startColumn: 5
+  endLine: 5
+  endColumn: 24
+  type: error
+  message: Cannot add Boolean to Void

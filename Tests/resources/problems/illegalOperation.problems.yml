@@ -3,10 +3,10 @@
   endLine: 5
   endColumn: 25
   type: error
-  message: Cannot assign void expression
+  message: Cannot assign Void expression
 - startLine: 5
   startColumn: 5
   endLine: 5
   endColumn: 24
   type: error
-  message: Cannot add Void to Boolean
+  message: Cannot add Boolean and Void 

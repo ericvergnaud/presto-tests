@@ -13,8 +13,18 @@ native category InputChangedEvent {
 	}
 }
 
-abstract method  ClickEventCallback(ClickEvent event);
-abstract method  InputChangedCallback(InputChangedEvent event);
+@Inlined
+native category SubmitEvent {
+
+	category bindings {
+		JavaScript: Event;
+	}
+}
+
+abstract method ClickEventCallback(ClickEvent event);
+abstract method InputChangedCallback(InputChangedEvent event);
+abstract method SubmitEventCallback(SubmitEvent event);
+
 
 @WidgetField(name="props", type=Document, isProperties=true)
 widget ReactWidget;

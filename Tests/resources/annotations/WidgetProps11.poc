@@ -14,8 +14,17 @@ native category InputChangedEvent {
 	}
 }
 
+@Inlined
+native category SubmitEvent {
+
+	category bindings {
+		JavaScript: Event;
+	}
+}
+
 abstract method ClickEventCallback(ClickEvent event);
 abstract method InputChangedCallback(InputChangedEvent event);
+abstract method SubmitEventCallback(SubmitEvent event);
 abstract method IntegerCallback(Integer value);
 
 @WidgetField(name="props", type=Document, isProperties=true)

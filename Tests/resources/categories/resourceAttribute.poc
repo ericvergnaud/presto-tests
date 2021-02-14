@@ -13,7 +13,6 @@ category Entity(resource);
 method main ( Text<:> options ) {
 	entity = mutable Entity(resource="John");
 	print("/" + entity.resource);
-	w = entity.resource;
 	entity.resource = "Doe";
 	print("/" + entity.resource);
 }

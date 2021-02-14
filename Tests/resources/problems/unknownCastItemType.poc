@@ -1,0 +1,7 @@
+category Stuff;
+
+method main() {
+	stuffs = (Stuff[])[];
+	unknowns = (Unknown[])filtered (stuffs) where (type => type is an Unknown);
+
+}

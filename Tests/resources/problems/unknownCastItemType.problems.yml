@@ -1,13 +1,19 @@
 - startLine: 5
-  startColumn: 6
+  startColumn: 67
   endLine: 5
-  endColumn: 13
+  endColumn: 74
+  type: error
+  message: "Unknown category: Unknown"
+- startLine: 5
+  startColumn: 13
+  endLine: 5
+  endColumn: 20
   type: error
   message: "Unknown category: Unknown"
 - startLine: 5
   startColumn: 1
   endLine: 5
-  endColumn: 16
+  endColumn: 76
   type: error
   message: "Cannot assign Void expression"
 

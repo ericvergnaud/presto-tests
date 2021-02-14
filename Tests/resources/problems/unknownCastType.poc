@@ -1,0 +1,6 @@
+category Stuff;
+
+method main() {
+	x = Stuff();
+	a = (Unknown)x;
+}

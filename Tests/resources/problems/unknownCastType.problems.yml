@@ -1,0 +1,13 @@
+- startLine: 5
+  startColumn: 6
+  endLine: 5
+  endColumn: 13
+  type: error
+  message: "Unknown identifier: Unknown"
+- startLine: 5
+  startColumn: 1
+  endLine: 5
+  endColumn: 16
+  type: error
+  message: "Cannot assign Void expression"
+

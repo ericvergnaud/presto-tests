@@ -1,0 +1,4 @@
+method main() {
+	dict = mutable <"":null>;
+	dict[123] = "123"; 
+}

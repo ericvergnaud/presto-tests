@@ -1,0 +1,6 @@
+- startLine: 4
+  startColumn: 5
+  endLine: 4
+  endColumn: 13
+  type: error
+  message: "Inconsistent hierarchy for Entity, unknown parent type: Stuff"

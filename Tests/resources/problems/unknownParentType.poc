@@ -1,0 +1,5 @@
+category Entity extends Stuff;
+
+method main() {
+	a = Entity();
+}

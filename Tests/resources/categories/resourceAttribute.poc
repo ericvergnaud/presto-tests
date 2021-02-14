@@ -1,0 +1,19 @@
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+attribute resource: Text; 
+category Entity(resource);
+
+
+method main ( Text<:> options ) {
+	entity = mutable Entity(resource="John");
+	print("/" + entity.resource);
+	w = entity.resource;
+	entity.resource = "Doe";
+	print("/" + entity.resource);
+}

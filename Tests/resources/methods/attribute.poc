@@ -11,8 +11,12 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method printName(name) {
+method doPrintName(name) {
 	print (value = "name=" + name );
+}
+
+method printName(name) {
+	doPrintName(name);
 }
 
 method main ( Text<:> options ) {

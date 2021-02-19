@@ -11,12 +11,13 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method doPrintName(name) {
-	print (value = "name=" + name );
+method adjustName(name) {
+	return name;
 }
 
 method printName(name) {
-	doPrintName(name);
+	name = adjustName(name);
+	print (value = "name=" + name );
 }
 
 method main ( Text<:> options ) {

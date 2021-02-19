@@ -10,11 +10,12 @@ define print as native method receiving Text value doing:
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
-define doPrintName as method receiving name doing:
-	print with "name=" + name as value
+define adjustName as method receiving name doing:
+	return name
 
 define printName as method receiving name doing:
-	doPrintName name
+	name = adjustName name
+	print with "name=" + name as value
 
 define main as method receiving Text<:> options doing:
 	c = Company with 1 as id and "IBM" as name

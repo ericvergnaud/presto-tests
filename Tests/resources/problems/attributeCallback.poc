@@ -1,0 +1,21 @@
+category Breakpoint;
+attribute breakpoint: Breakpoint;
+
+abstract method BreakpointCallback (breakpoint);
+
+@WidgetProperties({callback:BreakpointCallback})
+widget Child {
+
+	
+}
+
+widget Parent {
+
+	method render() {
+		return <Child callback={accept} />;
+	}
+	
+	method accept(breakpoint) {
+	}
+	
+}

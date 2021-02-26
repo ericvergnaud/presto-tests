@@ -1,0 +1,15 @@
+widget SimpleWidget {
+
+	method getInitialState () {
+		return {dark:false};
+	}
+	
+	method render () {
+		css = {margin-left:10px;padding:5%;};
+		if (state.dark is true) 
+			css = css + {color:white;background-color:black;};
+		return <div style={css} >Hi there!</div>;
+	}
+	
+	
+}

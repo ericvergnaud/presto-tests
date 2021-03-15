@@ -1,0 +1,5 @@
+method main() {
+	a = "Hello";
+	b = 22;
+	c = a >= b;
+}

@@ -1,0 +1,6 @@
+- startLine: 4
+  startColumn: 5
+  endLine: 4
+  endColumn: 11
+  type: error
+  message: Cannot compare Text and Integer

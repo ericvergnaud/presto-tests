@@ -1,0 +1,7 @@
+method sub() {
+}
+
+method main() {
+	name = "Hello";
+	sub(name);
+}

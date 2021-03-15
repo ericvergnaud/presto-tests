@@ -1,0 +1,24 @@
+method voidMethod() {
+}
+
+method main() {
+	a = [ "a", "b", "c" ];
+	b = a[1];
+	c = a["a"];
+
+	e = "654";
+	f = e[1];
+	g = e["a"];
+
+	i = < "a": 22 >;
+	j = i[1];
+	k = i["a"];
+
+	l = { "a": 22 };
+	m = l[1];
+	n = l["a"];
+	o = l['2025-02-14'];
+	
+	p = voidMethod();
+	q = p[1];
+}

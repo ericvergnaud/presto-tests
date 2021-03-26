@@ -38,6 +38,12 @@ public class JavaScriptGenerator extends Generator {
 			endProblems(problemsO);
 		if(problemsM!=null)
 			endProblems(problemsM);
+		if(suggestionsE!=null)
+			endSuggestions(suggestionsE);
+		if(suggestionsO!=null)
+			endSuggestions(suggestionsO);
+		if(suggestionsM!=null)
+			endSuggestions(suggestionsM);
 		if(translateEOE!=null)
 			endTranslate(translateEOE);
 		if(translateEME!=null)
@@ -167,9 +173,9 @@ public class JavaScriptGenerator extends Generator {
 	private OutputStreamWriter beginRuntime(String dirName, Character dialect) throws IOException {
 		String capDirName = capitalize(dirName);
 		String testFilePath = CORE_ROOT + "prompto/runtime/" + dialect.toString().toLowerCase() + "/Test" + capDirName + ".test.js";
-		OutputStreamWriter runtime = mkfile(testFilePath);
-		beginRuntime(runtime, dialect.toString(), capDirName);
-		return runtime;
+		OutputStreamWriter writer = mkfile(testFilePath);
+		beginRuntime(writer, dialect.toString(), capDirName);
+		return writer;
 	}
 	
 	private void beginRuntime(OutputStreamWriter writer, String dialect, String dirName) throws IOException {
@@ -191,13 +197,13 @@ public class JavaScriptGenerator extends Generator {
 		writer.write("\n");
 	}
 
-	protected void addToRuntime(String dirName, String fileName, Options options, OutputStreamWriter runtime) throws IOException {
+	protected void addToRuntime(String dirName, String fileName, Options options, OutputStreamWriter writer) throws IOException {
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
 		if(options.interpreted)
-			addToRuntime(runtime, capFileName, dirName, fileName, TestType.INTERPRETED);
+			addToRuntime(writer, capFileName, dirName, fileName, TestType.INTERPRETED);
 		if(options.transpiled)
-			addToRuntime(runtime, capFileName, dirName, fileName, TestType.TRANSPILED);
+			addToRuntime(writer, capFileName, dirName, fileName, TestType.TRANSPILED);
 	}
 
 
@@ -247,9 +253,9 @@ public class JavaScriptGenerator extends Generator {
 	private OutputStreamWriter beginProblems(String dirName, Character dialect) throws IOException {
 		String capDirName = capitalize(dirName);
 		String testFilePath = CORE_ROOT + "prompto/problems/" + dialect.toString().toLowerCase() + "/Test" + capDirName + ".test.js";
-		OutputStreamWriter runtime = mkfile(testFilePath);
-		beginProblems(runtime, dialect.toString(), capDirName);
-		return runtime;
+		OutputStreamWriter writer = mkfile(testFilePath);
+		beginProblems(writer, dialect.toString(), capDirName);
+		return writer;
 	}
 	
 	private void beginProblems(OutputStreamWriter writer, String dialect, String dirName) throws IOException {
@@ -259,15 +265,14 @@ public class JavaScriptGenerator extends Generator {
 		writer.write("\n");
 	}
 
-	protected void addToProblems(String dirName, String fileName, Options options, OutputStreamWriter runtime) throws IOException {
+	protected void addToProblems(String dirName, String fileName, Options options, OutputStreamWriter writer) throws IOException {
 		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
 		capFileName = capFileName.replaceAll("-", "_");
 		if(options.interpreted)
-			addToProblems(runtime, capFileName, dirName, fileName);
+			addToProblems(writer, capFileName, dirName, fileName);
 	}
 
 
-	
 	private void addToProblems(OutputStreamWriter writer, String capFileName, String dirName, String fileName) throws IOException {
 		writer.write("test('");
 		writer.write(capFileName);
@@ -282,6 +287,70 @@ public class JavaScriptGenerator extends Generator {
 	}
 
 	private void endProblems(OutputStreamWriter writer) {
+		
+	}
+	
+
+	@Override
+	protected void addToSuggestionsO(File subDir, String fileName, Options options) throws IOException {
+		if(suggestionsO==null)
+			suggestionsO = beginSuggestions(subDir.getName(), 'O');
+		addToSuggestions(subDir.getName(), fileName, options, suggestionsO);
+		
+	}
+	
+	@Override
+	protected void addToSuggestionsM(File subDir, String fileName, Options options) throws IOException {
+		if(suggestionsM==null)
+			suggestionsM = beginSuggestions(subDir.getName(), 'M');
+		addToSuggestions(subDir.getName(), fileName, options, suggestionsM);
+		
+	}
+	
+	@Override
+	protected void addToSuggestionsE(File subDir, String fileName, Options options) throws IOException {
+		if(suggestionsE==null)
+			suggestionsE = beginSuggestions(subDir.getName(), 'E');
+		addToSuggestions(subDir.getName(), fileName, options, suggestionsE);
+		
+	}
+
+	private OutputStreamWriter beginSuggestions(String dirName, Character dialect) throws IOException {
+		String capDirName = capitalize(dirName);
+		String testFilePath = CORE_ROOT + "prompto/suggestions/" + dialect.toString().toLowerCase() + "/Test" + capDirName + ".test.js";
+		OutputStreamWriter writer = mkfile(testFilePath);
+		beginSuggestions(writer, dialect.toString(), capDirName);
+		return writer;
+	}
+	
+	private void beginSuggestions(OutputStreamWriter writer, String dialect, String dirName) throws IOException {
+		writer.write("var checkSuggestions = require(\"../../parser/Base");
+		writer.write(dialect.toUpperCase());
+		writer.write("ParserTest\").checkSuggestions;\n");
+		writer.write("\n");
+	}
+
+	protected void addToSuggestions(String dirName, String fileName, Options options, OutputStreamWriter writer) throws IOException {
+		String capFileName = capitalize(fileName.substring(0, fileName.lastIndexOf('.')));
+		capFileName = capFileName.replaceAll("-", "_");
+		if(options.interpreted)
+			addToSuggestions(writer, capFileName, dirName, fileName);
+	}
+
+	private void addToSuggestions(OutputStreamWriter writer, String capFileName, String dirName, String fileName) throws IOException {
+		writer.write("test('");
+		writer.write(capFileName);
+		writer.write(" suggestions', () => {\n");
+		writer.write("\tcheckSuggestions('");
+		writer.write(dirName);
+		writer.write("/");
+		writer.write(fileName);
+		writer.write("');\n");
+		writer.write("});\n");
+		writer.write("\n");
+	}
+
+	private void endSuggestions(OutputStreamWriter writer) {
 		
 	}
 	

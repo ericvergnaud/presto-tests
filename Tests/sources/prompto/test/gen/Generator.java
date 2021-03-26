@@ -146,8 +146,14 @@ public abstract class Generator {
 				.withExclusion((dir, file, target, type) -> !hasOutputFile(dir, file))));
 		generate(readResourcesPath(), "problems", this::generateProblemTests, new Options().withExclusions(new Exclusions()
 				.withExclusion((dir, file, target, type) -> !hasProblemsFile(dir, file))));
+		generate(readResourcesPath(), "suggestions/o", this::generateSuggestionsTests, new Options().withExclusions(new Exclusions()
+				.withExclusion((dir, file, target, type) -> !hasSuggestionsFile(dir, file))));
+		generate(readResourcesPath(), "suggestions/e", this::generateSuggestionsTests, new Options().withExclusions(new Exclusions()
+				.withExclusion((dir, file, target, type) -> !hasSuggestionsFile(dir, file))));
+		generate(readResourcesPath(), "suggestions/m", this::generateSuggestionsTests, new Options().withExclusions(new Exclusions()
+				.withExclusion((dir, file, target, type) -> !hasSuggestionsFile(dir, file))));
 		generate(readResourcesPath(), "translate", this::generateTranslateTests, new Options().withExclusions(new Exclusions()
-				.withExcludedDirs(Arrays.asList("problems"))
+				.withExcludedDirs(Arrays.asList("problems", "suggestions"))
 				.withExcludedFiles(Collections.singletonList("widget2"))));
 		generate(readLibrariesPath(), "library", this::generateLibraryTests, new Options().withExclusions(new Exclusions()
 				.withExcludedDirs(Arrays.asList("web", "react-bootstrap-3"))
@@ -162,6 +168,11 @@ public abstract class Generator {
 
 	private boolean hasProblemsFile(File dir, String file) {
 		return hasFileWithExtension(dir, file, ".problems.yml");
+	}
+
+	private boolean hasSuggestionsFile(File dir, String file) {
+		String extension = "." + file.substring(file.length()-2, file.length()-1) + ".suggestions.yml";
+		return hasFileWithExtension(dir, file, extension);
 	}
 
 	private boolean hasFileWithExtension(File dir, String file, String extension) {
@@ -248,6 +259,16 @@ public abstract class Generator {
 		}
 	}
 
+	private void generateSuggestionsTests(File subDir, String fileName, Options options) throws Exception {
+		if(fileName.endsWith(".pec")) {
+			addToSuggestionsE(subDir, fileName, options);
+		} else if(fileName.endsWith(".poc")) {
+			addToSuggestionsO(subDir, fileName, options);
+		} else if(fileName.endsWith(".pmc")) {
+			addToSuggestionsM(subDir, fileName, options);
+		}
+	}
+
 	private void generateTranslateTests(File subDir, String fileName, Options options) throws Exception {
 		if(fileName.endsWith(".pec")) {
 			addToTranslateEOE(subDir, fileName);
@@ -275,6 +296,9 @@ public abstract class Generator {
 	protected void addToProblemsE(File subDir, String fileName, Options options) throws Exception {}
 	protected void addToProblemsO(File subDir, String fileName, Options options) throws Exception {}
 	protected void addToProblemsM(File subDir, String fileName, Options options) throws Exception {}
+	protected void addToSuggestionsE(File subDir, String fileName, Options options) throws Exception {}
+	protected void addToSuggestionsO(File subDir, String fileName, Options options) throws Exception {}
+	protected void addToSuggestionsM(File subDir, String fileName, Options options) throws Exception {}
 	protected abstract void addToLibraryE(File subDir, String fileName, Options options) throws Exception;
 	protected abstract void addToLibraryO(File subDir, String fileName, Options options) throws Exception;
 	protected abstract void addToLibraryM(File subDir, String fileName, Options options) throws Exception;
@@ -291,6 +315,9 @@ public abstract class Generator {
 	OutputStreamWriter problemsE;
 	OutputStreamWriter problemsO;
 	OutputStreamWriter problemsM;
+	OutputStreamWriter suggestionsE;
+	OutputStreamWriter suggestionsO;
+	OutputStreamWriter suggestionsM;
 	OutputStreamWriter libraryE;
 	OutputStreamWriter libraryO;
 	OutputStreamWriter libraryM;
@@ -344,6 +371,18 @@ public abstract class Generator {
 		if(problemsM!=null) {
 			problemsM.close();
 			problemsM = null;
+		}
+		if(suggestionsE!=null) {
+			suggestionsE.close();
+			suggestionsE = null;
+		}
+		if(suggestionsO!=null) {
+			suggestionsO.close();
+			suggestionsO = null;
+		}
+		if(suggestionsM!=null) {
+			suggestionsM.close();
+			suggestionsM = null;
 		}
 		if(libraryE!=null) {
 			libraryE.close();

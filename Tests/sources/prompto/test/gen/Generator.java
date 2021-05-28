@@ -159,7 +159,9 @@ public abstract class Generator {
 				.withExcludedDirs(Arrays.asList("web", "react-bootstrap-3"))
 				.withExcludedFiles(Collections.singletonList("concat"))
 				.withExclusion((dir, file, target, type) -> 
-					"attribute.pec".equals(file) && type == TestType.TRANSPILED)));
+					"attribute.pec".equals(file) && type == TestType.TRANSPILED)
+				.withExclusion((dir, file, target, type) -> 
+					"path.pec".equals(file) && type == TestType.TRANSPILED)));
 	}
 	
 	private boolean hasOutputFile(File dir, String file) {
@@ -217,14 +219,13 @@ public abstract class Generator {
 	protected abstract Target getTarget();
 
 	private void loadDependencies(File subDir) throws Exception {
-		dependencies = null;
+		dependencies = new ArrayList<>();
+		dependencies.add(subDir.getName());
 		File file = new File(subDir, ".project");
 		if(!file.exists())
 			return;
 		XPathExpression xpath = XPathFactory.newInstance().newXPath().compile("/projectDescription/projects/project");
 		NodeList nodes = (NodeList)xpath.evaluate(new InputSource(new FileInputStream(file)), XPathConstants.NODESET);
-		dependencies = new ArrayList<>();
-		dependencies.add(subDir.getName());
 		for(int i=0;i<nodes.getLength();i++)
 			dependencies.add(nodes.item(i).getTextContent());
 	}

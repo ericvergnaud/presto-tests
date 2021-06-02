@@ -161,6 +161,8 @@ public abstract class Generator {
 				.withExclusion((dir, file, target, type) -> 
 					"attribute.pec".equals(file) && type == TestType.TRANSPILED)
 				.withExclusion((dir, file, target, type) -> 
+					"system.pec".equals(file) && type == TestType.TRANSPILED)
+				.withExclusion((dir, file, target, type) -> 
 					"path.pec".equals(file) && type == TestType.TRANSPILED)));
 	}
 	

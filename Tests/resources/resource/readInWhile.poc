@@ -1,0 +1,33 @@
+attribute path: Text ;
+attribute content: Text ;
+
+native resource MyResource(path, content) {
+
+	category bindings {
+		Java: prompto.runtime.utils.MyResource;
+		C#: prompto.runtime.utils.MyResource;
+		Python2: MyResource from module: prompto.runtime.utils.MyResource;
+		Python3: MyResource from module: prompto.runtime.utils.MyResource;
+		JavaScript: MyResource from module: user/MyResource.js;
+	}
+}
+	
+	
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+method main ( Text<:> options ) {
+	with ( file = MyResource( path = "xyz4", content = "readFullyOk" ) ) {
+		while(true) {
+			s = read one from file;
+			if(s is null)
+				break;
+			print (s);
+		}
+	}
+}

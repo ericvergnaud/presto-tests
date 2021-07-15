@@ -8,13 +8,27 @@ define print as native method receiving Text value doing:
 // ok to use Integer with MemStore
 define dbId as Integer attribute 
 
+define fetchLatestAuditMetadataId as native method receiving Any dbId returning Any doing:
+	Java: return $store.fetchLatestAuditMetadataId(dbId);
+	C#: return $store.fetchLatestAuditMetadataId(dbId);
+	Python2: return $store.fetchLatestAuditMetadataId(dbId)
+	Python3: return $store.fetchLatestAuditMetadataId(dbId)
+	JavaScript: return $store.fetchLatestAuditMetadataId(dbId);
+
+define fetchAuditMetadata as native method receiving Any dbId returning Document doing:
+	Java: return $store.fetchAuditMetadataAsDocument(dbId);
+	C#: return $store.fetchAuditMetadata(dbId);
+	Python2: return $store.fetchAuditMetadata(dbId)
+	Python3: return $store.fetchAuditMetadata(dbId)
+	JavaScript: return $store.fetchAuditMetadata(dbId);
+
 define name as storable Text attribute with index
 
 define Entity as storable category with attribute name
 
 define main as method receiving Text<:> options doing:
 	e1 = Entity with "John" as name
-	store e1 with { "stuff", "some stuff" } as metadata
+	store e1 with { "stuff": "some stuff" } as metadata
 	id = fetchLatestAuditMetadataId with e1.dbId as dbId
-	meta = fetchMetadata with id as dbId
+	meta = fetchAuditMetadata with id as dbId
 	print "/stuff:" + meta.stuff

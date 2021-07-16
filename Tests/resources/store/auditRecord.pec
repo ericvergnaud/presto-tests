@@ -15,6 +15,13 @@ define fetchLatestAuditMetadataId as native method receiving Any dbId returning 
 	Python3: return $store.fetchLatestAuditMetadataId(dbId)
 	JavaScript: return $store.fetchLatestAuditMetadataId(dbId);
 
+define fetchAllAuditMetadataIds as native method receiving Any dbId returning Any[] doing:
+	Java: return $store.fetchAllAuditMetadataIds(dbId);
+	C#: return $store.fetchAllAuditMetadataIds(dbId);
+	Python2: return $store.fetchAllAuditMetadataIds(dbId)
+	Python3: return $store.fetchAllAuditMetadataIds(dbId)
+	JavaScript: return $store.fetchAllAuditMetadataIds(dbId);
+
 define fetchAuditMetadata as native method receiving Any dbId returning Document doing:
 	Java: return $store.fetchAuditMetadataAsDocument(dbId);
 	C#: return $store.fetchAuditMetadata(dbId);
@@ -32,3 +39,8 @@ define main as method receiving Text<:> options doing:
 	id = fetchLatestAuditMetadataId with e1.dbId as dbId
 	meta = fetchAuditMetadata with id as dbId
 	print "/stuff:" + meta.stuff
+	e2 = fetch one mutable Entity where name = "John" 
+	e2.name = "Jim"
+	store e2
+	ids = fetchAllAuditMetadataIds with e2.dbId as dbId
+	print "/count:" + ids.count

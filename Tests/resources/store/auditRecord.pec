@@ -24,10 +24,10 @@ define fetchAllAuditMetadataIds as native method receiving Any dbId returning An
 
 define fetchAuditMetadata as native method receiving Any dbId returning Document doing:
 	Java: return $store.fetchAuditMetadataAsDocument(dbId);
-	C#: return $store.fetchAuditMetadata(dbId);
-	Python2: return $store.fetchAuditMetadata(dbId)
-	Python3: return $store.fetchAuditMetadata(dbId)
-	JavaScript: return $store.fetchAuditMetadata(dbId);
+	C#: return $store.fetchAuditMetadataAsDocument(dbId);
+	Python2: return $store.fetchAuditMetadataAsDocument(dbId)
+	Python3: return $store.fetchAuditMetadataAsDocument(dbId)
+	JavaScript: return $store.fetchAuditMetadataAsDocument(dbId);
 
 define name as storable Text attribute with index
 

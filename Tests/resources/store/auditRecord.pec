@@ -10,21 +10,21 @@ define dbId as Integer attribute
 
 define fetchLatestAuditMetadataId as native method receiving Any dbId returning Any doing:
 	Java: return $store.fetchLatestAuditMetadataId(dbId);
-	C#: return $store.fetchLatestAuditMetadataId(dbId);
+	C#: return $store.FetchLatestAuditMetadataId(dbId);
 	Python2: return $store.fetchLatestAuditMetadataId(dbId)
 	Python3: return $store.fetchLatestAuditMetadataId(dbId)
 	JavaScript: return $store.fetchLatestAuditMetadataId(dbId);
 
 define fetchAllAuditMetadataIds as native method receiving Any dbId returning Any[] doing:
 	Java: return $store.fetchAllAuditMetadataIds(dbId);
-	C#: return $store.fetchAllAuditMetadataIds(dbId);
+	C#: return $store.FetchAllAuditMetadataIds(dbId);
 	Python2: return $store.fetchAllAuditMetadataIds(dbId)
 	Python3: return $store.fetchAllAuditMetadataIds(dbId)
 	JavaScript: return $store.fetchAllAuditMetadataIds(dbId);
 
 define fetchAuditMetadata as native method receiving Any dbId returning Document doing:
 	Java: return $store.fetchAuditMetadataAsDocument(dbId);
-	C#: return $store.fetchAuditMetadataAsDocument(dbId);
+	C#: return $store.FetchAuditMetadataAsDocument(dbId);
 	Python2: return $store.fetchAuditMetadataAsDocument(dbId)
 	Python3: return $store.fetchAuditMetadataAsDocument(dbId)
 	JavaScript: return $store.fetchAuditMetadataAsDocument(dbId);

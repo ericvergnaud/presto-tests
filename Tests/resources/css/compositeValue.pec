@@ -1,0 +1,5 @@
+define "code value" as test method doing:
+	x = 123
+	a = {margin: {x}px; }
+and verifying:
+	a is not nothing

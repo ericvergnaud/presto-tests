@@ -1,0 +1,7 @@
+test method "code value" () {
+	x = 123;
+	a = { margin: {x}px; };
+} verifying {
+	a is not null;
+}
+	

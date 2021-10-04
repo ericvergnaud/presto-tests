@@ -1,0 +1,15 @@
+@WidgetProperties({componentClass: Type<Text>})
+widget MyWidget {
+
+	Html method render () {
+		return <div>stuff</div>;
+	}
+	
+}
+
+widget Container {
+	
+	Html method render () {
+		return <MyWidget componentClass={Text} />;
+	}
+}

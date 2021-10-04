@@ -1,4 +1,8 @@
-@WidgetProperties({componentClass: Type<Text>})
+attribute name: Text;
+
+category Entity(name);
+
+@WidgetProperties({componentClass: Type<Entity>})
 widget MyWidget {
 
 	Html method render () {
@@ -10,6 +14,6 @@ widget MyWidget {
 widget Container {
 	
 	Html method render () {
-		return <MyWidget componentClass={Text} />;
+		return <MyWidget componentClass={Entity} />;
 	}
 }

@@ -5,15 +5,14 @@ define print as native method receiving Text value doing:
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
-// ok to use Integer with MemStore
-define dbId as Integer attribute 
+define dbId as Any attribute 
 
-define fetchLatestAuditMetadataId as native method receiving Any dbId returning Any doing:
-	Java: return $store.fetchLatestAuditMetadataId(dbId);
-	C#: return $store.FetchLatestAuditMetadataId(dbId);
-	Python2: return $store.fetchLatestAuditMetadataId(dbId)
-	Python3: return $store.fetchLatestAuditMetadataId(dbId)
-	JavaScript: return $store.fetchLatestAuditMetadataId(dbId);
+define fetchAllAuditRecords as native method receiving Any dbId returning Document[] doing:
+	Java: return $store.fetchAllAuditRecordsAsDocuments(dbId);
+	C#: return $store.FetchAllAuditRecordsAsDocuments(dbId);
+	Python2: return $store.fetchAllAuditRecordsAsDocuments(dbId)
+	Python3: return $store.fetchAllAuditRecordsAsDocuments(dbId)
+	JavaScript: return $store.fetchAllAuditRecordsAsDocuments(dbId);
 
 define fetchAllAuditMetadataIds as native method receiving Any dbId returning Any[] doing:
 	Java: return $store.fetchAllAuditMetadataIds(dbId);
@@ -35,12 +34,13 @@ define Entity as storable category with attribute name
 
 define main as method receiving Text<:> options doing:
 	e1 = Entity with "John" as name
-	store e1 with { "stuff": "some stuff" } as metadata
-	id = fetchLatestAuditMetadataId with e1.dbId as dbId
-	meta = fetchAuditMetadata with id as dbId
-	print "/stuff:" + meta.stuff
-	e2 = fetch one mutable Entity where name = "John" 
-	e2.name = "Jim"
-	store e2
-	ids = fetchAllAuditMetadataIds with e2.dbId as dbId
-	print "/count:" + ids.count
+	store e1 with { "login": "albert" } as metadata
+	e2 = fetch one mutable Entity where name = "John"
+	e2.name = "Jennifer"
+	store e2 with { "login": "mary" } as metadata
+	audits = fetchAllAuditRecords with e2.dbId as dbId
+	for each audit in audits:
+		print "/operation:" + audit.operation
+		print "/instance.name:" + audit.instance.name
+		meta = fetchAuditMetadata with audit.metadataId as dbId
+		print "/login:" + meta.login

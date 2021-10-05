@@ -1,9 +1,9 @@
-define id as Any attribute
+define id as Integer attribute
 
 define Any as native category with attribute id, and bindings:
 
 	define category bindings as:
-		Java: java.lang.Object
+		Java: prompto.intrinsic.PromptoAny
 		C#: prompto.value.AnyValue
 		Python2: AnyValue from module: prompto.value.AnyValue
 		Python3: AnyValue from module: prompto.value.AnyValue

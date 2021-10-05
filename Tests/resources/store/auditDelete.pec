@@ -1,0 +1,38 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define dbId as Any attribute 
+
+define fetchAllAuditRecords as native method receiving Any dbId returning Document[] doing:
+	Java: return $store.fetchAllAuditRecordsAsDocuments(dbId);
+	C#: return $store.FetchAllAuditRecordsAsDocuments(dbId);
+	Python2: return $store.fetchAllAuditRecordsAsDocuments(dbId)
+	Python3: return $store.fetchAllAuditRecordsAsDocuments(dbId)
+	JavaScript: return $store.fetchAllAuditRecordsAsDocuments(dbId);
+
+define fetchAuditMetadata as native method receiving Any dbId returning Document doing:
+	Java: return $store.fetchAuditMetadataAsDocument(dbId);
+	C#: return $store.FetchAuditMetadataAsDocument(dbId);
+	Python2: return $store.fetchAuditMetadataAsDocument(dbId)
+	Python3: return $store.fetchAuditMetadataAsDocument(dbId)
+	JavaScript: return $store.fetchAuditMetadataAsDocument(dbId);
+
+define name as storable Text attribute with index
+
+define Entity as storable category with attribute name
+
+define main as method receiving Text<:> options doing:
+	e1 = Entity with "John" as name
+	store e1 with { "login": "albert" } as metadata
+	delete e1 with { "login": "mary" } as metadata
+	audits = fetchAllAuditRecords with e1.dbId as dbId
+	for each audit in audits:
+		print "/operation:" + audit.operation
+		if audit.instance is not nothing:
+			print "/instance.name:" + audit.instance.name
+		meta = fetchAuditMetadata with audit.metadataId as dbId
+		print "/login:" + meta.login

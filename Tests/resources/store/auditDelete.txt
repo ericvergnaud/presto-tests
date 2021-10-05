@@ -1,0 +1,1 @@
+/operation:DELETE/login:mary/operation:INSERT/instance.name:John/login:albert

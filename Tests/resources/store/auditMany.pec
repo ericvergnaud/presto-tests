@@ -5,47 +5,17 @@ define print as native method receiving Text value doing:
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
-// runtime reference of any object
-define id as Integer attribute
-// database reference of stored object
-define dbId as storable Any attribute
-// any object has a text attribute, used for display 
-define text as storable Text attribute with value and words index
-
-define Any as native category with attributes id and text, and bindings:
-
-	define category bindings as:
-		Java: prompto.intrinsic.PromptoAny
-		C#: prompto.value.AnyValue
-		Python2: AnyValue from module: prompto.value.AnyValue
-		Python3: AnyValue from module: prompto.value.AnyValue
-		JavaScript: AnyValue from module: prompto/intrinsic/AnyValue.js
-
-and methods: 
-
-	define id as getter doing:
-		Java: return System.identityHashCode(this);
-		C#: return System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(this);
-		Python2: return id(self)
-		Python3: return id(self)
-		JavaScript: return this.id;
-	
-	define text as getter doing:
-		Java: return this.toString();
-		C#: return this.ToString();
-		Python2: return str(self)
-		Python3: return str(self)
-		JavaScript: return this.toString();
+define dbId as DbId attribute 
 
 
-define fetchAllAuditMetadataIds as native method receiving Any dbId returning Any[] doing:
+define fetchAllAuditMetadataIds as native method receiving dbId returning DbId[] doing:
 	Java: return $store.fetchAllAuditMetadataIds(dbId);
 	C#: return $store.FetchAllAuditMetadataIds(dbId);
 	Python2: return $store.fetchAllAuditMetadataIds(dbId)
 	Python3: return $store.fetchAllAuditMetadataIds(dbId)
 	JavaScript: return $store.fetchAllAuditMetadataIds(dbId);
 
-define fetchDbIdsAffectedByAuditMetadataId as native method receiving Any dbId returning Any[] doing:
+define fetchDbIdsAffectedByAuditMetadataId as native method receiving dbId returning DbId[] doing:
 	Java: return $store.fetchDbIdsAffectedByAuditMetadataId(dbId);
 	C#: return $store.fetchDbIdsAffectedByAuditMetadataId(dbId);
 	Python2: return $store.fetchDbIdsAffectedByAuditMetadataId(dbId)

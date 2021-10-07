@@ -40,5 +40,5 @@ define main as method receiving Text<:> options doing:
 			print "/operation:" + audit.operation
 			if audit.instance is not nothing:
 				print "/instance.name:" + audit.instance.name
-			meta = fetchAuditMetadata with (audit.metadataId as DbId) as dbId
+			meta = fetchAuditMetadata with (audit.metadataDbId as DbId) as dbId
 			print "/login:" + meta.login

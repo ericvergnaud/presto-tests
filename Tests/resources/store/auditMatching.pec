@@ -1,0 +1,44 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define isAuditEnabled as native method returning Boolean doing:
+	Java: return $store.isAuditEnabled();
+	C#: return $store.IsAuditEnabled();
+	Python2: return $store.isAuditEnabled()
+	Python3: return $store.isAuditEnabled()
+	JavaScript: return $store.isAuditEnabled();
+
+define fetchAuditRecordsMatching as native method receiving Document auditPredicates = nothing and Document instancePredicates = nothing returning Document[] doing:
+	Java: return $store.fetchAuditRecordsMatchingAsDocuments(auditPredicates, instancePredicates);
+	C#: return $store.FetchAuditRecordsMatchingAsDocuments(auditPredicates, instancePredicates);
+	Python2: return $store.fetchAuditRecordsMatchingAsDocuments(auditPredicates, instancePredicates)
+	Python3: return $store.fetchAuditRecordsMatchingAsDocuments(auditPredicates, instancePredicates)
+	JavaScript: return $store.fetchAuditRecordsMatchingAsDocuments(auditPredicates, instancePredicates);
+
+define fetchAuditMetadata as native method receiving DbId dbId returning Document doing:
+	Java: return $store.fetchAuditMetadataAsDocument(dbId);
+	C#: return $store.FetchAuditMetadataAsDocument(dbId);
+	Python2: return $store.fetchAuditMetadataAsDocument(dbId)
+	Python3: return $store.fetchAuditMetadataAsDocument(dbId)
+	JavaScript: return $store.fetchAuditMetadataAsDocument(dbId);
+
+define name as storable Text attribute with index
+
+define Entity as storable category with attribute name
+
+define main as method receiving Text<:> options doing:
+	e1 = Entity with "John" as name
+	store e1 with { "login": "albert" } as metadata
+	delete e1 with { "login": "mary" } as metadata
+	if isAuditEnabled:
+		audits = fetchAuditRecordsMatching with { name: "John" } as instancePredicates
+		for each audit in audits:
+			print "/operation:" + audit.operation
+			if audit.instance is not nothing:
+				print "/instance.name:" + audit.instance.name
+			meta = fetchAuditMetadata with (audit.metadataId as DbId) as dbId
+			print "/login:" + meta.login

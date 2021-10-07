@@ -17,7 +17,7 @@ define fetchAllAuditMetadataIds as native method receiving dbId returning DbId[]
 
 define fetchDbIdsAffectedByAuditMetadataId as native method receiving dbId returning DbId[] doing:
 	Java: return $store.fetchDbIdsAffectedByAuditMetadataId(dbId);
-	C#: return $store.fetchDbIdsAffectedByAuditMetadataId(dbId);
+	C#: return $store.FetchDbIdsAffectedByAuditMetadataId(dbId);
 	Python2: return $store.fetchDbIdsAffectedByAuditMetadataId(dbId)
 	Python3: return $store.fetchDbIdsAffectedByAuditMetadataId(dbId)
 	JavaScript: return $store.fetchDbIdsAffectedByAuditMetadataId(dbId);

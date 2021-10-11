@@ -1,0 +1,34 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define fetchLatestAuditRecord as native method receiving DbId dbId returning Document doing:
+	Java: return $store.fetchLatestAuditRecordAsDocument(dbId);
+	C#: return $store.FetchLatestAuditRecordAsDocument(dbId);
+	Python2: return $store.fetchLatestAuditRecordAsDocument(dbId)
+	Python3: return $store.fetchLatestAuditRecordAsDocument(dbId)
+	JavaScript: return $store.fetchLatestAuditRecordAsDocument(dbId);
+
+define deleteAuditRecord as native method receiving DbId dbId returning Boolean doing:
+	Java: return $store.deleteAuditRecord(dbId);
+	C#: return $store.DeleteAuditRecord(dbId);
+	Python2: return $store.deleteAuditRecord(dbId)
+	Python3: return $store.deleteAuditRecord(dbId)
+	JavaScript: return $store.deleteAuditRecord(dbId);
+
+define name as storable Text attribute with index
+
+define Entity as storable category with attribute name
+
+define main as method receiving Text<:> options doing:
+	e1 = Entity with "John" as name
+	store e1 with { "login": "albert" } as metadata
+	audit = fetchLatestAuditRecord with e1.dbId as dbId
+	print "/operation:" + audit.operation
+	success = deleteAuditRecord with (audit.dbId as DbId) as dbId
+	print "/delete:" + success
+	audit = fetchLatestAuditRecord with e1.dbId as dbId
+	print "/fetch:" + (audit is nothing)

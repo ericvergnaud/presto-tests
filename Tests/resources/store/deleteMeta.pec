@@ -1,0 +1,42 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+define fetchLatestAuditMetadataId as native method receiving DbId dbId returning DbId doing:
+	Java: return $store.fetchLatestAuditMetadataId(dbId);
+	C#: return $store.FetchLatestAuditMetadataId(dbId);
+	Python2: return $store.fetchLatestAuditMetadataId(dbId)
+	Python3: return $store.fetchLatestAuditMetadataId(dbId)
+	JavaScript: return $store.fetchLatestAuditMetadataId(dbId);
+
+define fetchAuditMetadata as native method receiving DbId dbId returning Document doing:
+	Java: return $store.fetchAuditMetadataAsDocument(dbId);
+	C#: return $store.FetchAuditMetadataAsDocument(dbId);
+	Python2: return $store.fetchAuditMetadataAsDocument(dbId)
+	Python3: return $store.fetchAuditMetadataAsDocument(dbId)
+	JavaScript: return $store.fetchAuditMetadataAsDocument(dbId);
+
+define deleteAuditMetadata as native method receiving DbId dbId returning Boolean doing:
+	Java: return $store.deleteAuditMetadata(dbId);
+	C#: return $store.DeleteAuditMetadata(dbId);
+	Python2: return $store.deleteAuditMetadata(dbId)
+	Python3: return $store.deleteAuditMetadata(dbId)
+	JavaScript: return $store.deleteAuditMetadata(dbId);
+
+define name as storable Text attribute with index
+
+define Entity as storable category with attribute name
+
+define main as method receiving Text<:> options doing:
+	e1 = Entity with "John" as name
+	store e1 with { "login": "albert" } as metadata
+	metaId = fetchLatestAuditMetadataId with e1.dbId as dbId
+	meta = fetchAuditMetadata metaId
+	print "/fetch:" + (meta is not nothing)
+	success = deleteAuditMetadata metaId
+	print "/delete:" + success
+	meta = fetchAuditMetadata metaId
+	print "/fetch:" + (meta is nothing)

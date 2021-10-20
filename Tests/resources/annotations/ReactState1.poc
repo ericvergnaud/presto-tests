@@ -1,0 +1,26 @@
+native method setReactWidgetState(ReactWidget w, Document state) {
+	JavaScript: w.setState(state);
+}
+
+@WidgetField(name="state", type=Document)
+widget ReactWidget {
+
+	method setState(Document state) {
+		setReactWidgetState(this, state);
+	}
+}	
+
+
+@ReactState({items: Integer})
+widget MyWidget extends ReactWidget {
+
+	method componentDidMount() {
+		setState({items: 3});
+	}
+	
+	Html method render () {
+		return <div id="items">{state.items + 7}</div>;
+	}
+	
+}
+

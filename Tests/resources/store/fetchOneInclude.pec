@@ -16,5 +16,5 @@ define Entity as storable category with attributes name and other
 define main as method receiving Text<:> options doing:
 	e = Entity with "John" as name and "Doe" as other
 	store e
-	e = fetch one Entity include name
+	e = fetch one Entity where name = "John" include name
 	print e.text

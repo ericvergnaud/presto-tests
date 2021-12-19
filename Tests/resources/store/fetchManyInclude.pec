@@ -8,15 +8,16 @@ define print as native method receiving Text value doing:
 // ok to use Integer with MemStore
 define dbId as Integer attribute 
 
-define name as storable Text attribute with index
+define firstName as storable Text attribute
+define lastName as storable Text attribute
 define other as storable Text attribute
 
-define Entity as storable category with attributes name and other
+define Entity as storable category with attributes firstName, lastName and other
 
 define main as method receiving Text<:> options doing:
-	e1 = Entity with "John" as name and "Doe" as other
-	e2 = Entity with "John2" as name and "Doe2" as other
+	e1 = Entity with "John" as firstName, "Doe" as lastName and "Other" as other
+	e2 = Entity with "John2" as firstName, "Doe2" as lastName and "Other2" as other
 	store e1, e2
-	es = fetch all Entity include name
+	es = fetch all Entity include firstName and lastName
 	for each e in es:
 		print e.text

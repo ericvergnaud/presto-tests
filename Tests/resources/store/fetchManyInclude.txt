@@ -1,1 +1,1 @@
-{name:John}{name:John2}
+{firstName:John,lastName:Doe}{firstName:John2,lastName:Doe2}

@@ -10,5 +10,7 @@ define main as method receiving Text<:> options doing:
 	list[1] = "after"
 	list.removeItem 2
 	list.removeValue "thing"
-	print list[1]
+	list.addValue "added"
+	list.insertValue "inserted" with 2 as atIndex 
+	print "" + list
 

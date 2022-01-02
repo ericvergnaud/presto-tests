@@ -11,6 +11,8 @@ method main ( Text<:> options ) {
 	list[1] = "after";
 	list.removeItem(2);
 	list.removeValue("thing");
-	print(list[1]);
+	list.addValue("added");
+	list.insertValue("inserted", atIndex = 2 );
+	print("" + list);
 }
 

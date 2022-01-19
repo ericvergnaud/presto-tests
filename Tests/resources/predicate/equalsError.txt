@@ -1,1 +1,1 @@
-Expected an attribute, got: "John" in method 'main'
+Expected an attribute, found: "John" in method 'main'

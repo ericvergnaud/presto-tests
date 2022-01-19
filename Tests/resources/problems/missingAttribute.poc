@@ -1,0 +1,10 @@
+category Entity(name);
+
+method main() {
+	e1 = Entity(name = "stuff");
+	name = "stuff";
+	e2 = Entity(name);
+	x = "stuff";
+	e3 = Entity(x);
+	e4 = Entity(e1.name);
+}

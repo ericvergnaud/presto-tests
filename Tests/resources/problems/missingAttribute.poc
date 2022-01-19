@@ -1,4 +1,4 @@
-category Entity(name);
+category Entity(name, description);
 
 method main() {
 	e1 = Entity(name = "stuff");
@@ -7,4 +7,6 @@ method main() {
 	x = "stuff";
 	e3 = Entity(x);
 	e4 = Entity(e1.name);
+	e5 = Entity(description = "ddd", name);
+	e6 = Entity(name, description);
 }

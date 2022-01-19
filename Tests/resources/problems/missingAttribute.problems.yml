@@ -10,3 +10,9 @@
   endColumn: 20
   type: error
   message: "Expected an attribute, found: e1.name"
+- startLine: 11
+  startColumn: 19
+  endLine: 11
+  endColumn: 30
+  type: error
+  message: "Unknown identifier: description"

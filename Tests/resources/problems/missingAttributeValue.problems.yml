@@ -1,0 +1,6 @@
+- startLine: 4
+  startColumn: 12
+  endLine: 4
+  endColumn: 16
+  type: error
+  message: "Unknown identifier: name"

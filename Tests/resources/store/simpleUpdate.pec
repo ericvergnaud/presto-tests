@@ -1,0 +1,22 @@
+define print as native method receiving Text value doing:
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+
+// ok to use Integer with MemStore
+define dbId as storable Integer attribute 
+define name as storable Text attribute
+define description as storable Text attribute
+
+define Entity as storable category with attributes name and description
+
+define main as method receiving Text<:> options doing:
+	e1 = Entity with "John" as name
+	store e1
+	e2 = fetch one mutable Entity where name = "John"
+	e2.description = "updated"
+	store e2
+	e3 = fetch one mutable Entity where dbId = e2.dbId
+	print "/name:" + e3.name + "/description:" + e3.description

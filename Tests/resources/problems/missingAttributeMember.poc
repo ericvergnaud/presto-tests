@@ -1,0 +1,5 @@
+category Entity(name);
+
+method main() {
+	e = Entity(name = name.count);
+}

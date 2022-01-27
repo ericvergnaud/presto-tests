@@ -1,0 +1,34 @@
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+attribute name: Text;
+
+category Base (name) {
+
+    abstract Text method myMethod(Text prefix); 
+
+}
+
+
+category Entity extends Base {
+	
+    Text method myMethod(Text prefix) {
+        return prefix + " " + name;
+    }
+		
+}
+
+method newBases() {
+	entities = [Entity(name="John")];
+	return (Base[])entities;
+}
+ 
+method main (Text<:> options) {
+    bases = newBases();
+    print("" + bases[1].myMethod("Hello"));
+}

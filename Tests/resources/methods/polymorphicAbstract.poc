@@ -13,18 +13,18 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method printName ( Person p ) {
+method PrintName ( Person p ) {
 	print ( value = "/person=" + p.name );
 } 
 
-method printName ( Company c ) {
+method PrintName ( Company c ) {
 	print ( value = "/company=" + c.name );
 } 
 
-abstract method printName (Entity e);
+abstract method PrintName (Entity e);
 
 method printEntity ( Entity e ) {
-	printName (e);
+	PrintName (e);
 }
 	
 method main ( Text<:> options ) {

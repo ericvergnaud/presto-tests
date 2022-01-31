@@ -6,21 +6,27 @@ define print as native method receiving Text value doing:
 	JavaScript: process.stdout.write(value);
 
 define id as Integer attribute 
+define name as Text attribute 
 
-define Entity as category with attribute id, and methods:
+define Entity as category with attributes id and name, and methods:
 
 	define printName as method receiving Text arg doing:
-		s = "/Text, id=" + id + ", arg=" + arg
+		s = "/Text, arg=" + arg + ", name=" + name
 		print s
 
 	define printName as method receiving Integer arg doing:
-		s = "/Integer, id=" + id + ", arg=" + arg
+		s = "/Integer, arg=" + arg + ", id=" + id
 		print s
+		
+	define printName as method doing:
+		printName "hello"
+		printName 32
 
 define printEntity as method receiving Entity e doing:
-	e.printName "string"
+	e.printName "hello"
 	e.printName 32
+	e.printName
 
 define main as method receiving Text<:> options doing:
-	e = Entity with 1 as id
+	e = Entity with 1 as id and "John" as name
 	printEntity e

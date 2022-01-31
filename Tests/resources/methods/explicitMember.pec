@@ -5,9 +5,9 @@ define print as native method receiving Text value doing:
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
-define myProto as abstract method receiving Text prefix returning Text
+define MyProto as abstract method receiving Text prefix returning Text
 
-define printResultOfMyProto as method receiving myProto doing:
+define printResultOfMyProto as method receiving MyProto myProto doing:
 	s = myProto with "Hello" as prefix
 	print s
 

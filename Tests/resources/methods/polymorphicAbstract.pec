@@ -12,16 +12,16 @@ define Entity as category with attributes id and name
 define Person as Entity
 define Company as Entity
 
-define printName as method receiving Person p doing:
+define PrintName as method receiving Person p doing:
 	print with "/person=" + p.name as value
 
-define printName as method receiving Company c doing:
+define PrintName as method receiving Company c doing:
 	print with "/company=" + c.name as value
 
-define printName as abstract method receiving Entity e
+define PrintName as abstract method receiving Entity e
 
 define printEntity as method receiving Entity e doing:
-	printName e
+	PrintName e
 	
 define main as method receiving Text<:> options doing:
 	c = Company with 1 as id and "IBM" as name

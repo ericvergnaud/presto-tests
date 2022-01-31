@@ -6,9 +6,9 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-abstract Text method myProto(Text prefix); 
+abstract Text method MyProto(Text prefix); 
 
-method printResultOfMyProto(myProto) {
+method printResultOfMyProto(MyProto myProto) {
 	s = myProto(prefix="Hello");
 	print(s);
 }

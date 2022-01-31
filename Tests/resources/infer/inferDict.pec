@@ -10,12 +10,12 @@ define Shape as category with attribute perimeter
 define Square as Shape
 define Circle as Shape
 
-define printShape as abstract method receiving Shape shape
+define PrintShape as abstract method receiving Shape shape
 
-define printShape as method receiving Square shape doing:
+define PrintShape as method receiving Square shape doing:
     print "/Square"
     
-define printShape as method receiving Circle shape doing:
+define PrintShape as method receiving Circle shape doing:
     print "/Circle"
 
 define main as method receiving Text<:> options doing:
@@ -23,5 +23,5 @@ define main as method receiving Text<:> options doing:
     c = Circle with 40.0 as perimeter
     shapes = < "Square" : s, "Circle" : c >
     for each ss in shapes.values:
-        printShape with ss as shape
+        PrintShape with ss as shape
 

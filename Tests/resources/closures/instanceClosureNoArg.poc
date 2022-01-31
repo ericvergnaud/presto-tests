@@ -1,4 +1,4 @@
-abstract Text method proto();
+abstract Text method Proto();
 
 native method print ( Text value ) {
 	Java: System.out.print(value);
@@ -21,7 +21,7 @@ category Test ( name ) {
 	}
 }
 
-method printMethod ( proto ) {
+method printMethod ( Proto proto ) {
 	s = proto();
 	print (s);
 }

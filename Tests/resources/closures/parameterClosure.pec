@@ -5,9 +5,9 @@ define print as native method receiving Text value doing:
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
-define displayMethod as abstract method receiving Text value
+define DisplayMethod as abstract method receiving Text value
 
-define someMethod as method receiving Text value and displayMethod doing:
+define someMethod as method receiving Text value and DisplayMethod displayMethod doing:
     displayMethod value
 
 define displayScreen as method receiving Text value doing:

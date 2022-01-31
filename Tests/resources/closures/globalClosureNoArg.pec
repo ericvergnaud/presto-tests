@@ -1,4 +1,4 @@
-define proto as abstract method returning Text
+define Proto as abstract method returning Text
 
 define print as native method receiving Text value doing:
 	Java: System.out.print(value);
@@ -7,7 +7,7 @@ define print as native method receiving Text value doing:
 	Python3: print(objects=value,end="")
 	JavaScript: process.stdout.write(value);
 
-define printMethod as method receiving proto doing:
+define printMethod as method receiving Proto proto doing:
 	s = invoke: proto
 	print s
 

@@ -1,4 +1,4 @@
-define proto as abstract method returning Text
+define Proto as abstract method returning Text
 
 define print as native method receiving Text value doing:
 	Java: System.out.print(value);
@@ -17,7 +17,7 @@ define Test as category with attribute name, and methods:
 			return prefix + name + "/" + x
 		return Method: subTest
 
-define printMethod as method receiving proto doing:
+define printMethod as method receiving Proto proto doing:
 	s = invoke: proto
 	print s
 	

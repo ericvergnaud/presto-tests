@@ -1,4 +1,4 @@
-abstract Text method proto (Text prefix ); 
+abstract Text method Proto (Text prefix ); 
 
 native method print ( Text value ) {
 	Java: System.out.print(value);
@@ -8,7 +8,7 @@ native method print ( Text value ) {
 	JavaScript: process.stdout.write(value);
 }
 
-method printMethod ( proto ) {
+method printMethod (Proto proto) {
 	s = proto ( prefix = "prefix:" ); 
 	print (s);
 }

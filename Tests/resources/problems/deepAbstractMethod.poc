@@ -1,8 +1,8 @@
-abstract method doConnect ();
+abstract method DoConnect ();
 
 
 method connect() {
-	doConnect();
+	DoConnect();
 }
 
 method main() {

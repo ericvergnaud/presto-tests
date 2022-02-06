@@ -1,6 +1,6 @@
-abstract method connect ();
+abstract method Connect ();
 
 
 method main() {
-	connect();
+	Connect();
 }

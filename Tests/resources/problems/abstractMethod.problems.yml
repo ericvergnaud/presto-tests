@@ -3,4 +3,4 @@
   endLine: 5
   endColumn: 10
   type: error
-  message: "Cannot call abstract method: connect()"
+  message: "Cannot call abstract method: Connect()"

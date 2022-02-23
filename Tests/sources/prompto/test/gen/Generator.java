@@ -227,9 +227,11 @@ public abstract class Generator {
 		if(!file.exists())
 			return;
 		XPathExpression xpath = XPathFactory.newInstance().newXPath().compile("/projectDescription/projects/project");
-		NodeList nodes = (NodeList)xpath.evaluate(new InputSource(new FileInputStream(file)), XPathConstants.NODESET);
-		for(int i=0;i<nodes.getLength();i++)
-			dependencies.add(nodes.item(i).getTextContent());
+		try(var input = new FileInputStream(file)) {
+			NodeList nodes = (NodeList)xpath.evaluate(new InputSource(input), XPathConstants.NODESET);
+			for(int i=0;i<nodes.getLength();i++)
+				dependencies.add(nodes.item(i).getTextContent());
+		}
 	}
 
 	private void generateLibraryTests(File subDir, String fileName, Options options) throws Exception {

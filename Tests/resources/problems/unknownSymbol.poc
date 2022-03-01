@@ -1,0 +1,11 @@
+enumerated Status(Text) {
+ ACCEPTED = "Accepted';
+}
+
+attribute status: Status;
+
+category WithStatus(status);
+
+method main() {
+	a = WithStatus( status = REJECTED );
+}

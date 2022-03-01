@@ -1,5 +1,5 @@
 enumerated Status(Text) {
- ACCEPTED = "Accepted';
+ ACCEPTED = "Accepted";
 }
 
 attribute status: Status;

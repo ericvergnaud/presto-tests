@@ -1,0 +1,21 @@
+Integer native method nullValue() {
+	Java: return null;
+	C#: return null;
+	Python2: return None
+	Python3: return None
+	JavaScript: return null;
+}
+
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+method main ( Text<:> options ) {
+	value = nullValue();
+	if( value is null)
+		print ("null");
+}

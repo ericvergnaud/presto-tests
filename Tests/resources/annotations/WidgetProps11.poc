@@ -32,7 +32,7 @@ native category SubmitEvent {
 
 abstract method MouseEventCallback(MouseEvent event);
 abstract method KeyboardEventCallback(KeyboardEvent event);
-abstract method InputChangedCallback(InputChangedEvent event);
+abstract method InputChangedEventCallback(InputChangedEvent event);
 abstract method SubmitEventCallback(SubmitEvent event);
 abstract method IntegerCallback(Integer value);
 

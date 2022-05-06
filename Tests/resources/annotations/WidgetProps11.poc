@@ -1,5 +1,13 @@
 @Inlined
-native category ClickEvent {
+native category MouseEvent {
+
+	category bindings {
+		JavaScript: Event;
+	}
+}
+
+@Inlined
+native category KeyboardEvent {
 
 	category bindings {
 		JavaScript: Event;
@@ -22,7 +30,8 @@ native category SubmitEvent {
 	}
 }
 
-abstract method ClickEventCallback(ClickEvent event);
+abstract method MouseEventCallback(MouseEvent event);
+abstract method KeyboardEventCallback(KeyboardEvent event);
 abstract method InputChangedCallback(InputChangedEvent event);
 abstract method SubmitEventCallback(SubmitEvent event);
 abstract method IntegerCallback(Integer value);
@@ -32,7 +41,7 @@ abstract method IntegerCallback(Integer value);
 widget MyWidget {
 
 	Html method render () {
-		return <div onClick={click=>props.callback(7)} >stuff</div>;
+		return <div onClick={event=>props.callback(7)} >stuff</div>;
 	}
 	
 }

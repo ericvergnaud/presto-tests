@@ -1,0 +1,18 @@
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+Integer method factorial(Integer count) {
+	if(count==1)
+		return count;
+	else
+		return count * factorial(count - 1);
+}
+
+method main ( Text<:> options ) {
+	print ("result: " + factorial(5));
+}

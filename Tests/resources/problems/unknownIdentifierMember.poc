@@ -1,0 +1,5 @@
+attribute name: Text;
+
+method main() {
+  a = name.count;
+}

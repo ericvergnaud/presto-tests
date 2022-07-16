@@ -2,5 +2,5 @@ attribute name: Text;
 category Entity(name);
 
 method main() {
-	e = Entity(name = thing.count);
+	e1 = Entity(name = 123);
 }

@@ -1,0 +1,6 @@
+- startLine: 6
+  startColumn: 15
+  endLine: 6
+  endColumn: 20
+  type: error
+  message: "Expected an attribute, found: e1.name"

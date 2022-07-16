@@ -1,0 +1,6 @@
+- startLine: 5
+  startColumn: 13
+  endLine: 5
+  endColumn: 23
+  type: error
+  message: "Illegal expression type, expected: Text, got: Integer"

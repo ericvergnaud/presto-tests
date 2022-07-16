@@ -1,6 +1,12 @@
-- startLine: 4
+- startLine: 5
   startColumn: 19
-  endLine: 4
-  endColumn: 23
+  endLine: 5
+  endColumn: 24
   type: error
-  message: "Unknown identifier: name"
+  message: "Unknown identifier: thing"
+- startLine: 5
+  startColumn: 12
+  endLine: 5
+  endColumn: 30
+  type: error
+  message: "Illegal expression type, expected: Text, got: Void"

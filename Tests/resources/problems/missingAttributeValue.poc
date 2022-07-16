@@ -1,5 +1,8 @@
-category Entity(name);
+attribute name: Text;
+attribute description: Text;
+category Entity(name, description);
 
 method main() {
-	e = Entity(name);
+	name = "stuff";
+	e1 = Entity(name, description);
 }

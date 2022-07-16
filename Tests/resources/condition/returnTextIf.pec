@@ -8,7 +8,7 @@ define print as native method receiving Text value doing:
 define sub as method receiving Text t returning Text doing:
     if t = "a":
     	return t
-    else
+    else:
     	return "not a"
     	
 define main as method receiving Text<:> options doing:

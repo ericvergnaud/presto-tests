@@ -3,4 +3,4 @@
   endLine: 5
   endColumn: 23
   type: error
-  message: "Illegal expression type, expected: Text, got: Integer"
+  message: "Type Integer is not compatible with Text"

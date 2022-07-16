@@ -9,4 +9,4 @@
   endLine: 5
   endColumn: 30
   type: error
-  message: "Illegal expression type, expected: Text, got: Void"
+  message: "Type Void is not compatible with Text"

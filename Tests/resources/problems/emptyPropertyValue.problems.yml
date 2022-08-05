@@ -1,0 +1,6 @@
+- startLine: 13
+  startColumn: 22
+  endLine: 13
+  endColumn: 30
+  type: error
+  message: "Type Void is not compatible with Integer"

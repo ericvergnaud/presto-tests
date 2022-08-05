@@ -1,0 +1,17 @@
+@WidgetProperties({stuff: Integer})
+widget StuffWidget {
+
+	method render() {
+		return null;
+	}
+	
+}
+
+widget MyWidget {
+
+	method render() {
+		return <StuffWidget stuff={} />;
+	}
+
+}
+

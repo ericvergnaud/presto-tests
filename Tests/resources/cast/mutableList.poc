@@ -7,6 +7,15 @@ native method print ( Text value ) {
 }
 
 attribute name : Text;
+attribute text : Text;
+
+enumerated category Error(name,text) {
+	DIVIDE_BY_ZERO ( text = "Divide by zero!" ); 
+	INDEX_OUT_OF_RANGE (text= "Index out of range!");
+	NULL_REFERENCE (text = "Null reference!" ); 
+	NOT_MUTABLE (text = "Not mutable!" ); 
+}
+
 
 category Root(name);
 

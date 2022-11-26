@@ -1,0 +1,36 @@
+native method print ( Text value ) {
+	Java: System.out.print(value);
+	C#: System.Console.Write(value);
+	Python2: print(objects=value,end="")
+	Python3: print(objects=value,end="")
+	JavaScript: process.stdout.write(value);
+}
+
+abstract Void method VoidCallback();
+
+@WidgetField(name="props", type=Document, isProperties=true)
+@WidgetProperties({callback: VoidCallback})
+widget Inner {
+	
+	method render() {
+		props.callback();
+	}
+}
+
+widget Outer {
+
+	method MyCallback() {
+		print("Hello!");
+	}
+	
+	method render() {
+		return <Inner callback={() => MyCallback()} />;
+	}
+
+}
+
+method main ( Text<:> options ) {
+	x = <Outer />;
+	print("Hello!");
+}
+
